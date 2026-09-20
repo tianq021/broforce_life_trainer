@@ -1,0 +1,187 @@
+TYPE PolymorphicAI base=NetworkObject
+FIELD MentalState mentalState public=True
+FIELD Single blockOffset public=True
+FIELD UnityEngine.RaycastHit rayCastHit public=False
+FIELD Boolean firstFrame public=False
+FIELD System.Collections.Generic.List`1[ActionObject] actionQueue public=True
+FIELD ReactionBubble exclamationMark public=True
+FIELD ReactionBubble questionMark public=True
+FIELD PathAgent pathAgent public=False
+FIELD Single t public=False
+FIELD Unit unit public=False
+FIELD Mook mook public=False
+FIELD Int32 seenEnemyNum public=False
+FIELD Int32 prevSeenPlayerNum public=False
+FIELD System.Collections.Generic.List`1[GridPoint] availableGridPoints public=False
+FIELD Int32 sightRangeX public=True
+FIELD Int32 sightRangeY public=True
+FIELD Single attackTime public=True
+FIELD Single sightDelay public=True
+FIELD Single delayBetweenFiring public=True
+FIELD Boolean willClimbThroughVents public=True
+FIELD Int32 patrolBlocksRadius public=True
+FIELD Single lastAlertedTime public=False
+FIELD Int32 hidingLookXRange public=True
+FIELD Int32 walkDirection public=True
+FIELD Int32 thoughtsSincePlayerSeen public=False
+FIELD Int32 suspciousThinkCount public=False
+FIELD Single minIdleWaitDuration public=True
+FIELD Single maxIdleWaitDuration public=True
+FIELD Boolean alwaysLookAround public=True
+FIELD Single timeStuckAgainstWall public=False
+FIELD Single timeOnSameSpot public=False
+FIELD Int32 lastCollumn public=False
+FIELD Int32 lastRow public=False
+FIELD Int32 repathCount public=False
+FIELD Int32 framesSinceSync public=False
+FIELD Boolean hasActionQueueChanged public=False
+FIELD GridPoint attractPoint public=False
+FIELD Int32 laughIndex public=False
+FIELD System.Predicate`1[ActionObject] <>f__am$cache0 public=False
+FIELD System.Collections.Generic.List`1[State] states public=True
+FIELD Boolean SyncDestroy public=True
+FIELD Boolean OnlyDestroyScriptOnSync public=True
+FIELD Byte[] instantiationDataBytes public=True
+FIELD Boolean lastPosHasBeenSet public=True
+FIELD UnityEngine.Vector3 _lastPos public=True
+FIELD Boolean UpdateHasRunAtleastOnce public=True
+METHOD Int32 get_FacingDirection() public=True virtual=False final=False
+METHOD Void ForceFacingDirection(Int32) public=True virtual=False final=False
+METHOD Int32 GetSeenPlayerNum() public=True virtual=False final=False
+METHOD Single GetTargetX(GridPoint) public=False virtual=False final=False
+METHOD Single GetTargetY(GridPoint) public=False virtual=False final=False
+METHOD ActionObject get_CurrentAction() public=False virtual=False final=False
+METHOD Single get_LastAlertedTime() public=True virtual=False final=False
+METHOD Boolean get_HasEverBeenAlerted() public=True virtual=False final=False
+METHOD Void Think() public=False virtual=True final=False
+METHOD Void DoAttractedThink() public=False virtual=True final=False
+METHOD Void DoPanicThink() public=False virtual=True final=False
+METHOD Void DoAlertedThink() public=False virtual=True final=False
+METHOD Void DoSuspiciousThink() public=False virtual=True final=False
+METHOD Void DoIdleThink() public=False virtual=True final=False
+METHOD Void DoHidingThink() public=False virtual=True final=False
+METHOD Boolean IsGridPointAvailable(Int32, Int32) public=False virtual=False final=False
+METHOD Boolean get_ReadyToThink() public=False virtual=True final=False
+METHOD Single get_UnitHalfWidth() public=False virtual=False final=False
+METHOD Void Awake() public=False virtual=True final=False
+METHOD Void Update() public=False virtual=True final=False
+METHOD Boolean GetPlayerRange(Single ByRef, Single ByRef) public=True virtual=True final=False
+METHOD Void RunQueue() public=False virtual=True final=False
+METHOD Void BecomeAlert(ActionObject) public=False virtual=True final=False
+METHOD Void RunNormalAction(ActionObject) public=False virtual=True final=False
+METHOD Boolean IsAtActionGridpoint(ActionObject) public=False virtual=True final=False
+METHOD Void GetInput(Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef) public=True virtual=True final=False
+METHOD Void RunMovementInput(Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, ActionObject) public=False virtual=True final=False
+METHOD Void RunHoverInput(Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, ActionObject) public=False virtual=True final=False
+METHOD EnemyActionType GetActionType() public=True virtual=True final=False
+METHOD GridPoint GetActionGridPoint() public=True virtual=True final=False
+METHOD Void RunJumpingInput(Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef) public=False virtual=True final=False
+METHOD Void RunStompingInput(Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef) public=False virtual=False final=False
+METHOD Boolean UnitCanSetup() public=False virtual=True final=False
+METHOD Void InitialSetup() public=False virtual=True final=False
+METHOD GridPoint GetNewGridPoint() public=False virtual=True final=False
+METHOD GridPoint RandomFurthestGridPoint(GridPoint) public=False virtual=False final=False
+METHOD Void SetupAvailableGridPoints() public=False virtual=True final=False
+METHOD Void Think_Networked() public=False virtual=False final=False
+METHOD Void LateUpdate() public=False virtual=True final=False
+METHOD Void Sync(ActionObject[], MentalState, Single, Single, Int32, ActionState) public=True virtual=False final=False
+METHOD Byte[] Serialize() public=True virtual=True final=False
+METHOD Void Deserialize(Byte[]) public=True virtual=True final=False
+METHOD Void AddAction(ActionObject, QueueMode) public=False virtual=False final=False
+METHOD Void AddAction(ActionObject) public=False virtual=False final=False
+METHOD Void AddAction(EnemyActionType) public=False virtual=False final=False
+METHOD Void AddAction(EnemyActionType, QueueMode) public=False virtual=False final=False
+METHOD Void AddAction(EnemyActionType, Single) public=True virtual=False final=False
+METHOD Void AddAction(EnemyActionType, Single, QueueMode) public=False virtual=False final=False
+METHOD Void AddAction(EnemyActionType, GridPoint) public=True virtual=True final=False
+METHOD Void AddAction(EnemyActionType, GridPoint, QueueMode) public=False virtual=False final=False
+METHOD Void AddAction(EnemyActionType, GridPoint, Single) public=True virtual=False final=False
+METHOD Void Attract(Single, Single) public=True virtual=True final=False
+METHOD Void HearSilencedSound() public=True virtual=True final=False
+METHOD Boolean ActionQueueDoesntContainQuestionMark() public=False virtual=False final=False
+METHOD Void HearSound(Single, Single) public=True virtual=True final=False
+METHOD Void FaceDirectionWhileAlerted(Single, Single) public=False virtual=True final=False
+METHOD Void Blind() public=True virtual=True final=False
+METHOD Void Blind(Single) public=True virtual=True final=False
+METHOD Void ForgetPlayer() public=True virtual=True final=False
+METHOD Void HideInGrass() public=True virtual=True final=False
+METHOD Void DebugShowActionQueue() public=False virtual=False final=False
+METHOD Void DebugShowInput(Boolean, Boolean, Boolean, Boolean, Boolean, Boolean) public=False virtual=False final=False
+METHOD Void FullyAlert(Single, Single, Int32) public=True virtual=True final=False
+METHOD Void JumpOutOfHiding() public=False virtual=True final=False
+METHOD Void ForceFullyAlert() public=True virtual=True final=False
+METHOD Boolean Panic(Int32, Boolean) public=True virtual=True final=False
+METHOD Void StopPanicking() public=True virtual=True final=False
+METHOD Void StopBeingBlind() public=True virtual=True final=False
+METHOD Void TryLaughAtDeadPlayer(Int32) public=True virtual=True final=False
+METHOD Void AddLaughAction() public=False virtual=True final=False
+METHOD Void TryForgetPlayer(Int32) public=True virtual=True final=False
+METHOD Void TryLooseSightOfPlayer(Int32) public=True virtual=True final=False
+METHOD MentalState GetThinkState() public=True virtual=False final=False
+METHOD Boolean IsAlerted() public=True virtual=False final=False
+METHOD Boolean IsSuspicious() public=True virtual=False final=False
+METHOD Void Reassess() public=True virtual=True final=False
+METHOD Void SetMentalState(MentalState) public=True virtual=True final=False
+METHOD Void ShowQuestionBubble() public=False virtual=True final=False
+METHOD Void Alert(Single, Single, Boolean) public=False virtual=False final=False
+METHOD Boolean CanSeeEnemyThisWay(Int32) public=False virtual=True final=False
+METHOD Void LookForEnemy() public=False virtual=True final=False
+METHOD Void HideSpeachBubbles() public=True virtual=True final=False
+METHOD Void RestartExclamationBubble_Networked() public=True virtual=True final=False
+METHOD Void RestartQuestionBubble_Networked() public=True virtual=True final=False
+METHOD Void GreetPlayer() public=False virtual=True final=False
+METHOD Void LaughAtPlayer() public=False virtual=True final=False
+METHOD Void CheckJumpOverStep() public=False virtual=True final=False
+METHOD Boolean IsBlockedForward() public=False virtual=False final=False
+METHOD Void FetchObject(UnityEngine.Transform) public=False virtual=True final=False
+METHOD Void SetDeltaTime() public=False virtual=True final=False
+METHOD Void FollowPath(NavPath) public=False virtual=False final=False
+METHOD Void ClearActionQueue(Boolean) public=True virtual=True final=False
+METHOD Void CheckActionQueue() public=True virtual=True final=False
+METHOD Void Land() public=True virtual=True final=False
+METHOD Void StopStomping() public=True virtual=True final=False
+METHOD Void SetRevealed(Boolean, Single, Single) public=True virtual=True final=False
+METHOD Boolean IsRevealed() public=True virtual=True final=False
+METHOD Void StopAllActions() public=True virtual=True final=False
+METHOD Void ForceClimbing(Boolean, Boolean, Boolean) public=True virtual=True final=False
+METHOD Void DelayedDeath(Single) public=True virtual=True final=False
+METHOD UnityEngine.Vector3 GetTargetPosition() public=True virtual=True final=False
+METHOD Boolean ActionsContains(EnemyActionType) public=True virtual=True final=False
+METHOD SatanBossPattern GetSatanPattern() public=True virtual=True final=False
+METHOD Void FinishResurrecting() public=True virtual=True final=False
+METHOD Boolean HasPathAgent() public=True virtual=False final=False
+METHOD Void IncrementLastAlertedTime() public=True virtual=False final=False
+METHOD Boolean <HearSound>m__0(ActionObject) public=False virtual=False final=False
+TYPE PathAgent base=UnityEngine.MonoBehaviour
+FIELD PathAgentCapabilities capabilities public=True
+FIELD Single agentSize public=True
+FIELD UnityEngine.Vector3 tileStartPos public=False
+FIELD PathMoveMode previousMoveMode public=False
+FIELD Int32 jitterPreventionLastMoveDirection public=False
+FIELD NavPath currentPath public=False
+FIELD Int32 currentNodeIndex public=True
+FIELD Single timeStuckOnThisNode public=False
+FIELD TestVanDammeAnim unit public=False
+FIELD Boolean haveReachedCenter public=False
+FIELD UnityEngine.Vector2 currentAgentPos public=False
+FIELD UnityEngine.Vector2 currentTargetWorldPoint public=False
+FIELD Int32 direction public=False
+FIELD Single rowOffsetY public=True
+FIELD GridPoint currentAgentGridPoint public=False
+METHOD Boolean get_IsClimbing() public=True virtual=False final=False
+METHOD NavPath get_CurrentPath() public=True virtual=False final=False
+METHOD Void set_CurrentPath(NavPath) public=True virtual=False final=False
+METHOD Boolean get_hasPath() public=True virtual=False final=False
+METHOD Void GetPath(Int32, Int32, Single) public=True virtual=False final=False
+METHOD NavPath MergePaths(NavPath, NavPath) public=False virtual=False final=False
+METHOD Void Awake() public=False virtual=False final=False
+METHOD PathPoint get_CurrentNode() public=True virtual=False final=False
+METHOD Boolean GetMove(Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef) public=True virtual=False final=False
+METHOD Boolean GetMove(Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef) public=True virtual=False final=False
+METHOD Boolean CheckWhetherToAdvanceNode() public=False virtual=False final=False
+METHOD Void PerformJitterPrevention(Boolean ByRef, Boolean ByRef) public=False virtual=False final=False
+METHOD Void GoNextPoint() public=False virtual=False final=False
+METHOD Void ApplyNaiveDirectionalMovement(Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef) public=False virtual=False final=False
+METHOD Void InitCurrentNavPoint() public=False virtual=False final=False
+METHOD Void GetMove(InputState) public=False virtual=False final=False
+METHOD Boolean <GetMove>m__0(PathPoint) public=False virtual=False final=False

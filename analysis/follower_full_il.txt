@@ -1,0 +1,537 @@
+
+METHOD FollowerMinion :: Int32 get_LeaderIndex() public=True static=False
+IL_0000 ldarg.0 
+IL_0001 ldfld FollowerMinion :: Int32 leaderPlayerNo
+IL_0006 ret 
+
+METHOD FollowerMinion :: Void Start() public=False static=False
+IL_0000 ldarg.0 
+IL_0001 ldarg.0 
+IL_0002 call UnityEngine.Component :: PathAgent GetComponent[PathAgent]()
+IL_0007 stfld FollowerMinion :: PathAgent pathAgent
+IL_000c ldarg.0 
+IL_000d ldarg.0 
+IL_000e call UnityEngine.Component :: TestVanDammeAnim GetComponent[TestVanDammeAnim]()
+IL_0013 stfld FollowerMinion :: TestVanDammeAnim unit
+IL_0018 ldarg.0 
+IL_0019 ldarg.0 
+IL_001a call UnityEngine.Random :: Single get_value()
+IL_001f dup 
+IL_0020 stloc.0 
+IL_0021 stfld FollowerMinion :: Single moveDelay
+IL_0026 ldloc.0 
+IL_0027 stfld FollowerMinion :: Single pathingDelay
+IL_002c ldarg.0 
+IL_002d ldc.i4.s 13
+IL_002f ldc.i4.s 20
+IL_0031 call UnityEngine.Random :: Int32 Range(Int32, Int32)
+IL_0036 stfld FollowerMinion :: Int32 maxDistanceFromLeader
+IL_003b ldarg.0 
+IL_003c ldc.i4.3 
+IL_003d ldc.i4.6 
+IL_003e call UnityEngine.Random :: Int32 Range(Int32, Int32)
+IL_0043 stfld FollowerMinion :: Int32 broCatchupDistance
+IL_0048 ret 
+
+METHOD FollowerMinion :: Boolean GetInput(Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef) public=True static=False
+PARAM 0 System.Boolean& left
+PARAM 1 System.Boolean& right
+PARAM 2 System.Boolean& up
+PARAM 3 System.Boolean& down
+PARAM 4 System.Boolean& jump
+PARAM 5 System.Boolean& fire
+IL_0000 ldarg.3 
+IL_0001 ldarg.s 4
+IL_0003 ldarg.1 
+IL_0004 ldarg.2 
+IL_0005 ldarg.s 5
+IL_0007 ldarg.s 6
+IL_0009 ldc.i4.0 
+IL_000a dup 
+IL_000b stloc.0 
+IL_000c stind.i1 
+IL_000d ldloc.0 
+IL_000e dup 
+IL_000f stloc.0 
+IL_0010 stind.i1 
+IL_0011 ldloc.0 
+IL_0012 dup 
+IL_0013 stloc.0 
+IL_0014 stind.i1 
+IL_0015 ldloc.0 
+IL_0016 dup 
+IL_0017 stloc.0 
+IL_0018 stind.i1 
+IL_0019 ldloc.0 
+IL_001a dup 
+IL_001b stloc.0 
+IL_001c stind.i1 
+IL_001d ldloc.0 
+IL_001e stind.i1 
+IL_001f ldarg.0 
+IL_0020 ldfld FollowerMinion :: Unit leader
+IL_0025 ldnull 
+IL_0026 call UnityEngine.Object :: Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_002b brfalse IL_0417
+IL_0030 ldarg.0 
+IL_0031 dup 
+IL_0032 ldfld FollowerMinion :: Single pathingDelay
+IL_0037 call UnityEngine.Time :: Single get_deltaTime()
+IL_003c sub 
+IL_003d stfld FollowerMinion :: Single pathingDelay
+IL_0042 ldarg.0 
+IL_0043 ldfld FollowerMinion :: PathAgent pathAgent
+IL_0048 callvirt PathAgent :: NavPath get_CurrentPath()
+IL_004d brtrue IL_01c7
+IL_0052 ldarg.0 
+IL_0053 ldfld FollowerMinion :: Single pathingDelay
+IL_0058 ldc.r4 0
+IL_005d bge.un IL_01c7
+IL_0062 ldarg.0 
+IL_0063 ldfld FollowerMinion :: Boolean waitingForBroToCatchUp
+IL_0068 brfalse IL_0130
+IL_006d ldarg.0 
+IL_006e ldfld FollowerMinion :: TestVanDammeAnim unit
+IL_0073 ldfld Unit :: Int32 collumn
+IL_0078 ldarg.0 
+IL_0079 ldfld FollowerMinion :: Unit leader
+IL_007e ldfld Unit :: Int32 collumn
+IL_0083 sub 
+IL_0084 call UnityEngine.Mathf :: Int32 Abs(Int32)
+IL_0089 ldarg.0 
+IL_008a ldfld FollowerMinion :: TestVanDammeAnim unit
+IL_008f ldfld Unit :: Int32 row
+IL_0094 ldarg.0 
+IL_0095 ldfld FollowerMinion :: Unit leader
+IL_009a ldfld Unit :: Int32 row
+IL_009f sub 
+IL_00a0 call UnityEngine.Mathf :: Int32 Abs(Int32)
+IL_00a5 add 
+IL_00a6 ldarg.0 
+IL_00a7 ldfld FollowerMinion :: Int32 broCatchupDistance
+IL_00ac bge IL_00bd
+IL_00b1 ldarg.0 
+IL_00b2 ldc.i4.0 
+IL_00b3 stfld FollowerMinion :: Boolean waitingForBroToCatchUp
+IL_00b8 br IL_012b
+IL_00bd ldarg.0 
+IL_00be ldfld FollowerMinion :: Unit leader
+IL_00c3 callvirt Unit :: ActionState get_actionState()
+IL_00c8 ldc.i4.3 
+IL_00c9 beq IL_012b
+IL_00ce ldarg.0 
+IL_00cf ldfld FollowerMinion :: PathAgent pathAgent
+IL_00d4 callvirt PathAgent :: NavPath get_CurrentPath()
+IL_00d9 brtrue IL_012b
+IL_00de ldarg.0 
+IL_00df dup 
+IL_00e0 ldfld FollowerMinion :: Single pathingDelay
+IL_00e5 call UnityEngine.Time :: Single get_deltaTime()
+IL_00ea sub 
+IL_00eb dup 
+IL_00ec stloc.1 
+IL_00ed stfld FollowerMinion :: Single pathingDelay
+IL_00f2 ldloc.1 
+IL_00f3 ldc.r4 0
+IL_00f8 bge.un IL_012b
+IL_00fd ldarg.0 
+IL_00fe ldfld FollowerMinion :: PathAgent pathAgent
+IL_0103 ldarg.0 
+IL_0104 ldfld FollowerMinion :: Unit leader
+IL_0109 ldfld Unit :: Int32 collumn
+IL_010e ldc.i4.m1 
+IL_010f ldc.i4.1 
+IL_0110 call UnityEngine.Random :: Int32 Range(Int32, Int32)
+IL_0115 add 
+IL_0116 ldarg.0 
+IL_0117 ldfld FollowerMinion :: Unit leader
+IL_011c ldfld Unit :: Int32 row
+IL_0121 ldc.r4 6
+IL_0126 callvirt PathAgent :: Void GetPath(Int32, Int32, Single)
+IL_012b br IL_01c7
+IL_0130 ldarg.0 
+IL_0131 ldfld FollowerMinion :: TestVanDammeAnim unit
+IL_0136 callvirt Unit :: ActionState get_actionState()
+IL_013b ldc.i4.3 
+IL_013c beq IL_01c7
+IL_0141 ldarg.0 
+IL_0142 ldfld FollowerMinion :: Unit leader
+IL_0147 callvirt Unit :: ActionState get_actionState()
+IL_014c ldc.i4.3 
+IL_014d beq IL_01c7
+IL_0152 ldarg.0 
+IL_0153 ldfld FollowerMinion :: TestVanDammeAnim unit
+IL_0158 callvirt BroforceObject :: Single get_X()
+IL_015d ldc.r4 32
+IL_0162 sub 
+IL_0163 ldarg.0 
+IL_0164 ldfld FollowerMinion :: TestVanDammeAnim unit
+IL_0169 callvirt BroforceObject :: Single get_Y()
+IL_016e ldc.i4.1 
+IL_016f call Map :: CheckPoint GetNearestCheckPointToRight(Single, Single, Boolean)
+IL_0174 stloc.2 
+IL_0175 ldloc.2 
+IL_0176 ldnull 
+IL_0177 call UnityEngine.Object :: Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_017c brfalse IL_01b0
+IL_0181 ldarg.0 
+IL_0182 ldfld FollowerMinion :: PathAgent pathAgent
+IL_0187 ldloc.2 
+IL_0188 callvirt BroforceObject :: Single get_X()
+IL_018d call Map :: Int32 GetCollumn(Single)
+IL_0192 ldc.i4.s 254
+IL_0194 ldc.i4.1 
+IL_0195 call UnityEngine.Random :: Int32 Range(Int32, Int32)
+IL_019a add 
+IL_019b ldloc.2 
+IL_019c callvirt BroforceObject :: Single get_Y()
+IL_01a1 call Map :: Int32 GetRow(Single)
+IL_01a6 ldc.r4 10
+IL_01ab callvirt PathAgent :: Void GetPath(Int32, Int32, Single)
+IL_01b0 ldarg.0 
+IL_01b1 ldc.r4 0.1
+IL_01b6 call UnityEngine.Random :: Single get_value()
+IL_01bb ldc.r4 2
+IL_01c0 mul 
+IL_01c1 add 
+IL_01c2 stfld FollowerMinion :: Single pathingDelay
+IL_01c7 ldarg.0 
+IL_01c8 ldfld FollowerMinion :: PathAgent pathAgent
+IL_01cd callvirt PathAgent :: NavPath get_CurrentPath()
+IL_01d2 brfalse IL_032a
+IL_01d7 ldarg.0 
+IL_01d8 dup 
+IL_01d9 ldfld FollowerMinion :: Single moveDelay
+IL_01de call UnityEngine.Time :: Single get_deltaTime()
+IL_01e3 sub 
+IL_01e4 dup 
+IL_01e5 stloc.1 
+IL_01e6 stfld FollowerMinion :: Single moveDelay
+IL_01eb ldloc.1 
+IL_01ec ldc.r4 0
+IL_01f1 bge.un IL_032a
+IL_01f6 call UnityEngine.Application :: Boolean get_isEditor()
+IL_01fb brfalse IL_0210
+IL_0200 ldarg.0 
+IL_0201 ldfld FollowerMinion :: PathAgent pathAgent
+IL_0206 callvirt PathAgent :: NavPath get_CurrentPath()
+IL_020b stsfld LevelEditorGUI :: NavPath displayPath
+IL_0210 ldarg.0 
+IL_0211 ldfld FollowerMinion :: Boolean waitingForBroToCatchUp
+IL_0216 brtrue IL_0285
+IL_021b ldarg.0 
+IL_021c ldfld FollowerMinion :: TestVanDammeAnim unit
+IL_0221 ldfld Unit :: Int32 collumn
+IL_0226 ldarg.0 
+IL_0227 ldfld FollowerMinion :: Unit leader
+IL_022c ldfld Unit :: Int32 collumn
+IL_0231 sub 
+IL_0232 call UnityEngine.Mathf :: Int32 Abs(Int32)
+IL_0237 ldarg.0 
+IL_0238 ldfld FollowerMinion :: TestVanDammeAnim unit
+IL_023d ldfld Unit :: Int32 row
+IL_0242 ldarg.0 
+IL_0243 ldfld FollowerMinion :: Unit leader
+IL_0248 ldfld Unit :: Int32 row
+IL_024d sub 
+IL_024e call UnityEngine.Mathf :: Int32 Abs(Int32)
+IL_0253 add 
+IL_0254 ldarg.0 
+IL_0255 ldfld FollowerMinion :: Int32 maxDistanceFromLeader
+IL_025a ble IL_0285
+IL_025f ldarg.0 
+IL_0260 ldc.i4.1 
+IL_0261 stfld FollowerMinion :: Boolean waitingForBroToCatchUp
+IL_0266 ldarg.0 
+IL_0267 ldfld FollowerMinion :: PathAgent pathAgent
+IL_026c ldnull 
+IL_026d callvirt PathAgent :: Void set_CurrentPath(NavPath)
+IL_0272 ldarg.0 
+IL_0273 ldc.i4.3 
+IL_0274 ldc.i4.6 
+IL_0275 call UnityEngine.Random :: Int32 Range(Int32, Int32)
+IL_027a conv.r4 
+IL_027b stfld FollowerMinion :: Single pathingDelay
+IL_0280 br IL_02b3
+IL_0285 ldarg.0 
+IL_0286 ldfld FollowerMinion :: PathAgent pathAgent
+IL_028b ldarg.1 
+IL_028c ldarg.2 
+IL_028d ldarg.3 
+IL_028e ldarg.s 4
+IL_0290 ldarg.s 5
+IL_0292 callvirt PathAgent :: Boolean GetMove(Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef)
+IL_0297 pop 
+IL_0298 ldarg.0 
+IL_0299 ldfld FollowerMinion :: PathAgent pathAgent
+IL_029e callvirt PathAgent :: Boolean get_IsClimbing()
+IL_02a3 brfalse IL_02b3
+IL_02a8 ldarg.0 
+IL_02a9 ldc.r4 0.3
+IL_02ae stfld FollowerMinion :: Single climbTime
+IL_02b3 ldarg.0 
+IL_02b4 ldfld FollowerMinion :: Boolean waitingForBroToCatchUp
+IL_02b9 brfalse IL_032a
+IL_02be ldarg.0 
+IL_02bf ldfld FollowerMinion :: TestVanDammeAnim unit
+IL_02c4 ldfld Unit :: Int32 collumn
+IL_02c9 ldarg.0 
+IL_02ca ldfld FollowerMinion :: Unit leader
+IL_02cf ldfld Unit :: Int32 collumn
+IL_02d4 sub 
+IL_02d5 call UnityEngine.Mathf :: Int32 Abs(Int32)
+IL_02da ldarg.0 
+IL_02db ldfld FollowerMinion :: TestVanDammeAnim unit
+IL_02e0 ldfld Unit :: Int32 row
+IL_02e5 ldarg.0 
+IL_02e6 ldfld FollowerMinion :: Unit leader
+IL_02eb ldfld Unit :: Int32 row
+IL_02f0 sub 
+IL_02f1 call UnityEngine.Mathf :: Int32 Abs(Int32)
+IL_02f6 add 
+IL_02f7 ldarg.0 
+IL_02f8 ldfld FollowerMinion :: Int32 broCatchupDistance
+IL_02fd bge IL_032a
+IL_0302 ldarg.0 
+IL_0303 ldc.i4.0 
+IL_0304 stfld FollowerMinion :: Boolean waitingForBroToCatchUp
+IL_0309 ldarg.0 
+IL_030a ldfld FollowerMinion :: PathAgent pathAgent
+IL_030f ldnull 
+IL_0310 callvirt PathAgent :: Void set_CurrentPath(NavPath)
+IL_0315 ldarg.0 
+IL_0316 ldc.r4 1
+IL_031b ldc.r4 2
+IL_0320 call UnityEngine.Random :: Single Range(Single, Single)
+IL_0325 stfld FollowerMinion :: Single pathingDelay
+IL_032a ldarg.0 
+IL_032b ldfld FollowerMinion :: Single climbTime
+IL_0330 ldc.r4 0
+IL_0335 ble.un IL_037b
+IL_033a ldarg.0 
+IL_033b dup 
+IL_033c ldfld FollowerMinion :: Single climbTime
+IL_0341 call UnityEngine.Time :: Single get_deltaTime()
+IL_0346 sub 
+IL_0347 stfld FollowerMinion :: Single climbTime
+IL_034c ldarg.3 
+IL_034d ldc.i4.1 
+IL_034e stind.i1 
+IL_034f ldarg.s 5
+IL_0351 ldc.i4.1 
+IL_0352 stind.i1 
+IL_0353 ldarg.0 
+IL_0354 ldfld FollowerMinion :: TestVanDammeAnim unit
+IL_0359 callvirt NetworkedUnit :: Int32 get_Direction()
+IL_035e ldc.i4.0 
+IL_035f ble IL_0367
+IL_0364 ldarg.2 
+IL_0365 ldc.i4.1 
+IL_0366 stind.i1 
+IL_0367 ldarg.0 
+IL_0368 ldfld FollowerMinion :: TestVanDammeAnim unit
+IL_036d callvirt NetworkedUnit :: Int32 get_Direction()
+IL_0372 ldc.i4.0 
+IL_0373 bge IL_037b
+IL_0378 ldarg.1 
+IL_0379 ldc.i4.1 
+IL_037a stind.i1 
+IL_037b ldarg.0 
+IL_037c call FollowerMinion :: Boolean CanSeeEnemy()
+IL_0381 brfalse IL_0411
+IL_0386 ldarg.1 
+IL_0387 ldarg.2 
+IL_0388 ldc.i4.0 
+IL_0389 dup 
+IL_038a stloc.0 
+IL_038b stind.i1 
+IL_038c ldloc.0 
+IL_038d stind.i1 
+IL_038e ldarg.0 
+IL_038f ldfld FollowerMinion :: Int32 enemyDirection
+IL_0394 ldc.i4.0 
+IL_0395 ble IL_03bf
+IL_039a ldarg.0 
+IL_039b ldfld FollowerMinion :: TestVanDammeAnim unit
+IL_03a0 callvirt UnityEngine.Component :: UnityEngine.Transform get_transform()
+IL_03a5 callvirt UnityEngine.Transform :: UnityEngine.Vector3 get_localScale()
+IL_03aa stloc.3 
+IL_03ab ldloca.s 3
+IL_03ad ldfld UnityEngine.Vector3 :: Single x
+IL_03b2 ldc.r4 0
+IL_03b7 bge.un IL_03bf
+IL_03bc ldarg.2 
+IL_03bd ldc.i4.1 
+IL_03be stind.i1 
+IL_03bf ldarg.0 
+IL_03c0 ldfld FollowerMinion :: Int32 enemyDirection
+IL_03c5 ldc.i4.0 
+IL_03c6 bge IL_03f1
+IL_03cb ldarg.0 
+IL_03cc ldfld FollowerMinion :: TestVanDammeAnim unit
+IL_03d1 callvirt UnityEngine.Component :: UnityEngine.Transform get_transform()
+IL_03d6 callvirt UnityEngine.Transform :: UnityEngine.Vector3 get_localScale()
+IL_03db stloc.s 4
+IL_03dd ldloca.s 4
+IL_03df ldfld UnityEngine.Vector3 :: Single x
+IL_03e4 ldc.r4 0
+IL_03e9 ble.un IL_03f1
+IL_03ee ldarg.1 
+IL_03ef ldc.i4.1 
+IL_03f0 stind.i1 
+IL_03f1 ldarg.s 6
+IL_03f3 ldc.i4.1 
+IL_03f4 stind.i1 
+IL_03f5 ldarg.0 
+IL_03f6 ldc.r4 0.1
+IL_03fb call UnityEngine.Random :: Single get_value()
+IL_0400 ldc.r4 1.3
+IL_0405 mul 
+IL_0406 add 
+IL_0407 stfld FollowerMinion :: Single moveDelay
+IL_040c br IL_0415
+IL_0411 ldarg.s 6
+IL_0413 ldc.i4.0 
+IL_0414 stind.i1 
+IL_0415 ldc.i4.1 
+IL_0416 ret 
+IL_0417 ldc.i4.0 
+IL_0418 ret 
+
+METHOD FollowerMinion :: Void FindLeader() public=False static=False
+IL_0000 ldc.i4.m1 
+IL_0001 stloc.0 
+IL_0002 ldarg.0 
+IL_0003 ldfld FollowerMinion :: TestVanDammeAnim unit
+IL_0008 callvirt BroforceObject :: Single get_X()
+IL_000d ldarg.0 
+IL_000e ldfld FollowerMinion :: TestVanDammeAnim unit
+IL_0013 callvirt BroforceObject :: Single get_Y()
+IL_0018 ldc.r4 128
+IL_001d ldc.r4 128
+IL_0022 ldloca.s 0
+IL_0024 call HeroController :: Boolean GetNearestPlayer(Single, Single, Single, Single, Int32 ByRef)
+IL_0029 pop 
+IL_002a ldloc.0 
+IL_002b ldc.i4.0 
+IL_002c blt IL_0076
+IL_0031 ldsfld HeroController :: Player[] players
+IL_0036 ldloc.0 
+IL_0037 ldelem.ref 
+IL_0038 stloc.1 
+IL_0039 ldloc.1 
+IL_003a ldnull 
+IL_003b call UnityEngine.Object :: Boolean op_Equality(UnityEngine.Object, UnityEngine.Object)
+IL_0040 brfalse IL_0046
+IL_0045 ret 
+IL_0046 ldarg.0 
+IL_0047 ldloc.1 
+IL_0048 callvirt Player :: TestVanDammeAnim get_character()
+IL_004d stfld FollowerMinion :: Unit leader
+IL_0052 ldarg.0 
+IL_0053 call UnityEngine.Component :: UnityEngine.GameObject get_gameObject()
+IL_0058 ldloc.1 
+IL_0059 callvirt NetworkObject :: PID get_Owner()
+IL_005e call Extensions :: Void SetOwnerNetworked(UnityEngine.GameObject, PID)
+IL_0063 ldarg.0 
+IL_0064 ldloc.0 
+IL_0065 stfld FollowerMinion :: Int32 leaderPlayerNo
+IL_006a ldloc.1 
+IL_006b ldarg.0 
+IL_006c ldfld FollowerMinion :: TestVanDammeAnim unit
+IL_0071 callvirt Player :: Void RegisterMinion(Unit)
+IL_0076 ret 
+
+METHOD FollowerMinion :: Boolean CanSeeEnemy() public=False static=False
+IL_0000 ldarg.0 
+IL_0001 ldfld FollowerMinion :: TestVanDammeAnim unit
+IL_0006 callvirt NetworkedUnit :: Int32 get_playerNum()
+IL_000b ldarg.0 
+IL_000c ldfld FollowerMinion :: Single visRange
+IL_0011 ldc.r4 1
+IL_0016 ldarg.0 
+IL_0017 ldfld FollowerMinion :: TestVanDammeAnim unit
+IL_001c callvirt BroforceObject :: Single get_X()
+IL_0021 ldarg.0 
+IL_0022 call UnityEngine.Component :: UnityEngine.Transform get_transform()
+IL_0027 callvirt UnityEngine.Transform :: UnityEngine.Vector3 get_localScale()
+IL_002c stloc.1 
+IL_002d ldloca.s 1
+IL_002f ldfld UnityEngine.Vector3 :: Single x
+IL_0034 ldarg.0 
+IL_0035 ldfld FollowerMinion :: Single visRange
+IL_003a mul 
+IL_003b ldc.r4 0.5
+IL_0040 mul 
+IL_0041 add 
+IL_0042 ldarg.0 
+IL_0043 ldfld FollowerMinion :: TestVanDammeAnim unit
+IL_0048 callvirt BroforceObject :: Single get_Y()
+IL_004d ldc.r4 9
+IL_0052 add 
+IL_0053 call Map :: Unit GeLivingtUnit(Int32, Single, Single, Single, Single)
+IL_0058 stloc.0 
+IL_0059 ldloc.0 
+IL_005a ldnull 
+IL_005b call UnityEngine.Object :: Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_0060 brfalse IL_010e
+IL_0065 ldloc.0 
+IL_0066 callvirt UnityEngine.Component :: Animal GetComponent[Animal]()
+IL_006b ldnull 
+IL_006c call UnityEngine.Object :: Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_0071 brfalse IL_0078
+IL_0076 ldc.i4.0 
+IL_0077 ret 
+IL_0078 ldloc.0 
+IL_0079 callvirt BroforceObject :: Single get_X()
+IL_007e ldarg.0 
+IL_007f ldfld FollowerMinion :: TestVanDammeAnim unit
+IL_0084 callvirt BroforceObject :: Single get_X()
+IL_0089 ble.un IL_009a
+IL_008e ldarg.0 
+IL_008f ldc.i4.1 
+IL_0090 stfld FollowerMinion :: Int32 enemyDirection
+IL_0095 br IL_00a1
+IL_009a ldarg.0 
+IL_009b ldc.i4.m1 
+IL_009c stfld FollowerMinion :: Int32 enemyDirection
+IL_00a1 ldarg.0 
+IL_00a2 call UnityEngine.Component :: UnityEngine.Transform get_transform()
+IL_00a7 callvirt UnityEngine.Transform :: UnityEngine.Vector3 get_position()
+IL_00ac stloc.2 
+IL_00ad ldloca.s 2
+IL_00af dup 
+IL_00b0 ldfld UnityEngine.Vector3 :: Single y
+IL_00b5 ldc.r4 4
+IL_00ba add 
+IL_00bb stfld UnityEngine.Vector3 :: Single y
+IL_00c0 ldloc.0 
+IL_00c1 callvirt UnityEngine.Component :: UnityEngine.Transform get_transform()
+IL_00c6 callvirt UnityEngine.Transform :: UnityEngine.Vector3 get_position()
+IL_00cb stloc.3 
+IL_00cc ldloca.s 3
+IL_00ce dup 
+IL_00cf ldfld UnityEngine.Vector3 :: Single y
+IL_00d4 ldc.r4 4
+IL_00d9 add 
+IL_00da stfld UnityEngine.Vector3 :: Single y
+IL_00df ldloc.2 
+IL_00e0 ldloc.3 
+IL_00e1 ldloc.2 
+IL_00e2 call UnityEngine.Vector3 :: UnityEngine.Vector3 op_Subtraction(UnityEngine.Vector3, UnityEngine.Vector3)
+IL_00e7 newobj UnityEngine.Ray :: Void .ctor(UnityEngine.Vector3, UnityEngine.Vector3)
+IL_00ec ldloc.2 
+IL_00ed ldloc.3 
+IL_00ee call UnityEngine.Vector3 :: Single Distance(UnityEngine.Vector3, UnityEngine.Vector3)
+IL_00f3 ldc.i4.1 
+IL_00f4 ldstr Terrain
+IL_00f9 call UnityEngine.LayerMask :: Int32 NameToLayer(System.String)
+IL_00fe ldc.i4.s 31
+IL_0100 and 
+IL_0101 shl 
+IL_0102 call UnityEngine.Physics :: Boolean Raycast(UnityEngine.Ray, Single, Int32)
+IL_0107 brtrue IL_010e
+IL_010c ldc.i4.1 
+IL_010d ret 
+IL_010e ldc.i4.0 
+IL_010f ret 

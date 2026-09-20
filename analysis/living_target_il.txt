@@ -1,0 +1,99 @@
+
+METHOD Map :: Unit GeLivingtUnit(Int32, Single, Single, Single, Single) public=True static=True
+PARAM 0 System.Int32 playerNum
+PARAM 1 System.Single xRange
+PARAM 2 System.Single yRange
+PARAM 3 System.Single x
+PARAM 4 System.Single y
+IL_0000 ldsfld Map :: System.Collections.Generic.List`1[Unit] units
+IL_0005 brtrue IL_000c
+IL_000a ldnull 
+IL_000b ret 
+IL_000c ldsfld Map :: System.Collections.Generic.List`1[Unit] units
+IL_0011 callvirt System.Collections.Generic.List`1[Unit] :: Int32 get_Count()
+IL_0016 ldc.i4.1 
+IL_0017 sub 
+IL_0018 stloc.0 
+IL_0019 br IL_00ed
+IL_001e ldsfld Map :: System.Collections.Generic.List`1[Unit] units
+IL_0023 ldloc.0 
+IL_0024 callvirt System.Collections.Generic.List`1[Unit] :: Unit get_Item(Int32)
+IL_0029 stloc.1 
+IL_002a ldloc.1 
+IL_002b ldnull 
+IL_002c call UnityEngine.Object :: Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_0031 brfalse IL_00e9
+IL_0036 ldloc.1 
+IL_0037 callvirt Unit :: Boolean get_invulnerable()
+IL_003c brtrue IL_00e9
+IL_0041 ldloc.1 
+IL_0042 ldfld BroforceObject :: Int32 health
+IL_0047 ldc.i4.0 
+IL_0048 ble IL_00e9
+IL_004d ldloc.1 
+IL_004e callvirt Unit :: Boolean IsInStealthMode()
+IL_0053 brtrue IL_00e9
+IL_0058 ldarg.0 
+IL_0059 ldloc.1 
+IL_005a callvirt NetworkedUnit :: Int32 get_playerNum()
+IL_005f call GameModeController :: Boolean DoesPlayerNumDamage(Int32, Int32)
+IL_0064 brfalse IL_00e9
+IL_0069 ldloc.1 
+IL_006a callvirt BroforceObject :: Single get_X()
+IL_006f ldarg.3 
+IL_0070 sub 
+IL_0071 stloc.2 
+IL_0072 ldloc.1 
+IL_0073 ldfld Unit :: Single width
+IL_0078 ldc.r4 4
+IL_007d call UnityEngine.Mathf :: Single Min(Single, Single)
+IL_0082 ldloc.1 
+IL_0083 ldfld Unit :: Single width
+IL_0088 ldc.r4 0.5
+IL_008d mul 
+IL_008e add 
+IL_008f stloc.3 
+IL_0090 ldloc.2 
+IL_0091 call UnityEngine.Mathf :: Single Abs(Single)
+IL_0096 ldarg.1 
+IL_0097 sub 
+IL_0098 ldloc.3 
+IL_0099 bge.un IL_00e9
+IL_009e ldloc.1 
+IL_009f ldfld Unit :: Single height
+IL_00a4 ldc.r4 4
+IL_00a9 call UnityEngine.Mathf :: Single Min(Single, Single)
+IL_00ae ldloc.1 
+IL_00af ldfld Unit :: Single height
+IL_00b4 ldc.r4 0.5
+IL_00b9 mul 
+IL_00ba add 
+IL_00bb stloc.s 4
+IL_00bd ldloc.1 
+IL_00be callvirt BroforceObject :: Single get_Y()
+IL_00c3 ldloc.s 4
+IL_00c5 ldc.r4 2
+IL_00ca div 
+IL_00cb add 
+IL_00cc ldc.r4 5
+IL_00d1 add 
+IL_00d2 ldarg.s 4
+IL_00d4 sub 
+IL_00d5 stloc.s 5
+IL_00d7 ldloc.s 5
+IL_00d9 call UnityEngine.Mathf :: Single Abs(Single)
+IL_00de ldarg.2 
+IL_00df sub 
+IL_00e0 ldloc.s 4
+IL_00e2 bge.un IL_00e9
+IL_00e7 ldloc.1 
+IL_00e8 ret 
+IL_00e9 ldloc.0 
+IL_00ea ldc.i4.1 
+IL_00eb sub 
+IL_00ec stloc.0 
+IL_00ed ldloc.0 
+IL_00ee ldc.i4.0 
+IL_00ef bge IL_001e
+IL_00f4 ldnull 
+IL_00f5 ret 

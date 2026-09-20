@@ -1,0 +1,75 @@
+
+METHOD Villager :: Void SetSpawnState(Single, Single, Boolean, Boolean, Boolean, Boolean, Boolean, Int32) public=True static=False
+IL_0000 ldarg.s 6
+IL_0002 brfalse IL_0020
+IL_0007 call SingletonMono`1[MapController] :: MapController get_Instance()
+IL_000c ldarg.0 
+IL_000d ldc.i4.3 
+IL_000e ldc.i4.1 
+IL_000f ldc.r4 0
+IL_0014 ldc.r4 0
+IL_0019 ldc.i4.0 
+IL_001a ldc.i4.0 
+IL_001b call Map :: Void KnockAndDamageUnit(UnityEngine.MonoBehaviour, Unit, Int32, DamageType, Single, Single, Int32, Boolean)
+IL_0020 ldarg.3 
+IL_0021 brfalse IL_002c
+IL_0026 ldarg.0 
+IL_0027 callvirt TestVanDammeAnim :: Void Tumble()
+IL_002c ldarg.s 4
+IL_002e brfalse IL_003a
+IL_0033 ldarg.0 
+IL_0034 ldc.i4.1 
+IL_0035 callvirt Unit :: Void SetCanParachute(Boolean)
+IL_003a ldarg.s 5
+IL_003c brfalse IL_0047
+IL_0041 ldarg.0 
+IL_0042 callvirt Unit :: Void OpenParachute()
+IL_0047 ldarg.s 7
+IL_0049 brfalse IL_0097
+IL_004e ldc.r4 0
+IL_0053 stloc.0 
+IL_0054 ldc.r4 0
+IL_0059 stloc.1 
+IL_005a ldc.i4.m1 
+IL_005b stloc.2 
+IL_005c ldarg.0 
+IL_005d ldfld NetworkedUnit :: PolymorphicAI enemyAI
+IL_0062 ldnull 
+IL_0063 call UnityEngine.Object :: Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_0068 brfalse IL_0097
+IL_006d ldarg.0 
+IL_006e ldfld BroforceObject :: Int32 health
+IL_0073 ldc.i4.0 
+IL_0074 ble IL_0097
+IL_0079 ldloca.s 0
+IL_007b ldloca.s 1
+IL_007d ldloca.s 2
+IL_007f call HeroController :: Boolean GetRandomPlayerPos(Single ByRef, Single ByRef, Int32 ByRef)
+IL_0084 brfalse IL_0097
+IL_0089 ldarg.0 
+IL_008a ldfld NetworkedUnit :: PolymorphicAI enemyAI
+IL_008f ldloc.0 
+IL_0090 ldloc.1 
+IL_0091 ldloc.2 
+IL_0092 callvirt PolymorphicAI :: Void FullyAlert(Single, Single, Int32)
+IL_0097 ldarg.s 8
+IL_0099 ldc.i4.0 
+IL_009a blt IL_00c4
+IL_009f ldsfld HeroController :: Player[] players
+IL_00a4 ldarg.s 8
+IL_00a6 ldelem.ref 
+IL_00a7 callvirt Player :: Boolean IsAlive()
+IL_00ac brfalse IL_00c4
+IL_00b1 ldarg.0 
+IL_00b2 ldsfld HeroController :: Player[] players
+IL_00b7 ldarg.s 8
+IL_00b9 ldelem.ref 
+IL_00ba callvirt Player :: TestVanDammeAnim get_character()
+IL_00bf call Villager :: Void ArmVillager(Unit)
+IL_00c4 ldarg.0 
+IL_00c5 ldarg.2 
+IL_00c6 stfld BroforceObject :: Single yI
+IL_00cb ldarg.0 
+IL_00cc ldarg.1 
+IL_00cd stfld BroforceObject :: Single xI
+IL_00d2 ret 

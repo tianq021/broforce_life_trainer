@@ -1,0 +1,69 @@
+
+METHOD Player :: Void SetSpawnPositon(TestVanDammeAnim, SpawnType, Boolean, UnityEngine.Vector3) public=True static=False
+PARAM 0 TestVanDammeAnim bro
+PARAM 1 Player+SpawnType spawnType
+PARAM 2 System.Boolean spawnViaAirDrop
+PARAM 3 UnityEngine.Vector3 pos
+IL_0000 ldarg.0 
+IL_0001 ldc.i4.0 
+IL_0002 call Player :: Void set_RescueInProgress(Boolean)
+IL_0007 ldarg.0 
+IL_0008 ldc.i4.0 
+IL_0009 call Player :: Void set_awaitingHeroTypeFromServer(Boolean)
+IL_000e ldarg.3 
+IL_000f brfalse IL_001b
+IL_0014 ldarg.1 
+IL_0015 ldc.i4.1 
+IL_0016 callvirt Unit :: Void SetCanParachute(Boolean)
+IL_001b ldarga.s 4
+IL_001d ldfld UnityEngine.Vector3 :: Single x
+IL_0022 ldc.r4 0
+IL_0027 bge.un IL_0044
+IL_002c ldarg.2 
+IL_002d ldc.i4.1 
+IL_002e beq IL_0044
+IL_0033 ldsfld SortOfFollow :: SortOfFollow instance
+IL_0038 callvirt UnityEngine.Component :: UnityEngine.Transform get_transform()
+IL_003d callvirt UnityEngine.Transform :: UnityEngine.Vector3 get_position()
+IL_0042 starg.s 4
+IL_0044 ldarg.1 
+IL_0045 ldnull 
+IL_0046 call UnityEngine.Object :: Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_004b brfalse IL_00ce
+IL_0050 ldarg.1 
+IL_0051 ldarga.s 4
+IL_0053 ldfld UnityEngine.Vector3 :: Single x
+IL_0058 ldarga.s 4
+IL_005a ldfld UnityEngine.Vector3 :: Single y
+IL_005f callvirt BroforceObject :: Void SetXY(Single, Single)
+IL_0064 ldarg.1 
+IL_0065 callvirt Unit :: Void SetPosition()
+IL_006a ldarg.1 
+IL_006b ldc.i4.1 
+IL_006c stfld TestVanDammeAnim :: Boolean spawnPositionHasBeenSet
+IL_0071 ldarg.0 
+IL_0072 call NetworkObject :: Boolean get_IsMine()
+IL_0077 brfalse IL_00c2
+IL_007c ldarg.0 
+IL_007d ldfld Player :: Boolean firstDeployment
+IL_0082 brtrue IL_00a2
+IL_0087 call Announcer :: Boolean HasInstance()
+IL_008c brfalse IL_00a2
+IL_0091 ldarg.1 
+IL_0092 ldc.r4 0.4
+IL_0097 ldc.r4 1
+IL_009c ldc.i4.0 
+IL_009d callvirt TestVanDammeAnim :: Void PlayYeahSound(Single, Single, Boolean)
+IL_00a2 ldarg.0 
+IL_00a3 call NetworkObject :: Boolean get_IsMine()
+IL_00a8 brfalse IL_00c2
+IL_00ad call HeroController :: Boolean get_BrosReleased()
+IL_00b2 brfalse IL_00c2
+IL_00b7 ldarg.0 
+IL_00b8 ldc.r4 0.5
+IL_00bd call Player :: Void SetInvulnerable(Single)
+IL_00c2 ldarg.0 
+IL_00c3 ldc.i4.0 
+IL_00c4 stfld Player :: Boolean firstDeployment
+IL_00c9 br IL_00ce
+IL_00ce ret 

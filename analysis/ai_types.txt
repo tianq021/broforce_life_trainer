@@ -1,0 +1,1876 @@
+TYPE VillagerAI base=PolymorphicAI
+FIELD Boolean inMinionMode public=False
+FIELD MentalState mentalState public=True
+FIELD Single blockOffset public=True
+FIELD UnityEngine.RaycastHit rayCastHit public=False
+FIELD Boolean firstFrame public=False
+FIELD System.Collections.Generic.List`1[ActionObject] actionQueue public=True
+FIELD ReactionBubble exclamationMark public=True
+FIELD ReactionBubble questionMark public=True
+FIELD PathAgent pathAgent public=False
+FIELD Single t public=False
+FIELD Unit unit public=False
+FIELD Mook mook public=False
+FIELD Int32 seenEnemyNum public=False
+FIELD Int32 prevSeenPlayerNum public=False
+FIELD System.Collections.Generic.List`1[GridPoint] availableGridPoints public=False
+FIELD Int32 sightRangeX public=True
+FIELD Int32 sightRangeY public=True
+FIELD Single attackTime public=True
+FIELD Single sightDelay public=True
+FIELD Single delayBetweenFiring public=True
+FIELD Boolean willClimbThroughVents public=True
+FIELD Int32 patrolBlocksRadius public=True
+FIELD Int32 hidingLookXRange public=True
+FIELD Int32 walkDirection public=True
+FIELD Int32 thoughtsSincePlayerSeen public=False
+FIELD Int32 suspciousThinkCount public=False
+FIELD Single minIdleWaitDuration public=True
+FIELD Single maxIdleWaitDuration public=True
+FIELD Boolean alwaysLookAround public=True
+FIELD Int32 lastCollumn public=False
+FIELD Int32 lastRow public=False
+FIELD GridPoint attractPoint public=False
+FIELD System.Collections.Generic.List`1[State] states public=True
+FIELD Boolean SyncDestroy public=True
+FIELD Boolean OnlyDestroyScriptOnSync public=True
+FIELD Byte[] instantiationDataBytes public=True
+FIELD Boolean lastPosHasBeenSet public=True
+FIELD UnityEngine.Vector3 _lastPos public=True
+FIELD Boolean UpdateHasRunAtleastOnce public=True
+METHOD Void DoPanicThink() public=False virtual=True final=False
+METHOD Void GetInput(Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef) public=True virtual=True final=False
+METHOD Void EnterMinionMode() public=False virtual=False final=False
+METHOD Void LookForEnemy() public=False virtual=True final=False
+METHOD Void HearSound(Single, Single) public=True virtual=True final=False
+METHOD Void FullyAlert(Single, Single, Int32) public=True virtual=True final=False
+METHOD Boolean Panic(Int32, Boolean) public=True virtual=True final=False
+TYPE PolymorphicAI base=NetworkObject
+FIELD MentalState mentalState public=True
+FIELD Single blockOffset public=True
+FIELD UnityEngine.RaycastHit rayCastHit public=False
+FIELD Boolean firstFrame public=False
+FIELD System.Collections.Generic.List`1[ActionObject] actionQueue public=True
+FIELD ReactionBubble exclamationMark public=True
+FIELD ReactionBubble questionMark public=True
+FIELD PathAgent pathAgent public=False
+FIELD Single t public=False
+FIELD Unit unit public=False
+FIELD Mook mook public=False
+FIELD Int32 seenEnemyNum public=False
+FIELD Int32 prevSeenPlayerNum public=False
+FIELD System.Collections.Generic.List`1[GridPoint] availableGridPoints public=False
+FIELD Int32 sightRangeX public=True
+FIELD Int32 sightRangeY public=True
+FIELD Single attackTime public=True
+FIELD Single sightDelay public=True
+FIELD Single delayBetweenFiring public=True
+FIELD Boolean willClimbThroughVents public=True
+FIELD Int32 patrolBlocksRadius public=True
+FIELD Single lastAlertedTime public=False
+FIELD Int32 hidingLookXRange public=True
+FIELD Int32 walkDirection public=True
+FIELD Int32 thoughtsSincePlayerSeen public=False
+FIELD Int32 suspciousThinkCount public=False
+FIELD Single minIdleWaitDuration public=True
+FIELD Single maxIdleWaitDuration public=True
+FIELD Boolean alwaysLookAround public=True
+FIELD Single timeStuckAgainstWall public=False
+FIELD Single timeOnSameSpot public=False
+FIELD Int32 lastCollumn public=False
+FIELD Int32 lastRow public=False
+FIELD Int32 repathCount public=False
+FIELD Int32 framesSinceSync public=False
+FIELD Boolean hasActionQueueChanged public=False
+FIELD GridPoint attractPoint public=False
+FIELD Int32 laughIndex public=False
+FIELD System.Predicate`1[ActionObject] <>f__am$cache0 public=False
+FIELD System.Collections.Generic.List`1[State] states public=True
+FIELD Boolean SyncDestroy public=True
+FIELD Boolean OnlyDestroyScriptOnSync public=True
+FIELD Byte[] instantiationDataBytes public=True
+FIELD Boolean lastPosHasBeenSet public=True
+FIELD UnityEngine.Vector3 _lastPos public=True
+FIELD Boolean UpdateHasRunAtleastOnce public=True
+METHOD Int32 get_FacingDirection() public=True virtual=False final=False
+METHOD Void ForceFacingDirection(Int32) public=True virtual=False final=False
+METHOD Int32 GetSeenPlayerNum() public=True virtual=False final=False
+METHOD Single GetTargetX(GridPoint) public=False virtual=False final=False
+METHOD Single GetTargetY(GridPoint) public=False virtual=False final=False
+METHOD ActionObject get_CurrentAction() public=False virtual=False final=False
+METHOD Single get_LastAlertedTime() public=True virtual=False final=False
+METHOD Boolean get_HasEverBeenAlerted() public=True virtual=False final=False
+METHOD Void Think() public=False virtual=True final=False
+METHOD Void DoAttractedThink() public=False virtual=True final=False
+METHOD Void DoPanicThink() public=False virtual=True final=False
+METHOD Void DoAlertedThink() public=False virtual=True final=False
+METHOD Void DoSuspiciousThink() public=False virtual=True final=False
+METHOD Void DoIdleThink() public=False virtual=True final=False
+METHOD Void DoHidingThink() public=False virtual=True final=False
+METHOD Boolean IsGridPointAvailable(Int32, Int32) public=False virtual=False final=False
+METHOD Boolean get_ReadyToThink() public=False virtual=True final=False
+METHOD Single get_UnitHalfWidth() public=False virtual=False final=False
+METHOD Void Awake() public=False virtual=True final=False
+METHOD Void Update() public=False virtual=True final=False
+METHOD Boolean GetPlayerRange(Single ByRef, Single ByRef) public=True virtual=True final=False
+METHOD Void RunQueue() public=False virtual=True final=False
+METHOD Void BecomeAlert(ActionObject) public=False virtual=True final=False
+METHOD Void RunNormalAction(ActionObject) public=False virtual=True final=False
+METHOD Boolean IsAtActionGridpoint(ActionObject) public=False virtual=True final=False
+METHOD Void GetInput(Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef) public=True virtual=True final=False
+METHOD Void RunMovementInput(Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, ActionObject) public=False virtual=True final=False
+METHOD Void RunHoverInput(Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, ActionObject) public=False virtual=True final=False
+METHOD EnemyActionType GetActionType() public=True virtual=True final=False
+METHOD GridPoint GetActionGridPoint() public=True virtual=True final=False
+METHOD Void RunJumpingInput(Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef) public=False virtual=True final=False
+METHOD Void RunStompingInput(Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef) public=False virtual=False final=False
+METHOD Boolean UnitCanSetup() public=False virtual=True final=False
+METHOD Void InitialSetup() public=False virtual=True final=False
+METHOD GridPoint GetNewGridPoint() public=False virtual=True final=False
+METHOD GridPoint RandomFurthestGridPoint(GridPoint) public=False virtual=False final=False
+METHOD Void SetupAvailableGridPoints() public=False virtual=True final=False
+METHOD Void Think_Networked() public=False virtual=False final=False
+METHOD Void LateUpdate() public=False virtual=True final=False
+METHOD Void Sync(ActionObject[], MentalState, Single, Single, Int32, ActionState) public=True virtual=False final=False
+METHOD Byte[] Serialize() public=True virtual=True final=False
+METHOD Void Deserialize(Byte[]) public=True virtual=True final=False
+METHOD Void AddAction(ActionObject, QueueMode) public=False virtual=False final=False
+METHOD Void AddAction(ActionObject) public=False virtual=False final=False
+METHOD Void AddAction(EnemyActionType) public=False virtual=False final=False
+METHOD Void AddAction(EnemyActionType, QueueMode) public=False virtual=False final=False
+METHOD Void AddAction(EnemyActionType, Single) public=True virtual=False final=False
+METHOD Void AddAction(EnemyActionType, Single, QueueMode) public=False virtual=False final=False
+METHOD Void AddAction(EnemyActionType, GridPoint) public=True virtual=True final=False
+METHOD Void AddAction(EnemyActionType, GridPoint, QueueMode) public=False virtual=False final=False
+METHOD Void AddAction(EnemyActionType, GridPoint, Single) public=True virtual=False final=False
+METHOD Void Attract(Single, Single) public=True virtual=True final=False
+METHOD Void HearSilencedSound() public=True virtual=True final=False
+METHOD Boolean ActionQueueDoesntContainQuestionMark() public=False virtual=False final=False
+METHOD Void HearSound(Single, Single) public=True virtual=True final=False
+METHOD Void FaceDirectionWhileAlerted(Single, Single) public=False virtual=True final=False
+METHOD Void Blind() public=True virtual=True final=False
+METHOD Void Blind(Single) public=True virtual=True final=False
+METHOD Void ForgetPlayer() public=True virtual=True final=False
+METHOD Void HideInGrass() public=True virtual=True final=False
+METHOD Void DebugShowActionQueue() public=False virtual=False final=False
+METHOD Void DebugShowInput(Boolean, Boolean, Boolean, Boolean, Boolean, Boolean) public=False virtual=False final=False
+METHOD Void FullyAlert(Single, Single, Int32) public=True virtual=True final=False
+METHOD Void JumpOutOfHiding() public=False virtual=True final=False
+METHOD Void ForceFullyAlert() public=True virtual=True final=False
+METHOD Boolean Panic(Int32, Boolean) public=True virtual=True final=False
+METHOD Void StopPanicking() public=True virtual=True final=False
+METHOD Void StopBeingBlind() public=True virtual=True final=False
+METHOD Void TryLaughAtDeadPlayer(Int32) public=True virtual=True final=False
+METHOD Void AddLaughAction() public=False virtual=True final=False
+METHOD Void TryForgetPlayer(Int32) public=True virtual=True final=False
+METHOD Void TryLooseSightOfPlayer(Int32) public=True virtual=True final=False
+METHOD MentalState GetThinkState() public=True virtual=False final=False
+METHOD Boolean IsAlerted() public=True virtual=False final=False
+METHOD Boolean IsSuspicious() public=True virtual=False final=False
+METHOD Void Reassess() public=True virtual=True final=False
+METHOD Void SetMentalState(MentalState) public=True virtual=True final=False
+METHOD Void ShowQuestionBubble() public=False virtual=True final=False
+METHOD Void Alert(Single, Single, Boolean) public=False virtual=False final=False
+METHOD Boolean CanSeeEnemyThisWay(Int32) public=False virtual=True final=False
+METHOD Void LookForEnemy() public=False virtual=True final=False
+METHOD Void HideSpeachBubbles() public=True virtual=True final=False
+METHOD Void RestartExclamationBubble_Networked() public=True virtual=True final=False
+METHOD Void RestartQuestionBubble_Networked() public=True virtual=True final=False
+METHOD Void GreetPlayer() public=False virtual=True final=False
+METHOD Void LaughAtPlayer() public=False virtual=True final=False
+METHOD Void CheckJumpOverStep() public=False virtual=True final=False
+METHOD Boolean IsBlockedForward() public=False virtual=False final=False
+METHOD Void FetchObject(UnityEngine.Transform) public=False virtual=True final=False
+METHOD Void SetDeltaTime() public=False virtual=True final=False
+METHOD Void FollowPath(NavPath) public=False virtual=False final=False
+METHOD Void ClearActionQueue(Boolean) public=True virtual=True final=False
+METHOD Void CheckActionQueue() public=True virtual=True final=False
+METHOD Void Land() public=True virtual=True final=False
+METHOD Void StopStomping() public=True virtual=True final=False
+METHOD Void SetRevealed(Boolean, Single, Single) public=True virtual=True final=False
+METHOD Boolean IsRevealed() public=True virtual=True final=False
+METHOD Void StopAllActions() public=True virtual=True final=False
+METHOD Void ForceClimbing(Boolean, Boolean, Boolean) public=True virtual=True final=False
+METHOD Void DelayedDeath(Single) public=True virtual=True final=False
+METHOD UnityEngine.Vector3 GetTargetPosition() public=True virtual=True final=False
+METHOD Boolean ActionsContains(EnemyActionType) public=True virtual=True final=False
+METHOD SatanBossPattern GetSatanPattern() public=True virtual=True final=False
+METHOD Void FinishResurrecting() public=True virtual=True final=False
+METHOD Boolean HasPathAgent() public=True virtual=False final=False
+METHOD Void IncrementLastAlertedTime() public=True virtual=False final=False
+METHOD Boolean <HearSound>m__0(ActionObject) public=False virtual=False final=False
+TYPE TestVanDammeAnim base=Unit
+FIELD SpriteSM sprite public=False
+FIELD UnityEngine.Vector3 spriteOffset public=False
+FIELD Int32 spritePixelWidth public=False
+FIELD Int32 spritePixelHeight public=False
+FIELD Boolean useNewFrames public=True
+FIELD Boolean useNewDuckingFrames public=True
+FIELD Boolean useNewThrowingFrames public=True
+FIELD Boolean useNewKnifingFrames public=True
+FIELD Boolean useNewKnifeClimbingFrames public=True
+FIELD Boolean useNewHighFivingFrames public=True
+FIELD Boolean wallClimbAnticipation public=False
+FIELD Boolean armUpInAnticipationWallClimb public=False
+FIELD Single lastKnifeClimbStabY public=False
+FIELD Single knifeClimbStabHeight public=False
+FIELD Boolean useNewLadderClimbingFrames public=True
+FIELD Int32 ladderClimbingTransitionFrames public=False
+FIELD Boolean useLadderClimbingTransition public=True
+FIELD Boolean hangingOneArmed public=False
+FIELD Boolean doRollOnLand public=True
+FIELD Boolean useNewLedgeGrappleFrames public=True
+FIELD Boolean canLedgeGrapple public=True
+FIELD Boolean canChimneyFlip public=True
+FIELD Boolean useDashFrames public=True
+FIELD Boolean useDuckingFrames public=True
+FIELD Boolean canGib public=True
+FIELD Single _lastResurectionSoundTime public=False
+FIELD Single _lastLaughterSoundTime public=False
+FIELD Projectile remoteProjectile public=True
+FIELD RemoteControlExplosiveCar remoteCar public=True
+FIELD Single projectileTime public=False
+FIELD Single JUMP_TIME public=True
+FIELD Boolean isOnHelicopter public=True
+FIELD Boolean broMustFailToWin public=False
+FIELD Single stunTime public=False
+FIELD Single frozenTime public=False
+FIELD Single blindCounter public=False
+FIELD Single stunVocalDelay public=False
+FIELD Single dancingTime public=False
+FIELD Int32 dancingFrames public=False
+FIELD UnityEngine.Vector2Int dancingFramesSheetPosition public=False
+FIELD HeroType heroType public=True
+FIELD Single idleTime public=False
+FIELD UnityEngine.Material disarmedGunMaterial public=True
+FIELD SpriteSM faderSpritePrefab public=True
+FIELD Boolean usePrimaryAvatar public=True
+FIELD Single showHighFiveAfterMeleeTimer public=False
+FIELD Unit pilottedUnit public=True
+FIELD Player player public=True
+FIELD Boolean immuneToOutOfBounds public=False
+FIELD UnityEngine.GameObject impalementCollider public=True
+FIELD Single showGestureTimer public=False
+FIELD TestVanDammeAnim reviveSource public=False
+FIELD Single reviveZombieTime public=False
+FIELD Single reviveZombieCounter public=False
+FIELD Single zombieDelay public=False
+FIELD Single zombieOffset public=True
+FIELD Int32 zombieTimerOffset public=True
+FIELD AlienFaceHugger inseminatorUnit public=True
+FIELD Single inseminatedCounter public=False
+FIELD Single inseminationCounter public=False
+FIELD Boolean inseminatedByLocalUnit public=False
+FIELD Int32 inseminationFrame public=False
+FIELD Unit alienBursterPrefab public=True
+FIELD Single yScale public=False
+FIELD UnityEngine.Material defaultMaterial public=False
+FIELD UnityEngine.Material gunMaterial public=False
+FIELD UnityEngine.Material _oilyMaterial public=False
+FIELD UnityEngine.Material _oilyGunMaterial public=False
+FIELD UnityEngine.Material _frozenMaterial public=False
+FIELD UnityEngine.Material _frozenGunMaterial public=False
+FIELD Boolean canBeStrungUp public=True
+FIELD Boolean canBeCoveredInAcid public=True
+FIELD Single parachuteDelay public=False
+FIELD Boolean isParachuteActive public=False
+FIELD Parachute parachute public=True
+FIELD Boolean spawnPositionHasBeenSet public=True
+FIELD Single deadTimeCounter public=False
+FIELD Int32 disembowelHoldFrames public=False
+FIELD Boolean impaledByChainSaw public=False
+FIELD Int32 gibThreshold public=False
+FIELD SkinnedMook skinnedMookOnMyBack public=True
+FIELD Boolean canUnFreeze public=True
+FIELD UnityEngine.MeshRenderer meshRenderer public=False
+FIELD Boolean addedDeathMatchScore public=False
+FIELD Single _spawnFailSafeTimer public=False
+FIELD Boolean willComeBackToLife public=True
+FIELD Int32 heroThatKilledMeIndex public=False
+FIELD UnityEngine.Vector3 iDiedAtPosition public=False
+FIELD Single _invulnerableTime public=False
+FIELD Boolean firedWhileInvulnerable public=False
+FIELD Single willComebackToLifeTime public=False
+FIELD Single rollingTime public=False
+FIELD Int32 rollingFrames public=False
+FIELD Single lastT public=False
+FIELD Single frameRate public=False
+FIELD Single _counter public=True
+FIELD Single speed public=True
+FIELD Single dashSpeedM public=False
+FIELD Single lastDashSpeedM public=False
+FIELD Single lastLandTime public=False
+FIELD Single maxFallSpeed public=True
+FIELD Single originalMaxFallSpeed public=False
+FIELD GibHolder gibs public=True
+FIELD ReactionBubble player1Bubble public=True
+FIELD ReactionBubble player2Bubble public=True
+FIELD ReactionBubble player3Bubble public=True
+FIELD ReactionBubble player4Bubble public=True
+FIELD ReactionBubble high5Bubble public=True
+FIELD BroHalo halo public=True
+FIELD Boolean buttonJump public=True
+FIELD Boolean buttonHighFive public=True
+FIELD Boolean buttonTaunt public=True
+FIELD Boolean up public=True
+FIELD Boolean down public=True
+FIELD Boolean left public=True
+FIELD Boolean right public=True
+FIELD Boolean sprint public=True
+FIELD Boolean wasButtonJump public=True
+FIELD Boolean wasButtonHighFive public=True
+FIELD Boolean wasButtonTaunt public=True
+FIELD Boolean wasUp public=True
+FIELD Boolean wasDown public=True
+FIELD Boolean wasLeft public=True
+FIELD Boolean wasRight public=True
+FIELD Boolean wasSprint public=True
+FIELD Boolean dashButton public=True
+FIELD Boolean wasdashButton public=True
+FIELD Single lastButtonJumpTime public=False
+FIELD Single pressedJumpInAirSoJumpIfTouchGroundGrace public=False
+FIELD Single airDashJumpGrace public=False
+FIELD Single hangGrace public=False
+FIELD Boolean chimneyFlip public=False
+FIELD Boolean chimneyFlipConstrained public=False
+FIELD Int32 chimneyFlipFrames public=False
+FIELD Int32 chimneyFlipDirection public=False
+FIELD Single dashTime public=False
+FIELD Boolean hasDashedInAir public=False
+FIELD Single minDashTapTime public=False
+FIELD Single rightTapTime public=False
+FIELD Single leftTapTime public=False
+FIELD Single downTapTime public=False
+FIELD Boolean dashing public=True
+FIELD Boolean wasDashing public=False
+FIELD Boolean delayedDashing public=False
+FIELD Boolean meleeFollowUp public=False
+FIELD Boolean standingMelee public=False
+FIELD Boolean meleeHasHit public=False
+FIELD Boolean hasPlayedMissSound public=False
+FIELD Boolean jumpingMelee public=False
+FIELD Boolean dashingMelee public=False
+FIELD Boolean special public=True
+FIELD Boolean wasSpecial public=True
+FIELD Boolean fire public=True
+FIELD Boolean wasFire public=True
+FIELD Boolean usingSpecial public=False
+FIELD Boolean holdingHighFive public=False
+FIELD Boolean releasingHighFive public=False
+FIELD Boolean highFive public=False
+FIELD Boolean doingMelee public=False
+FIELD Boolean wasHighFive public=False
+FIELD Boolean buttonGesture public=False
+FIELD Boolean successfulHighFive public=False
+FIELD Boolean successfulHighFiveActiveBro public=False
+FIELD Boolean usingPockettedSpecial public=False
+FIELD Boolean usingSpecial2 public=False
+FIELD Boolean usingSpecial3 public=False
+FIELD Boolean usingSpecial4 public=False
+FIELD Boolean climbButton public=False
+FIELD Boolean wasUsingSpecial public=False
+FIELD Boolean wasUsingSpecial2 public=False
+FIELD Boolean wasUsingSpecial3 public=False
+FIELD Boolean wasClimbButton public=False
+FIELD Boolean wasUsingSpecial4 public=False
+FIELD Boolean wasButtonGesture public=False
+FIELD Boolean turnAroundWhhileUsingSpecials public=True
+FIELD Int32 pressSpecialFacingDirection public=False
+FIELD Single highfiveHoldTime public=False
+FIELD Unit meleeChosenUnit public=False
+FIELD Single jumpTime public=False
+FIELD Single ignoreHighFivePressTime public=False
+FIELD Int32 doubleJumpsLeft public=False
+FIELD Boolean wallDrag public=False
+FIELD Boolean ledgeGrapple public=False
+FIELD Boolean wasLedgeGrapple public=False
+FIELD Single ledgeOffsetY public=False
+FIELD Single fireRate public=True
+FIELD Single fireDelay public=True
+FIELD Single fireCounter public=False
+FIELD Single specialCounter public=False
+FIELD Int32 _specialAmmo public=False
+FIELD Int32 originalSpecialAmmo public=True
+FIELD Boolean highFiveBoost public=False
+FIELD Single highFiveBoostTime public=False
+FIELD Single highFiveBoostM public=False
+FIELD Boolean highFiveNoBoost public=False
+FIELD Single highFiveNoBoostTime public=False
+FIELD Single timeBroBoostTime public=False
+FIELD SoundHolder soundHolder public=True
+FIELD SoundHolderFootstep soundHolderFootSteps public=True
+FIELD Grenade specialGrenade public=True
+FIELD SpriteSM gunSprite public=True
+FIELD Int32 gunSpritePixelWidth public=False
+FIELD Int32 gunSpritePixelHeight public=False
+FIELD Int32 gunSpriteHangingFrame public=False
+FIELD Single gunCounter public=False
+FIELD Int32 gunFrame public=False
+FIELD AnimatedTexture meltingSprite public=False
+FIELD GibHolder instantiatedSkeleton public=False
+FIELD Single meltDuration public=False
+FIELD UnityEngine.Transform ImpaledByTransform public=False
+FIELD Impaler impaledBy public=True
+FIELD Shrapnel[] blood public=True
+FIELD Boolean canWallClimb public=True
+FIELD Boolean canPushBlocks public=True
+FIELD Boolean useNewPushingFrames public=True
+FIELD Single pushingTime public=False
+FIELD Boolean canDash public=True
+FIELD Single _jumpForce public=True
+FIELD Single attackJumpForce public=True
+FIELD Boolean useAttackJumpForceForAttack public=True
+FIELD Boolean canCeilingHang public=True
+FIELD JiggleDoodad doodadCurrentlyHangingFrom public=True
+FIELD Boolean canAirdash public=True
+FIELD Boolean canDoIndependentMeleeAnimation public=True
+FIELD Boolean cancelMeleeOnChangeDirection public=False
+FIELD Boolean airdashUpAvailable public=False
+FIELD Boolean airdashDownAvailable public=False
+FIELD Boolean airdashLeftAvailable public=False
+FIELD Boolean airdashRightAvailable public=False
+FIELD Single airdashTime public=False
+FIELD Single airDashDelay public=False
+FIELD Single defaultAirdashDelay public=False
+FIELD DirectionEnum airdashDirection public=False
+FIELD Single airdashMaxTime public=True
+FIELD Boolean recalling public=False
+FIELD Single recallCounter public=False
+FIELD Single avatarGunFireTime public=False
+FIELD Single avatarAngryTime public=False
+FIELD Boolean ducking public=False
+FIELD Boolean xBoxControlled public=False
+FIELD Boolean controllingProjectile public=False
+FIELD Single controllingProjectileDelay public=False
+FIELD Single lastAlertTime public=False
+FIELD Boolean firstFrame public=False
+FIELD Single noclipSpeed public=False
+FIELD Single attackJumpForceSecondsRemaining public=False
+FIELD Single oldJumpForce public=False
+FIELD Boolean wasInQuicksand public=False
+FIELD Boolean isInQuicksand public=False
+FIELD Boolean isInOil public=False
+FIELD Single oilLevel public=False
+FIELD Single quicksandChokeCounter public=False
+FIELD UnityEngine.AudioSource wallDragAudio public=False
+FIELD ReactionBubble kickPlayerBubble public=False
+FIELD Boolean ElgilbleToBeKicked public=False
+FIELD Boolean hasBeenKicked public=False
+FIELD Boolean hasBeenCoverInAcid public=True
+FIELD Single lastRecoveredFromAcidTime public=False
+FIELD Single acidParticleTimer public=False
+FIELD Boolean hasMelted public=False
+FIELD Single acidMeltTimer public=False
+FIELD Sound sound public=False
+FIELD Boolean wasHangingMoving public=False
+FIELD Int32 knifeHand public=False
+FIELD Single runningFrameRate public=True
+FIELD Single longGrassDelay public=False
+FIELD Single longGrassDelayTimer public=False
+FIELD Single footstepDelay public=False
+FIELD GroundType lastFootStepGroundType public=False
+FIELD System.String currentFootStepGroundType public=False
+FIELD Int32 knifeSoundCount public=False
+FIELD TestVanDammeAnim onBackOf public=True
+FIELD Gestures currentGesture public=False
+FIELD Boolean blockMovementForGesture public=False
+FIELD Boolean graceJumping public=False
+FIELD Single lastJumpTime public=False
+FIELD Boolean canTouchLeftWalls public=True
+FIELD Boolean canTouchRightWalls public=True
+FIELD Boolean canTouchCeiling public=False
+FIELD UnityEngine.LayerMask groundLayer public=False
+FIELD UnityEngine.LayerMask platformLayer public=False
+FIELD UnityEngine.LayerMask barrierLayer public=False
+FIELD UnityEngine.LayerMask fragileLayer public=False
+FIELD UnityEngine.LayerMask openDoorsLayer public=False
+FIELD UnityEngine.LayerMask ladderLayer public=False
+FIELD UnityEngine.LayerMask victoryLayer public=False
+FIELD UnityEngine.RaycastHit raycastHit public=False
+FIELD UnityEngine.LayerMask switchesLayer public=False
+FIELD Boolean breakDoorsOpen public=True
+FIELD Single ladderX public=False
+FIELD LadderBlock currentLadderBlock public=True
+FIELD LadderBlock prevLadderBlock public=False
+FIELD Single groundHeight public=True
+FIELD Single rumbleAmountPerShot public=True
+FIELD Single frictionM public=False
+FIELD Single yIT public=False
+FIELD Single xIT public=False
+FIELD Single ceilingHeight public=False
+FIELD Single bloodTimeOut public=False
+FIELD Single bloodTime public=False
+FIELD Int32 spurtCount public=False
+FIELD UnityEngine.RaycastHit newRaycastHit public=False
+FIELD Boolean wallClimbing public=False
+FIELD Boolean wasWallDragging public=False
+FIELD Single wallDragTime public=False
+FIELD Single xIBlast public=True
+FIELD Single xIAttackExtra public=True
+FIELD Single yIBlast public=True
+FIELD Single specialAttackXIBoost public=True
+FIELD Single specialAttackYIBoost public=True
+FIELD Single maxWallClimbYI public=True
+FIELD Boolean constrainedRight public=False
+FIELD Boolean wasConstrainedRight public=False
+FIELD Boolean constrainedLeft public=False
+FIELD Boolean wasConstrainedLeft public=False
+FIELD Int32 lastRow public=False
+FIELD Int32 lastCollumn public=False
+FIELD Single screenMaxX public=False
+FIELD Single screenMinX public=False
+FIELD Single screenMaxY public=False
+FIELD Single screenMinY public=False
+FIELD Single belowScreenCounter public=False
+FIELD Single holdUpTime public=False
+FIELD Single holdRightTime public=False
+FIELD Single holdLeftTime public=False
+FIELD Single holdDownTime public=False
+FIELD Single holdStillTime public=False
+FIELD Single impaledCounter public=False
+FIELD Single impaleXOffset public=False
+FIELD Single impaleYOffset public=False
+FIELD Int32 impaledDamage public=False
+FIELD Int32 impaledDirection public=False
+FIELD UnityEngine.Vector3 impaledPosition public=False
+FIELD UnityEngine.Vector3 impaledLocalPos public=False
+FIELD Single parentVelocityInheritM public=False
+FIELD UnityEngine.Transform lastParentedToTransform public=False
+FIELD UnityEngine.Vector3 lastParentPosition public=False
+FIELD UnityEngine.Vector3 parentedDiff public=False
+FIELD Single parentHasMovedTime public=False
+FIELD UnityEngine.Transform wallClimbingWallTransform public=False
+FIELD UnityEngine.Vector3 wallClimbingWallTransformLocalPos public=False
+FIELD UnityEngine.Transform groundTransform public=False
+FIELD BossBlockPiece bossBlockPieceCurrentlyStandingOn public=True
+FIELD UnityEngine.Vector3 groundTransformLocalPos public=False
+FIELD UnityEngine.Vector3 lastParentWorldPos public=False
+FIELD Boolean wasWallClimbing public=False
+FIELD Boolean isSkinnedMook public=True
+FIELD UnityEngine.RaycastHit raycastHitWalls public=False
+FIELD Single waterDampingX public=False
+FIELD Single waterDampingY public=False
+FIELD Single halfWidth public=False
+FIELD Single feetWidth public=False
+FIELD Single hangGraceTime public=False
+FIELD Single standingHeadHeight public=False
+FIELD Single duckingHeadHeight public=False
+FIELD Single deadHeadHeight public=False
+FIELD Single deadWaistHeight public=False
+FIELD Single waistHeight public=False
+FIELD Single standingWaistHeight public=False
+FIELD Single duckingWaistHeight public=False
+FIELD Single toeHeight public=False
+FIELD Single standingToeHeight public=False
+FIELD Single duckingToeHeight public=False
+FIELD Boolean canDuck public=True
+FIELD Single lastPathingTime public=False
+FIELD Int32 pathingAttempts public=False
+FIELD Boolean specialDown public=False
+FIELD Boolean wasSpecialDown public=False
+FIELD Boolean wasXBoxFireDown public=False
+FIELD Grenade heldGrenade public=True
+FIELD Mook heldMook public=True
+FIELD Mook nearbyMook public=False
+FIELD Boolean throwingHeldObject public=False
+FIELD DamageType lastDamageType public=False
+FIELD Int32 bloodCountAmount public=True
+FIELD Single lastHitSoundTime public=False
+FIELD Single deathSoundVolume public=True
+FIELD Single pitchShiftAmount public=True
+FIELD Boolean reducedLife public=False
+FIELD CustomLineRenderer heroTrailPrefab public=True
+FIELD CustomLineRenderer heroTrail public=False
+FIELD Boolean HidingPlayer public=True
+FIELD Single canFireDelay public=False
+FIELD Single parachuteTemporyPositionY public=False
+FIELD Boolean teaBagCheatEnabled public=True
+FIELD Single lastHighFiveTime public=False
+FIELD Single lastBassTime public=False
+FIELD RpcSignature`1[UnityEngine.GameObject] <>f__mg$cache0 public=False
+FIELD RpcSignature`1[System.Int32] <>f__mg$cache1 public=False
+FIELD Single GRAVITY public=True
+FIELD Single bouncyJumpMultiplyer public=True
+FIELD Single gravityWaterDanmping public=True
+FIELD Boolean showDebugInfoForThisEnemy public=True
+FIELD Single width public=True
+FIELD Single height public=True
+FIELD Single headHeight public=True
+FIELD Int32 row public=True
+FIELD Int32 collumn public=True
+FIELD Single burnTime public=True
+FIELD Single burnCounter public=False
+FIELD Int32 burnDamage public=False
+FIELD Int32 plasmaDamage public=False
+FIELD Single plasmaCounter public=False
+FIELD Int32 shockDamage public=False
+FIELD Single shockCounter public=False
+FIELD Single t public=False
+FIELD Boolean _diedFromOOB public=False
+FIELD Int32 _frame public=False
+FIELD Single hearingRangeX public=True
+FIELD Single hearingRangeY public=True
+FIELD Boolean canHear public=True
+FIELD BloodColor bloodColor public=True
+FIELD Boolean deathNotificationSent public=True
+FIELD ActionState _actionState public=True
+FIELD DeathType deathType public=False
+FIELD Single deathTime public=False
+FIELD Boolean hasNotifiedDeathType public=False
+FIELD Boolean hasReportedKill public=False
+FIELD Boolean beingControlledByTriggerAction public=True
+FIELD CharacterAction controllingTriggerAction public=True
+FIELD Boolean useImpaledFrames public=True
+FIELD DirectionEnum wallAttachDirection public=True
+FIELD DirectionEnum lastWallAttachDirection public=False
+FIELD Boolean flash public=True
+FIELD Boolean isZombie public=False
+FIELD Projectile projectile public=True
+FIELD ZipLine attachedToZipline public=True
+FIELD Boolean slidingOnZipline public=True
+FIELD Single zOffset public=True
+FIELD PredabroRope strungUpBy public=True
+FIELD Single strungUpX public=True
+FIELD Single strungUpY public=True
+FIELD Boolean canDisembowel public=True
+FIELD Int32 timesKickedByVanDammeSinceLanding public=True
+FIELD Boolean suspendFromRope public=True
+FIELD Unit skinnedPrefab public=True
+FIELD Boolean isHellEnemy public=True
+FIELD Boolean submergedInPool public=False
+FIELD Single submergedOffset public=True
+FIELD Block blockCurrentlyStandingOn public=True
+FIELD Spikes barbedWireWithin public=False
+FIELD PredabroRope rope public=False
+FIELD PolymorphicAI enemyAI public=True
+FIELD PolymorphicAI enemyAIOnChildOrParent public=True
+FIELD Int32 _playerNum public=True
+FIELD Boolean isHero public=False
+FIELD Int32 syncedDirection public=False
+FIELD PredabroTarget predabroTarget public=True
+FIELD System.Collections.Generic.List`1[UnityEngine.GameObject] otherAttachments public=True
+FIELD Boolean collapsed public=True
+FIELD Int32 health public=True
+FIELD Int32 maxHealth public=True
+FIELD Single xI public=True
+FIELD Single yI public=True
+FIELD ChainAnchor chainAnchor public=True
+FIELD Boolean destroyed public=True
+FIELD Boolean protectedFromDestruction public=True
+FIELD System.Collections.Generic.List`1[State] states public=True
+FIELD Boolean SyncDestroy public=True
+FIELD Boolean OnlyDestroyScriptOnSync public=True
+FIELD Byte[] instantiationDataBytes public=True
+FIELD Boolean lastPosHasBeenSet public=True
+FIELD UnityEngine.Vector3 _lastPos public=True
+FIELD Boolean UpdateHasRunAtleastOnce public=True
+METHOD Void PlayGibSound() public=False virtual=True final=False
+METHOD Void PlayDeathSound() public=False virtual=True final=False
+METHOD Void SprayBlood(Single, BloodColor) public=False virtual=True final=False
+METHOD Void Stop() public=True virtual=True final=False
+METHOD Void RecallBro() public=True virtual=True final=False
+METHOD Void ReduceLives(Boolean) public=False virtual=True final=False
+METHOD Void RollOnto(Int32) public=True virtual=True final=False
+METHOD Boolean IsExitingDoor() public=True virtual=True final=False
+METHOD Void RunTrail() public=True virtual=True final=False
+METHOD Void HideAndDisableCharacter() public=True virtual=False final=False
+METHOD Void SetRenderers(Boolean) public=False virtual=False final=False
+METHOD Void ShowAndEnableCharacter() public=True virtual=False final=False
+METHOD Void ShowCharacterInternal() public=True virtual=False final=False
+METHOD Int16 get_InputBits() public=True virtual=False final=False
+METHOD Void set_InputBits(Int16) public=True virtual=False final=False
+METHOD UnityEngine.Transform get_SyncParent() public=True virtual=False final=False
+METHOD Void set_SyncParent(UnityEngine.Transform) public=True virtual=False final=False
+METHOD ParentedPosition get_SyncParentedPosition() public=True virtual=False final=False
+METHOD Void set_SyncParentedPosition(ParentedPosition) public=True virtual=False final=False
+METHOD UnityEngine.Vector2 get_XY() public=True virtual=True final=False
+METHOD Void set_XY(UnityEngine.Vector2) public=True virtual=True final=False
+METHOD UnityStream PackState(UnityStream) public=True virtual=True final=False
+METHOD UnityStream UnpackState(UnityStream) public=True virtual=True final=False
+METHOD Void Unrevive() public=False virtual=True final=False
+METHOD Boolean Revive(Int32, Boolean, TestVanDammeAnim) public=True virtual=True final=False
+METHOD Void CalculateZombieInput() public=False virtual=True final=False
+METHOD Void CopyInput(TestVanDammeAnim, Single ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef) public=False virtual=True final=False
+METHOD Void SetRemoteProjectile(Projectile) public=True virtual=True final=False
+METHOD Void BrosMustFailToWin() public=True virtual=True final=False
+METHOD Boolean MustBroFailToWin() public=True virtual=True final=False
+METHOD Void Reenable() public=True virtual=True final=False
+METHOD Void Disable() public=True virtual=True final=False
+METHOD Boolean IsInStealthMode() public=True virtual=True final=False
+METHOD Boolean IsWithinGrass() public=False virtual=True final=False
+METHOD Boolean PushGrassAway() public=True virtual=True final=False
+METHOD Void GetRemoteControlCar() public=False virtual=False final=False
+METHOD Void RunSync() public=True virtual=True final=False
+METHOD Void OnEnable() public=False virtual=False final=False
+METHOD Void OnDisable() public=False virtual=False final=False
+METHOD Void OnDestroy() public=False virtual=True final=False
+METHOD Void OpenParachute() public=True virtual=True final=False
+METHOD Void SetCanParachute(Boolean) public=True virtual=True final=False
+METHOD Void SetParachuteDelay(Single) public=True virtual=False final=False
+METHOD UnityEngine.Vector3 GetFollowPosition() public=True virtual=True final=False
+METHOD Void ParachuteLandedOn() public=True virtual=True final=False
+METHOD Void CalculateCollumnRowFromTransform() public=False virtual=False final=False
+METHOD Void SetImmuneToOutOfBounds() public=True virtual=True final=False
+METHOD Boolean IsHanging() public=True virtual=True final=False
+METHOD Void PickupPockettableAmmo(PockettedSpecialAmmoType) public=True virtual=True final=False
+METHOD Void TeleportOnScreenCounter(Int32) public=True virtual=False final=False
+METHOD Void CreateElectricShockPuff(Single) public=False virtual=True final=False
+METHOD Void UseSteroidsNetworked() public=True virtual=True final=False
+METHOD Void UseSteroidsNetworkedForDuration(Single) public=True virtual=True final=False
+METHOD Boolean IsInQuicksand() public=True virtual=True final=False
+METHOD Boolean IsFlexing() public=True virtual=True final=False
+METHOD Boolean IsIncapacitated() public=True virtual=True final=False
+METHOD Void SetSpawnState(Single, Single, Boolean, Boolean, Boolean, Boolean) public=True virtual=False final=False
+METHOD Void ReceiveHeroKillReport(KillData) public=True virtual=True final=False
+METHOD Void YouKilledMe(Unit) public=True virtual=True final=False
+METHOD Boolean CanUseJetpack() public=False virtual=True final=False
+METHOD Void UseJetpack() public=False virtual=True final=False
+METHOD Void SetGibThreshold(Int32) public=True virtual=False final=False
+METHOD Void DelayedRevive(Single) public=True virtual=True final=False
+METHOD Boolean get_IsPerformanceEnhanced() public=True virtual=True final=False
+METHOD UnityEngine.Vector3 WhereDidIDie() public=True virtual=True final=False
+METHOD Boolean CanFreeze() public=True virtual=True final=False
+METHOD Boolean IsPressingLeftOrRight() public=True virtual=True final=False
+METHOD Void AnimateWallAnticipation() public=False virtual=True final=False
+METHOD Void AnimateWallClimb() public=False virtual=True final=False
+METHOD Void RunStepOnWalls() public=False virtual=True final=False
+METHOD Void AnimateFallen() public=False virtual=True final=False
+METHOD Void AnimateDeath() public=False virtual=True final=False
+METHOD Void AnimateActualDeath() public=False virtual=True final=False
+METHOD Void AnimateFallingDeath() public=False virtual=True final=False
+METHOD Void AnimateInseminationFrames() public=False virtual=True final=False
+METHOD Boolean IsGesturing() public=True virtual=False final=False
+METHOD Void SetGestureAnimation(Gestures) public=True virtual=True final=False
+METHOD Void AnimateGesture() public=False virtual=True final=False
+METHOD Void TriggerFlexEvent() public=False virtual=True final=False
+METHOD Void AnimateDancingFrames() public=False virtual=True final=False
+METHOD Void StartDashing() public=False virtual=True final=False
+METHOD Void CheckAirDash() public=False virtual=False final=False
+METHOD Void StopDashing() public=False virtual=False final=False
+METHOD Boolean CanAirDash(DirectionEnum) public=False virtual=True final=False
+METHOD Void CalculateMovement() public=False virtual=True final=False
+METHOD Void CheckForQuicksand() public=False virtual=True final=False
+METHOD Void CheckForQuicksandDeath() public=False virtual=True final=False
+METHOD Boolean CanJumpOffGround() public=False virtual=True final=False
+METHOD Void SetActionstateToIdle() public=False virtual=True final=False
+METHOD Void DontSlipOverEdges() public=False virtual=True final=False
+METHOD Boolean CanBeAffectedByWind() public=False virtual=True final=False
+METHOD Void PressDown() public=False virtual=True final=False
+METHOD Void NotPressingJump() public=False virtual=True final=False
+METHOD Void ClampSpeedPressingLeft() public=False virtual=True final=False
+METHOD Void ClampSpeedPressingRight() public=False virtual=True final=False
+METHOD Void HitRightWall() public=False virtual=True final=False
+METHOD Void HitLeftWall() public=False virtual=True final=False
+METHOD Void CreateFaderTrailInstance() public=False virtual=True final=False
+METHOD Void SetAirdashAvailable() public=False virtual=False final=False
+METHOD Void AirDashRight() public=False virtual=True final=False
+METHOD Void AirDashLeft() public=False virtual=True final=False
+METHOD Void AirDashUp() public=False virtual=True final=False
+METHOD Void AirDashDown() public=False virtual=True final=False
+METHOD Void Airdash(Boolean) public=False virtual=True final=False
+METHOD Void PlayAirDashChargeUpSound() public=False virtual=True final=False
+METHOD Void PlayAidDashSound() public=False virtual=True final=False
+METHOD Boolean GetSprintValue() public=False virtual=True final=False
+METHOD Void CheckDashing() public=False virtual=True final=False
+METHOD Void PressDashButton() public=False virtual=True final=False
+METHOD Void ReleaseDashButton() public=False virtual=True final=False
+METHOD Void Tumble() public=True virtual=True final=False
+METHOD Void Jump(Boolean) public=False virtual=True final=False
+METHOD Void AirJump() public=False virtual=True final=False
+METHOD Single get_GetSpeed() public=False virtual=True final=False
+METHOD Void AddSpeedLeft() public=False virtual=True final=False
+METHOD Void AddSpeedRight() public=False virtual=True final=False
+METHOD Void StopFiring() public=False virtual=True final=False
+METHOD Void StartFiring() public=False virtual=True final=False
+METHOD Void SetCurrentFootstepSound(UnityEngine.Collider) public=False virtual=False final=False
+METHOD Boolean CanTouchGround(Single) public=False virtual=False final=False
+METHOD UnityEngine.LayerMask GetGroundLayer() public=True virtual=True final=False
+METHOD Boolean IsOnGround() public=True virtual=True final=False
+METHOD Boolean IsNearGround(Single) public=True virtual=True final=False
+METHOD Single GetGroundHeightGround() public=True virtual=True final=False
+METHOD Void AssignGroundTransform(UnityEngine.Transform) public=False virtual=False final=False
+METHOD Void AssignWallTransform(UnityEngine.Transform) public=False virtual=True final=False
+METHOD Boolean IsOverLadder(Single ByRef) public=False virtual=True final=False
+METHOD Boolean IsOverLadder(Single, Single ByRef) public=False virtual=True final=False
+METHOD Boolean IsAboveLadder() public=False virtual=True final=False
+METHOD Boolean IsNearbyLadder(Single, Single) public=False virtual=True final=False
+METHOD Boolean IsWallInFront(Single) public=False virtual=False final=False
+METHOD Boolean IsWallInFrontOfHead(Single) public=False virtual=False final=False
+METHOD Boolean CanBeThrown() public=True virtual=True final=False
+METHOD Boolean IsOverFinish(Single ByRef) public=False virtual=False final=False
+METHOD Void SuckIntoPortal() public=False virtual=False final=False
+METHOD Single AttachToHelicopter(Single, Helicopter) public=False virtual=False final=False
+METHOD Void GrabHelicopterLadder() public=False virtual=False final=False
+METHOD Void SetInvulnerable(Single, Boolean, Boolean) public=True virtual=True final=False
+METHOD Void SetWillComebackToLife(Single) public=True virtual=True final=False
+METHOD Void RestartBubble(Single) public=False virtual=True final=False
+METHOD Void RestartBubble() public=False virtual=True final=False
+METHOD Void StopBubble() public=False virtual=True final=False
+METHOD Void RunAvatarFiring() public=False virtual=True final=False
+METHOD Void RunAvatarRunning() public=False virtual=True final=False
+METHOD Void FireFlashAvatar() public=False virtual=True final=False
+METHOD Void RunFiring() public=False virtual=True final=False
+METHOD Void RunStrungByPredabroMovement() public=False virtual=True final=False
+METHOD Void RunImpaledMovement() public=False virtual=True final=False
+METHOD Void RunImpaledBlood() public=False virtual=True final=False
+METHOD Void CalculateGroundHeight() public=True virtual=True final=False
+METHOD Void RunMovement() public=False virtual=True final=False
+METHOD Boolean IsOilyBelow() public=False virtual=False final=False
+METHOD Boolean IsGroundBelow() public=False virtual=False final=False
+METHOD Boolean IsGroundBelow(Single) public=False virtual=False final=False
+METHOD Boolean IsGroundBelowAtXOffset(Single, Boolean) public=False virtual=False final=False
+METHOD Void RunGroundFriction() public=False virtual=True final=False
+METHOD Void RunAirFriction() public=False virtual=True final=False
+METHOD Void RunDeadGravity() public=False virtual=True final=False
+METHOD Void EvaluateIsJumping() public=True virtual=True final=False
+METHOD Void SetActionStateToJumping(Boolean) public=False virtual=True final=False
+METHOD Void RunFalling() public=False virtual=True final=False
+METHOD Void RunFallen() public=False virtual=True final=False
+METHOD Void RunMelee() public=False virtual=True final=False
+METHOD Void RunKnifeMeleeMovement() public=False virtual=True final=False
+METHOD Void CancelMelee() public=False virtual=True final=False
+METHOD Void RunAirDashing() public=False virtual=True final=False
+METHOD Void RunLeftAirDash() public=False virtual=True final=False
+METHOD Void SetAirDashLeftSpeed() public=False virtual=True final=False
+METHOD Void RunRightAirDash() public=False virtual=True final=False
+METHOD Void SetAirDashRightSpeed() public=False virtual=True final=False
+METHOD Void RunUpwardDash() public=False virtual=True final=False
+METHOD Void RunDownwardDash() public=False virtual=True final=False
+METHOD Boolean RunCheckHanging() public=False virtual=True final=False
+METHOD Void RunHanging() public=False virtual=True final=False
+METHOD Void StopHanging() public=False virtual=True final=False
+METHOD Void RunClimbingLadder() public=False virtual=True final=False
+METHOD Void ApplyFallingGravity() public=False virtual=True final=False
+METHOD Void ApplyNormalGravity() public=False virtual=True final=False
+METHOD Void ApplyQuicksandGravity() public=False virtual=True final=False
+METHOD Boolean ConstrainToFloor(Single ByRef) public=False virtual=True final=False
+METHOD Boolean CanTouchCeiling() public=True virtual=False final=False
+METHOD Boolean ConstrainToCeiling(Single ByRef) public=False virtual=True final=False
+METHOD Void HitCeiling(UnityEngine.RaycastHit) public=False virtual=True final=False
+METHOD Void StartHanging() public=False virtual=True final=False
+METHOD Void Land() public=False virtual=True final=False
+METHOD Boolean CanDoRollOnLand() public=False virtual=True final=False
+METHOD Void RollOnLand() public=False virtual=True final=False
+METHOD Void StopRolling() public=False virtual=True final=False
+METHOD Void PlayRollLandSound() public=False virtual=True final=False
+METHOD Boolean get_WallClimbing() public=True virtual=False final=False
+METHOD Void ConstrainSpeedToSidesOfScreen() public=False virtual=False final=False
+METHOD UnityEngine.Transform GetParentedToTransform() public=True virtual=False final=False
+METHOD UnityEngine.Vector3 GetParentedToPos() public=False virtual=False final=False
+METHOD Void SkinUnit() public=True virtual=False final=False
+METHOD Void ReplaceWithSkinnedInstance(Unit, Single, Single) public=False virtual=False final=False
+METHOD Void Impale(UnityEngine.Transform, UnityEngine.Vector3, Int32, Single, Single, Single, Single) public=True virtual=True final=False
+METHOD Void Unimpale(Int32, DamageType, Single, Single, UnityEngine.MonoBehaviour) public=True virtual=True final=False
+METHOD Void ShiftUnitWithParent() public=False virtual=False final=False
+METHOD Void AddParentedDiff(Single, Single) public=False virtual=True final=False
+METHOD Void AssignParentedPos() public=False virtual=False final=False
+METHOD Void LedgeGrapple(Boolean, Boolean, Single, Single) public=False virtual=True final=False
+METHOD Single get_HalfWidth() public=True virtual=False final=False
+METHOD Boolean ConstrainToWalls(Single ByRef, Single ByRef) public=False virtual=True final=False
+METHOD Void CalculateGridPosition() public=False virtual=False final=False
+METHOD Boolean CanCheckClimbAlongCeiling() public=False virtual=True final=False
+METHOD Void CheckClimbAlongCeiling() public=False virtual=True final=False
+METHOD Void AssignPushingTime() public=False virtual=True final=False
+METHOD Void StopAirDashing() public=False virtual=True final=False
+METHOD Void ClampWallDragYI(Single ByRef) public=False virtual=True final=False
+METHOD Void ConstrainToFragileBarriers(Single ByRef, Single) public=False virtual=True final=False
+METHOD Void ConstrainToMookBarriers(Single ByRef, Single) public=False virtual=True final=False
+METHOD Void StartDucking() public=False virtual=True final=False
+METHOD Void StopDucking() public=False virtual=False final=False
+METHOD Boolean RaycastGroundSingleSquare(UnityEngine.Vector3) public=False virtual=False final=False
+METHOD Void CheckDucking() public=False virtual=False final=False
+METHOD Void CheckTriggerActionInput() public=False virtual=True final=False
+METHOD Void CheckInput() public=False virtual=True final=False
+METHOD Void StopLeftRightInputFromHanging() public=False virtual=True final=False
+METHOD Void DestroyRemoteProjectile() public=False virtual=True final=False
+METHOD Void CheckWhetherShouldClearInput() public=False virtual=True final=False
+METHOD Boolean IsLockedInMelee() public=False virtual=True final=False
+METHOD Void StartPockettedSpecial() public=False virtual=True final=False
+METHOD Boolean MustUsePockettedSpecialAmmo() public=False virtual=True final=False
+METHOD Void RunForcedInput() public=False virtual=True final=False
+METHOD Void GetEnemyMovement() public=False virtual=True final=False
+METHOD Void DebugShowInput(Boolean, Boolean, Boolean, Boolean, Boolean, Boolean) public=False virtual=False final=False
+METHOD Boolean IsPressingDown() public=True virtual=True final=False
+METHOD Void PressSpecial() public=False virtual=True final=False
+METHOD Void PressSpecial2() public=False virtual=True final=False
+METHOD Void ReleaseSpecial() public=False virtual=True final=False
+METHOD Void StartHighFive() public=False virtual=True final=False
+METHOD Void StartMelee() public=False virtual=True final=False
+METHOD Void SetMeleeType() public=False virtual=True final=False
+METHOD Void PressHighFiveMelee(Boolean) public=False virtual=True final=False
+METHOD Boolean MustIgnoreHighFiveMeleePress() public=False virtual=True final=False
+METHOD Void FindNearbyMook() public=False virtual=True final=False
+METHOD Boolean CanUseSwitch() public=False virtual=True final=False
+METHOD Void ThrowBackGrenade(Grenade) public=False virtual=True final=False
+METHOD Void ThrowBackMook(Mook) public=False virtual=True final=False
+METHOD Boolean CheckBustCage() public=False virtual=True final=False
+METHOD Void ReleaseFire() public=False virtual=True final=False
+METHOD Void ReleaseHighFive() public=False virtual=True final=False
+METHOD Void ClearFireInput() public=False virtual=True final=False
+METHOD Void ClearAllInput() public=True virtual=True final=False
+METHOD Void RunIndependentMeleeFrames() public=False virtual=True final=False
+METHOD Void RunGun() public=False virtual=True final=False
+METHOD Void SetGunSprite(Int32, Int32) public=False virtual=True final=False
+METHOD Void FallDamage(Single) public=False virtual=True final=False
+METHOD Void Stun() public=True virtual=True final=False
+METHOD Void Stun(Single) public=True virtual=True final=False
+METHOD Void Dance(Single) public=True virtual=True final=False
+METHOD Void Freeze(Single) public=True virtual=True final=False
+METHOD Boolean get_IsFrozen() public=True virtual=False final=False
+METHOD Void AnimateFrozen() public=False virtual=True final=False
+METHOD Void UnFreeze() public=True virtual=False final=False
+METHOD Void Blind(Single) public=True virtual=True final=False
+METHOD Void Blind() public=True virtual=True final=False
+METHOD Void DealWithBounce(DamageType ByRef, Int32 ByRef) public=False virtual=True final=False
+METHOD Void Damage(Int32, DamageType, Single, Single, Int32, UnityEngine.MonoBehaviour, Single, Single) public=True virtual=True final=False
+METHOD Void Death(Single, Single, DamageObject) public=True virtual=True final=False
+METHOD Boolean CanReduceLives() public=False virtual=True final=False
+METHOD Void TryAssignHeroThatKilledMe(UnityEngine.MonoBehaviour) public=False virtual=False final=False
+METHOD Single CalculateCeilingHeight() public=True virtual=True final=False
+METHOD Void StopPlayerBubbles() public=False virtual=False final=False
+METHOD Void DeactivateGun() public=False virtual=True final=False
+METHOD Void ActivateGun() public=False virtual=True final=False
+METHOD Void SetVelocity(DamageType, Single, Single, Single) public=True virtual=True final=False
+METHOD Void Knock(DamageType, Single, Single, Boolean) public=True virtual=True final=False
+METHOD Void KnockSimple(DamageObject) public=True virtual=True final=False
+METHOD Void NotifyDeathType() public=False virtual=True final=False
+METHOD Boolean CheckPlasmaDeath(Single ByRef, Single ByRef) public=True virtual=True final=False
+METHOD Void Gib(DamageType, Single, Single) public=False virtual=True final=False
+METHOD Void GibRPC(DamageType, Single, Single, Single, Single) public=False virtual=False final=False
+METHOD Void CreateGibEffects(DamageType, Single, Single) public=True virtual=True final=False
+METHOD Void CreateGibs(Single, Single) public=False virtual=True final=False
+METHOD Void PlayBurnSound(Single) public=False virtual=True final=False
+METHOD Void PlayFizzleSound(Single) public=False virtual=True final=False
+METHOD Void PlayZappedSound(Single) public=False virtual=True final=False
+METHOD Void PlayHitSound(Single) public=False virtual=True final=False
+METHOD Void PlayHurtSound(Single) public=False virtual=True final=False
+METHOD Void PlayFallDamageSound() public=False virtual=True final=False
+METHOD Void PlayFallDamageSound(Single) public=False virtual=True final=False
+METHOD UnityEngine.AudioSource PlayFallSound(Single) public=True virtual=True final=False
+METHOD Void PlayDecapitateSound() public=False virtual=True final=False
+METHOD Void PlayDeathGargleSound() public=False virtual=True final=False
+METHOD Void PlayBleedSound() public=False virtual=True final=False
+METHOD Boolean get_ShowGesturesMenu() public=True virtual=False final=False
+METHOD UnityEngine.MeshRenderer get_Renderer() public=True virtual=False final=False
+METHOD UnityEngine.Material get_material() public=True virtual=False final=False
+METHOD Void set_material(UnityEngine.Material) public=True virtual=False final=False
+METHOD Boolean get_WillReviveAlready() public=True virtual=True final=False
+METHOD Void Awake() public=False virtual=True final=False
+METHOD Void AddBoxCollider() public=False virtual=True final=False
+METHOD Void AddRigidbody() public=False virtual=True final=False
+METHOD Void SetDefaultGroundLayer() public=False virtual=False final=False
+METHOD Void SetStrictGroundLayer() public=False virtual=False final=False
+METHOD Void RegisterUnit() public=True virtual=True final=False
+METHOD Void SetUpHero(Int32, HeroType, Boolean) public=True virtual=False final=False
+METHOD Boolean get_IsParachuteActive() public=True virtual=True final=False
+METHOD Void set_IsParachuteActive(Boolean) public=True virtual=True final=False
+METHOD Void AttachToHeli() public=True virtual=True final=False
+METHOD Void SetPositionAndVelocity(Single, Single, Single, Single) public=True virtual=True final=False
+METHOD Void TempInvulnerability(Single) public=True virtual=True final=False
+METHOD Single get_invulnerableTime() public=False virtual=False final=False
+METHOD Void set_invulnerableTime(Single) public=False virtual=False final=False
+METHOD Void Start() public=False virtual=True final=False
+METHOD Void ResetSpecialAmmo() public=True virtual=True final=False
+METHOD Void AddSpecialAmmo() public=True virtual=True final=False
+METHOD Void ShowStartBubble() public=True virtual=False final=False
+METHOD Single get_counter() public=True virtual=False final=False
+METHOD Void set_counter(Single) public=True virtual=False final=False
+METHOD ReactionBubble get_playerBubble() public=True virtual=False final=False
+METHOD Boolean AnyInput() public=True virtual=True final=False
+METHOD UnityEngine.Transform get_impaledByTransform() public=True virtual=False final=False
+METHOD Void set_impaledByTransform(UnityEngine.Transform) public=True virtual=False final=False
+METHOD Single get_jumpForce() public=True virtual=True final=False
+METHOD Void set_jumpForce(Single) public=True virtual=True final=False
+METHOD Boolean get_IsDucking() public=True virtual=False final=False
+METHOD Void UseAttackJumpForceForSeconds(Single) public=True virtual=False final=False
+METHOD Void ResetToOriginalJumpForce() public=True virtual=False final=False
+METHOD Int32 GetSpecialAmmo() public=True virtual=True final=False
+METHOD Int32 get_SpecialAmmo() public=True virtual=True final=False
+METHOD Void set_SpecialAmmo(Int32) public=True virtual=True final=False
+METHOD Boolean IsAmmoFull() public=True virtual=True final=False
+METHOD Void SetSpecialAmmoRPC(Int32) public=True virtual=False final=False
+METHOD Boolean get_WallDrag() public=False virtual=True final=False
+METHOD Void set_WallDrag(Boolean) public=False virtual=True final=False
+METHOD Void SetDeltaTime() public=False virtual=True final=False
+METHOD Void SetHighFiveBoostDeltaTime() public=False virtual=True final=False
+METHOD Void LateUpdate() public=False virtual=True final=False
+METHOD Boolean get_IsStandingStill() public=False virtual=True final=False
+METHOD Void FixedUpdate() public=False virtual=True final=False
+METHOD Void Kick() public=True virtual=False final=False
+METHOD Void KickRPC() public=True virtual=False final=False
+METHOD System.Collections.IEnumerator KickRoutine() public=False virtual=False final=False
+METHOD Void ShowKickBubble() public=False virtual=False final=False
+METHOD Void StopKickBubble() public=False virtual=False final=False
+METHOD Void CheckForKick() public=False virtual=False final=False
+METHOD Boolean HasBeenCoveredInAcid() public=True virtual=True final=False
+METHOD Void RemoveAcid() public=True virtual=True final=False
+METHOD Void RemoveAcidRPC() public=False virtual=True final=False
+METHOD Void CoverInAcid() public=False virtual=True final=False
+METHOD Void CoverInAcidRPC() public=False virtual=True final=False
+METHOD Void RunCoveredInAcid() public=False virtual=False final=False
+METHOD Void CreateSkeleton() public=True virtual=False final=False
+METHOD Void Melt() public=True virtual=False final=False
+METHOD Void Update() public=False virtual=True final=False
+METHOD Void CheckForCheckPoints() public=False virtual=True final=False
+METHOD Void ReachedCheckPoint() public=False virtual=True final=False
+METHOD Void RunZombieEffects() public=False virtual=True final=False
+METHOD Void PickupPickupables() public=False virtual=True final=False
+METHOD Void CheckNotifyDeathType() public=False virtual=True final=False
+METHOD Void StopBeingStunned() public=False virtual=True final=False
+METHOD Void AlertNearbyMooks() public=False virtual=True final=False
+METHOD Void RunOnlineBadSpawnFailSafe() public=False virtual=False final=False
+METHOD Void RunWallDraggingAudio() public=False virtual=True final=False
+METHOD Void CheckFacingDirection() public=False virtual=True final=False
+METHOD Void StartPilotingUnit(Unit) public=True virtual=True final=False
+METHOD Unit GetPilottedUnit() public=True virtual=True final=False
+METHOD Void DischargePilotingUnit(Single, Single, Single, Single, Boolean) public=True virtual=True final=False
+METHOD Boolean CanInseminate(Single, Single) public=True virtual=True final=False
+METHOD Boolean HasFaceHugger() public=True virtual=False final=False
+METHOD Boolean IsInseminated() public=True virtual=False final=False
+METHOD Int32 CalculateInseminationFrame() public=False virtual=False final=False
+METHOD Void DisConnectFaceHugger() public=True virtual=False final=False
+METHOD Boolean Inseminate(AlienFaceHugger, Single, Single) public=True virtual=True final=False
+METHOD Void InseminateRPC(AlienFaceHugger, Single, Single) public=False virtual=False final=False
+METHOD Void RecoverFromInsemination() public=True virtual=True final=False
+METHOD Void RecoverFromInseminatioRPC() public=False virtual=False final=False
+METHOD Void BurstChest() public=True virtual=True final=False
+METHOD Void ReleaseAlien(Mook, Single, Single, Boolean, Int32) public=True virtual=False final=False
+METHOD Void CheckRescues() public=False virtual=True final=False
+METHOD Void RunBlindStars() public=False virtual=True final=False
+METHOD Void CheckDestroyed() public=True virtual=True final=False
+METHOD Void DestroyUnit() public=True virtual=True final=False
+METHOD Void PlayChestBurstSound(Single) public=True virtual=False final=False
+METHOD Void PlaySpecial2Sound(Single) public=True virtual=True final=False
+METHOD Void PlaySpecial2Sound(Single, Single) public=True virtual=True final=False
+METHOD Void PlayThrowLightSound(Single) public=True virtual=True final=False
+METHOD Void PlayThrowHeavySound(Single) public=True virtual=True final=False
+METHOD Void PlayPushBlockSound() public=True virtual=True final=False
+METHOD Void PlaySpecialAttackSound(Single) public=True virtual=True final=False
+METHOD UnityEngine.AudioSource PlaySpecial3Sound(Single) public=True virtual=True final=False
+METHOD UnityEngine.AudioSource PlaySpecial3Sound(Single, Single) public=True virtual=True final=False
+METHOD Void PlaySpecial4Sound(Single) public=True virtual=True final=False
+METHOD Void PlayDashSound(Single) public=True virtual=False final=False
+METHOD Void PlayChimneyFlipSound(Single) public=True virtual=True final=False
+METHOD Void PlaySpecialSound() public=True virtual=True final=False
+METHOD Void PlaySpecialSound(Single) public=True virtual=True final=False
+METHOD Void PlaySpecialSound(Single, Single, Boolean) public=True virtual=True final=False
+METHOD Void PlaySpecialSound(Single, Single) public=True virtual=True final=False
+METHOD Void PlayPowerUpSound(Single) public=True virtual=False final=False
+METHOD Void PlayYeahSound(Single) public=True virtual=True final=False
+METHOD Void PlayYeahSound(Single, Single, Boolean) public=True virtual=True final=False
+METHOD Void PlayFlexSound(Single) public=True virtual=True final=False
+METHOD Void PlayPowerUpSound(Single, Single) public=True virtual=False final=False
+METHOD Void PlayPanicSound() public=True virtual=True final=False
+METHOD Void PlayFreezeScreamSound() public=True virtual=True final=False
+METHOD Void PlayStunnedSound() public=True virtual=True final=False
+METHOD UnityEngine.AudioSource PlayDizzieSound(Single, Single) public=True virtual=True final=False
+METHOD Void PlayMuffledScreamsSound() public=True virtual=True final=False
+METHOD Void PlayGreetingSound() public=True virtual=True final=False
+METHOD Boolean CanLaugh() public=True virtual=True final=False
+METHOD Void PlayLaughterSound() public=True virtual=True final=False
+METHOD Void PlayResurrectionSound(Single) public=True virtual=True final=False
+METHOD Void PlayAttack2Sound(Single) public=True virtual=True final=False
+METHOD Void PlayAttack3Sound(Single) public=True virtual=True final=False
+METHOD Void PlayAttack4Sound(Single, Single) public=True virtual=True final=False
+METHOD Void PlayConfusedSound() public=True virtual=True final=False
+METHOD Void PlayChokeSound() public=True virtual=True final=False
+METHOD Void PlayAttractedSound() public=True virtual=True final=False
+METHOD Void UseFire() public=False virtual=True final=False
+METHOD Void PlayHighFiveSound() public=True virtual=True final=False
+METHOD Void PlayBassDropSoundSound() public=True virtual=True final=False
+METHOD Void PlayBassDropShortSound() public=True virtual=True final=False
+METHOD Void PlayAttackSound() public=False virtual=True final=False
+METHOD Void PlayAttackSound(Single) public=False virtual=True final=False
+METHOD Void FireWeapon(Single, Single, Single, Single) public=False virtual=True final=False
+METHOD Void TriggerBroFireEvent() public=False virtual=True final=False
+METHOD Void TriggerBroSpecialEvent() public=False virtual=True final=False
+METHOD Void TriggerBroMeleeEvent() public=False virtual=True final=False
+METHOD Projectile SpawnPrimaryProjectile(Projectile, Single, Single, Single, Single) public=False virtual=True final=False
+METHOD Void UseSpecial() public=False virtual=True final=False
+METHOD Void UsePockettedSpecial() public=False virtual=True final=False
+METHOD Void CheckForTraps(Single ByRef) public=False virtual=True final=False
+METHOD Boolean CanBeImpaledByGroundSpikes() public=False virtual=True final=False
+METHOD Boolean IsSurroundedByBarbedWire() public=False virtual=False final=False
+METHOD Void SetSpriteOffset(Single, Single) public=False virtual=True final=False
+METHOD Void AnimateMelee() public=False virtual=True final=False
+METHOD Void AnimateThrowingHeldObject() public=False virtual=True final=False
+METHOD Void ReleaseHeldObject(Boolean) public=False virtual=False final=False
+METHOD Void SetupThrownMookVelocity(Single ByRef, Single ByRef) public=False virtual=True final=False
+METHOD Void ReleaseGrenadeRPC(Grenade, Single, Single, Single, Single) public=False virtual=False final=False
+METHOD Void ThrowGrenade(Grenade, Single, Single, Single, Single) public=False virtual=False final=False
+METHOD Void SetHeldObjectPos(Single, Single) public=False virtual=True final=False
+METHOD Void AnimateSpecial() public=False virtual=True final=False
+METHOD Void AnimatePockettedSpecial() public=False virtual=True final=False
+METHOD Void AnimateSpecial2() public=False virtual=True final=False
+METHOD Void AnimateSpecial3() public=False virtual=True final=False
+METHOD Void AnimateSpecial4() public=False virtual=True final=False
+METHOD Void AnimateHighFiveHold() public=False virtual=True final=False
+METHOD Void AnimateHighFiveRelease() public=False virtual=True final=False
+METHOD Void CheckHighFive() public=False virtual=True final=False
+METHOD Boolean TryConnectHighFive() public=True virtual=True final=False
+METHOD Void HighFiveBoost(Boolean) public=True virtual=True final=False
+METHOD Void CreateHighFiveEffects() public=True virtual=True final=False
+METHOD Void Boost(Single) public=True virtual=True final=False
+METHOD Void TimeBroBoost(Single) public=True virtual=True final=False
+METHOD Void AnimateHanging() public=False virtual=True final=False
+METHOD Void AnimateAirdash() public=False virtual=True final=False
+METHOD Void AnimateAirdashDown() public=False virtual=True final=False
+METHOD Void AnimateJumping() public=False virtual=True final=False
+METHOD Void AnimateActualJumpingDuckingFrames() public=False virtual=True final=False
+METHOD Void AnimateLedgeGrapple() public=False virtual=True final=False
+METHOD Void AttachToZipline(ZipLine) public=True virtual=True final=False
+METHOD Void AnimateZipline() public=False virtual=True final=False
+METHOD Void AnimateChimneyFlip() public=False virtual=True final=False
+METHOD Void AnimateStrungUpFrames() public=False virtual=True final=False
+METHOD Void AnimateOnBackOffUnit() public=False virtual=True final=False
+METHOD Void AnimateActualJumpingFrames() public=False virtual=True final=False
+METHOD Void SetGunPosition(Single, Single) public=False virtual=True final=False
+METHOD Void AnimateRolling() public=False virtual=True final=False
+METHOD Void AnimateImpaled() public=False virtual=True final=False
+METHOD Void AnimateImpaledByChainSaw() public=False virtual=True final=False
+METHOD Void AnimateIdle() public=False virtual=True final=False
+METHOD Void AnimateActualIdleFrames() public=True virtual=True final=False
+METHOD Void AnimateActualIdleDuckingFrames() public=True virtual=True final=False
+METHOD Void AnimateRunning() public=False virtual=True final=False
+METHOD Void AnimateActualDuckingRunning() public=False virtual=True final=False
+METHOD BloodColor GetFootPoofColor() public=False virtual=True final=False
+METHOD Void RunHasLeftOilTest() public=False virtual=False final=False
+METHOD Void LandInOil() public=True virtual=False final=False
+METHOD Void LeaveOil() public=True virtual=False final=False
+METHOD Boolean IsSubmergedInPool() public=False virtual=True final=False
+METHOD Void AnimateActualNewRunningFrames() public=False virtual=True final=False
+METHOD Void AnimatePushing() public=False virtual=True final=False
+METHOD Void PlayKnifeClimbSound() public=False virtual=True final=False
+METHOD Void PlayFootStepSound(UnityEngine.AudioClip[], Single, Single) public=False virtual=True final=False
+METHOD Void PlayLandSound() public=False virtual=True final=False
+METHOD Void PlayJumpSound() public=False virtual=True final=False
+METHOD Void PlayExitLadderSound() public=False virtual=True final=False
+METHOD Void PlayClimbSound() public=False virtual=True final=False
+METHOD Boolean PlayLongGrassSound(Boolean) public=False virtual=False final=False
+METHOD Void PlayFootStepSound() public=False virtual=True final=False
+METHOD Void PlayFootStepSound(Single, Single) public=False virtual=True final=False
+METHOD Void IncreaseFrame() public=False virtual=True final=False
+METHOD Void ForceChangeFrame() public=True virtual=False final=False
+METHOD Void ChangeFrame() public=False virtual=True final=False
+METHOD Void AnimateClimbingLadderTransition(Boolean) public=False virtual=True final=False
+METHOD Void AnimateClimbingLadder() public=False virtual=True final=False
+METHOD Void AnimateWallDrag() public=False virtual=True final=False
+METHOD Void ApplyWallClimbingGravity() public=False virtual=True final=False
+TYPE FollowerMinion base=UnityEngine.MonoBehaviour
+FIELD PathAgent pathAgent public=False
+FIELD Unit leader public=True
+FIELD Int32 leaderPlayerNo public=False
+FIELD Single visRange public=False
+FIELD TestVanDammeAnim unit public=False
+FIELD Int32 maxDistanceFromLeader public=False
+FIELD Int32 broCatchupDistance public=False
+FIELD Boolean waitingForBroToCatchUp public=False
+FIELD Single climbTime public=False
+FIELD Single pathingDelay public=False
+FIELD Int32 enemyDirection public=False
+FIELD Single moveDelay public=False
+METHOD Int32 get_LeaderIndex() public=True virtual=False final=False
+METHOD Void Start() public=False virtual=False final=False
+METHOD Boolean GetInput(Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef) public=True virtual=False final=False
+METHOD Void FindLeader() public=False virtual=False final=False
+METHOD Boolean CanSeeEnemy() public=False virtual=False final=False
+TYPE Unit base=NetworkedUnit
+FIELD Boolean showDebugInfoForThisEnemy public=True
+FIELD Single width public=True
+FIELD Single height public=True
+FIELD Single headHeight public=True
+FIELD Int32 row public=True
+FIELD Int32 collumn public=True
+FIELD Single burnTime public=True
+FIELD Single burnCounter public=False
+FIELD Int32 burnDamage public=False
+FIELD Int32 plasmaDamage public=False
+FIELD Single plasmaCounter public=False
+FIELD Int32 shockDamage public=False
+FIELD Single shockCounter public=False
+FIELD Single t public=False
+FIELD Boolean _diedFromOOB public=False
+FIELD Int32 _frame public=False
+FIELD UnityEngine.Collider collider_ public=False
+FIELD Single hearingRangeX public=True
+FIELD Single hearingRangeY public=True
+FIELD Boolean canHear public=True
+FIELD BloodColor bloodColor public=True
+FIELD Boolean deathNotificationSent public=True
+FIELD ActionState _actionState public=True
+FIELD DeathType deathType public=False
+FIELD Single deathTime public=False
+FIELD Boolean hasNotifiedDeathType public=False
+FIELD Boolean hasReportedKill public=False
+FIELD Boolean beingControlledByTriggerAction public=True
+FIELD CharacterAction controllingTriggerAction public=True
+FIELD Boolean useImpaledFrames public=True
+FIELD Boolean Invulnerable public=False
+FIELD DirectionEnum wallAttachDirection public=True
+FIELD DirectionEnum lastWallAttachDirection public=False
+FIELD Boolean flash public=True
+FIELD Boolean isZombie public=False
+FIELD Projectile projectile public=True
+FIELD ZipLine attachedToZipline public=True
+FIELD Boolean slidingOnZipline public=True
+FIELD Single zOffset public=True
+FIELD PredabroRope strungUpBy public=True
+FIELD Single strungUpX public=True
+FIELD Single strungUpY public=True
+FIELD Boolean canDisembowel public=True
+FIELD Int32 timesKickedByVanDammeSinceLanding public=True
+FIELD Boolean suspendFromRope public=True
+FIELD Unit skinnedPrefab public=True
+FIELD Boolean isHellEnemy public=True
+FIELD Boolean submergedInPool public=False
+FIELD Single submergedOffset public=True
+FIELD Block blockCurrentlyStandingOn public=True
+FIELD Spikes barbedWireWithin public=False
+FIELD PredabroRope rope public=False
+FIELD PolymorphicAI enemyAI public=True
+FIELD PolymorphicAI enemyAIOnChildOrParent public=True
+FIELD Int32 _playerNum public=True
+FIELD Boolean isHero public=False
+FIELD Int32 syncedDirection public=False
+FIELD PredabroTarget predabroTarget public=True
+FIELD System.Collections.Generic.List`1[UnityEngine.GameObject] otherAttachments public=True
+FIELD Boolean collapsed public=True
+FIELD Int32 health public=True
+FIELD Int32 maxHealth public=True
+FIELD Single xI public=True
+FIELD Single yI public=True
+FIELD ChainAnchor chainAnchor public=True
+FIELD Boolean destroyed public=True
+FIELD Boolean protectedFromDestruction public=True
+FIELD System.Collections.Generic.List`1[State] states public=True
+FIELD Boolean SyncDestroy public=True
+FIELD Boolean OnlyDestroyScriptOnSync public=True
+FIELD Byte[] instantiationDataBytes public=True
+FIELD Boolean lastPosHasBeenSet public=True
+FIELD UnityEngine.Vector3 _lastPos public=True
+FIELD Boolean UpdateHasRunAtleastOnce public=True
+METHOD Int32 get_frame() public=True virtual=False final=False
+METHOD Void set_frame(Int32) public=True virtual=False final=False
+METHOD UnityEngine.Collider get_TheCollider() public=True virtual=False final=False
+METHOD Boolean get_CanHear() public=True virtual=False final=False
+METHOD Void set_CanHear(Boolean) public=True virtual=False final=False
+METHOD Boolean get_CanHearFriendlies() public=True virtual=True final=False
+METHOD ActionState get_actionState() public=True virtual=False final=False
+METHOD Void set_actionState(ActionState) public=True virtual=False final=False
+METHOD Boolean AnyInput() public=True virtual=True final=False
+METHOD Boolean get_invulnerable() public=True virtual=True final=False
+METHOD Void set_invulnerable(Boolean) public=True virtual=True final=False
+METHOD Boolean get_CanDisembowel() public=True virtual=False final=False
+METHOD Boolean get_IsParachuteActive() public=True virtual=True final=False
+METHOD Void set_IsParachuteActive(Boolean) public=True virtual=True final=False
+METHOD Void Awake() public=False virtual=True final=False
+METHOD T GetComponentRecursive[T]() public=False virtual=False final=False
+METHOD Boolean IsOnGround() public=True virtual=True final=False
+METHOD Boolean IsInQuicksand() public=True virtual=True final=False
+METHOD Boolean CanDisableOffGround() public=True virtual=True final=False
+METHOD Single get_T() public=True virtual=False final=False
+METHOD Boolean IsIncapacitated() public=True virtual=True final=False
+METHOD Boolean IsNearGround(Single) public=True virtual=True final=False
+METHOD Void HeadShot(Int32, DamageType, Single, Single, Int32, Single, Single, UnityEngine.MonoBehaviour) public=True virtual=True final=False
+METHOD Void Damage(Int32, DamageType, Single, Single, Int32, UnityEngine.MonoBehaviour, Single, Single) public=True virtual=True final=False
+METHOD Void ReduceDeathTimer(Int32, Single) public=True virtual=True final=False
+METHOD Void Knock(DamageType, Single, Single, Boolean) public=True virtual=True final=False
+METHOD Void SetVelocity(DamageType, Single, Single, Single) public=True virtual=True final=False
+METHOD Void SetPositionAndVelocity(Single, Single, Single, Single) public=True virtual=True final=False
+METHOD Boolean IsSubmergedInPool() public=False virtual=True final=False
+METHOD Void SetPosition() public=True virtual=True final=False
+METHOD Void KnockSimple(DamageObject) public=True virtual=True final=False
+METHOD Void SetSpeed(Single, Single) public=True virtual=True final=False
+METHOD Void BurnInternal(Int32, Int32) public=True virtual=True final=False
+METHOD Void Impale(UnityEngine.Transform, UnityEngine.Vector3, Int32, Single, Single, Single, Single) public=True virtual=True final=False
+METHOD Void Unimpale(Int32, DamageType, Single, Single, UnityEngine.MonoBehaviour) public=True virtual=True final=False
+METHOD Void Panic(Boolean) public=True virtual=True final=False
+METHOD Boolean get_IsNotReplicantHero() public=True virtual=False final=False
+METHOD Void Panic(Single, Boolean) public=True virtual=True final=False
+METHOD Void Panic(Int32, Single, Boolean) public=True virtual=True final=False
+METHOD Void Terrify() public=True virtual=True final=False
+METHOD Void OpenParachute() public=True virtual=True final=False
+METHOD Void SetCanParachute() public=True virtual=True final=False
+METHOD Void SetCanParachute(Boolean) public=True virtual=True final=False
+METHOD Void CheckDestroyed() public=True virtual=True final=False
+METHOD Void Blind(Single) public=True virtual=True final=False
+METHOD Void Stun(Single) public=True virtual=True final=False
+METHOD Void Dance(Single) public=True virtual=True final=False
+METHOD Void Freeze(Single) public=True virtual=True final=False
+METHOD Boolean CanFreeze() public=True virtual=True final=False
+METHOD Void Stun() public=True virtual=True final=False
+METHOD Void TearGas(Single) public=True virtual=True final=False
+METHOD Boolean IsBlind() public=True virtual=True final=False
+METHOD Void Blind() public=True virtual=True final=False
+METHOD Void Attract(Single, Single) public=True virtual=True final=False
+METHOD Void Alert(Single, Single) public=True virtual=True final=False
+METHOD Void FullyAlert(Single, Single, Int32) public=True virtual=True final=False
+METHOD Void HearSound(Single, Single) public=True virtual=True final=False
+METHOD Void ForgetPlayer(Int32) public=True virtual=True final=False
+METHOD Void FetchObject(UnityEngine.Transform) public=True virtual=True final=False
+METHOD Void Death(Single, Single, DamageObject) public=True virtual=True final=False
+METHOD Void DeathRPC(Single, Single, Single, Single) public=True virtual=False final=False
+METHOD Void GibNow(DamageType, Single, Single) public=True virtual=True final=False
+METHOD Void Gib(DamageType, Single, Single) public=False virtual=True final=False
+METHOD Void CreateGibEffects(DamageType, Single, Single) public=True virtual=True final=False
+METHOD Void SilentDeath() public=True virtual=True final=False
+METHOD Void QuietDeath() public=True virtual=True final=False
+METHOD Void QuietDeathRPC(Single, Single) public=True virtual=False final=False
+METHOD Void AttachToZipline(ZipLine) public=True virtual=True final=False
+METHOD Boolean TryConnectHighFive() public=True virtual=True final=False
+METHOD MookType GetMookType() public=True virtual=True final=False
+METHOD Boolean IsEvil() public=True virtual=True final=False
+METHOD Boolean IsHeavy() public=True virtual=True final=False
+METHOD Boolean CanBeThrown() public=True virtual=True final=False
+METHOD Void RollOnto(Int32) public=True virtual=True final=False
+METHOD Void RunWarning(Single, Single) public=True virtual=True final=False
+METHOD Void SuspendFromRope() public=True virtual=False final=False
+METHOD Void SetDeathType(DamageType, Int32) public=False virtual=True final=False
+METHOD Void RecoverFromInsemination() public=True virtual=True final=False
+METHOD Boolean Activate() public=True virtual=True final=False
+METHOD Boolean Deactivate() public=True virtual=True final=False
+METHOD Boolean IsPressingDown() public=True virtual=True final=False
+METHOD Boolean IsPressingLeftOrRight() public=True virtual=True final=False
+METHOD Boolean CanPilotUnit(Int32) public=True virtual=True final=False
+METHOD Void PilotUnit(Unit) public=True virtual=True final=False
+METHOD Void PilotUnitRPC(Unit) public=True virtual=True final=False
+METHOD Void DischargePilotingUnit(Single, Single, Single, Single, Boolean) public=True virtual=True final=False
+METHOD Void StartPilotingUnit(Unit) public=True virtual=True final=False
+METHOD Unit GetPilottedUnit() public=True virtual=True final=False
+METHOD Single GetFuel() public=True virtual=True final=False
+METHOD Boolean GetFuelWarning() public=True virtual=True final=False
+METHOD Boolean Revive(Int32, Boolean, TestVanDammeAnim) public=True virtual=True final=False
+METHOD Void ReviveRPC(Int32, Boolean, TestVanDammeAnim) public=True virtual=True final=False
+METHOD Void DestroyCharacter() public=True virtual=True final=False
+METHOD Void SetTargetPlayerNum(Int32, UnityEngine.Vector3) public=True virtual=True final=False
+METHOD Boolean CanInseminate(Single, Single) public=True virtual=True final=False
+METHOD Boolean Inseminate(AlienFaceHugger, Single, Single) public=True virtual=True final=False
+METHOD Void BackSomersault(Boolean) public=True virtual=True final=False
+METHOD Void FrontSomersault() public=True virtual=True final=False
+METHOD Void ForceFaceDirection(Int32) public=True virtual=True final=False
+METHOD Boolean IsInStealthMode() public=True virtual=True final=False
+METHOD Boolean UsingJetpack() public=True virtual=True final=False
+METHOD Boolean HasBeenCoveredInAcid() public=True virtual=True final=False
+METHOD Void RemoveAcid() public=True virtual=True final=False
+METHOD Boolean CatchFriendlyBullets() public=True virtual=True final=False
+METHOD Void StartSummoningAnimation() public=True virtual=True final=False
+METHOD Boolean PlayingSummoningAnimationIntro() public=True virtual=True final=False
+METHOD Void StopSummoningAnimation() public=True virtual=True final=False
+METHOD Boolean PlayingSummoningAnimation() public=True virtual=True final=False
+METHOD Void SetImmuneToOutOfBounds() public=True virtual=True final=False
+METHOD Boolean IsDecapitated() public=True virtual=True final=False
+METHOD Void SetFriendlyExplosion() public=True virtual=True final=False
+METHOD Boolean ShowFuelGauge() public=True virtual=True final=False
+METHOD Int32 GetSpecialAmmo() public=True virtual=True final=False
+METHOD Boolean CanHeadShot() public=True virtual=True final=False
+METHOD Boolean IsFlexing() public=True virtual=True final=False
+METHOD UnityEngine.Vector3 WhereDidIDie() public=True virtual=True final=False
+TYPE Map base=NetworkObject
+FIELD BundleReferences.ThemeHolderReference jungleThemeReference public=True
+FIELD BundleReferences.ThemeHolderReference cityThemeReference public=True
+FIELD BundleReferences.ThemeHolderReference burningJungleThemeReference public=True
+FIELD BundleReferences.ThemeHolderReference forestThemeReference public=True
+FIELD BundleReferences.ThemeHolderReference hellThemeReference public=True
+FIELD BundleReferences.ThemeHolderReference americaThemeReference public=True
+FIELD BundleReferences.ThemeHolderReference desertThemeReference public=True
+FIELD BundleReferences.SharedLevelObjectsHolderReference sharedObjectsReference public=True
+FIELD BundleReferences.SpawnPointReference spawnPointPrefabReference public=True
+FIELD BundleReferences.SpawnPointReference spawnPointInvisiblePrefabReference public=True
+FIELD BundleReferences.HeroLevelExitPortalReference exitPortalPrefabReference public=True
+FIELD BundleReferences.HiddenExplosivesReference hiddenExplosivePrefabReference public=True
+FIELD UnityEngine.Transform followCameraTransform public=True
+FIELD System.Collections.Generic.Dictionary`2[System.String,UnityEngine.GameObject] taggedObjects public=False
+FIELD ThemeHolder <activeTheme>k__BackingField public=False
+FIELD System.String testLevelFileName public=True
+FIELD Boolean forceTestLevel public=True
+FIELD Boolean forceThisToBeTheDefaultCampaignScene public=True
+FIELD GameMode forceMode public=True
+FIELD Boolean hasBeenSetup public=False
+FIELD Boolean explosionsHaveStarted public=False
+FIELD BundleReferences.PredabroRopeReference ropePrefabReference public=True
+FIELD BundleReferences.RemoteControlExplosiveCarReference remoteCarPrefabReference public=True
+FIELD Boolean waitingForSeed public=True
+FIELD Boolean waitingForSync public=True
+FIELD Boolean _hasSpawnedFlexPower public=False
+FIELD Int32 startLevel public=False
+FIELD Boolean randomLevel public=True
+FIELD Int32 randomRange public=True
+FIELD Boolean forceTryingToReduceLoadingTimes public=True
+FIELD Int32 randomOffset public=False
+FIELD GroundType placeGroundType public=False
+FIELD Block currentBlock public=False
+FIELD Block currentBackgroundBlock public=False
+FIELD UnityEngine.Color tempEmptyColor public=False
+FIELD UnityEngine.Color tempColor public=False
+FIELD GroundType tempGroundType public=False
+FIELD Boolean runDeactivationOffscreenIsSetup public=False
+FIELD Helicopter newestHelicopter public=True
+FIELD HelicopterFake helicopterFake public=True
+FIELD Int32 helicopterCallCount public=True
+FIELD Boolean hasAliens public=True
+FIELD System.Collections.Generic.List`1[AlienEggExplosive] alienEggs public=True
+FIELD System.Collections.Generic.List`1[Unit] units public=True
+FIELD System.Collections.Generic.List`1[WildLife] wildLife public=True
+FIELD System.Collections.Generic.List`1[MookDoor] mookDoors public=True
+FIELD System.Collections.Generic.List`1[WildLife] disturbedWildLife public=True
+FIELD System.Collections.Generic.List`1[CheckPoint] checkPoints public=True
+FIELD System.Collections.Generic.List`1[Cage] cages public=True
+FIELD System.Collections.Generic.List`1[Projectile] projectiles public=True
+FIELD System.Collections.Generic.List`1[Grenade] grenades public=True
+FIELD System.Collections.Generic.List`1[SachelPack] sachelPacks public=True
+FIELD System.Collections.Generic.List`1[Grenade] shootableGrenades public=True
+FIELD System.Collections.Generic.List`1[Projectile] damageableProjectiles public=True
+FIELD System.Collections.Generic.List`1[SpawnPoint] spawnPoints public=True
+FIELD System.Collections.Generic.List`1[Doodad] decalDoodads public=True
+FIELD System.Collections.Generic.List`1[Doodad] destroyableDoodads public=True
+FIELD System.Collections.Generic.List`1[Doodad] grassAndBlood public=True
+FIELD System.Collections.Generic.List`1[DoodadAcidPool] acidPools public=True
+FIELD System.Collections.Generic.List`1[Doodad] jigglySlime public=True
+FIELD System.Collections.Generic.List`1[Doodad] staticDoodads public=True
+FIELD System.Collections.Generic.List`1[Switch] switches public=True
+FIELD System.Collections.Generic.List`1[TeleportDoor] teleportDoors public=True
+FIELD System.Collections.Generic.List`1[TeleportDoor] entranceDoors public=True
+FIELD System.Collections.Generic.List`1[TeleportDoor] exitDoors public=True
+FIELD System.Collections.Generic.List`1[Trigger] enemyDeathListeners public=True
+FIELD System.Collections.Generic.List`1[TreeFoliage] treeFoliage public=True
+FIELD System.Collections.Generic.List`1[DamageableScenery] damageableScenery public=True
+FIELD System.Collections.Generic.List`1[AlienTelepathyTrigger] alienTelepathyTriggers public=True
+FIELD System.Collections.Generic.List`1[TargetableObject] targetableObjects public=True
+FIELD System.Collections.Generic.List`1[ScoutMookInterestPoint] mookInterestPoints public=True
+FIELD System.Collections.Generic.List`1[CameraBlockers] cameraBlockers public=True
+FIELD System.Collections.Generic.List`1[Citizen] citizens public=True
+FIELD System.Collections.Generic.List`1[BroforceObject] heroWatchers public=True
+FIELD UnityEngine.LayerMask groundLayer public=True
+FIELD UnityEngine.LayerMask groundLayerStrict public=True
+FIELD UnityEngine.LayerMask largeObjectsLayer public=True
+FIELD UnityEngine.LayerMask groundAndDamageableObjects public=True
+FIELD UnityEngine.LayerMask platformLayer public=True
+FIELD UnityEngine.LayerMask barrierLayer public=True
+FIELD UnityEngine.LayerMask fragileLayer public=True
+FIELD UnityEngine.LayerMask ladderLayer public=True
+FIELD UnityEngine.LayerMask defaultLayer public=True
+FIELD UnityEngine.LayerMask victoryLayer public=True
+FIELD UnityEngine.LayerMask switchesLayer public=True
+FIELD UnityEngine.LayerMask unitLayer public=True
+FIELD UnityEngine.LayerMask hangingLayer public=True
+FIELD UnityEngine.LayerMask waterLayer public=True
+FIELD Int32 levelNum public=False
+FIELD Int32 levelsCount public=False
+FIELD System.String LevelFileName public=True
+FIELD Boolean isEditing public=True
+FIELD Map inst public=False
+FIELD MapData _mapData public=False
+FIELD Int32 woodBlockCount public=True
+FIELD Int32 barrelBlockCount public=True
+FIELD Int32 nextXLoadOffset public=True
+FIELD Int32 nextYLoadOffset public=True
+FIELD Int32 lastXLoadOffset public=True
+FIELD Int32 lastYLoadOffset public=True
+FIELD Boolean startFromSuperCheckPoint public=True
+FIELD GridPoint superCheckpointStartPos public=True
+FIELD Int32 spawnPointOffset public=False
+FIELD Int32 highestSolidBlock public=False
+FIELD Int32 highestSolidBlockLadder public=False
+FIELD Boolean alreadyLoadedForceStartLevel public=False
+FIELD System.Collections.Generic.List`1[HiddenExplosives] LevelEndExplosionBank public=False
+FIELD System.Collections.Generic.List`1[HiddenExplosives] LevelEndExplosionActiveList public=False
+FIELD Single nearestDist public=False
+FIELD Unit nearestUnit public=False
+FIELD CheckPoint nearestCheckPoint public=False
+FIELD Boolean randomLevelSet public=False
+FIELD Boolean finished public=False
+FIELD Int32 levelsLength public=False
+FIELD Block[,] blocks public=True
+FIELD Block[,] backGroundBlocks public=True
+FIELD Block[,] persistentForegroundBlocks public=True
+FIELD Block[,] persistentBackgroundBlocks public=True
+FIELD Boolean persistPastLevelLoad public=True
+FIELD UnityEngine.GameObject persistentGameObject public=True
+FIELD Boolean hasPersistedPastLevelLoad public=False
+FIELD Boolean dontPersistedPastLevelLoadThisLevel public=False
+FIELD Boolean tryingToReduceLoadingTimes public=False
+FIELD GroundType[,] groundTypes public=False
+FIELD Int32 <Width>k__BackingField public=False
+FIELD Int32 <Height>k__BackingField public=False
+FIELD Boolean havePlacedCageForHardcore public=True
+FIELD Int32 cagesSinceLastHardcoreCage public=True
+FIELD Int32 deathMatchHelicopterCount public=False
+FIELD Int32 unitOffsetCount public=False
+FIELD Int32 minCollumnActive public=False
+FIELD Int32 maxCollumnActive public=False
+FIELD Int32 minRowActive public=False
+FIELD Int32 maxRowActive public=False
+FIELD Single minUnitX public=False
+FIELD Single maxUnitX public=False
+FIELD Single minUnitY public=False
+FIELD Single maxUnitY public=False
+FIELD NID exitPortalNID public=False
+FIELD System.Func`2[MookDoor,System.Boolean] <>f__am$cache0 public=False
+FIELD Int32 TileSize public=True
+FIELD Int32 HalfTileSize public=True
+FIELD Int32 LevelEndExplosionBankSizeInc public=False
+FIELD System.Collections.Generic.List`1[State] states public=True
+FIELD Boolean SyncDestroy public=True
+FIELD Boolean OnlyDestroyScriptOnSync public=True
+FIELD Byte[] instantiationDataBytes public=True
+FIELD Boolean lastPosHasBeenSet public=True
+FIELD UnityEngine.Vector3 _lastPos public=True
+FIELD Boolean UpdateHasRunAtleastOnce public=True
+METHOD Boolean PushBlock(Single, Single, Single, Single) public=True virtual=False final=False
+METHOD Boolean DoesForegroundBlockHaveBackground(GroundType) public=True virtual=False final=False
+METHOD Boolean DoesForegroundBlockHaveBackground(TerrainType) public=True virtual=False final=False
+METHOD Boolean IsBackgroundBlock(Int32, Int32) public=True virtual=False final=False
+METHOD Boolean IsForegroundBlock(Int32, Int32) public=True virtual=False final=False
+METHOD Boolean IsBlockSolid(GridPoint) public=True virtual=False final=False
+METHOD Boolean IsBlockSolid(Int32, Int32) public=True virtual=False final=False
+METHOD Boolean IsBlockEmpty(Int32, Int32) public=True virtual=False final=False
+METHOD Boolean IsBlockSolidToWater(Int32, Int32) public=True virtual=False final=False
+METHOD Boolean IsBlockSolidTerrain(Int32, Int32) public=True virtual=False final=False
+METHOD Boolean WasBlockEarth(Int32, Int32) public=True virtual=False final=False
+METHOD Boolean WasBlockOriginallyAir(Int32, Int32) public=True virtual=False final=False
+METHOD Boolean WasBlockOriginallySolid(Int32, Int32) public=True virtual=False final=False
+METHOD Boolean IsTerrainTheSame(GroundType, Int32, Int32) public=True virtual=False final=False
+METHOD Boolean IsTerrainCompatible(GroundType, GroundType) public=False virtual=False final=False
+METHOD Boolean IsBlockSolidTerrain(GroundType, Int32, Int32) public=True virtual=False final=False
+METHOD Boolean IsBlockDestroyed(Int32, Int32) public=True virtual=False final=False
+METHOD Boolean IsGroundTypeSolid(GroundType) public=True virtual=False final=False
+METHOD Boolean IsBlockCompatible(GroundType, Int32, Int32) public=True virtual=False final=False
+METHOD Boolean IsBlockLadder(Int32, Int32) public=True virtual=False final=False
+METHOD Boolean IsBlockSandbag(Int32, Int32) public=True virtual=False final=False
+METHOD Boolean IsBlockLadder(Single, Single) public=True virtual=False final=False
+METHOD Boolean IsBlockQuicksand(Int32, Int32) public=True virtual=False final=False
+METHOD Boolean IsBlockQuicksand(Single, Single) public=True virtual=False final=False
+METHOD Boolean FindLadderNearPosition(Single, Single, Single ByRef, Single ByRef) public=True virtual=False final=False
+METHOD Boolean FindLadderNearPosition(Single, Single, Int32, Single ByRef, Single ByRef) public=True virtual=False final=False
+METHOD Boolean FindHoleToJumpThroughAndAppear(Single, Single, Single ByRef, Single ByRef, Int32 ByRef) public=True virtual=False final=False
+METHOD Boolean IsBlockFacingOpen(Int32, Int32, DirectionEnum) public=False virtual=False final=False
+METHOD Boolean IsBlockFloor(Int32, Int32) public=False virtual=False final=False
+METHOD Boolean IsCollumnEmpty(Int32, Int32, Int32) public=False virtual=False final=False
+METHOD Boolean AddSlime(SlimeGroundCover, Int32, Int32, Int32, DirectionEnum) public=True virtual=False final=False
+METHOD Int32 get_Width() public=True virtual=False final=False
+METHOD Void set_Width(Int32) public=False virtual=False final=False
+METHOD Int32 get_Height() public=True virtual=False final=False
+METHOD Void set_Height(Int32) public=False virtual=False final=False
+METHOD Int32 GetMaxCollumns() public=True virtual=False final=False
+METHOD Int32 GetMaxRows() public=True virtual=False final=False
+METHOD Void LoadArea() public=False virtual=False final=False
+METHOD Single GetGroundHeight(Single, Single) public=True virtual=False final=False
+METHOD Void AddTaggedObject(UnityEngine.GameObject, System.String) public=True virtual=False final=False
+METHOD UnityEngine.GameObject GetDoodadByTag(System.String) public=True virtual=False final=False
+METHOD Boolean DamageDoodadByTag(System.String, Int32) public=True virtual=False final=False
+METHOD System.Collections.Generic.List`1[UnityEngine.GameObject] GetDoodadsByTag(System.String) public=True virtual=False final=False
+METHOD UnityEngine.Vector3 FindStartLocation() public=True virtual=False final=False
+METHOD Void FindLargeBlockDimensions(Int32, Int32, Int32 ByRef, Int32 ByRef, Int32 ByRef, Int32 ByRef, TerrainType, TerrainType[,]) public=False virtual=False final=False
+METHOD Block PlaceGround(GroundType, Int32, Int32, Block[,] ByRef, Boolean) public=True virtual=False final=False
+METHOD Single GetAmmoCrateFrequency() public=False virtual=False final=False
+METHOD Boolean IsGroundEmpty(UnityEngine.Texture2D, Int32, Int32) public=False virtual=False final=False
+METHOD Boolean ConstrainToBlocks(UnityEngine.MonoBehaviour, Single, Single, Single, Single ByRef, Single ByRef, Boolean ByRef, Boolean ByRef, Boolean) public=True virtual=False final=False
+METHOD Boolean IsOverGround(Single, Single, Single, Boolean) public=True virtual=False final=False
+METHOD Boolean IsOverBackground(Single, Single) public=True virtual=False final=False
+METHOD Boolean IsGround(Int32, Int32, Boolean) public=True virtual=False final=False
+METHOD Boolean InsideWall(Single, Single, Single, Boolean) public=True virtual=False final=False
+METHOD Boolean ConstrainToBlocks(Single, Single, Single) public=True virtual=False final=False
+METHOD Void StartLevelEndExplosionsOverNetwork() public=True virtual=False final=False
+METHOD Void StartLevelEndExplosions() public=False virtual=False final=False
+METHOD Void PopulateLevelEndExplosionBank() public=False virtual=False final=False
+METHOD Void MakeLevelEndExplosion(UnityEngine.Vector3) public=False virtual=False final=False
+METHOD System.Collections.IEnumerator DoLevelEndExplosions() public=False virtual=False final=False
+METHOD Void MakeAllBlocksUltraTough() public=True virtual=False final=False
+METHOD Int32 GetDescentOffset(Boolean, Int32) public=True virtual=False final=False
+METHOD Int32 GetHighestSolidBlock() public=True virtual=False final=False
+METHOD Int32 CollapseTop() public=True virtual=False final=False
+METHOD Int32 CollapseTopLadders() public=True virtual=False final=False
+METHOD Boolean IsInvulnerableAbove(Single, Single) public=True virtual=False final=False
+METHOD ZiplinePoint GetOtherZiplinePoint(ZiplinePoint) public=False virtual=False final=False
+METHOD Void ResetZiplines() public=True virtual=False final=False
+METHOD Single GetUnitXOffset() public=True virtual=False final=False
+METHOD UnityEngine.Vector3 GetBlockCenter(GridPoint) public=True virtual=False final=False
+METHOD UnityEngine.Color GetLeafColor() public=True virtual=False final=False
+METHOD RemoteControlExplosiveCar CreateRemoteControlCar(Single, Single) public=True virtual=False final=False
+METHOD Void ActivateNearbyAlienTelepathyTriggers(Int32, Int32, Int32) public=True virtual=False final=False
+METHOD Void InitializeDeactivationOffscreen() public=True virtual=False final=False
+METHOD Void RunDeactivationOffscreen() public=True virtual=False final=False
+METHOD Void DeactivateHalfTheMap() public=True virtual=False final=False
+METHOD Void ExtendDisableToUnitPosition(Single, Single, Single) public=True virtual=False final=False
+METHOD Single DotProduct(UnityEngine.Vector2, UnityEngine.Vector2, UnityEngine.Vector2) public=False virtual=False final=False
+METHOD Single CrossProduct(UnityEngine.Vector2, UnityEngine.Vector2, UnityEngine.Vector2) public=False virtual=False final=False
+METHOD Single Distance(UnityEngine.Vector2, UnityEngine.Vector2) public=False virtual=False final=False
+METHOD Single LineToPointDistance2D(UnityEngine.Vector2, UnityEngine.Vector2, UnityEngine.Vector2, Boolean) public=False virtual=False final=False
+METHOD Void CreateExitPortal(UnityEngine.Vector2) public=True virtual=False final=False
+METHOD Void DamageBackground(UnityEngine.MonoBehaviour, Int32, Single, Single, Single) public=True virtual=False final=False
+METHOD Void CallFakeHelicopter(UnityEngine.Vector2, Single) public=True virtual=False final=False
+METHOD Boolean IsCitizenNearby(Single, Single, Int32, Int32) public=True virtual=False final=False
+METHOD Void SetTryReduceLoadingTimes(Boolean) public=True virtual=False final=False
+METHOD Boolean TryingToReduceLoadingTimes() public=True virtual=False final=False
+METHOD Void DontPersistBlocks() public=True virtual=False final=False
+METHOD Void PersistBlocks() public=True virtual=False final=False
+METHOD Void DestroyPersistantBlocks() public=True virtual=False final=False
+METHOD Void MakeBlockPersist(Block) public=False virtual=False final=False
+METHOD Void Persist(UnityEngine.GameObject) public=False virtual=False final=False
+METHOD Void CheckPersistBlocksPastLevelLoad() public=True virtual=False final=False
+METHOD Void ClearPersistenBlocksInstant() public=True virtual=False final=False
+METHOD Void SetStartFromSuperCheckPoint() public=True virtual=False final=False
+METHOD Void SetStartFromHorizontalSuperCheckPoint(Int32) public=True virtual=False final=False
+METHOD Void SetStartFromVerticalSuperCheckPoint(Int32) public=True virtual=False final=False
+METHOD Boolean HasThisMapGotAliens() public=True virtual=False final=False
+METHOD Boolean IsMapOpenAboveCrate(Int32, Int32) public=True virtual=False final=False
+METHOD Void ReplaceCagesWithAmmoAndRevives() public=True virtual=False final=False
+METHOD Void ReplaceCageWithAmmoAndRevives(Cage) public=False virtual=False final=False
+METHOD Void Create4AmmoAndRevives(UnityEngine.Vector3, Int32, Int32, Boolean) public=False virtual=False final=False
+METHOD Boolean HasSandStormTrigger() public=True virtual=False final=False
+METHOD Boolean <GetNearestMookDoor>m__0(MookDoor) public=False virtual=False final=False
+METHOD Boolean HitUnits(UnityEngine.MonoBehaviour, Int32, Int32, Int32, DamageType, Single, Single, Single, Single, Single, Single, Boolean, Boolean, Boolean, System.Collections.Generic.List`1[BroforceObject], Boolean) public=True virtual=False final=False
+METHOD Unit GeLivingtUnit(Int32, Single, Single, Single, Single) public=True virtual=False final=False
+METHOD Boolean CanSeePosition(Int32, Int32, Int32, Int32) public=True virtual=False final=False
+METHOD Boolean CanSeePosition(Single, Single, Single, Single) public=True virtual=False final=False
+METHOD Boolean CanSeeNPCEnemyUnitWithPosition(Single, Single, Int32, Int32, Int32, Int32, Int32 ByRef, Single ByRef, Single ByRef) public=True virtual=False final=False
+METHOD Boolean CanSeeNPCEnemyUnit(Single, Single, Int32, Int32, Int32, Int32, Int32 ByRef, Single ByRef, Single ByRef) public=True virtual=False final=False
+METHOD Boolean CanSeeNPCEnemyUnit(Single, Single, Int32, Int32, Int32, Int32, Int32, Int32 ByRef, Single ByRef, Single ByRef) public=True virtual=False final=False
+METHOD Boolean CanSeeNPCEnemyUnit(Single, Single, Int32, Int32, Int32, Int32) public=False virtual=False final=False
+METHOD Boolean HitUnits(UnityEngine.MonoBehaviour, Int32, DamageType, Single, Single, Single, Single, Single, Boolean, Boolean) public=True virtual=False final=False
+METHOD Boolean HitUnits(UnityEngine.MonoBehaviour, Int32, DamageType, Single, Single, Single, Single, Single, Single, Boolean, Boolean) public=True virtual=False final=False
+METHOD Boolean HitUnits(UnityEngine.MonoBehaviour, Int32, DamageType, Single, Single, Single, Single, Single, Boolean, Boolean, BloodColor ByRef) public=True virtual=False final=False
+METHOD Boolean HitUnits(UnityEngine.MonoBehaviour, Int32, DamageType, Single, Single, Single, Single, Single, Single, Boolean, Boolean, BloodColor ByRef) public=True virtual=False final=False
+METHOD Unit HitClosestUnit(UnityEngine.MonoBehaviour, Int32, Int32, DamageType, Single, Single, Single, Single, Single, Single, Boolean, Boolean, Boolean, Boolean, Boolean) public=True virtual=False final=False
+METHOD Unit GetNextClosestUnit(Int32, DirectionEnum, Single, Single, Single, Single, System.Collections.Generic.List`1[Unit]) public=True virtual=False final=False
+METHOD Unit GetNextClosestUnitOnScreen(Int32, Single, Single, Single, Single) public=True virtual=False final=False
+METHOD Boolean IsUnitNearby(Int32, Single, Single, Single, Single, Boolean) public=True virtual=False final=False
+METHOD Boolean IsEnemyUnitNearby(Int32, Single, Single, Int32, Single, Single, Boolean, Boolean) public=True virtual=False final=False
+METHOD Boolean IsEnemyUnitNearby(Int32, Single, Single, Single, Single, Boolean) public=True virtual=False final=False
+METHOD Boolean IsUnitNearby(Int32, Single, Single, Single, Single, Boolean, Unit ByRef) public=True virtual=False final=False
+METHOD TargetableObject GetNextClosestTargetableObject(Int32, DirectionEnum, Single, Single, Single, Single, System.Collections.Generic.List`1[TargetableObject]) public=True virtual=False final=False
+METHOD TargetableObject GetNextClosestTargetableObjectOnScreen(Int32, Single, Single, Single, Single, Boolean) public=True virtual=False final=False
+METHOD System.Collections.Generic.List`1[TargetableObject] GeTargetableObjectsInRange(Int32, Single, Single, Single) public=True virtual=False final=False
+METHOD Switch GetNearbySwitch(Single, Single) public=True virtual=False final=False
+METHOD TeleportDoor GetNearbyTeleportDoor(Single, Single) public=True virtual=False final=False
+METHOD Switch GetNearbyMookSwitch(Single, Single) public=True virtual=False final=False
+METHOD Void DamageProjectile(Projectile, Int32, DamageType, Single, Single, Single, Int32) public=True virtual=False final=False
+METHOD Void HeadShotUnit(UnityEngine.MonoBehaviour, Unit, Int32, DamageType, Single, Single, Int32, Boolean, Single, Single) public=True virtual=False final=False
+METHOD Void KnockAndDamageUnit(UnityEngine.MonoBehaviour, Unit, Int32, DamageType, Single, Single, Int32, Boolean) public=True virtual=False final=False
+METHOD Void KnockAndDamageUnit(UnityEngine.MonoBehaviour, Unit, Int32, DamageType, Single, Single, Int32, Boolean, Single, Single, Boolean) public=True virtual=False final=False
+METHOD Void BurnUnitsAround_Local(UnityEngine.MonoBehaviour, Int32, Int32, Single, Single, Single, Boolean, Boolean) public=True virtual=False final=False
+METHOD Boolean ReviveDeadUnits(Single, Single, Single, Int32, Int32, Boolean, TestVanDammeAnim, Boolean) public=True virtual=False final=False
+METHOD Void StunUnits(Int32, Single, Single, Single, Single) public=True virtual=False final=False
+METHOD Boolean FreezeUnits(UnityEngine.MonoBehaviour, Int32, Single, Single, Single, Single) public=True virtual=False final=False
+METHOD Void BlindUnits(Int32, Single, Single, Single, Single) public=True virtual=False final=False
+METHOD Void TearGasUnits(Int32, Single, Single, Single, Single) public=True virtual=False final=False
+METHOD Void AttractMooks(Single, Single, Single, Single) public=True virtual=False final=False
+METHOD Void StunMooks(Single, Single, Single, Single, Single) public=True virtual=False final=False
+METHOD Void MakeMooksDance(Single, Single, Single, Single, Single) public=True virtual=False final=False
+METHOD Void AttractAliens(Single, Single, Single, Single) public=True virtual=False final=False
+METHOD Void AlertNearbyMooks(Single, Single, Single, Single, Int32, GridPoint) public=True virtual=False final=False
+METHOD Mook GetNearbyUnalertedMook(Single, Single, Single, Single) public=True virtual=False final=False
+METHOD Void AlertNearbyMooks(Single, Single, Single, Single, Int32) public=True virtual=False final=False
+METHOD Void BotherNearbyMooks(Single, Single, Single, Single, Int32) public=True virtual=False final=False
+METHOD Void RegisterFetchObject(Single, Single, Single, Single, UnityEngine.Transform) public=True virtual=False final=False
+METHOD Void PanicUnits(Single, Single, Single, Boolean) public=True virtual=False final=False
+METHOD Void PanicUnits(Int32, Single, Single, Single, Boolean) public=True virtual=False final=False
+METHOD Void PanicUnits(Single, Single, Single, Single, Boolean, Boolean) public=True virtual=False final=False
+METHOD Void PanicUnits(Single, Single, Single, Single, Single, Boolean, Boolean) public=True virtual=False final=False
+METHOD Void PanicUnits(Single, Single, Single, Single, Int32, Single, Boolean) public=True virtual=False final=False
+METHOD Boolean CheckHighFive(Int32, Single, Single, Single, Single, Int32) public=True virtual=False final=False
+METHOD Boolean CanRollOntoUnits(Int32, Int32, Int32) public=True virtual=False final=False
+METHOD Void RollOntoUnits(Int32, Int32, Int32) public=True virtual=False final=False
+METHOD Void CrushUnitsAgainstWalls(UnityEngine.MonoBehaviour, Single, Single, Single, Int32, Int32) public=True virtual=False final=False
+METHOD Void CrushUnitsAgainstWallsHorizontal(UnityEngine.MonoBehaviour, Single, Single, Single, Int32) public=True virtual=False final=False
+METHOD Void CrushUnitsAgainstWallsVertical(UnityEngine.MonoBehaviour, Single, Single, Single, Int32) public=True virtual=False final=False
+METHOD Boolean BurnLargeObjects(Int32, Int32, Int32) public=True virtual=False final=False
+METHOD Boolean BurnLargeObjects(Int32, Single, Single) public=True virtual=False final=False
+METHOD Void BurnDamageBlock(Int32, Int32, Int32) public=True virtual=False final=False
+METHOD Int32 BurnBlocksAround(Int32, Int32, Int32, Boolean, UnityEngine.GameObject) public=True virtual=False final=False
+METHOD Int32 ExplodeUnits(UnityEngine.MonoBehaviour, Int32, DamageType, Single, Single, Single, Single, Single, Single, Int32, Boolean, Boolean, Boolean) public=True virtual=False final=False
+METHOD Void SetOilAlight(UnityEngine.Vector2, UnityEngine.Vector3) public=False virtual=False final=False
+METHOD Unit GetNearestUnitWithXBias(Int32, Int32, Single, Single, Boolean) public=True virtual=False final=False
+METHOD Unit GetNearestEvilUnit(Int32, Single, Single) public=True virtual=False final=False
+METHOD Unit GetNearestUnit(Int32, Int32, Single, Single, Boolean) public=True virtual=False final=False
+METHOD Unit GetNearestEnemyUnit(Int32, Int32, Single, Single, Boolean) public=True virtual=False final=False
+METHOD Unit GetNearestEnemyUnit(Int32, Int32, Int32, Single, Single, Boolean, Int32, Unit) public=True virtual=False final=False
+METHOD Unit GetNearestHero(Unit, Int32, Int32, Int32, Single, Single, Boolean) public=True virtual=False final=False
+METHOD Void GetUnitsInRange(Int32, Single, Single, Boolean, System.Collections.Generic.List`1[Unit]) public=True virtual=False final=False
+METHOD System.Collections.Generic.List`1[Unit] GetUnitsInRange(Int32, Single, Single, Boolean) public=True virtual=False final=False
+METHOD Void GetUnitsInRange(Single, Single, Single, Single, Boolean, System.Collections.Generic.List`1[Unit]) public=True virtual=False final=False
+METHOD System.Collections.Generic.List`1[Unit] GetUnitsInRange(Single, Single, Single, Single, Boolean) public=True virtual=False final=False
+METHOD Int32 GetUnitCountInRange(Single, Single, Single, Single, Boolean) public=True virtual=False final=False
+METHOD Unit GetNearestVisibleDeadUnit(Int32, Int32, Single, Single) public=True virtual=False final=False
+METHOD Unit GetNearestVisibleUnit(Int32, Int32, Single, Single, Boolean) public=True virtual=False final=False
+METHOD Unit GetNearestVisibleUnitDamagebleBy(Int32, Int32, Single, Single, Boolean) public=True virtual=False final=False
+METHOD Boolean IsUnitInRange(Unit, Int32, Single, Single) public=True virtual=False final=False
+METHOD CheckPoint GetNearestCheckPoint(Int32, Single, Single) public=True virtual=False final=False
+METHOD CheckPoint GetNearestCheckPointToRight(Single, Single, Boolean) public=True virtual=False final=False
+METHOD RescueBro GetNearestRescueBro(Single, Single) public=True virtual=False final=False
+METHOD Boolean IsFinished() public=True virtual=False final=False
+METHOD Void ExitLevel() public=True virtual=False final=False
+METHOD Void ContinueLevel() public=True virtual=False final=False
+METHOD Void ClearSuperCheckpointStatus() public=True virtual=False final=False
+METHOD Void Awake() public=False virtual=False final=False
+METHOD Void Start() public=False virtual=False final=False
+METHOD Void OnDestroy() public=False virtual=True final=False
+METHOD Void SetupBlocksCoroutine() public=False virtual=False final=False
+METHOD Boolean ShouldTheBrosArriveByHeli(UnityEngine.Vector3) public=False virtual=False final=False
+METHOD Void CallInHeroTransportAnyway() public=True virtual=False final=False
+METHOD Void AddBroToHeroTransport(TestVanDammeAnim) public=True virtual=False final=False
+METHOD Boolean HeroTransportHasEntered() public=True virtual=False final=False
+METHOD Void CallInTransport(UnityEngine.Vector3, Boolean, Boolean) public=True virtual=False final=False
+METHOD Void CallInTransport_RPC(UnityEngine.Vector3, Boolean, Boolean) public=False virtual=False final=False
+METHOD AlienClimber SpawnFaceBaneling(Single, Single, Single, Single) public=True virtual=False final=False
+METHOD AlienClimber SpawnFaceHugger(Single, Single, Single, Single) public=True virtual=False final=False
+METHOD UnityEngine.GameObject PlaceDoodad(DoodadInfo) public=True virtual=False final=False
+METHOD Int32 GetDoodadVariationAmount(DoodadType) public=True virtual=False final=False
+METHOD UnityEngine.Vector3 GetBlocksXYPosition(Int32, Int32) public=True virtual=False final=False
+METHOD Void GetBlocksXY(Single ByRef, Single ByRef, Int32, Int32) public=True virtual=False final=False
+METHOD Void GetRowCollumn(Single, Single, Int32 ByRef, Int32 ByRef) public=True virtual=False final=False
+METHOD Int32 GetRow(Single) public=True virtual=False final=False
+METHOD Int32 GetCollumn(Single) public=True virtual=False final=False
+METHOD GridPoint GetGridPoint(UnityEngine.Vector3) public=True virtual=False final=False
+METHOD GridPoint GetGridPoint(Single, Single) public=True virtual=False final=False
+METHOD Single GetBlocksY(Int32) public=True virtual=False final=False
+METHOD Single GetBlocksX(Int32) public=True virtual=False final=False
+METHOD Single GetBlockCenterX(Int32) public=True virtual=False final=False
+METHOD Single GetBlockCenterY(Int32) public=True virtual=False final=False
+METHOD UnityEngine.Vector3 GetPosition(Int32, Int32) public=True virtual=False final=False
+METHOD UnityEngine.Vector3 GetCenterPosition(Int32, Int32) public=True virtual=False final=False
+METHOD UnityEngine.Vector2 GetBlockCenter(Int32, Int32) public=True virtual=False final=False
+METHOD Boolean IsBlockInvulnerable(Int32, Int32) public=True virtual=False final=False
+METHOD Boolean IsBlockSolid(Single, Single) public=True virtual=False final=False
+METHOD Boolean AssignBlock(Block, Int32, Int32) public=True virtual=False final=False
+METHOD Boolean SetBlockEmpty(Block, Int32, Int32) public=True virtual=False final=False
+METHOD Boolean SetBackgroundBlockEmpty(Block, Int32, Int32) public=True virtual=False final=False
+METHOD Block GetBlock(Int32, Int32) public=True virtual=False final=False
+METHOD Block GetBackgroundBlock(Int32, Int32) public=True virtual=False final=False
+METHOD Block GetBlock(UnityEngine.Vector2) public=True virtual=False final=False
+METHOD Block GetBlockExcludingDestroyed(UnityEngine.Vector2) public=True virtual=False final=False
+METHOD GroundType GetGroundType(Int32, Int32, GroundType) public=True virtual=False final=False
+METHOD GroundType GetBackgroundGroundType(Int32, Int32, GroundType) public=True virtual=False final=False
+METHOD Void ClearBackgroundBlock(Int32, Int32) public=True virtual=False final=False
+METHOD Void ClearForegroundBlock(Int32, Int32) public=True virtual=False final=False
+METHOD Void RotateBlock(Int32, Int32, Int32) public=True virtual=False final=False
+METHOD Boolean IsWithinBounds(UnityEngine.Vector3) public=True virtual=False final=False
+METHOD Boolean IsWithinBounds(Int32, Int32) public=True virtual=False final=False
+METHOD Boolean PushBlock(Int32, Int32, Single) public=True virtual=False final=False
+METHOD ThemeHolder get_activeTheme() public=True virtual=False final=False
+METHOD Void set_activeTheme(ThemeHolder) public=True virtual=False final=False
+METHOD Map get_Instance() public=True virtual=False final=False
+METHOD MapData get_MapData() public=True virtual=False final=False
+METHOD Void set_MapData(MapData) public=True virtual=False final=False
+METHOD Boolean get_HasBeenSetup() public=True virtual=False final=False
+METHOD Boolean get_HasSpawnedFlexPower() public=True virtual=False final=False
+METHOD Void set_HasSpawnedFlexPower(Boolean) public=True virtual=False final=False
+METHOD Void RegisterUnit(Unit, Boolean) public=True virtual=False final=False
+METHOD Void RemoveUnit(Unit) public=True virtual=False final=False
+METHOD Void ForgetPlayer(Int32, Boolean, Boolean) public=True virtual=False final=False
+METHOD Void ForgetPlayer(Int32, Single, Single, Single, Boolean, Boolean) public=True virtual=False final=False
+METHOD Void ForgetPlayer(Int32, Single, Single, Single, Single, Boolean, Boolean) public=True virtual=False final=False
+METHOD Void RegisterProjectile(Projectile) public=True virtual=False final=False
+METHOD Void RemoveProjectile(Projectile) public=True virtual=False final=False
+METHOD Void RegisterGrenade(Grenade) public=True virtual=False final=False
+METHOD Void RemoveGrenade(Grenade) public=True virtual=False final=False
+METHOD Void RegisterSachelPack(SachelPack) public=True virtual=False final=False
+METHOD Void RemoveSachelPack(SachelPack) public=True virtual=False final=False
+METHOD Void RegisterShootableGrenade(Grenade) public=True virtual=False final=False
+METHOD Void RemoveShootableGrenade(Grenade) public=True virtual=False final=False
+METHOD Void RegisterDamageableProjectile(Projectile) public=True virtual=False final=False
+METHOD Void RegisterMookDoor(MookDoor) public=True virtual=False final=False
+METHOD Void RemoveMookDoor(MookDoor) public=True virtual=False final=False
+METHOD Void RegisterSwitch(Switch) public=True virtual=False final=False
+METHOD Void RegisterTeleportDoor(TeleportDoor) public=True virtual=False final=False
+METHOD Void RemoveTeleportDoor(TeleportDoor) public=True virtual=False final=False
+METHOD Void RemoveSwitch(Switch) public=True virtual=False final=False
+METHOD Void RegisterDamageableScenerye(DamageableScenery) public=True virtual=False final=False
+METHOD Void RegisterTreeFoliage(TreeFoliage) public=True virtual=False final=False
+METHOD Void RegisterAlienTelepathyTrigger(AlienTelepathyTrigger) public=True virtual=False final=False
+METHOD Void RemoveAlienTelepathyTrigger(AlienTelepathyTrigger) public=True virtual=False final=False
+METHOD Void RegisterTargetableObject(TargetableObject) public=True virtual=False final=False
+METHOD Void RemoveTargetableObject(TargetableObject) public=True virtual=False final=False
+METHOD Void RegisterCitizen(Citizen) public=True virtual=False final=False
+METHOD Void RemoveCitizen(Citizen) public=True virtual=False final=False
+METHOD Void RegisterHeroWatcher(BroforceObject) public=True virtual=False final=False
+METHOD Void RemoveHeroWatcher(BroforceObject) public=True virtual=False final=False
+METHOD Void RegisterCameraBlocker(CameraBlockers) public=True virtual=False final=False
+METHOD Void RemoveCameraBlocker(CameraBlockers) public=True virtual=False final=False
+METHOD Void RegisterMookInterestPoint(ScoutMookInterestPoint) public=True virtual=False final=False
+METHOD Void RemoveMookInterestPoint(ScoutMookInterestPoint) public=True virtual=False final=False
+METHOD ScoutMookInterestPoint GetNearestMookInterestPoint(Int32, Int32) public=True virtual=False final=False
+METHOD Void RegisterEnemyDeathListener(Trigger) public=True virtual=False final=False
+METHOD Void RemoveEnemyDeathListener(Trigger) public=True virtual=False final=False
+METHOD Void EnemyDeathEvent(Unit) public=True virtual=False final=False
+METHOD MookDoor GetNearestMookDoor(Int32, Int32) public=True virtual=False final=False
+METHOD Void RegisterAlienEggExplosive(AlienEggExplosive) public=True virtual=False final=False
+METHOD Void RemoveAlienEggExplosive(AlienEggExplosive) public=True virtual=False final=False
+METHOD Void RegisterWildLife(WildLife) public=True virtual=False final=False
+METHOD Void RegisterDisturbedWildLife(WildLife) public=True virtual=False final=False
+METHOD Void RemoveWildLife(WildLife) public=True virtual=False final=False
+METHOD Void RemoveDisturbedWildLife(WildLife) public=True virtual=False final=False
+METHOD Void RegisterDestroyableDoodad(Doodad) public=True virtual=False final=False
+METHOD Void RemoveDestroyableDoodad(Doodad) public=True virtual=False final=False
+METHOD Void RegisterGrassAndBlood(Doodad) public=True virtual=False final=False
+METHOD Void RemoveGrassOrBlood(Doodad) public=True virtual=False final=False
+METHOD Void RegisterJigglyBit(Doodad) public=True virtual=False final=False
+METHOD Void RemoveJigglyBit(Doodad) public=True virtual=False final=False
+METHOD Void RegisterStaticDoodad(Doodad) public=True virtual=False final=False
+METHOD Void RemoveStaticDoodad(Doodad) public=True virtual=False final=False
+METHOD Void RegisterDecalDoodad(Doodad) public=True virtual=False final=False
+METHOD Void RemoveDecalDoodad(Doodad) public=True virtual=False final=False
+METHOD Doodad GetStaticDoodad(Int32, Int32) public=True virtual=False final=False
+METHOD UnityEngine.Vector3 GetSpawnPointPosition(Int32) public=True virtual=False final=False
+METHOD SpawnPoint GetSpawnPoint(Int32) public=True virtual=False final=False
+METHOD Void RegisterSpawnPoint(SpawnPoint) public=True virtual=False final=False
+METHOD Void RegisterCheckPoint(CheckPoint) public=True virtual=False final=False
+METHOD CheckPoint GetCheckPoint(Int32) public=True virtual=False final=False
+METHOD Boolean IsCheckPointAnAirdrop(Int32) public=True virtual=False final=False
+METHOD Single GetCheckPointAirHeight(Int32) public=True virtual=False final=False
+METHOD Void RemoveCheckPoint(CheckPoint) public=True virtual=False final=False
+METHOD Void RegisterCage(Cage) public=True virtual=False final=False
+METHOD Void RemoveCage(Cage) public=True virtual=False final=False
+METHOD Void RegisterHelicopter(Helicopter) public=True virtual=False final=False
+METHOD Void BloodyDoodads(Single, Single, Single) public=True virtual=False final=False
+METHOD Boolean DamageStaticDoodads(Single, Single, Single, Single, Single, UnityEngine.MonoBehaviour) public=True virtual=False final=False
+METHOD Boolean DamageDoodads(Int32, DamageType, Single, Single, Single, Single, Single, Int32, Boolean ByRef, UnityEngine.MonoBehaviour) public=True virtual=False final=False
+METHOD DoodadAcidPool GetNearestAcid(Single, Single, Single) public=True virtual=False final=False
+METHOD Doodad IsInSubstance(Single, Single, Single) public=True virtual=False final=False
+METHOD Void ShakeTrees(Single, Single, Single, Single, Single) public=True virtual=False final=False
+METHOD Void JiggleDoodads(Single, Single, Single, Single, Single) public=True virtual=False final=False
+METHOD Void JiggleSlime(Single, Single, Single, Single) public=True virtual=False final=False
+METHOD Boolean PassThroughScenery(Single, Single, Single, Single) public=True virtual=False final=False
+METHOD Void DisturbWildLife(Single, Single, Single, Int32) public=True virtual=False final=False
+METHOD Void DisturbAlienEggs(Single, Single, Int32) public=True virtual=False final=False
+METHOD Void HurtWildLife(Single, Single, Single) public=True virtual=False final=False
+METHOD CheckPoint GetNearbyCheckPoint(Single, Single, Single) public=True virtual=False final=False
+METHOD Boolean CheckCheckPoint(Single, Single, Single, TestVanDammeAnim) public=True virtual=False final=False
+METHOD Boolean IsNearActivatedCheckPoint(Single, Single, UnityEngine.Vector2 ByRef, Boolean ByRef) public=True virtual=False final=False
+METHOD Boolean IsNearActivatedCheckPoint(Single, Single) public=True virtual=False final=False
+METHOD Boolean IsNearActivatedCheckPoint(Single, Single, Boolean ByRef) public=True virtual=False final=False
+METHOD Boolean HitGrenades(Int32, Single, Single, Single, Single, Single, Single ByRef, Single ByRef) public=True virtual=False final=False
+METHOD System.Collections.Generic.List`1[Grenade] GetGrenadesInRange(Int32, Single, Single, Single) public=True virtual=False final=False
+METHOD Grenade GetNearbyGrenade(Single, Single, Single) public=True virtual=False final=False
+METHOD SachelPack GetNearbySachelPack(Int32, Single, Single, Single) public=True virtual=False final=False
+METHOD Mook GetNearbyMook(Single, Single, Single, Single, Int32, Boolean) public=True virtual=False final=False
+METHOD Mook GetNearbyMookVertical(Single, Single, Single, Single, Int32, Boolean) public=True virtual=False final=False
+METHOD System.Collections.Generic.List`1[Projectile] GetProjectilesInRange(Int32, Single, Single, Single) public=True virtual=False final=False
+METHOD Boolean DeflectProjectiles(UnityEngine.MonoBehaviour, Int32, Single, Single, Single, Single, Boolean) public=True virtual=False final=False
+METHOD Boolean HitProjectiles(Int32, Int32, DamageType, Single, Single, Single, Single, Single, Single) public=True virtual=False final=False
+METHOD Boolean HitProjectiles(Int32, Int32, DamageType, Single, Single, Single, Single, Single, Single, Single) public=True virtual=False final=False
+METHOD Boolean HitUnits(UnityEngine.MonoBehaviour, UnityEngine.MonoBehaviour, Int32, Int32, DamageType, Single, Single, Single, Single, Single, Boolean, Boolean) public=True virtual=False final=False
+METHOD Boolean HitUnits(UnityEngine.MonoBehaviour, UnityEngine.MonoBehaviour, Int32, Int32, DamageType, Single, Single, Single, Single, Single, Boolean, Boolean, Boolean) public=True virtual=False final=False
+METHOD Boolean HitUnits(UnityEngine.MonoBehaviour, UnityEngine.MonoBehaviour, Int32, Int32, DamageType, Single, Single, Single, Single, Single, Single, Boolean, Boolean, Boolean, Boolean) public=True virtual=False final=False
+METHOD Boolean HitUnits(UnityEngine.MonoBehaviour, UnityEngine.MonoBehaviour, Int32, Int32, DamageType, Single, Single, Single, Single, Single, Single, Boolean, Boolean, Boolean, Boolean, BloodColor ByRef, System.Collections.Generic.List`1[Unit], Boolean) public=True virtual=False final=False
+METHOD Boolean HitUnits(UnityEngine.MonoBehaviour, UnityEngine.MonoBehaviour, Int32, Int32, DamageType, UnityEngine.Vector3, UnityEngine.Vector3, Single) public=True virtual=False final=False
+METHOD Boolean WhipUnits(UnityEngine.MonoBehaviour, UnityEngine.MonoBehaviour, Int32, Int32, DamageType, Single, Single, Int32, Single, Single, Single, Single, Boolean, Boolean, Boolean, Single ByRef) public=True virtual=False final=False
+METHOD Boolean HitUnitsWithArrow(UnityEngine.MonoBehaviour, Arrow, Int32, Int32, DamageType, Single, Single, Single, Single, Single, Single, Boolean) public=True virtual=False final=False
+METHOD Boolean HitHellUnits(UnityEngine.MonoBehaviour, Int32, Int32, DamageType, Single, Single, Single, Single, Single, Boolean, Boolean, Boolean, Boolean, Boolean) public=True virtual=False final=False
+METHOD Boolean HitLivingUnits(UnityEngine.MonoBehaviour, Int32, Int32, DamageType, Single, Single, Single, Single, Single, Boolean, Boolean, Boolean, Boolean) public=True virtual=False final=False
+METHOD Boolean HitLivingUnits(UnityEngine.MonoBehaviour, Int32, Int32, DamageType, Single, Single, Single, Single, Single, Single, Boolean, Boolean, Boolean, Boolean) public=True virtual=False final=False
+METHOD Boolean HitAllLivingUnits(UnityEngine.MonoBehaviour, Int32, Int32, DamageType, Single, Single, Single, Single, Single, Single, Boolean, Boolean) public=True virtual=False final=False
+METHOD Boolean HitAllLivingUnits(UnityEngine.MonoBehaviour, Int32, Int32, DamageType, Single, Single, Single, Single, Single, Single, Boolean, Boolean, System.Collections.Generic.List`1[Unit]) public=True virtual=False final=False
+METHOD Boolean HitLivingHeroes(UnityEngine.MonoBehaviour, Int32, Int32, DamageType, Single, Single, Single, Single, Single, Single, Boolean, Boolean, Boolean) public=True virtual=False final=False
+METHOD Boolean HitDeadUnits(UnityEngine.MonoBehaviour, Int32, DamageType, Single, Single, Single, Single, Single, Boolean, Boolean) public=True virtual=False final=False
+METHOD Unit DecapitateUnits(UnityEngine.MonoBehaviour, Int32, Int32, DamageType, Single, Single, Single, Single, Single, Single, Boolean) public=True virtual=False final=False
+METHOD Boolean KnockMooks(UnityEngine.MonoBehaviour, DamageType, Single, Single, Single, Single, Single, Single, Boolean, Boolean, Boolean) public=True virtual=False final=False
+METHOD Boolean KnockUnits(UnityEngine.MonoBehaviour, DamageType, Single, Single, Single, Single, Single, Single, Boolean, Boolean, Boolean) public=True virtual=False final=False
+METHOD Boolean FivePointPalmExplodingHeartTechnique(NetworkedUnit, Int32, Int32, Single, Single, Single, Single, Single, Single, Boolean, Boolean) public=True virtual=False final=False
+METHOD Boolean InseminateUnits(AlienFaceHugger, Int32, Single, Single, Single, Single, Single, Single) public=True virtual=False final=False
+METHOD Unit CheckForCorpse(Single, Single, Single, Single, Single ByRef) public=True virtual=False final=False
+METHOD Unit GetFirstUnit(UnityEngine.MonoBehaviour, Int32, Single, Single, Single, Boolean, Boolean, System.Collections.Generic.List`1[Unit]) public=True virtual=False final=False
+METHOD Boolean CollectUnits(UnityEngine.MonoBehaviour, Int32, Single, Single, Single, Boolean, Boolean, System.Collections.Generic.List`1[Unit]) public=True virtual=False final=False
+METHOD Boolean HitUnits(UnityEngine.MonoBehaviour, Int32, Int32, DamageType, Single, Single, Single, Single, Single, Boolean, Boolean, Boolean, System.Collections.Generic.List`1[Unit], Boolean, Boolean) public=True virtual=False final=False
+METHOD Boolean HitUnits(UnityEngine.MonoBehaviour, Int32, Int32, Int32, DamageType, Single, Single, Single, Single, Single, Boolean, Boolean, Boolean, System.Collections.Generic.List`1[Unit], Boolean) public=True virtual=False final=False
+METHOD Boolean HitUnits(UnityEngine.MonoBehaviour, Int32, Int32, Int32, DamageType, Single, Single, Single, Single, Single, Single, Boolean, Boolean, Boolean, System.Collections.Generic.List`1[Unit], Boolean, Boolean) public=True virtual=False final=False

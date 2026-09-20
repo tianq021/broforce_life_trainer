@@ -1,0 +1,338 @@
+[
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/zmook.prefab",
+    "health": 3,
+    "_playerNum": -1,
+    "width": 8.0,
+    "height": 6.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/zmookgeneral.prefab",
+    "health": 3,
+    "_playerNum": -1,
+    "width": 8.0,
+    "height": 6.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/zmookbazooka.prefab",
+    "health": 4,
+    "_playerNum": -1,
+    "width": 8.0,
+    "height": 6.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/zmookwarlock.prefab",
+    "health": 3,
+    "_playerNum": -1,
+    "width": 8.0,
+    "height": 6.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/zmookcaptaincutscene.prefab",
+    "health": 300000,
+    "_playerNum": -1,
+    "width": 8.0,
+    "height": 6.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/zmook grenadier.prefab",
+    "health": 15,
+    "_playerNum": -1,
+    "width": 12.0,
+    "height": 12.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/zmookdog.prefab",
+    "health": 1,
+    "_playerNum": -1,
+    "width": 8.0,
+    "height": 6.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/zmook strong.prefab",
+    "health": 12,
+    "_playerNum": -1,
+    "width": 8.0,
+    "height": 6.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/zmookhellboomer.prefab",
+    "health": 25,
+    "_playerNum": -1,
+    "width": 8.0,
+    "height": 12.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/zmookbigelite.prefab",
+    "health": 125,
+    "_playerNum": -1,
+    "width": 12.0,
+    "height": 12.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/dolflundgrensoldier.prefab",
+    "health": 110,
+    "_playerNum": -1,
+    "width": 8.0,
+    "height": 12.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/pig.prefab",
+    "health": 3,
+    "_playerNum": -1,
+    "width": 8.0,
+    "height": 6.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/zmookundeadsuicide.prefab",
+    "health": 3,
+    "_playerNum": -1,
+    "width": 8.0,
+    "height": 6.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/zhellbigguy.prefab",
+    "health": 40,
+    "_playerNum": -1,
+    "width": 8.0,
+    "height": 12.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/zconradbronebanks.prefab",
+    "health": 25,
+    "_playerNum": -1,
+    "width": 8.0,
+    "height": 6.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/zmookhellarmouredbigguy.prefab",
+    "health": 30,
+    "_playerNum": -1,
+    "width": 12.0,
+    "height": 12.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/zmookarmouredguy.prefab",
+    "health": 25,
+    "_playerNum": -1,
+    "width": 8.0,
+    "height": 12.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/tankbrostank.prefab",
+    "health": 150,
+    "_playerNum": -1,
+    "width": 8.0,
+    "height": 12.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/zhelldog.prefab",
+    "health": 3,
+    "_playerNum": -1,
+    "width": 8.0,
+    "height": 6.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/zmookundeadstartdead.prefab",
+    "health": 0,
+    "_playerNum": -1,
+    "width": 8.0,
+    "height": 6.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/zmookbigguy strong.prefab",
+    "health": 50,
+    "_playerNum": -1,
+    "width": 8.0,
+    "height": 12.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/zhelllostsoul.prefab",
+    "health": 3,
+    "_playerNum": -1,
+    "width": 8.0,
+    "height": 6.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/zmookscientist.prefab",
+    "health": 2,
+    "_playerNum": -1,
+    "width": 8.0,
+    "height": 6.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/zmookbigguy.prefab",
+    "health": 25,
+    "_playerNum": -1,
+    "width": 12.0,
+    "height": 12.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/zsatan.prefab",
+    "health": 3,
+    "_playerNum": -1,
+    "width": 8.0,
+    "height": 6.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/zmook backup.prefab",
+    "health": 3,
+    "_playerNum": -1,
+    "width": 8.0,
+    "height": 6.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/zmookcaptainexpendabro.prefab",
+    "health": 3,
+    "_playerNum": -1,
+    "width": 8.0,
+    "height": 6.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/zmookjetpack.prefab",
+    "health": 3,
+    "_playerNum": -1,
+    "width": 8.0,
+    "height": 6.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/zsatancutscene.prefab",
+    "health": 300000,
+    "_playerNum": -1,
+    "width": 8.0,
+    "height": 6.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/zmookskinless.prefab",
+    "health": 3,
+    "_playerNum": -1,
+    "width": 8.0,
+    "height": 6.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/zmooksuicide.prefab",
+    "health": 3,
+    "_playerNum": -1,
+    "width": 8.0,
+    "height": 6.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/zmookninja.prefab",
+    "health": 3,
+    "_playerNum": -1,
+    "width": 8.0,
+    "height": 6.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/zsatan mook.prefab",
+    "health": 3,
+    "_playerNum": -1,
+    "width": 8.0,
+    "height": 6.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/zmookundead.prefab",
+    "health": 3,
+    "_playerNum": -1,
+    "width": 8.0,
+    "height": 6.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/zmooktreasure.prefab",
+    "health": 10,
+    "_playerNum": -1,
+    "width": 8.0,
+    "height": 6.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/zmookhellsoulcatcher.prefab",
+    "health": 25,
+    "_playerNum": -1,
+    "width": 8.0,
+    "height": 12.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/zmookmegadog.prefab",
+    "health": 1,
+    "_playerNum": -1,
+    "width": 8.0,
+    "height": 6.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/zmookscout.prefab",
+    "health": 3,
+    "_playerNum": -1,
+    "width": 8.0,
+    "height": 6.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/pig rotten.prefab",
+    "health": 3,
+    "_playerNum": -1,
+    "width": 8.0,
+    "height": 6.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/zmookmortar.prefab",
+    "health": 3,
+    "_playerNum": -1,
+    "width": 8.0,
+    "height": 6.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/zmookriotshield.prefab",
+    "health": 3,
+    "_playerNum": -1,
+    "width": 8.0,
+    "height": 6.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/zmook alarmist.prefab",
+    "health": 3,
+    "_playerNum": -1,
+    "width": 8.0,
+    "height": 6.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/satanminibossstage1.prefab",
+    "health": 300,
+    "_playerNum": -1,
+    "width": 8.0,
+    "height": 12.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/zmookcaptain.prefab",
+    "health": 3,
+    "_playerNum": -1,
+    "width": 8.0,
+    "height": 6.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/zsnake.prefab",
+    "health": 1,
+    "_playerNum": -1,
+    "width": 10.0,
+    "height": 6.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/zmooksuicidebigguy.prefab",
+    "health": 25,
+    "_playerNum": -1,
+    "width": 12.0,
+    "height": 12.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/zmookjetpackbazooka.prefab",
+    "health": 3,
+    "_playerNum": -1,
+    "width": 8.0,
+    "height": 6.0
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/mooks/zmookarmouredguy brown.prefab",
+    "health": 65,
+    "_playerNum": -1,
+    "width": 8.0,
+    "height": 12.0
+  }
+]

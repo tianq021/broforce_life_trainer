@@ -1,0 +1,17 @@
+
+METHOD TFBGames.Systems.ResourceManager :: T LoadAssetSync[T](System.String) public=True static=False
+PARAM 0 System.String resourceName
+IL_0000 ldarg.0 
+IL_0001 ldnull 
+IL_0002 stfld TFBGames.Systems.ResourceManager :: UnityEngine.Object syncLoadedObject
+IL_0007 ldarg.0 
+IL_0008 ldarg.1 
+IL_0009 ldc.i4.0 
+IL_000a ldarg.0 
+IL_000b ldftn TFBGames.Systems.ResourceManager :: Void OnSyncLoadComplete(System.String, System.Object)
+IL_0011 newobj System.Action`2[System.String,System.Object] :: Void .ctor(System.Object, IntPtr)
+IL_0016 call BitCode.AssetManagement.ResourceManager :: Void Load(System.String, Boolean, System.Action`2[System.String,System.Object])
+IL_001b ldarg.0 
+IL_001c ldfld TFBGames.Systems.ResourceManager :: UnityEngine.Object syncLoadedObject
+IL_0021 unbox.any 1b000503
+IL_0026 ret 

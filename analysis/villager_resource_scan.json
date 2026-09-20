@@ -1,0 +1,6023 @@
+[
+  {
+    "bundle": "resources.assets",
+    "containers": [],
+    "matches": [
+      {
+        "type": "Material",
+        "name": "SpawnVillagerPerk",
+        "file": "resources.assets",
+        "id": 115,
+        "tree": {
+          "m_Name": "SpawnVillagerPerk",
+          "m_Shader": {
+            "m_FileID": 0,
+            "m_PathID": 393
+          },
+          "m_ShaderKeywords": "",
+          "m_LightmapFlags": 4,
+          "m_EnableInstancingVariants": false,
+          "m_DoubleSidedGI": false,
+          "m_CustomRenderQueue": -1,
+          "stringTagMap": [],
+          "disabledShaderPasses": [],
+          "m_SavedProperties": {
+            "m_TexEnvs": [
+              [
+                "_MainTex",
+                {
+                  "m_Texture": {
+                    "m_FileID": 0,
+                    "m_PathID": 222
+                  },
+                  "m_Scale": {
+                    "x": 1.0,
+                    "y": 1.0
+                  },
+                  "m_Offset": {
+                    "x": 0.0,
+                    "y": 0.0
+                  }
+                }
+              ]
+            ],
+            "m_Floats": [
+              [
+                "_BumpScale",
+                1.0
+              ],
+              [
+                "_Cutoff",
+                0.5
+              ],
+              [
+                "_DetailNormalMapScale",
+                1.0
+              ],
+              [
+                "_DstBlend",
+                0.0
+              ],
+              [
+                "_GlossMapScale",
+                1.0
+              ],
+              [
+                "_Glossiness",
+                0.5
+              ],
+              [
+                "_GlossyReflections",
+                1.0
+              ],
+              [
+                "_Metallic",
+                0.0
+              ],
+              [
+                "_Mode",
+                0.0
+              ],
+              [
+                "_OcclusionStrength",
+                1.0
+              ],
+              [
+                "_Parallax",
+                0.019999999552965164
+              ],
+              [
+                "_SmoothnessTextureChannel",
+                0.0
+              ],
+              [
+                "_SpecularHighlights",
+                1.0
+              ],
+              [
+                "_SrcBlend",
+                1.0
+              ],
+              [
+                "_UVSec",
+                0.0
+              ],
+              [
+                "_ZWrite",
+                1.0
+              ]
+            ],
+            "m_Colors": [
+              [
+                "_Color",
+                {
+                  "r": 1.0,
+                  "g": 1.0,
+                  "b": 1.0,
+                  "a": 1.0
+                }
+              ],
+              [
+                "_EmissionColor",
+                {
+                  "r": 0.0,
+                  "g": 0.0,
+                  "b": 0.0,
+                  "a": 1.0
+                }
+              ]
+            ]
+          }
+        }
+      },
+      {
+        "type": "Texture2D",
+        "name": "SpawnVillagerPerk",
+        "file": "resources.assets",
+        "id": 222,
+        "tree": {
+          "m_Name": "SpawnVillagerPerk",
+          "m_ForcedFallbackFormat": 4,
+          "m_DownscaleFallback": false,
+          "m_Width": 20,
+          "m_Height": 20,
+          "m_CompleteImageSize": 400,
+          "m_TextureFormat": 25,
+          "m_MipCount": 1,
+          "m_IsReadable": false,
+          "m_ImageCount": 1,
+          "m_TextureDimension": 2,
+          "m_TextureSettings": {
+            "m_FilterMode": 0,
+            "m_Aniso": 1,
+            "m_MipBias": 0.0,
+            "m_WrapU": 0,
+            "m_WrapV": 0,
+            "m_WrapW": 0
+          },
+          "m_LightmapFormat": 0,
+          "m_ColorSpace": 1,
+          "image data": "b''",
+          "m_StreamData": {
+            "offset": 9290452,
+            "size": 400,
+            "path": "resources.assets.resS"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "bundle": "sharedassets0.assets",
+    "containers": [],
+    "matches": []
+  },
+  {
+    "bundle": "StreamingAssets/networkobjects.assetbundle",
+    "containers": [
+      {
+        "path": "assets/bundleassets/networkobjects/citizens/agent1.prefab",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -2167419739594137838
+      },
+      {
+        "path": "assets/bundleassets/networkobjects/citizens/agent2 unfriendly.prefab",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 111610878639300246
+      },
+      {
+        "path": "assets/bundleassets/networkobjects/citizens/agent3 enemy.prefab",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -2353919784745463986
+      },
+      {
+        "path": "assets/bundleassets/networkobjects/citizens/agent3 friend.prefab",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 8120065299676522357
+      },
+      {
+        "path": "assets/bundleassets/networkobjects/citizens/citizen1.prefab",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -7165002333640291110
+      },
+      {
+        "path": "assets/bundleassets/networkobjects/citizens/citizen2.prefab",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -2107050503137841877
+      },
+      {
+        "path": "assets/bundleassets/networkobjects/citizens/citizen3.prefab",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -3111096472267797439
+      },
+      {
+        "path": "assets/bundleassets/networkobjects/citizens/citizen4.prefab",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -3080234038148127651
+      },
+      {
+        "path": "assets/bundleassets/networkobjects/citizens/citizen5.prefab",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 7590432913686494697
+      },
+      {
+        "path": "assets/bundleassets/networkobjects/citizens/citizen6.prefab",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -7683933714165698202
+      },
+      {
+        "path": "assets/bundleassets/networkobjects/citizens/citizen7.prefab",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 4893355330427080092
+      },
+      {
+        "path": "assets/bundleassets/networkobjects/citizens/citizen8.prefab",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -4011084436963157414
+      },
+      {
+        "path": "assets/bundleassets/networkobjects/citizens/citizen9.prefab",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 2696671154838212397
+      },
+      {
+        "path": "assets/bundleassets/networkobjects/citizens/citizendesert1.prefab",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -6038435561179540664
+      },
+      {
+        "path": "assets/bundleassets/networkobjects/citizens/citizendesert2.prefab",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -4058140931604876025
+      },
+      {
+        "path": "assets/bundleassets/networkobjects/citizens/citizendesert3.prefab",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -5358248304239424931
+      },
+      {
+        "path": "assets/bundleassets/networkobjects/citizens/citizendesert4.prefab",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 97538998332078942
+      },
+      {
+        "path": "assets/bundleassets/networkobjects/citizens/citizendesert5.prefab",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -6750289104330080119
+      },
+      {
+        "path": "assets/bundleassets/networkobjects/citizens/citizendesert6.prefab",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -2185392034720268190
+      },
+      {
+        "path": "assets/bundleassets/networkobjects/citizens/citizendesert7.prefab",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 3504041608770588060
+      },
+      {
+        "path": "assets/bundleassets/networkobjects/citizens/citizendesert8.prefab",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -5533992533591504685
+      },
+      {
+        "path": "assets/bundleassets/networkobjects/citizens/citizendesert9.prefab",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 2257086031644712659
+      },
+      {
+        "path": "assets/bundleassets/networkobjects/citizens/presidant_billclinton.prefab",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -3027256174312208644
+      },
+      {
+        "path": "assets/bundleassets/networkobjects/projectiles/bullet villager upgrade.prefab",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -268202159299833697
+      },
+      {
+        "path": "assets/bundleassets/networkobjects/villagers/villager elder perk drop.prefab",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 7947541689988120304
+      },
+      {
+        "path": "assets/bundleassets/networkobjects/villagers/villager elder.prefab",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 2010292764789798699
+      },
+      {
+        "path": "assets/bundleassets/networkobjects/villagers/villager1.prefab",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 5377216844738279833
+      },
+      {
+        "path": "assets/bundleassets/networkobjects/villagers/villager2.prefab",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -7976076855495729456
+      }
+    ],
+    "matches": [
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Bubble",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -8827821632169377116,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 7717881737394766897
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -3816778835467943172
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -5061863250677102993
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 192729777646185861
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -5995045683398377103
+              }
+            }
+          ],
+          "m_Layer": 5,
+          "m_Name": "Arm Villager Bubble",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Bubble",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -8199087072986172971,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -7304291012311606353
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -6239496067253575175
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -906609544705545600
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 8860920078414644110
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4370528386539987369
+              }
+            }
+          ],
+          "m_Layer": 5,
+          "m_Name": "Arm Villager Bubble",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Bubble",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -8114020585165548744,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 3185147019667182896
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4988221809362423818
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -2629137849613298351
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6393966724958740184
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 1563887825018925946
+              }
+            }
+          ],
+          "m_Layer": 5,
+          "m_Name": "Arm Villager Bubble",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Bubble",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -8096221225441038687,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -3353800889016671101
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 3655156543073362821
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 364187628269983688
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -4799110897643269378
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 782453408054090057
+              }
+            }
+          ],
+          "m_Layer": 5,
+          "m_Name": "Arm Villager Bubble",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Switch",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -8093687739128767873,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 5258562144298438821
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 964632893681682203
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Arm Villager Switch",
+          "m_Tag": 0,
+          "m_IsActive": false
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Villager2",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -7976076855495729456,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6353029477746171929
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -6171371958475114561
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -5925061359965721475
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -7338868830293602181
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -8873987051105710209
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4823153969518820393
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 7181733937979020856
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 1930660339557921307
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6656894872036913070
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Villager2",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Switch",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -7913820538291288708,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 2245668218183087145
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -6872092306980085654
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Arm Villager Switch",
+          "m_Tag": 0,
+          "m_IsActive": false
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Citizen6",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -7683933714165698202,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -5110967591134071308
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 5061266366204529485
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6430519787771363370
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -8094211144926223603
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 8851524525111572953
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -4176127678027732035
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -3071221575452039781
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -5560724320621554838
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -931377008144099168
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Citizen6",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Bubble",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -7357861634534930960,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -296612833255746732
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 5360451924746672796
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 8351743120928467122
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -2313190888700512697
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -3607764550174058431
+              }
+            }
+          ],
+          "m_Layer": 5,
+          "m_Name": "Arm Villager Bubble",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Switch",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -7181418748561373082,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 8776242369890366409
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 1755098998676308404
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Arm Villager Switch",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Citizen1",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -7165002333640291110,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4144039321612752570
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -3477609720165666034
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 8086615417173391107
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -4175386816056171487
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 5801595437212728326
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4846881420247442045
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6887620213476794930
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 9199858035872242882
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 8584355697991130068
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Citizen1",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Switch",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -7153910690590499647,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -1178301787283781539
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 1004284793384509554
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Arm Villager Switch",
+          "m_Tag": 0,
+          "m_IsActive": false
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Switch",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -6819421762422893088,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 5049294588696356621
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 8901612238383600021
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Arm Villager Switch",
+          "m_Tag": 0,
+          "m_IsActive": false
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "CitizenDesert5",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -6750289104330080119,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 3428863894378803127
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -8445692854494581073
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 2243214796130115928
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6132223346214864102
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -4217604090674764777
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 3751348686433786766
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 1370479728427701420
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -8607507811607743541
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -9142116449317807574
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "CitizenDesert5",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Bubble",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -6232561788285536850,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 8871361008742209218
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -5547578933924713307
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -4101510728333611905
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -1301053051487509465
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 3868498949555486102
+              }
+            }
+          ],
+          "m_Layer": 5,
+          "m_Name": "Arm Villager Bubble",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "CitizenDesert1",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -6038435561179540664,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 2412620164208063570
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 2309611633086506533
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 9120506357135930135
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -304264279388391711
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 7268915590478096116
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -8994653386124321689
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -6048011847152666887
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -1536870361145730148
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -5123655957785959899
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "CitizenDesert1",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Switch",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -5822733977203619647,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -3561575415118950831
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6014431139880362606
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Arm Villager Switch",
+          "m_Tag": 0,
+          "m_IsActive": false
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Bubble",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -5733984591339887697,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 9082591867477533343
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -7802553054623307668
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4687477517507287842
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 8232047836283823883
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 1240430407168697940
+              }
+            }
+          ],
+          "m_Layer": 5,
+          "m_Name": "Arm Villager Bubble",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Bubble",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -5684869941147281336,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 8534384170432040356
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -6087190215612099639
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -4885618188082402641
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -1921426083538263860
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -799762887684814403
+              }
+            }
+          ],
+          "m_Layer": 5,
+          "m_Name": "Arm Villager Bubble",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "CitizenDesert8",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -5533992533591504685,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 3882970148940435940
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 7072513920843938102
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -6513937518380906436
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 2117675565061276971
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -6799196966441452018
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 3944716317526871840
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 2753208298636816720
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 3796746027322020622
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 8665355688750960295
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "CitizenDesert8",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "CitizenDesert3",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -5358248304239424931,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -3378128389179167884
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 1289518104678736683
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4625883043669661849
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -4800430766412997770
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 7053502730068367730
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 2529560292510471666
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6513153463778584094
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 778679574978155783
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -5723544294231294187
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "CitizenDesert3",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Bubble",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -4750535732232133667,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -8163492086349779771
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -6013078980756291346
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 137321061759576902
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 7498366178068590071
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -8889546133622330859
+              }
+            }
+          ],
+          "m_Layer": 5,
+          "m_Name": "Arm Villager Bubble",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Switch",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -4332402799415684718,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -2018556007993483224
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 5128606687323646751
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Arm Villager Switch",
+          "m_Tag": 0,
+          "m_IsActive": false
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "CitizenDesert2",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -4058140931604876025,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 1939777840072587612
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -7252350128586973948
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -5791241582884482974
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -2765427912145057009
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -3833594536160654962
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -6373476208940031176
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 8726329201893777308
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -7710781058747758171
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -642561466095063675
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "CitizenDesert2",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Citizen8",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -4011084436963157414,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4763637160065180661
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 9192328818561694723
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6168730500716989989
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 1094403486612613329
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4317313495611035914
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 7017371123395938627
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -8607726787021287020
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -8487115316229447259
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -947575714272132380
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Citizen8",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Switch",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -3939382530772307810,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -4845597377460149615
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6044820165096634049
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Arm Villager Switch",
+          "m_Tag": 0,
+          "m_IsActive": false
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Switch",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -3614348961005801662,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -1365538844563541188
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -4461479309234690476
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Arm Villager Switch",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Bubble",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -3419685455747058348,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6783016897010995504
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -7901003220525591981
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -3481901238042257692
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -277112282865297189
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -9091689169446389674
+              }
+            }
+          ],
+          "m_Layer": 5,
+          "m_Name": "Arm Villager Bubble",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Citizen3",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -3111096472267797439,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -4429257057939956994
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -8809123669951876182
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -7255992714196950738
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 5843482535152111479
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -7172796527038514842
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -5870774801592422779
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -235960953784455728
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4439924056505348597
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -1874507166664971020
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Citizen3",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Citizen4",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -3080234038148127651,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -1603674034924220826
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -8631997019725640992
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -7925506980662631341
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4120399667237496676
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -1669664867290246769
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -8530695636404925708
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -9128394107600168388
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 8002446501780465978
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -7739113519216947102
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Citizen4",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Switch",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -2727526084665464784,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -3275685194886712574
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 2580393159903294236
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Arm Villager Switch",
+          "m_Tag": 0,
+          "m_IsActive": false
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Switch",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -2527117738805274890,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 2000926155672511195
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -7131844391368629309
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Arm Villager Switch",
+          "m_Tag": 0,
+          "m_IsActive": false
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "CitizenDesert6",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -2185392034720268190,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 3706303497632704594
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 530957775788181544
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -1765239996002757878
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 8981123466329376943
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -3503840002207172485
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 596678445879973760
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 7229378709126314806
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 2862718707829286723
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 1686815748409140917
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "CitizenDesert6",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Citizen2",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -2107050503137841877,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4407497964494557643
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 5994882208183295492
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -7821036795704281415
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -1517174680237284169
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -2726310385798569715
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 7417293404144172729
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 8114899111234400796
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 8047438458407138813
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -4192114826379582413
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Citizen2",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Switch",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -2020397534021944646,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4911412793322759329
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -6011062606876824264
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Arm Villager Switch",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Bubble",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -2003961363909837842,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4623920774131630711
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 7368820713260676006
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6069758429743928852
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -4854959497160936044
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6847066703350307198
+              }
+            }
+          ],
+          "m_Layer": 5,
+          "m_Name": "Arm Villager Bubble",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Switch",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -1460162486395352935,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4316488789067648091
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -6951694865453653118
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Arm Villager Switch",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Bubble",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -1452525221391972105,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -6496364251993037619
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 1342628288855051194
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -4033600669585338299
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4581759926295660303
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 7920062460082459899
+              }
+            }
+          ],
+          "m_Layer": 5,
+          "m_Name": "Arm Villager Bubble",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Switch",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -1310839934010670047,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -8277527297718456430
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 3330930216356407880
+              }
+            }
+          ],
+          "m_Layer": 5,
+          "m_Name": "Arm Villager Switch",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Switch",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -891055527275788792,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 8515591880678223992
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6093016429473699324
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Arm Villager Switch",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Bubble",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -747850261631203081,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -7314178720929674549
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -9014029875138835287
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 1865246110561346359
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 7494218360018335992
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -7190708412769793491
+              }
+            }
+          ],
+          "m_Layer": 5,
+          "m_Name": "Arm Villager Bubble",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Bullet Villager Upgrade",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": -268202159299833697,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 5647818088092979040
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 7913802522018657861
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -1974245455718462384
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 7423360010271301513
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -6870181221474258065
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6373946380875671871
+              }
+            }
+          ],
+          "m_Layer": 28,
+          "m_Name": "Bullet Villager Upgrade",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "CitizenDesert4",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 97538998332078942,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -8769965742763451521
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4963273025222569471
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4361486913445622899
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4204770709401098063
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -357977682078534651
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 7255380586601471728
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -294869112952319962
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 3565411307893902184
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -2527977364193409657
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "CitizenDesert4",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Bubble",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 598081137968137715,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -2869765110893242349
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -4190626623374372368
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 3838346834663059164
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -4166278155604552284
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 1271065273130657615
+              }
+            }
+          ],
+          "m_Layer": 5,
+          "m_Name": "Arm Villager Bubble",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Bubble",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 1178126324198793116,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 2637413642148869856
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -8437974727963030309
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6157052254618361961
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 5614426432803497709
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -3623354823344829775
+              }
+            }
+          ],
+          "m_Layer": 5,
+          "m_Name": "Arm Villager Bubble",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Switch",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 1432935874660836097,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 751754227134495590
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -4856051182931496134
+              }
+            }
+          ],
+          "m_Layer": 5,
+          "m_Name": "Arm Villager Switch",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Villager Elder",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 2010292764789798699,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 7425962948779379277
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -3243516586111455273
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -3638448361274309530
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -4118137464795372938
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -1050211173920653441
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -4886694357702412310
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 5408185247850749794
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 3294116682550394882
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -21326900746976744
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Villager Elder",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "CitizenDesert9",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 2257086031644712659,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -8115504686411032650
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 3015653763453720737
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 3569409734701966225
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -3603910648060100196
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -147363213868256692
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 2903244243630989389
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 7300175526393934074
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 7224329082590694758
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -1875912204198205151
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "CitizenDesert9",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Bubble",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 2505718853873091427,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 5585699930428079383
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -3634539790754504024
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 3051804178936264135
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 7681639146090400977
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 3465117728877676224
+              }
+            }
+          ],
+          "m_Layer": 5,
+          "m_Name": "Arm Villager Bubble",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Bubble",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 2522153442948410175,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 7506398092796033267
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 5860701413387237244
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -8776407344448096581
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 1478236632084038284
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -8900733230271926070
+              }
+            }
+          ],
+          "m_Layer": 5,
+          "m_Name": "Arm Villager Bubble",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Citizen9",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 2696671154838212397,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4886660809295397627
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 1167347203215023964
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 7302303780051680232
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -2283571314524117974
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 1806468837978044839
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -467300946001933090
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -4337141429205281268
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 1163941189789704517
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4679343887010512237
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Citizen9",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Bubble",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 3305167411266770957,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -2682047626053951029
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 5956396998751816422
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 2305292854953562976
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -2510712206158470607
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 389682111044627499
+              }
+            }
+          ],
+          "m_Layer": 5,
+          "m_Name": "Arm Villager Bubble",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "CitizenDesert7",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 3504041608770588060,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -4987466058645900555
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 5396715651037567040
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 7146688228318211313
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -9124900491999088429
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -6967793789313385001
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 5419189176775066839
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4410147091329717844
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 5560110809610760616
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 2077894072698786262
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "CitizenDesert7",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Switch",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 3742473308353286061,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -5009404102207167374
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 3157227287261967585
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Arm Villager Switch",
+          "m_Tag": 0,
+          "m_IsActive": false
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Switch",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 3855498959578940802,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 1578535287797630386
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -8710742387053615292
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Arm Villager Switch",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Bubble",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 3898860575099204727,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -8381645167524581848
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4965482429411697852
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 1455149144403391143
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -5481296248789952065
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -5383707821410849815
+              }
+            }
+          ],
+          "m_Layer": 5,
+          "m_Name": "Arm Villager Bubble",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Bubble",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 3903494901332726118,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -2385805811329926143
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 5685865267691788496
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -6364184900159097044
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 3113013430558095856
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 1295768618993640368
+              }
+            }
+          ],
+          "m_Layer": 5,
+          "m_Name": "Arm Villager Bubble",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Switch",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 4365581289149409268,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -74363837278952895
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -9148442188313661302
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Arm Villager Switch",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Switch",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 4381650799879795013,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 773698455636797859
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 1561829857042986709
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Arm Villager Switch",
+          "m_Tag": 0,
+          "m_IsActive": false
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Switch",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 4411123528361056054,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -8832541844800974479
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 3700000891032098294
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Arm Villager Switch",
+          "m_Tag": 0,
+          "m_IsActive": false
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Bubble",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 4782993035362055766,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -4508808279114633270
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 289041201597136802
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6137542295096848049
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -757257643002497198
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -4586149408937729340
+              }
+            }
+          ],
+          "m_Layer": 5,
+          "m_Name": "Arm Villager Bubble",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Citizen7",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 4893355330427080092,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -4767667116640363580
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -3349755982567069225
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -29563471859586121
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4133647493206665667
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 3195147307989049036
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -6580938311550552864
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 3071718504303170744
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6955940455741432792
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 388862298214418775
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Citizen7",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Switch",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 5076641569552280674,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 9124502921297021399
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -5833601950589619212
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Arm Villager Switch",
+          "m_Tag": 0,
+          "m_IsActive": false
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Villager1",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 5377216844738279833,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -3787144907854093631
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 2821482287542499049
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -6405845816402353094
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -5376736238626852882
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 5109762192965891204
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -8850938062319855496
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6328664269844926766
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -2907686441478711869
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -1453063909682627459
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Villager1",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Bubble",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 5951292981053680431,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -3065178786692344655
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6054242334715355316
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -6830744580961918198
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 7460624513783379854
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 2860246780125115011
+              }
+            }
+          ],
+          "m_Layer": 5,
+          "m_Name": "Arm Villager Bubble",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Bubble",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 6515738328594731496,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -5995559678216307382
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 8659672015417554627
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 547052497688829337
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 5920316385402466536
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 7852620490327865913
+              }
+            }
+          ],
+          "m_Layer": 5,
+          "m_Name": "Arm Villager Bubble",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Switch",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 6669485829434583603,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -3052783063029627725
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4923220461579184544
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Arm Villager Switch",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Switch",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 6889340090655727974,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 7704808656709881462
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -7362321142599386226
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Arm Villager Switch",
+          "m_Tag": 0,
+          "m_IsActive": false
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Switch",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 7065892652095966958,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -6715626245261599454
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 1389183686854217072
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Arm Villager Switch",
+          "m_Tag": 0,
+          "m_IsActive": false
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Bubble",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 7135562091983863694,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 5162906990122090768
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -2393956238599439943
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -5494769061898051870
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 89759976574660687
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -8508493555001908509
+              }
+            }
+          ],
+          "m_Layer": 5,
+          "m_Name": "Arm Villager Bubble",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Citizen5",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 7590432913686494697,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -8803318044313443066
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -1289017524206890490
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4570935399083263119
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 3643940508076401698
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -2246292010180150437
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -567293287623942649
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -5402356485186079418
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6289632806522489266
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 76096912959460815
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Citizen5",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Villager Elder Perk Drop",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 7947541689988120304,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6635021400606968842
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 2748822342205292193
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -8413390231730727394
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -2642393872430881551
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -5837123976097623143
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -6248360234654890728
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -7708433389136893031
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4784801485518696010
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -3288213394747819550
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 2133399417005707627
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 8725134981482328235
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Villager Elder Perk Drop",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Bubble",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 8152035084465602557,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 2296589818823875949
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4636961770843669843
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 2679882426956458781
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -2641343143619284279
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -6081762430017098635
+              }
+            }
+          ],
+          "m_Layer": 5,
+          "m_Name": "Arm Villager Bubble",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Bubble",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 8192929676153958113,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -7269834595772336036
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 3280370844707659060
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -6351694840781089432
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -5501111587181048065
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6589801312211713496
+              }
+            }
+          ],
+          "m_Layer": 5,
+          "m_Name": "Arm Villager Bubble",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Switch",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 8767545786970565154,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 3772904199357547788
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -5164386233030128672
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Arm Villager Switch",
+          "m_Tag": 0,
+          "m_IsActive": false
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Switch",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 9016249137048285932,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -611174255553093696
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -5686196648582946674
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Arm Villager Switch",
+          "m_Tag": 0,
+          "m_IsActive": false
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Bubble",
+        "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+        "id": 9058883011358785560,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 7728767280417589980
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 8483036651589400193
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -5673453981386405300
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -3863221546270572389
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 36418534627601412
+              }
+            }
+          ],
+          "m_Layer": 5,
+          "m_Name": "Arm Villager Bubble",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      }
+    ]
+  },
+  {
+    "bundle": "StreamingAssets/themeholders.assetbundle",
+    "containers": [],
+    "matches": [
+      {
+        "type": "GameObject",
+        "name": "SmallCageBlock Villager",
+        "file": "CAB-8d9a540364ce5c2dac3c3b43d3e643cf",
+        "id": -8668605025881856892,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 2347366156965377543
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -577034087909093948
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6302745493112745923
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -1880414574068721437
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -926741657621951929
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 8890151979728748868
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 33113482522983581
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -9055111780002577935
+              }
+            }
+          ],
+          "m_Layer": 8,
+          "m_Name": "SmallCageBlock Villager",
+          "m_Tag": 20003,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Switch",
+        "file": "CAB-8d9a540364ce5c2dac3c3b43d3e643cf",
+        "id": -8638897614327083823,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 167198675728210293
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 3746063336532374331
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Arm Villager Switch",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Switch",
+        "file": "CAB-8d9a540364ce5c2dac3c3b43d3e643cf",
+        "id": -8287702968561013936,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -3172992185660746159
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -4245385543449202662
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Arm Villager Switch",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Bubble",
+        "file": "CAB-8d9a540364ce5c2dac3c3b43d3e643cf",
+        "id": -7869569702998544753,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -7245429131777566795
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -2674098939044919402
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -6781333095591260134
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -5703452384133821912
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -861115646987793616
+              }
+            }
+          ],
+          "m_Layer": 28,
+          "m_Name": "Arm Villager Bubble",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Tied Up Villager Female",
+        "file": "CAB-8d9a540364ce5c2dac3c3b43d3e643cf",
+        "id": -6737314411552912087,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -3384280236999896634
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -3905955838702490560
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -4373438250185949021
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -1353918852299942003
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 7719152409863695485
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 8003494787670093841
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4055728999581286358
+              }
+            }
+          ],
+          "m_Layer": 8,
+          "m_Name": "Tied Up Villager Female",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Switch",
+        "file": "CAB-8d9a540364ce5c2dac3c3b43d3e643cf",
+        "id": -6368963422098096158,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 8084163802933450198
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -5303994255623370870
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Arm Villager Switch",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Tied Up Citizen City 6",
+        "file": "CAB-8d9a540364ce5c2dac3c3b43d3e643cf",
+        "id": -5438490679531154245,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 3983948902046091800
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 3149260664889050318
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -4124579006594299003
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4644681282694515722
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -4166350785664466720
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -5237508188966222067
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4045134687013331402
+              }
+            }
+          ],
+          "m_Layer": 8,
+          "m_Name": "Tied Up Citizen City 6",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Switch",
+        "file": "CAB-8d9a540364ce5c2dac3c3b43d3e643cf",
+        "id": -5328723835798074186,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -2814087720928482103
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -3635694700781513960
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Arm Villager Switch",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Switch",
+        "file": "CAB-8d9a540364ce5c2dac3c3b43d3e643cf",
+        "id": -4926414902617248337,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -3970125424771942005
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -8610290599841420085
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Arm Villager Switch",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Tied Up Citizen City 1",
+        "file": "CAB-8d9a540364ce5c2dac3c3b43d3e643cf",
+        "id": -4794938629134379883,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -323716410749691363
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6092014708925542332
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 3801511618472855832
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 3148394953281116769
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 1211320171722789616
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -6435084573060867814
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -8053691665062579576
+              }
+            }
+          ],
+          "m_Layer": 8,
+          "m_Name": "Tied Up Citizen City 1",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Bubble",
+        "file": "CAB-8d9a540364ce5c2dac3c3b43d3e643cf",
+        "id": -3636172015803579110,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -259195794929421983
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -5584084985733136547
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 3970397403585179399
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 8735636474659183288
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -6562878854638933104
+              }
+            }
+          ],
+          "m_Layer": 28,
+          "m_Name": "Arm Villager Bubble",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Bubble",
+        "file": "CAB-8d9a540364ce5c2dac3c3b43d3e643cf",
+        "id": -2800696340284990874,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -3547013905177909204
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6728689056880501925
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -356094088625592232
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -340199112895122236
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -8790299411765428358
+              }
+            }
+          ],
+          "m_Layer": 28,
+          "m_Name": "Arm Villager Bubble",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Bubble",
+        "file": "CAB-8d9a540364ce5c2dac3c3b43d3e643cf",
+        "id": -2284423067579275273,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -1978629961336518308
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 3556719757763799655
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -1663774663927618415
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -6805255062484160536
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 381144019685286654
+              }
+            }
+          ],
+          "m_Layer": 28,
+          "m_Name": "Arm Villager Bubble",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Switch",
+        "file": "CAB-8d9a540364ce5c2dac3c3b43d3e643cf",
+        "id": 1453654339311835410,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 5567852325959781321
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -5302384308603292310
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Arm Villager Switch",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Bubble",
+        "file": "CAB-8d9a540364ce5c2dac3c3b43d3e643cf",
+        "id": 2191734593555275281,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -4202337502571480983
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -7073047904766882021
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -2821654318865399174
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -5774965141791728052
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 136972150908221618
+              }
+            }
+          ],
+          "m_Layer": 5,
+          "m_Name": "Arm Villager Bubble",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Tied Up Villager Elder",
+        "file": "CAB-8d9a540364ce5c2dac3c3b43d3e643cf",
+        "id": 2591273414163651236,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -5910341224642493396
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 352775890558663823
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 8449287650697540162
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -1389245591212609431
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6311771357646827708
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -8744673125468468464
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -3496341789240353392
+              }
+            }
+          ],
+          "m_Layer": 8,
+          "m_Name": "Tied Up Villager Elder",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Switch",
+        "file": "CAB-8d9a540364ce5c2dac3c3b43d3e643cf",
+        "id": 2670429231497455856,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -55750705866613042
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 8613538030293492261
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Arm Villager Switch",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Bubble",
+        "file": "CAB-8d9a540364ce5c2dac3c3b43d3e643cf",
+        "id": 3816278773195886208,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -1542560493324396267
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -6515930412719390519
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 5537478975464734741
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -4970669611985700096
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -1210118385671365713
+              }
+            }
+          ],
+          "m_Layer": 5,
+          "m_Name": "Arm Villager Bubble",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Tied Up Villager Male",
+        "file": "CAB-8d9a540364ce5c2dac3c3b43d3e643cf",
+        "id": 4055053582628796417,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -3103234510968233411
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6984657061780005463
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 3458568277029440574
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -7198929752431203940
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4287645001910450317
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -862301559071514332
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -1396130436511183037
+              }
+            }
+          ],
+          "m_Layer": 8,
+          "m_Name": "Tied Up Villager Male",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Tied Up Citizen City 9",
+        "file": "CAB-8d9a540364ce5c2dac3c3b43d3e643cf",
+        "id": 5933655805454735955,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -8929714092442433535
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 3606765122856183550
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -5002623040159331606
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -5698745419671215328
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 3354661532204654672
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -7516198898824234818
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4215152654331096043
+              }
+            }
+          ],
+          "m_Layer": 8,
+          "m_Name": "Tied Up Citizen City 9",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Shop Zoom Area Village",
+        "file": "CAB-8d9a540364ce5c2dac3c3b43d3e643cf",
+        "id": 6689286176846568232,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 370428690199618098
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 3197898321500303065
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Shop Zoom Area Village",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Bubble",
+        "file": "CAB-8d9a540364ce5c2dac3c3b43d3e643cf",
+        "id": 7004823132278532477,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 2187012064324571464
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4253241696983298727
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -3326572400403870859
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4140619227550463533
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -3092935954845192187
+              }
+            }
+          ],
+          "m_Layer": 28,
+          "m_Name": "Arm Villager Bubble",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Switch",
+        "file": "CAB-8d9a540364ce5c2dac3c3b43d3e643cf",
+        "id": 7250525147031867802,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 7697432513007058055
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 944339678509317996
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Arm Villager Switch",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Villager1",
+        "file": "CAB-8d9a540364ce5c2dac3c3b43d3e643cf",
+        "id": 7613106716233072715,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 1439272030126927114
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -5937589231563623875
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 1705074744753812739
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 8619385158965923712
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -2670364169773733878
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -5729066983830799019
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -4057217219089572228
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -5466244972463311658
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 534505856932607911
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Villager1",
+          "m_Tag": 0,
+          "m_IsActive": false
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Bubble",
+        "file": "CAB-8d9a540364ce5c2dac3c3b43d3e643cf",
+        "id": 8220609627833512537,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6896317339718899484
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -8954841981391974730
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 2334892326500691745
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -3214535714577814971
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -3703575487002020100
+              }
+            }
+          ],
+          "m_Layer": 28,
+          "m_Name": "Arm Villager Bubble",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      }
+    ]
+  },
+  {
+    "bundle": "StreamingAssets/sharedassets.assetbundle",
+    "containers": [
+      {
+        "path": "assets/world/enemies/victoryenemies/victoryvillagerdeath.prefab",
+        "file": "CAB-591d2d4b5f5d82c3fd778285a01aa858",
+        "id": -3227931009578385681
+      },
+      {
+        "path": "assets/world/environment/vietnam/doodads/torture_doodad_impaled_villager.prefab",
+        "file": "CAB-591d2d4b5f5d82c3fd778285a01aa858",
+        "id": -1287047713206533797
+      },
+      {
+        "path": "assets/world/environment/vietnam/doodads/torture_doodad_pole_with_tied_village.prefab",
+        "file": "CAB-591d2d4b5f5d82c3fd778285a01aa858",
+        "id": 6503119302219796081
+      },
+      {
+        "path": "assets/world/environment/vietnam/doodads/torture_doodad_villager_hung.prefab",
+        "file": "CAB-591d2d4b5f5d82c3fd778285a01aa858",
+        "id": -5886263674522553028
+      },
+      {
+        "path": "assets/world/environment/vietnam/doodads/torture_doodad_villager_hung_upside_down.prefab",
+        "file": "CAB-591d2d4b5f5d82c3fd778285a01aa858",
+        "id": -2448588157174447198
+      },
+      {
+        "path": "assets/world/environment/vietnam/foliage jungle/trees/tree_clump7(villagehut1)_background.prefab",
+        "file": "CAB-591d2d4b5f5d82c3fd778285a01aa858",
+        "id": -2350846072246201785
+      },
+      {
+        "path": "assets/world/environment/vietnam/foliage jungle/trees/tree_clump8(villagehut2)_background.prefab",
+        "file": "CAB-591d2d4b5f5d82c3fd778285a01aa858",
+        "id": 9222761762217117368
+      },
+      {
+        "path": "assets/world/environment/vietnam/foliage jungle/trees/tree_clump9(villagehut3)_background.prefab",
+        "file": "CAB-591d2d4b5f5d82c3fd778285a01aa858",
+        "id": -4289429042367415295
+      }
+    ],
+    "matches": [
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Bubble",
+        "file": "CAB-591d2d4b5f5d82c3fd778285a01aa858",
+        "id": -8744504878068439420,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6671472562194632802
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -5874864026238709713
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 8921161659164561946
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -7439045861562647635
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 875455702693318622
+              }
+            }
+          ],
+          "m_Layer": 28,
+          "m_Name": "Arm Villager Bubble",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Switch",
+        "file": "CAB-591d2d4b5f5d82c3fd778285a01aa858",
+        "id": -8496971259142868398,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 2783820028907328721
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -3193879981923288166
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Arm Villager Switch",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Hanging Villager",
+        "file": "CAB-591d2d4b5f5d82c3fd778285a01aa858",
+        "id": -7940498451034092241,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4437980083933820957
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 7495123719858573430
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 1065262367064530570
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -5870446111325429199
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 5385244198646189017
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6324366436456089706
+              }
+            }
+          ],
+          "m_Layer": 8,
+          "m_Name": "Hanging Villager",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Switch",
+        "file": "CAB-591d2d4b5f5d82c3fd778285a01aa858",
+        "id": -7840629236764527877,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -4935922710915064369
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -862606386641720912
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Arm Villager Switch",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Hanging Villager",
+        "file": "CAB-591d2d4b5f5d82c3fd778285a01aa858",
+        "id": -6398956721609556262,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -8646857177289915590
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4680066392719951911
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 3268465673724290258
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -4281202398806488752
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -1007388891307772186
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4775829429317735769
+              }
+            }
+          ],
+          "m_Layer": 8,
+          "m_Name": "Hanging Villager",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Torture_Doodad_Villager_Hung",
+        "file": "CAB-591d2d4b5f5d82c3fd778285a01aa858",
+        "id": -5886263674522553028,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -146791764046361575
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -614955825995611939
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 8902349216688121734
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 5344988339747547696
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -8048109665281112637
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 9222442421509506262
+              }
+            }
+          ],
+          "m_Layer": 8,
+          "m_Name": "Torture_Doodad_Villager_Hung",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Bubble",
+        "file": "CAB-591d2d4b5f5d82c3fd778285a01aa858",
+        "id": -4472330475473429906,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 8810329500666554060
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 5016669993133416604
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 8661668971869877002
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 2982360577627529545
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -6857470056918746169
+              }
+            }
+          ],
+          "m_Layer": 28,
+          "m_Name": "Arm Villager Bubble",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Tree_Clump9(VillageHut3)_Background",
+        "file": "CAB-591d2d4b5f5d82c3fd778285a01aa858",
+        "id": -4289429042367415295,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 5061034314367430797
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 7261830861687447440
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 2171761872899705118
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4927670526667183169
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -6820848068816540963
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -2897818951266913501
+              }
+            }
+          ],
+          "m_Layer": 27,
+          "m_Name": "Tree_Clump9(VillageHut3)_Background",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "VictoryVillagerDeath",
+        "file": "CAB-591d2d4b5f5d82c3fd778285a01aa858",
+        "id": -3227931009578385681,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -227932477563921085
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -3107042857623128259
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -2346316163583878100
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 3062604009185283529
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 8436774551099327907
+              }
+            }
+          ],
+          "m_Layer": 17,
+          "m_Name": "VictoryVillagerDeath",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Torture_Doodad_Villager_Hung_Upside_Down",
+        "file": "CAB-591d2d4b5f5d82c3fd778285a01aa858",
+        "id": -2448588157174447198,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 5290364971327680520
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -7132938365196951858
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -6014411756259126703
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 2184158147970051228
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -8241982158078757665
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -506360966056926406
+              }
+            }
+          ],
+          "m_Layer": 8,
+          "m_Name": "Torture_Doodad_Villager_Hung_Upside_Down",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Tree_Clump7(VillageHut1)_Background",
+        "file": "CAB-591d2d4b5f5d82c3fd778285a01aa858",
+        "id": -2350846072246201785,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -6287008572474166811
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4461965555902854464
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 3954103823986787705
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 1344258585697120789
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 2433038376786944619
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -4470303929836088831
+              }
+            }
+          ],
+          "m_Layer": 27,
+          "m_Name": "Tree_Clump7(VillageHut1)_Background",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Tied Villager",
+        "file": "CAB-591d2d4b5f5d82c3fd778285a01aa858",
+        "id": -2142231658534051478,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -807606724719017015
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 2883336615683050603
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -8821479165905300969
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -7193221736243612867
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6958730049822032074
+              }
+            }
+          ],
+          "m_Layer": 8,
+          "m_Name": "Tied Villager",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Torture_Doodad_Impaled_Villager",
+        "file": "CAB-591d2d4b5f5d82c3fd778285a01aa858",
+        "id": -1287047713206533797,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 338794601101142936
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 3050891407507002381
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 5800189849402735838
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4559602149708849154
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 1111132731146167333
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -406855199751485934
+              }
+            }
+          ],
+          "m_Layer": 8,
+          "m_Name": "Torture_Doodad_Impaled_Villager",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Bubble",
+        "file": "CAB-591d2d4b5f5d82c3fd778285a01aa858",
+        "id": -740011324757389285,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -2191221933891315455
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 8764248909133480693
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 447020092760840215
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6903666929030157273
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -1650583903135665733
+              }
+            }
+          ],
+          "m_Layer": 28,
+          "m_Name": "Arm Villager Bubble",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Bubble",
+        "file": "CAB-591d2d4b5f5d82c3fd778285a01aa858",
+        "id": -55166161634346626,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 2854728649483985285
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 7284026330912280090
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 874537626531339025
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 2892403757002463835
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -3080569684896674512
+              }
+            }
+          ],
+          "m_Layer": 28,
+          "m_Name": "Arm Villager Bubble",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Bubble",
+        "file": "CAB-591d2d4b5f5d82c3fd778285a01aa858",
+        "id": 385619383390672746,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4825142390401694124
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -2732690906590699446
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -3492536767073643367
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4838685565923193954
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 7181196551934961558
+              }
+            }
+          ],
+          "m_Layer": 28,
+          "m_Name": "Arm Villager Bubble",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Switch",
+        "file": "CAB-591d2d4b5f5d82c3fd778285a01aa858",
+        "id": 1428119654437652963,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -2821706306264862879
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -9202529443551411992
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Arm Villager Switch",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Switch",
+        "file": "CAB-591d2d4b5f5d82c3fd778285a01aa858",
+        "id": 2051510598690149083,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -5108282885034557010
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 5249499881337689354
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Arm Villager Switch",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Bubble",
+        "file": "CAB-591d2d4b5f5d82c3fd778285a01aa858",
+        "id": 2066059790097541452,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -9086161400095765286
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 1628531537186078030
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4393390473350996300
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -134225354097772490
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 5171664198006226948
+              }
+            }
+          ],
+          "m_Layer": 28,
+          "m_Name": "Arm Villager Bubble",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Switch",
+        "file": "CAB-591d2d4b5f5d82c3fd778285a01aa858",
+        "id": 5375711392390351884,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 476835480898349563
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -6459579034147729568
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Arm Villager Switch",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Bubble",
+        "file": "CAB-591d2d4b5f5d82c3fd778285a01aa858",
+        "id": 6156172741121629712,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 5445258843277601741
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 527483106929510430
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6819673229819645528
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 2013856120352701219
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -8789312379279700376
+              }
+            }
+          ],
+          "m_Layer": 28,
+          "m_Name": "Arm Villager Bubble",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Switch",
+        "file": "CAB-591d2d4b5f5d82c3fd778285a01aa858",
+        "id": 6202522808796168756,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6058859129252999541
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4561485695957035938
+              }
+            }
+          ],
+          "m_Layer": 5,
+          "m_Name": "Arm Villager Switch",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Torture_Doodad_Pole_With_Tied_Village",
+        "file": "CAB-591d2d4b5f5d82c3fd778285a01aa858",
+        "id": 6503119302219796081,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -4098884335224383259
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -1129267914961949861
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 4645875541743336913
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 8464010663796910166
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6088867205204875833
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -9061895591503726097
+              }
+            }
+          ],
+          "m_Layer": 8,
+          "m_Name": "Torture_Doodad_Pole_With_Tied_Village",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Switch",
+        "file": "CAB-591d2d4b5f5d82c3fd778285a01aa858",
+        "id": 7835955861599413271,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 7473440911990161542
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -3032361767220523747
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Arm Villager Switch",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Switch",
+        "file": "CAB-591d2d4b5f5d82c3fd778285a01aa858",
+        "id": 8068324974662644357,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -8781664259461569381
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 9119396389987446807
+              }
+            }
+          ],
+          "m_Layer": 0,
+          "m_Name": "Arm Villager Switch",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Arm Villager Bubble",
+        "file": "CAB-591d2d4b5f5d82c3fd778285a01aa858",
+        "id": 8231533254048665366,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 7137594377300690969
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 3145134655408511423
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 7071559992116127091
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -395840793679588228
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -7307071175129712258
+              }
+            }
+          ],
+          "m_Layer": 5,
+          "m_Name": "Arm Villager Bubble",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Impaled Villager",
+        "file": "CAB-591d2d4b5f5d82c3fd778285a01aa858",
+        "id": 8423592346075366965,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -2548967804254386788
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 1223755576309415620
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 3720135158058641884
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -3277100027391122771
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 7757536652722256887
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -4041327989355424477
+              }
+            }
+          ],
+          "m_Layer": 8,
+          "m_Name": "Impaled Villager",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      },
+      {
+        "type": "GameObject",
+        "name": "Tree_Clump8(VillageHut2)_Background",
+        "file": "CAB-591d2d4b5f5d82c3fd778285a01aa858",
+        "id": 9222761762217117368,
+        "tree": {
+          "m_Component": [
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -1624290756117614358
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -8966351026163268935
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -2381218857950539409
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": 6907026846821954952
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -658481100882749849
+              }
+            },
+            {
+              "component": {
+                "m_FileID": 0,
+                "m_PathID": -3843621722782923375
+              }
+            }
+          ],
+          "m_Layer": 27,
+          "m_Name": "Tree_Clump8(VillageHut2)_Background",
+          "m_Tag": 0,
+          "m_IsActive": true
+        }
+      }
+    ]
+  }
+]

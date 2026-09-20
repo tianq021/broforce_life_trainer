@@ -1,0 +1,23 @@
+# Python caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Build and packaged output
+build/
+dist/
+*.exe
+*.dll
+*.pyd
+*.pkg
+
+# Locally installed analysis dependencies
+analysis/python_deps/
+
+# Local backups, logs, and editor state
+backups/
+*.log
+.idea/
+.vscode/
+Thumbs.db
+.DS_Store

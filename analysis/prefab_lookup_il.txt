@@ -1,0 +1,18 @@
+
+METHOD InstantiationController :: UnityEngine.GameObject GetPrefabFromResourceName(System.String) public=True static=True
+PARAM 0 System.String resourceName
+IL_0000 call InstantiationController :: Networking.NetworkSpawnableManifest get_PrefabManifest()
+IL_0005 ldarg.0 
+IL_0006 callvirt Networking.NetworkSpawnableManifest :: UnityEngine.GameObject GetPrefabFromResourceName(System.String)
+IL_000b ret 
+
+METHOD Networking.NetworkSpawnableManifest :: UnityEngine.GameObject GetPrefabFromResourceName(System.String) public=True static=False
+PARAM 0 System.String resourceName
+IL_0000 ldsfld TFBGames.Systems.GameSystems :: TFBGames.Systems.ResourceManager ResourceManager
+IL_0005 stloc.0 
+IL_0006 ldloc.0 
+IL_0007 brtrue IL_000c
+IL_000c ldloc.0 
+IL_000d ldarg.1 
+IL_000e callvirt TFBGames.Systems.ResourceManager :: UnityEngine.GameObject LoadAssetSync[GameObject](System.String)
+IL_0013 ret 

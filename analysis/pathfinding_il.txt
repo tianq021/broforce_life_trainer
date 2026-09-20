@@ -1,0 +1,271 @@
+
+METHOD PathfindingController :: NavPath FindPath(GridPoint, GridPoint, PathAgentCapabilities, Single) public=True static=True
+PARAM 0 GridPoint fromPoint
+PARAM 1 GridPoint toPoint
+PARAM 2 PathAgentCapabilities capabilities
+PARAM 3 System.Single timeLimitInMilliseconds
+IL_0000 newobj PathfindingController+<FindPath>c__AnonStorey1 :: Void .ctor()
+IL_0005 stloc.0 
+IL_0006 ldloc.0 
+IL_0007 ldarg.0 
+IL_0008 stfld PathfindingController+<FindPath>c__AnonStorey1 :: GridPoint fromPoint
+IL_000d ldsfld PathfindingController :: System.Collections.Generic.List`1[PathPoint] openSet
+IL_0012 callvirt System.Collections.Generic.List`1[PathPoint] :: Void Clear()
+IL_0017 ldsfld PathfindingController :: System.Collections.Generic.List`1[PathPoint] closedSet
+IL_001c callvirt System.Collections.Generic.List`1[PathPoint] :: Void Clear()
+IL_0021 ldloc.0 
+IL_0022 ldfld PathfindingController+<FindPath>c__AnonStorey1 :: GridPoint fromPoint
+IL_0027 ldc.r4 0
+IL_002c newobj PathPoint :: Void .ctor(GridPoint, Single)
+IL_0031 stloc.1 
+IL_0032 ldloc.0 
+IL_0033 ldfld PathfindingController+<FindPath>c__AnonStorey1 :: GridPoint fromPoint
+IL_0038 ldfld GridPoint :: Int32 collumn
+IL_003d ldloc.0 
+IL_003e ldfld PathfindingController+<FindPath>c__AnonStorey1 :: GridPoint fromPoint
+IL_0043 ldfld GridPoint :: Int32 row
+IL_0048 ldc.i4.1 
+IL_0049 sub 
+IL_004a call Map :: Boolean IsBlockSolid(Int32, Int32)
+IL_004f brtrue IL_0102
+IL_0054 ldarg.2 
+IL_0055 ldfld PathAgentCapabilities :: Boolean canWallClimb
+IL_005a brfalse IL_0088
+IL_005f ldloc.0 
+IL_0060 ldfld PathfindingController+<FindPath>c__AnonStorey1 :: GridPoint fromPoint
+IL_0065 ldfld GridPoint :: Int32 collumn
+IL_006a ldc.i4.1 
+IL_006b sub 
+IL_006c ldloc.0 
+IL_006d ldfld PathfindingController+<FindPath>c__AnonStorey1 :: GridPoint fromPoint
+IL_0072 ldfld GridPoint :: Int32 row
+IL_0077 call Map :: Boolean IsBlockSolid(Int32, Int32)
+IL_007c brfalse IL_0088
+IL_0081 ldloc.1 
+IL_0082 ldc.i4.1 
+IL_0083 stfld PathPoint :: PathMoveMode moveMode
+IL_0088 ldarg.2 
+IL_0089 ldfld PathAgentCapabilities :: Boolean canWallClimb
+IL_008e brfalse IL_00bc
+IL_0093 ldloc.0 
+IL_0094 ldfld PathfindingController+<FindPath>c__AnonStorey1 :: GridPoint fromPoint
+IL_0099 ldfld GridPoint :: Int32 collumn
+IL_009e ldc.i4.1 
+IL_009f add 
+IL_00a0 ldloc.0 
+IL_00a1 ldfld PathfindingController+<FindPath>c__AnonStorey1 :: GridPoint fromPoint
+IL_00a6 ldfld GridPoint :: Int32 row
+IL_00ab call Map :: Boolean IsBlockSolid(Int32, Int32)
+IL_00b0 brfalse IL_00bc
+IL_00b5 ldloc.1 
+IL_00b6 ldc.i4.2 
+IL_00b7 stfld PathPoint :: PathMoveMode moveMode
+IL_00bc ldarg.2 
+IL_00bd ldfld PathAgentCapabilities :: Boolean canRoofClimb
+IL_00c2 brfalse IL_00f0
+IL_00c7 ldloc.0 
+IL_00c8 ldfld PathfindingController+<FindPath>c__AnonStorey1 :: GridPoint fromPoint
+IL_00cd ldfld GridPoint :: Int32 collumn
+IL_00d2 ldloc.0 
+IL_00d3 ldfld PathfindingController+<FindPath>c__AnonStorey1 :: GridPoint fromPoint
+IL_00d8 ldfld GridPoint :: Int32 row
+IL_00dd ldc.i4.1 
+IL_00de add 
+IL_00df call Map :: Boolean IsBlockSolid(Int32, Int32)
+IL_00e4 brfalse IL_00f0
+IL_00e9 ldloc.1 
+IL_00ea ldc.i4.4 
+IL_00eb stfld PathPoint :: PathMoveMode moveMode
+IL_00f0 ldloc.1 
+IL_00f1 ldfld PathPoint :: PathMoveMode moveMode
+IL_00f6 brtrue IL_0102
+IL_00fb ldloc.1 
+IL_00fc ldc.i4.3 
+IL_00fd stfld PathPoint :: PathMoveMode moveMode
+IL_0102 ldloc.1 
+IL_0103 ldloc.1 
+IL_0104 ldloc.0 
+IL_0105 ldfld PathfindingController+<FindPath>c__AnonStorey1 :: GridPoint fromPoint
+IL_010a ldarg.1 
+IL_010b call PathfindingController :: Int32 CalcFScore(GridPoint, GridPoint)
+IL_0110 conv.r4 
+IL_0111 dup 
+IL_0112 stloc.2 
+IL_0113 stfld PathPoint :: Single fScoreHeuristic
+IL_0118 ldloc.2 
+IL_0119 stfld PathPoint :: Single fScore
+IL_011e ldsfld PathfindingController :: System.Collections.Generic.List`1[PathPoint] openSet
+IL_0123 ldloc.1 
+IL_0124 callvirt System.Collections.Generic.List`1[PathPoint] :: Void Add(PathPoint)
+IL_0129 call UnityEngine.Time :: Single get_realtimeSinceStartup()
+IL_012e stloc.3 
+IL_012f br IL_0311
+IL_0134 ldsfld PathfindingController :: System.Collections.Generic.List`1[PathPoint] openSet
+IL_0139 call PathfindingController :: PathPoint FindLowestFScore(System.Collections.Generic.List`1[PathPoint])
+IL_013e stloc.s 4
+IL_0140 ldloc.s 4
+IL_0142 ldfld PathPoint :: GridPoint point
+IL_0147 ldarg.1 
+IL_0148 call GridPoint :: Boolean op_Equality(GridPoint, GridPoint)
+IL_014d brfalse IL_015a
+IL_0152 ldloc.s 4
+IL_0154 call PathfindingController :: NavPath ConstructPath(PathPoint)
+IL_0159 ret 
+IL_015a call UnityEngine.Time :: Single get_realtimeSinceStartup()
+IL_015f ldloc.3 
+IL_0160 sub 
+IL_0161 ldc.r4 1000
+IL_0166 mul 
+IL_0167 ldarg.3 
+IL_0168 ble.un IL_01c2
+IL_016d ldsfld PathfindingController :: System.Collections.Generic.List`1[PathPoint] openSet
+IL_0172 ldsfld PathfindingController :: System.Collections.Generic.List`1[PathPoint] closedSet
+IL_0177 call System.Linq.Enumerable :: System.Collections.Generic.IEnumerable`1[PathPoint] Union[PathPoint](System.Collections.Generic.IEnumerable`1[PathPoint], System.Collections.Generic.IEnumerable`1[PathPoint])
+IL_017c ldsfld PathfindingController :: System.Func`2[PathPoint,System.Single] <>f__am$cache0
+IL_0181 brtrue.s IL_0194
+IL_0183 ldnull 
+IL_0184 ldftn PathfindingController :: Single <FindPath>m__0(PathPoint)
+IL_018a newobj System.Func`2[PathPoint,System.Single] :: Void .ctor(System.Object, IntPtr)
+IL_018f stsfld PathfindingController :: System.Func`2[PathPoint,System.Single] <>f__am$cache0
+IL_0194 ldsfld PathfindingController :: System.Func`2[PathPoint,System.Single] <>f__am$cache0
+IL_0199 call System.Linq.Enumerable :: System.Linq.IOrderedEnumerable`1[PathPoint] OrderBy[PathPoint,Single](System.Collections.Generic.IEnumerable`1[PathPoint], System.Func`2[PathPoint,System.Single])
+IL_019e ldloc.0 
+IL_019f ldftn PathfindingController+<FindPath>c__AnonStorey1 :: Boolean <>m__0(PathPoint)
+IL_01a5 newobj System.Func`2[PathPoint,System.Boolean] :: Void .ctor(System.Object, IntPtr)
+IL_01aa call System.Linq.Enumerable :: PathPoint FirstOrDefault[PathPoint](System.Collections.Generic.IEnumerable`1[PathPoint], System.Func`2[PathPoint,System.Boolean])
+IL_01af stloc.s 5
+IL_01b1 ldloc.s 5
+IL_01b3 dup 
+IL_01b4 brtrue IL_01bc
+IL_01b9 pop 
+IL_01ba ldloc.s 4
+IL_01bc call PathfindingController :: NavPath ConstructPath(PathPoint)
+IL_01c1 ret 
+IL_01c2 ldsfld PathfindingController :: System.Collections.Generic.List`1[PathPoint] openSet
+IL_01c7 ldloc.s 4
+IL_01c9 callvirt System.Collections.Generic.List`1[PathPoint] :: Boolean Remove(PathPoint)
+IL_01ce pop 
+IL_01cf ldsfld PathfindingController :: System.Collections.Generic.List`1[PathPoint] closedSet
+IL_01d4 ldloc.s 4
+IL_01d6 callvirt System.Collections.Generic.List`1[PathPoint] :: Void Add(PathPoint)
+IL_01db ldloc.s 4
+IL_01dd ldarg.2 
+IL_01de call PathfindingController :: System.Collections.Generic.IEnumerable`1[PathPoint] GetAccessiblePoints(PathPoint, PathAgentCapabilities)
+IL_01e3 callvirt System.Collections.Generic.IEnumerable`1[PathPoint] :: System.Collections.Generic.IEnumerator`1[PathPoint] GetEnumerator()
+IL_01e8 stloc.s 7
+IL_01ea br IL_02f1
+IL_01ef ldloc.s 7
+IL_01f1 callvirt System.Collections.Generic.IEnumerator`1[PathPoint] :: PathPoint get_Current()
+IL_01f6 stloc.s 6
+IL_01f8 ldloc.s 6
+IL_01fa ldsfld PathfindingController :: System.Collections.Generic.List`1[PathPoint] closedSet
+IL_01ff call PathfindingController :: Boolean IsInSet(PathPoint, System.Collections.Generic.List`1[PathPoint])
+IL_0204 brfalse IL_020e
+IL_0209 leave IL_02f1
+IL_020e ldloc.s 6
+IL_0210 ldloc.s 4
+IL_0212 stfld PathPoint :: PathPoint previous
+IL_0217 ldloc.s 6
+IL_0219 ldloc.s 6
+IL_021b ldfld PathPoint :: GridPoint point
+IL_0220 ldarg.1 
+IL_0221 call PathfindingController :: Int32 CalcFScore(GridPoint, GridPoint)
+IL_0226 conv.r4 
+IL_0227 stfld PathPoint :: Single fScoreHeuristic
+IL_022c ldloc.s 6
+IL_022e ldloc.s 6
+IL_0230 ldfld PathPoint :: Single gValue
+IL_0235 ldloc.s 6
+IL_0237 ldfld PathPoint :: Single fScoreHeuristic
+IL_023c add 
+IL_023d stfld PathPoint :: Single fScore
+IL_0242 ldarg.2 
+IL_0243 ldfld PathAgentCapabilities :: Boolean fudge
+IL_0248 brfalse IL_026a
+IL_024d ldloc.s 6
+IL_024f dup 
+IL_0250 ldfld PathPoint :: Single fScore
+IL_0255 ldc.r4 0.8
+IL_025a ldc.r4 1.2
+IL_025f call UnityEngine.Random :: Single Range(Single, Single)
+IL_0264 mul 
+IL_0265 stfld PathPoint :: Single fScore
+IL_026a ldloc.s 6
+IL_026c ldsfld PathfindingController :: System.Collections.Generic.List`1[PathPoint] openSet
+IL_0271 call PathfindingController :: Boolean IsInSet(PathPoint, System.Collections.Generic.List`1[PathPoint])
+IL_0276 brfalse IL_02e5
+IL_027b ldsfld PathfindingController :: System.Collections.Generic.List`1[PathPoint] openSet
+IL_0280 ldloc.s 6
+IL_0282 call PathfindingController :: PathPoint FindSimilarPoint(System.Collections.Generic.List`1[PathPoint], PathPoint)
+IL_0287 stloc.s 8
+IL_0289 ldloc.s 8
+IL_028b ldfld PathPoint :: Single fScore
+IL_0290 ldloc.s 6
+IL_0292 ldfld PathPoint :: Single fScore
+IL_0297 ble.un IL_02cd
+IL_029c ldloc.s 8
+IL_029e ldfld PathPoint :: PathMoveMode moveMode
+IL_02a3 ldloc.s 6
+IL_02a5 ldfld PathPoint :: PathMoveMode moveMode
+IL_02aa bne.un IL_02cd
+IL_02af ldsfld PathfindingController :: System.Collections.Generic.List`1[PathPoint] openSet
+IL_02b4 ldloc.s 8
+IL_02b6 callvirt System.Collections.Generic.List`1[PathPoint] :: Boolean Remove(PathPoint)
+IL_02bb pop 
+IL_02bc ldsfld PathfindingController :: System.Collections.Generic.List`1[PathPoint] closedSet
+IL_02c1 ldloc.s 8
+IL_02c3 callvirt System.Collections.Generic.List`1[PathPoint] :: Void Add(PathPoint)
+IL_02c8 br IL_02e5
+IL_02cd ldloc.s 8
+IL_02cf ldfld PathPoint :: PathMoveMode moveMode
+IL_02d4 ldloc.s 6
+IL_02d6 ldfld PathPoint :: PathMoveMode moveMode
+IL_02db bne.un IL_02e5
+IL_02e0 leave IL_02f1
+IL_02e5 ldsfld PathfindingController :: System.Collections.Generic.List`1[PathPoint] openSet
+IL_02ea ldloc.s 6
+IL_02ec callvirt System.Collections.Generic.List`1[PathPoint] :: Void Add(PathPoint)
+IL_02f1 ldloc.s 7
+IL_02f3 callvirt System.Collections.IEnumerator :: Boolean MoveNext()
+IL_02f8 brtrue IL_01ef
+IL_02fd leave IL_0311
+IL_0302 ldloc.s 7
+IL_0304 brfalse IL_0310
+IL_0309 ldloc.s 7
+IL_030b callvirt System.IDisposable :: Void Dispose()
+IL_0310 endfinally 
+IL_0311 ldsfld PathfindingController :: System.Collections.Generic.List`1[PathPoint] openSet
+IL_0316 callvirt System.Collections.Generic.List`1[PathPoint] :: Int32 get_Count()
+IL_031b ldc.i4.0 
+IL_031c bgt IL_0134
+IL_0321 ldsfld PathfindingController :: System.Collections.Generic.List`1[PathPoint] openSet
+IL_0326 callvirt System.Collections.Generic.List`1[PathPoint] :: Int32 get_Count()
+IL_032b brtrue IL_0341
+IL_0330 ldsfld PathfindingController :: System.Collections.Generic.List`1[PathPoint] closedSet
+IL_0335 callvirt System.Collections.Generic.List`1[PathPoint] :: Int32 get_Count()
+IL_033a brtrue IL_0341
+IL_033f ldnull 
+IL_0340 ret 
+IL_0341 ldsfld PathfindingController :: System.Collections.Generic.List`1[PathPoint] openSet
+IL_0346 ldsfld PathfindingController :: System.Collections.Generic.List`1[PathPoint] closedSet
+IL_034b call System.Linq.Enumerable :: System.Collections.Generic.IEnumerable`1[PathPoint] Union[PathPoint](System.Collections.Generic.IEnumerable`1[PathPoint], System.Collections.Generic.IEnumerable`1[PathPoint])
+IL_0350 ldsfld PathfindingController :: System.Func`2[PathPoint,System.Single] <>f__am$cache1
+IL_0355 brtrue.s IL_0368
+IL_0357 ldnull 
+IL_0358 ldftn PathfindingController :: Single <FindPath>m__1(PathPoint)
+IL_035e newobj System.Func`2[PathPoint,System.Single] :: Void .ctor(System.Object, IntPtr)
+IL_0363 stsfld PathfindingController :: System.Func`2[PathPoint,System.Single] <>f__am$cache1
+IL_0368 ldsfld PathfindingController :: System.Func`2[PathPoint,System.Single] <>f__am$cache1
+IL_036d call System.Linq.Enumerable :: System.Linq.IOrderedEnumerable`1[PathPoint] OrderBy[PathPoint,Single](System.Collections.Generic.IEnumerable`1[PathPoint], System.Func`2[PathPoint,System.Single])
+IL_0372 ldloc.0 
+IL_0373 ldftn PathfindingController+<FindPath>c__AnonStorey1 :: Boolean <>m__1(PathPoint)
+IL_0379 newobj System.Func`2[PathPoint,System.Boolean] :: Void .ctor(System.Object, IntPtr)
+IL_037e call System.Linq.Enumerable :: PathPoint FirstOrDefault[PathPoint](System.Collections.Generic.IEnumerable`1[PathPoint], System.Func`2[PathPoint,System.Boolean])
+IL_0383 stloc.s 9
+IL_0385 ldloc.s 9
+IL_0387 brtrue IL_038e
+IL_038c ldnull 
+IL_038d ret 
+IL_038e ldloc.s 9
+IL_0390 call PathfindingController :: NavPath ConstructPath(PathPoint)
+IL_0395 ret 

@@ -1,0 +1,193 @@
+
+METHOD NetworkedUnit :: Int32 get_playerNum() public=True static=False
+IL_0000 ldarg.0 
+IL_0001 ldfld NetworkedUnit :: Int32 _playerNum
+IL_0006 ret 
+
+METHOD NetworkedUnit :: Void set_playerNum(Int32) public=True static=False
+PARAM 0 System.Int32 value
+IL_0000 ldarg.0 
+IL_0001 ldarg.1 
+IL_0002 stfld NetworkedUnit :: Int32 _playerNum
+IL_0007 ret 
+
+METHOD NetworkedUnit :: Void Awake() public=False static=False
+IL_0000 ldarg.0 
+IL_0001 ldarg.0 
+IL_0002 ldfld BroforceObject :: Int32 health
+IL_0007 stfld BroforceObject :: Int32 maxHealth
+IL_000c ret 
+
+METHOD NetworkedUnit :: Boolean get_IsEnemy() public=True static=False
+IL_0000 ldarg.0 
+IL_0001 ldfld NetworkedUnit :: System.Nullable`1[System.Boolean] isEnemy
+IL_0006 stloc.0 
+IL_0007 ldloca.s 0
+IL_0009 call System.Nullable`1[System.Boolean] :: Boolean get_HasValue()
+IL_000e ldc.i4.0 
+IL_000f ceq 
+IL_0011 brfalse IL_003b
+IL_0016 ldarg.0 
+IL_0017 ldarg.0 
+IL_0018 ldfld NetworkedUnit :: Boolean isHero
+IL_001d brtrue IL_0030
+IL_0022 ldarg.0 
+IL_0023 isinst  :: RescueBro
+IL_0028 ldnull 
+IL_0029 cgt.un 
+IL_002b ldc.i4.0 
+IL_002c ceq 
+IL_002e br.s IL_0031
+IL_0030 ldc.i4.0 
+IL_0031 newobj System.Nullable`1[System.Boolean] :: Void .ctor(Boolean)
+IL_0036 stfld NetworkedUnit :: System.Nullable`1[System.Boolean] isEnemy
+IL_003b ldarg.0 
+IL_003c ldfld NetworkedUnit :: System.Nullable`1[System.Boolean] isEnemy
+IL_0041 stloc.1 
+IL_0042 ldloca.s 1
+IL_0044 call System.Nullable`1[System.Boolean] :: Boolean get_Value()
+IL_0049 ret 
+
+METHOD NetworkedUnit :: Boolean get_IsMook() public=True static=False
+IL_0000 ldarg.0 
+IL_0001 isinst  :: Mook
+IL_0006 ldnull 
+IL_0007 cgt.un 
+IL_0009 ret 
+
+METHOD NetworkedUnit :: UnityEngine.Vector2 get_XY() public=True static=False
+IL_0000 ldarg.0 
+IL_0001 call BroforceObject :: Single get_X()
+IL_0006 ldarg.0 
+IL_0007 call BroforceObject :: Single get_Y()
+IL_000c newobj UnityEngine.Vector2 :: Void .ctor(Single, Single)
+IL_0011 ret 
+
+METHOD NetworkedUnit :: Void set_XY(UnityEngine.Vector2) public=True static=False
+PARAM 0 UnityEngine.Vector2 value
+IL_0000 ldarg.0 
+IL_0001 ldarga.s 1
+IL_0003 ldfld UnityEngine.Vector2 :: Single x
+IL_0008 ldarga.s 1
+IL_000a ldfld UnityEngine.Vector2 :: Single y
+IL_000f callvirt BroforceObject :: Void SetXY(Single, Single)
+IL_0014 ret 
+
+METHOD NetworkedUnit :: Int32 get_Direction() public=True static=False
+IL_0000 ldarg.0 
+IL_0001 call UnityEngine.Component :: UnityEngine.Transform get_transform()
+IL_0006 callvirt UnityEngine.Transform :: UnityEngine.Vector3 get_localScale()
+IL_000b stloc.0 
+IL_000c ldloca.s 0
+IL_000e ldfld UnityEngine.Vector3 :: Single x
+IL_0013 ldc.r4 0
+IL_0018 bge.un IL_001f
+IL_001d ldc.i4.m1 
+IL_001e ret 
+IL_001f ldc.i4.1 
+IL_0020 ret 
+
+METHOD NetworkedUnit :: UnityEngine.Vector3 get_DirectionVec() public=True static=False
+IL_0000 ldarg.0 
+IL_0001 call UnityEngine.Component :: UnityEngine.Transform get_transform()
+IL_0006 callvirt UnityEngine.Transform :: UnityEngine.Vector3 get_localScale()
+IL_000b ret 
+
+METHOD NetworkedUnit :: Byte get_DirectionSynced() public=True static=False
+IL_0000 ldarg.0 
+IL_0001 call UnityEngine.Component :: UnityEngine.Transform get_transform()
+IL_0006 callvirt UnityEngine.Transform :: UnityEngine.Vector3 get_localScale()
+IL_000b stloc.0 
+IL_000c ldloca.s 0
+IL_000e ldfld UnityEngine.Vector3 :: Single x
+IL_0013 ldc.r4 0
+IL_0018 bge.un IL_001f
+IL_001d ldc.i4.2 
+IL_001e ret 
+IL_001f ldc.i4.1 
+IL_0020 ret 
+
+METHOD NetworkedUnit :: Void set_DirectionSynced(Byte) public=True static=False
+PARAM 0 System.Byte value
+IL_0000 ldarg.0 
+IL_0001 ldc.i4.0 
+IL_0002 stfld NetworkedUnit :: Int32 syncedDirection
+IL_0007 ldarg.1 
+IL_0008 ldc.i4.2 
+IL_0009 bne.un IL_001a
+IL_000e ldarg.0 
+IL_000f ldc.i4.m1 
+IL_0010 stfld NetworkedUnit :: Int32 syncedDirection
+IL_0015 br IL_0021
+IL_001a ldarg.0 
+IL_001b ldc.i4.1 
+IL_001c stfld NetworkedUnit :: Int32 syncedDirection
+IL_0021 ldarg.0 
+IL_0022 call UnityEngine.Component :: UnityEngine.Transform get_transform()
+IL_0027 ldarg.0 
+IL_0028 ldfld NetworkedUnit :: Int32 syncedDirection
+IL_002d conv.r4 
+IL_002e ldarg.0 
+IL_002f call UnityEngine.Component :: UnityEngine.Transform get_transform()
+IL_0034 callvirt UnityEngine.Transform :: UnityEngine.Vector3 get_localScale()
+IL_0039 stloc.0 
+IL_003a ldloca.s 0
+IL_003c ldfld UnityEngine.Vector3 :: Single y
+IL_0041 ldarg.0 
+IL_0042 call UnityEngine.Component :: UnityEngine.Transform get_transform()
+IL_0047 callvirt UnityEngine.Transform :: UnityEngine.Vector3 get_localScale()
+IL_004c stloc.1 
+IL_004d ldloca.s 1
+IL_004f ldfld UnityEngine.Vector3 :: Single z
+IL_0054 newobj UnityEngine.Vector3 :: Void .ctor(Single, Single, Single)
+IL_0059 callvirt UnityEngine.Transform :: Void set_localScale(UnityEngine.Vector3)
+IL_005e ret 
+
+METHOD NetworkedUnit :: Boolean get_IsLocalMook() public=True static=False
+IL_0000 ldarg.0 
+IL_0001 ldfld NetworkedUnit :: PolymorphicAI enemyAI
+IL_0006 ldnull 
+IL_0007 call UnityEngine.Object :: Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_000c brfalse IL_0018
+IL_0011 ldarg.0 
+IL_0012 call NetworkObject :: Boolean get_IsMine()
+IL_0017 ret 
+IL_0018 ldarg.0 
+IL_0019 ldfld NetworkedUnit :: PolymorphicAI enemyAIOnChildOrParent
+IL_001e ldnull 
+IL_001f call UnityEngine.Object :: Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_0024 brfalse IL_0030
+IL_0029 ldarg.0 
+IL_002a call NetworkObject :: Boolean get_IsMine()
+IL_002f ret 
+IL_0030 ldc.i4.0 
+IL_0031 ret 
+
+METHOD NetworkedUnit :: Boolean get_IsHero() public=True static=False
+IL_0000 ldarg.0 
+IL_0001 ldfld NetworkedUnit :: Boolean isHero
+IL_0006 ret 
+
+METHOD NetworkedUnit :: Boolean ReadyTobeSynced() public=True static=False
+IL_0000 ldarg.0 
+IL_0001 callvirt NetworkedUnit :: UnityEngine.Vector2 get_XY()
+IL_0006 call UnityEngine.Vector2 :: UnityEngine.Vector3 op_Implicit(UnityEngine.Vector2)
+IL_000b stloc.0 
+IL_000c ldarg.0 
+IL_000d callvirt NetworkedUnit :: UnityEngine.Vector2 get_XY()
+IL_0012 stloc.1 
+IL_0013 ldloca.s 1
+IL_0015 ldfld UnityEngine.Vector2 :: Single x
+IL_001a ldc.r4 0
+IL_001f blt IL_003c
+IL_0024 ldarg.0 
+IL_0025 callvirt NetworkedUnit :: UnityEngine.Vector2 get_XY()
+IL_002a stloc.2 
+IL_002b ldloca.s 2
+IL_002d ldfld UnityEngine.Vector2 :: Single y
+IL_0032 ldc.r4 0
+IL_0037 bge.un IL_003e
+IL_003c ldc.i4.0 
+IL_003d ret 
+IL_003e ldc.i4.1 
+IL_003f ret 

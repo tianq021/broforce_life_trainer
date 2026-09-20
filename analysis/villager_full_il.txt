@@ -1,0 +1,79 @@
+
+METHOD VillagerAI :: Void DoPanicThink() public=False static=False
+IL_0000 ret 
+
+METHOD VillagerAI :: Void GetInput(Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef) public=True static=False
+PARAM 0 System.Boolean& left
+PARAM 1 System.Boolean& right
+PARAM 2 System.Boolean& up
+PARAM 3 System.Boolean& down
+PARAM 4 System.Boolean& jump
+PARAM 5 System.Boolean& fire
+PARAM 6 System.Boolean& special1
+PARAM 7 System.Boolean& special2
+PARAM 8 System.Boolean& special3
+PARAM 9 System.Boolean& special4
+PARAM 10 System.Boolean& climbButton
+IL_0000 ldarg.0 
+IL_0001 ldfld VillagerAI :: Boolean inMinionMode
+IL_0006 brfalse IL_0046
+IL_000b ldarg.0 
+IL_000c call UnityEngine.Component :: FollowerMinion GetComponent[FollowerMinion]()
+IL_0011 ldfld FollowerMinion :: Unit leader
+IL_0016 ldnull 
+IL_0017 call UnityEngine.Object :: Boolean op_Equality(UnityEngine.Object, UnityEngine.Object)
+IL_001c brfalse IL_002c
+IL_0021 ldarg.0 
+IL_0022 call UnityEngine.Component :: FollowerMinion GetComponent[FollowerMinion]()
+IL_0027 callvirt FollowerMinion :: Void FindLeader()
+IL_002c ldarg.0 
+IL_002d call UnityEngine.Component :: FollowerMinion GetComponent[FollowerMinion]()
+IL_0032 ldarg.1 
+IL_0033 ldarg.2 
+IL_0034 ldarg.3 
+IL_0035 ldarg.s 4
+IL_0037 ldarg.s 5
+IL_0039 ldarg.s 6
+IL_003b callvirt FollowerMinion :: Boolean GetInput(Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef)
+IL_0040 pop 
+IL_0041 br IL_005f
+IL_0046 ldarg.0 
+IL_0047 ldarg.1 
+IL_0048 ldarg.2 
+IL_0049 ldarg.3 
+IL_004a ldarg.s 4
+IL_004c ldarg.s 5
+IL_004e ldarg.s 6
+IL_0050 ldarg.s 7
+IL_0052 ldarg.s 8
+IL_0054 ldarg.s 9
+IL_0056 ldarg.s 10
+IL_0058 ldarg.s 11
+IL_005a call PolymorphicAI :: Void GetInput(Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef)
+IL_005f ret 
+
+METHOD VillagerAI :: Void EnterMinionMode() public=False static=False
+IL_0000 ldarg.0 
+IL_0001 ldc.i4.1 
+IL_0002 stfld VillagerAI :: Boolean inMinionMode
+IL_0007 ret 
+
+METHOD VillagerAI :: Void LookForEnemy() public=False static=False
+IL_0000 ret 
+
+METHOD VillagerAI :: Void HearSound(Single, Single) public=True static=False
+PARAM 0 System.Single alertX
+PARAM 1 System.Single alertY
+IL_0000 ret 
+
+METHOD VillagerAI :: Void FullyAlert(Single, Single, Int32) public=True static=False
+PARAM 0 System.Single x
+PARAM 1 System.Single y
+PARAM 2 System.Int32 playerNum
+IL_0000 ret 
+
+METHOD VillagerAI :: Boolean Panic(Int32, Boolean) public=True static=False
+PARAM 0 System.Int32 direction
+PARAM 1 System.Boolean forgetPlayer
+IL_0000 ldc.i4.0 
+IL_0001 ret 

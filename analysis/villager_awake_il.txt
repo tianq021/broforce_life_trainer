@@ -1,0 +1,120 @@
+
+METHOD Villager :: Void Awake() public=False static=False
+IL_0000 ldarg.0 
+IL_0001 ldarg.0 
+IL_0002 call UnityEngine.Component :: UnityEngine.Renderer GetComponent[Renderer]()
+IL_0007 callvirt UnityEngine.Renderer :: UnityEngine.Material get_sharedMaterial()
+IL_000c stfld Villager :: UnityEngine.Material armedMaterial
+IL_0011 ldarg.0 
+IL_0012 ldfld TestVanDammeAnim :: Parachute parachute
+IL_0017 ldnull 
+IL_0018 call UnityEngine.Object :: Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_001d brfalse IL_0033
+IL_0022 ldarg.0 
+IL_0023 ldfld TestVanDammeAnim :: Parachute parachute
+IL_0028 callvirt UnityEngine.Component :: UnityEngine.GameObject get_gameObject()
+IL_002d ldc.i4.0 
+IL_002e callvirt UnityEngine.GameObject :: Void SetActive(Boolean)
+IL_0033 ldarg.0 
+IL_0034 call UnityEngine.Component :: UnityEngine.GameObject get_gameObject()
+IL_0039 callvirt UnityEngine.GameObject :: DisableWhenOffCamera AddComponent[DisableWhenOffCamera]()
+IL_003e pop 
+IL_003f ldarg.0 
+IL_0040 call TestVanDammeAnim :: Void Awake()
+IL_0045 ldarg.0 
+IL_0046 call UnityEngine.Time :: Single get_time()
+IL_004b stfld Villager :: Single spawnTime
+IL_0050 ldarg.0 
+IL_0051 ldc.i4.0 
+IL_0052 stfld NetworkedUnit :: Boolean isHero
+IL_0057 ldarg.0 
+IL_0058 ldc.i4.5 
+IL_0059 call NetworkedUnit :: Void set_playerNum(Int32)
+IL_005e ldarg.0 
+IL_005f ldfld Villager :: Boolean hasGun
+IL_0064 brtrue IL_008b
+IL_0069 ldarg.0 
+IL_006a ldfld TestVanDammeAnim :: SpriteSM gunSprite
+IL_006f callvirt UnityEngine.Component :: UnityEngine.GameObject get_gameObject()
+IL_0074 ldc.i4.0 
+IL_0075 callvirt UnityEngine.GameObject :: Void SetActive(Boolean)
+IL_007a ldarg.0 
+IL_007b call UnityEngine.Component :: UnityEngine.Renderer GetComponent[Renderer]()
+IL_0080 ldarg.0 
+IL_0081 ldfld TestVanDammeAnim :: UnityEngine.Material disarmedGunMaterial
+IL_0086 callvirt UnityEngine.Renderer :: Void set_sharedMaterial(UnityEngine.Material)
+IL_008b ret 
+
+METHOD TorturedVillager :: Void Awake() public=False static=False
+IL_0000 call UnityEngine.Random :: Single get_value()
+IL_0005 ldc.r4 0.5
+IL_000a bge.un IL_005f
+IL_000f ldarg.0 
+IL_0010 ldfld TorturedVillager :: Villager maleVillagerPrefab
+IL_0015 stloc.0 
+IL_0016 ldarg.0 
+IL_0017 ldfld TorturedVillager :: LookAtPLayer maleHead
+IL_001c ldnull 
+IL_001d call UnityEngine.Object :: Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_0022 brfalse IL_0038
+IL_0027 ldarg.0 
+IL_0028 ldfld TorturedVillager :: LookAtPLayer maleHead
+IL_002d callvirt UnityEngine.Component :: UnityEngine.GameObject get_gameObject()
+IL_0032 ldc.i4.1 
+IL_0033 callvirt UnityEngine.GameObject :: Void SetActive(Boolean)
+IL_0038 ldarg.0 
+IL_0039 ldfld TorturedVillager :: LookAtPLayer femaleHead
+IL_003e ldnull 
+IL_003f call UnityEngine.Object :: Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_0044 brfalse IL_005a
+IL_0049 ldarg.0 
+IL_004a ldfld TorturedVillager :: LookAtPLayer femaleHead
+IL_004f callvirt UnityEngine.Component :: UnityEngine.GameObject get_gameObject()
+IL_0054 ldc.i4.0 
+IL_0055 callvirt UnityEngine.GameObject :: Void SetActive(Boolean)
+IL_005a br IL_00aa
+IL_005f ldarg.0 
+IL_0060 ldfld TorturedVillager :: Villager femaleVillagerPrefab
+IL_0065 stloc.0 
+IL_0066 ldarg.0 
+IL_0067 ldfld TorturedVillager :: LookAtPLayer maleHead
+IL_006c ldnull 
+IL_006d call UnityEngine.Object :: Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_0072 brfalse IL_0088
+IL_0077 ldarg.0 
+IL_0078 ldfld TorturedVillager :: LookAtPLayer maleHead
+IL_007d callvirt UnityEngine.Component :: UnityEngine.GameObject get_gameObject()
+IL_0082 ldc.i4.0 
+IL_0083 callvirt UnityEngine.GameObject :: Void SetActive(Boolean)
+IL_0088 ldarg.0 
+IL_0089 ldfld TorturedVillager :: LookAtPLayer femaleHead
+IL_008e ldnull 
+IL_008f call UnityEngine.Object :: Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_0094 brfalse IL_00aa
+IL_0099 ldarg.0 
+IL_009a ldfld TorturedVillager :: LookAtPLayer femaleHead
+IL_009f callvirt UnityEngine.Component :: UnityEngine.GameObject get_gameObject()
+IL_00a4 ldc.i4.1 
+IL_00a5 callvirt UnityEngine.GameObject :: Void SetActive(Boolean)
+IL_00aa ldarg.0 
+IL_00ab ldloc.0 
+IL_00ac call UnityEngine.Object :: Villager Instantiate[Villager](Villager)
+IL_00b1 stfld TorturedVillager :: Villager villagerInstance
+IL_00b6 ldarg.0 
+IL_00b7 ldfld TorturedVillager :: Villager villagerInstance
+IL_00bc callvirt UnityEngine.Component :: UnityEngine.Transform get_transform()
+IL_00c1 ldarg.0 
+IL_00c2 call UnityEngine.Component :: UnityEngine.Transform get_transform()
+IL_00c7 callvirt UnityEngine.Transform :: Void set_parent(UnityEngine.Transform)
+IL_00cc ldarg.0 
+IL_00cd ldfld TorturedVillager :: Villager villagerInstance
+IL_00d2 callvirt UnityEngine.Component :: UnityEngine.Transform get_transform()
+IL_00d7 ldc.r4 0
+IL_00dc ldc.r4 16
+IL_00e1 call Extensions :: Void SetLocalXY(UnityEngine.Transform, Single, Single)
+IL_00e6 ldarg.0 
+IL_00e7 ldfld TorturedVillager :: Villager villagerInstance
+IL_00ec callvirt UnityEngine.Component :: UnityEngine.GameObject get_gameObject()
+IL_00f1 ldc.i4.0 
+IL_00f2 callvirt UnityEngine.GameObject :: Void SetActive(Boolean)
+IL_00f7 ret 

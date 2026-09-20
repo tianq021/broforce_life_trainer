@@ -1,0 +1,1824 @@
+
+METHOD PathAgent :: Boolean get_IsClimbing() public=True static=False
+IL_0000 ldarg.0 
+IL_0001 call PathAgent :: PathPoint get_CurrentNode()
+IL_0006 brfalse IL_002f
+IL_000b ldarg.0 
+IL_000c call PathAgent :: PathPoint get_CurrentNode()
+IL_0011 ldfld PathPoint :: PathMoveMode moveMode
+IL_0016 ldc.i4.1 
+IL_0017 beq IL_002c
+IL_001c ldarg.0 
+IL_001d call PathAgent :: PathPoint get_CurrentNode()
+IL_0022 ldfld PathPoint :: PathMoveMode moveMode
+IL_0027 ldc.i4.2 
+IL_0028 ceq 
+IL_002a br.s IL_002d
+IL_002c ldc.i4.1 
+IL_002d br.s IL_0030
+IL_002f ldc.i4.0 
+IL_0030 ret 
+
+METHOD PathAgent :: NavPath get_CurrentPath() public=True static=False
+IL_0000 ldarg.0 
+IL_0001 ldfld PathAgent :: NavPath currentPath
+IL_0006 ret 
+
+METHOD PathAgent :: Void set_CurrentPath(NavPath) public=True static=False
+PARAM 0 NavPath value
+IL_0000 ldarg.0 
+IL_0001 ldc.r4 0
+IL_0006 stfld PathAgent :: Single timeStuckOnThisNode
+IL_000b ldarg.0 
+IL_000c ldc.i4.0 
+IL_000d stfld PathAgent :: Int32 currentNodeIndex
+IL_0012 ldarg.0 
+IL_0013 ldarg.1 
+IL_0014 stfld PathAgent :: NavPath currentPath
+IL_0019 ldarg.0 
+IL_001a call PathAgent :: Void InitCurrentNavPoint()
+IL_001f ret 
+
+METHOD PathAgent :: Boolean get_hasPath() public=True static=False
+IL_0000 ldarg.0 
+IL_0001 call PathAgent :: NavPath get_CurrentPath()
+IL_0006 ldnull 
+IL_0007 ceq 
+IL_0009 ldc.i4.0 
+IL_000a ceq 
+IL_000c ret 
+
+METHOD PathAgent :: Void GetPath(Int32, Int32, Single) public=True static=False
+PARAM 0 System.Int32 col
+PARAM 1 System.Int32 row
+PARAM 2 System.Single timeLimit
+IL_0000 ldarg.0 
+IL_0001 call PathAgent :: NavPath get_CurrentPath()
+IL_0006 stloc.0 
+IL_0007 ldnull 
+IL_0008 stloc.1 
+IL_0009 ldarg.0 
+IL_000a ldfld PathAgent :: TestVanDammeAnim unit
+IL_000f ldnull 
+IL_0010 call UnityEngine.Object :: Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_0015 brfalse IL_004e
+IL_001a ldarg.0 
+IL_001b ldfld PathAgent :: TestVanDammeAnim unit
+IL_0020 ldfld Unit :: Int32 collumn
+IL_0025 ldarg.0 
+IL_0026 ldfld PathAgent :: TestVanDammeAnim unit
+IL_002b ldfld Unit :: Int32 row
+IL_0030 newobj GridPoint :: Void .ctor(Int32, Int32)
+IL_0035 ldarg.1 
+IL_0036 ldarg.2 
+IL_0037 newobj GridPoint :: Void .ctor(Int32, Int32)
+IL_003c ldarg.0 
+IL_003d ldfld PathAgent :: PathAgentCapabilities capabilities
+IL_0042 ldarg.3 
+IL_0043 call PathfindingController :: NavPath FindPath(GridPoint, GridPoint, PathAgentCapabilities, Single)
+IL_0048 stloc.1 
+IL_0049 br IL_0072
+IL_004e ldarg.0 
+IL_004f call UnityEngine.Component :: UnityEngine.Transform get_transform()
+IL_0054 callvirt UnityEngine.Transform :: UnityEngine.Vector3 get_position()
+IL_0059 call Map :: GridPoint GetGridPoint(UnityEngine.Vector3)
+IL_005e ldarg.1 
+IL_005f ldarg.2 
+IL_0060 newobj GridPoint :: Void .ctor(Int32, Int32)
+IL_0065 ldarg.0 
+IL_0066 ldfld PathAgent :: PathAgentCapabilities capabilities
+IL_006b ldarg.3 
+IL_006c call PathfindingController :: NavPath FindPath(GridPoint, GridPoint, PathAgentCapabilities, Single)
+IL_0071 stloc.1 
+IL_0072 ldloc.0 
+IL_0073 brfalse IL_0091
+IL_0078 ldloc.1 
+IL_0079 brfalse IL_0091
+IL_007e ldarg.0 
+IL_007f ldarg.0 
+IL_0080 ldloc.0 
+IL_0081 ldloc.1 
+IL_0082 call PathAgent :: NavPath MergePaths(NavPath, NavPath)
+IL_0087 stfld PathAgent :: NavPath currentPath
+IL_008c br IL_0098
+IL_0091 ldarg.0 
+IL_0092 ldloc.1 
+IL_0093 stfld PathAgent :: NavPath currentPath
+IL_0098 ret 
+
+METHOD PathAgent :: NavPath MergePaths(NavPath, NavPath) public=False static=False
+PARAM 0 NavPath oldPath
+PARAM 1 NavPath newPath
+IL_0000 ldc.i4.0 
+IL_0001 stloc.0 
+IL_0002 ldc.i4.0 
+IL_0003 stloc.1 
+IL_0004 ldc.i4.0 
+IL_0005 stloc.0 
+IL_0006 br IL_007c
+IL_000b ldarg.1 
+IL_000c ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_0011 ldarg.1 
+IL_0012 ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_0017 callvirt System.Collections.Generic.List`1[PathPoint] :: Int32 get_Count()
+IL_001c ldc.i4.1 
+IL_001d sub 
+IL_001e callvirt System.Collections.Generic.List`1[PathPoint] :: PathPoint get_Item(Int32)
+IL_0023 ldfld PathPoint :: GridPoint point
+IL_0028 ldarg.2 
+IL_0029 ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_002e ldloc.0 
+IL_002f callvirt System.Collections.Generic.List`1[PathPoint] :: PathPoint get_Item(Int32)
+IL_0034 ldfld PathPoint :: GridPoint point
+IL_0039 call GridPoint :: Boolean op_Equality(GridPoint, GridPoint)
+IL_003e brfalse IL_0078
+IL_0043 ldarg.1 
+IL_0044 ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_0049 ldarg.1 
+IL_004a ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_004f callvirt System.Collections.Generic.List`1[PathPoint] :: Int32 get_Count()
+IL_0054 ldc.i4.1 
+IL_0055 sub 
+IL_0056 callvirt System.Collections.Generic.List`1[PathPoint] :: PathPoint get_Item(Int32)
+IL_005b ldfld PathPoint :: PathMoveMode moveMode
+IL_0060 ldarg.2 
+IL_0061 ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_0066 ldloc.0 
+IL_0067 callvirt System.Collections.Generic.List`1[PathPoint] :: PathPoint get_Item(Int32)
+IL_006c ldfld PathPoint :: PathMoveMode moveMode
+IL_0071 bne.un IL_0078
+IL_0076 ldc.i4.1 
+IL_0077 stloc.1 
+IL_0078 ldloc.0 
+IL_0079 ldc.i4.1 
+IL_007a add 
+IL_007b stloc.0 
+IL_007c ldloc.0 
+IL_007d ldarg.2 
+IL_007e ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_0083 callvirt System.Collections.Generic.List`1[PathPoint] :: Int32 get_Count()
+IL_0088 blt IL_000b
+IL_008d ldloc.1 
+IL_008e brfalse IL_00c8
+IL_0093 ldloc.0 
+IL_0094 stloc.2 
+IL_0095 br IL_00b5
+IL_009a ldarg.1 
+IL_009b ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_00a0 ldarg.2 
+IL_00a1 ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_00a6 ldloc.2 
+IL_00a7 callvirt System.Collections.Generic.List`1[PathPoint] :: PathPoint get_Item(Int32)
+IL_00ac callvirt System.Collections.Generic.List`1[PathPoint] :: Void Add(PathPoint)
+IL_00b1 ldloc.2 
+IL_00b2 ldc.i4.1 
+IL_00b3 add 
+IL_00b4 stloc.2 
+IL_00b5 ldloc.2 
+IL_00b6 ldarg.2 
+IL_00b7 ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_00bc callvirt System.Collections.Generic.List`1[PathPoint] :: Int32 get_Count()
+IL_00c1 blt IL_009a
+IL_00c6 ldarg.1 
+IL_00c7 ret 
+IL_00c8 ldarg.2 
+IL_00c9 ret 
+
+METHOD PathAgent :: Void Awake() public=False static=False
+IL_0000 ldarg.0 
+IL_0001 ldarg.0 
+IL_0002 call UnityEngine.Component :: TestVanDammeAnim GetComponent[TestVanDammeAnim]()
+IL_0007 stfld PathAgent :: TestVanDammeAnim unit
+IL_000c ret 
+
+METHOD PathAgent :: PathPoint get_CurrentNode() public=True static=False
+IL_0000 ldarg.0 
+IL_0001 call PathAgent :: NavPath get_CurrentPath()
+IL_0006 brfalse IL_0049
+IL_000b ldarg.0 
+IL_000c ldfld PathAgent :: Int32 currentNodeIndex
+IL_0011 ldc.i4.0 
+IL_0012 blt IL_0049
+IL_0017 ldarg.0 
+IL_0018 ldfld PathAgent :: Int32 currentNodeIndex
+IL_001d ldarg.0 
+IL_001e call PathAgent :: NavPath get_CurrentPath()
+IL_0023 ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_0028 callvirt System.Collections.Generic.List`1[PathPoint] :: Int32 get_Count()
+IL_002d bge IL_0049
+IL_0032 ldarg.0 
+IL_0033 call PathAgent :: NavPath get_CurrentPath()
+IL_0038 ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_003d ldarg.0 
+IL_003e ldfld PathAgent :: Int32 currentNodeIndex
+IL_0043 callvirt System.Collections.Generic.List`1[PathPoint] :: PathPoint get_Item(Int32)
+IL_0048 ret 
+IL_0049 ldnull 
+IL_004a ret 
+
+METHOD PathAgent :: Boolean GetMove(Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef) public=True static=False
+PARAM 0 System.Boolean& left
+PARAM 1 System.Boolean& right
+PARAM 2 System.Boolean& up
+PARAM 3 System.Boolean& down
+PARAM 4 System.Boolean& jump
+PARAM 5 System.Boolean& climbModifier
+IL_0000 ldarg.s 6
+IL_0002 ldc.i4.0 
+IL_0003 stind.i1 
+IL_0004 ldarg.0 
+IL_0005 ldarg.1 
+IL_0006 ldarg.2 
+IL_0007 ldarg.3 
+IL_0008 ldarg.s 4
+IL_000a ldarg.s 5
+IL_000c call PathAgent :: Boolean GetMove(Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef)
+IL_0011 stloc.0 
+IL_0012 ldarg.0 
+IL_0013 call PathAgent :: PathPoint get_CurrentNode()
+IL_0018 brfalse IL_005d
+IL_001d ldarg.0 
+IL_001e call PathAgent :: PathPoint get_CurrentNode()
+IL_0023 ldfld PathPoint :: PathMoveMode moveMode
+IL_0028 ldc.i4.4 
+IL_0029 beq IL_0050
+IL_002e ldarg.0 
+IL_002f call PathAgent :: PathPoint get_CurrentNode()
+IL_0034 ldfld PathPoint :: PathMoveMode moveMode
+IL_0039 ldc.i4.1 
+IL_003a beq IL_0050
+IL_003f ldarg.0 
+IL_0040 call PathAgent :: PathPoint get_CurrentNode()
+IL_0045 ldfld PathPoint :: PathMoveMode moveMode
+IL_004a ldc.i4.2 
+IL_004b bne.un IL_0059
+IL_0050 ldarg.s 6
+IL_0052 ldc.i4.1 
+IL_0053 stind.i1 
+IL_0054 br IL_005d
+IL_0059 ldarg.s 6
+IL_005b ldc.i4.0 
+IL_005c stind.i1 
+IL_005d ldloc.0 
+IL_005e ret 
+
+METHOD PathAgent :: Boolean GetMove(Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef) public=True static=False
+PARAM 0 System.Boolean& left
+PARAM 1 System.Boolean& right
+PARAM 2 System.Boolean& up
+PARAM 3 System.Boolean& down
+PARAM 4 System.Boolean& jump
+IL_0000 ldarg.0 
+IL_0001 ldfld PathAgent :: TestVanDammeAnim unit
+IL_0006 ldnull 
+IL_0007 call UnityEngine.Object :: Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_000c brfalse IL_003d
+IL_0011 ldarg.0 
+IL_0012 ldfld PathAgent :: GridPoint currentAgentGridPoint
+IL_0017 ldarg.0 
+IL_0018 ldfld PathAgent :: TestVanDammeAnim unit
+IL_001d ldfld Unit :: Int32 collumn
+IL_0022 stfld GridPoint :: Int32 collumn
+IL_0027 ldarg.0 
+IL_0028 ldfld PathAgent :: GridPoint currentAgentGridPoint
+IL_002d ldarg.0 
+IL_002e ldfld PathAgent :: TestVanDammeAnim unit
+IL_0033 ldfld Unit :: Int32 row
+IL_0038 stfld GridPoint :: Int32 row
+IL_003d ldarg.1 
+IL_003e ldarg.2 
+IL_003f ldarg.3 
+IL_0040 ldarg.s 4
+IL_0042 ldarg.s 5
+IL_0044 ldc.i4.0 
+IL_0045 dup 
+IL_0046 stloc.0 
+IL_0047 stind.i1 
+IL_0048 ldloc.0 
+IL_0049 dup 
+IL_004a stloc.0 
+IL_004b stind.i1 
+IL_004c ldloc.0 
+IL_004d dup 
+IL_004e stloc.0 
+IL_004f stind.i1 
+IL_0050 ldloc.0 
+IL_0051 dup 
+IL_0052 stloc.0 
+IL_0053 stind.i1 
+IL_0054 ldloc.0 
+IL_0055 stind.i1 
+IL_0056 call UnityEngine.Application :: Boolean get_isEditor()
+IL_005b brfalse IL_013d
+IL_0060 ldarg.0 
+IL_0061 ldfld PathAgent :: TestVanDammeAnim unit
+IL_0066 ldnull 
+IL_0067 call UnityEngine.Object :: Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_006c brfalse IL_013d
+IL_0071 ldarg.0 
+IL_0072 ldfld PathAgent :: TestVanDammeAnim unit
+IL_0077 ldfld Unit :: Boolean showDebugInfoForThisEnemy
+IL_007c brfalse IL_013d
+IL_0081 ldstr Node Index: {0}, DirectionSynced: {1}, Pos: ({2}, {3}), Targetpos:  ({4}, {5}), Dist: {6} UnitActionState: {7}
+IL_0086 ldc.i4.8 
+IL_0087 newarr  :: System.Object
+IL_008c dup 
+IL_008d ldc.i4.0 
+IL_008e ldarg.0 
+IL_008f ldfld PathAgent :: Int32 currentNodeIndex
+IL_0094 box  :: System.Int32
+IL_0099 stelem.ref 
+IL_009a dup 
+IL_009b ldc.i4.1 
+IL_009c ldarg.0 
+IL_009d ldfld PathAgent :: Int32 direction
+IL_00a2 box  :: System.Int32
+IL_00a7 stelem.ref 
+IL_00a8 dup 
+IL_00a9 ldc.i4.2 
+IL_00aa ldarg.0 
+IL_00ab ldflda PathAgent :: UnityEngine.Vector2 currentAgentPos
+IL_00b0 ldfld UnityEngine.Vector2 :: Single x
+IL_00b5 box  :: System.Single
+IL_00ba stelem.ref 
+IL_00bb dup 
+IL_00bc ldc.i4.3 
+IL_00bd ldarg.0 
+IL_00be ldflda PathAgent :: UnityEngine.Vector2 currentAgentPos
+IL_00c3 ldfld UnityEngine.Vector2 :: Single y
+IL_00c8 box  :: System.Single
+IL_00cd stelem.ref 
+IL_00ce dup 
+IL_00cf ldc.i4.4 
+IL_00d0 ldarg.0 
+IL_00d1 ldflda PathAgent :: UnityEngine.Vector2 currentTargetWorldPoint
+IL_00d6 ldfld UnityEngine.Vector2 :: Single x
+IL_00db box  :: System.Single
+IL_00e0 stelem.ref 
+IL_00e1 dup 
+IL_00e2 ldc.i4.5 
+IL_00e3 ldarg.0 
+IL_00e4 ldflda PathAgent :: UnityEngine.Vector2 currentTargetWorldPoint
+IL_00e9 ldfld UnityEngine.Vector2 :: Single y
+IL_00ee box  :: System.Single
+IL_00f3 stelem.ref 
+IL_00f4 dup 
+IL_00f5 ldc.i4.6 
+IL_00f6 ldarg.0 
+IL_00f7 ldfld PathAgent :: UnityEngine.Vector2 currentAgentPos
+IL_00fc ldarg.0 
+IL_00fd ldfld PathAgent :: UnityEngine.Vector2 currentTargetWorldPoint
+IL_0102 call UnityEngine.Vector2 :: UnityEngine.Vector2 op_Subtraction(UnityEngine.Vector2, UnityEngine.Vector2)
+IL_0107 call UnityEngine.Vector2 :: UnityEngine.Vector3 op_Implicit(UnityEngine.Vector2)
+IL_010c call UnityEngine.Vector3 :: Single SqrMagnitude(UnityEngine.Vector3)
+IL_0111 box  :: System.Single
+IL_0116 stelem.ref 
+IL_0117 dup 
+IL_0118 ldc.i4.7 
+IL_0119 ldarg.0 
+IL_011a ldfld PathAgent :: TestVanDammeAnim unit
+IL_011f callvirt Unit :: ActionState get_actionState()
+IL_0124 stloc.1 
+IL_0125 ldloca.s 1
+IL_0127 constrained.  :: ActionState
+IL_012d callvirt System.Object :: System.String ToString()
+IL_0132 stelem.ref 
+IL_0133 call System.String :: System.String Format(System.String, System.Object[])
+IL_0138 call LevelEditorGUI :: Void AddDebugText(System.String)
+IL_013d ldarg.0 
+IL_013e call PathAgent :: Boolean CheckWhetherToAdvanceNode()
+IL_0143 brfalse IL_014e
+IL_0148 ldarg.0 
+IL_0149 call PathAgent :: Void GoNextPoint()
+IL_014e ldarg.0 
+IL_014f ldfld PathAgent :: Int32 currentNodeIndex
+IL_0154 brtrue IL_037e
+IL_0159 ldarg.0 
+IL_015a ldfld PathAgent :: NavPath currentPath
+IL_015f brfalse IL_037e
+IL_0164 ldarg.0 
+IL_0165 ldfld PathAgent :: NavPath currentPath
+IL_016a ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_016f brfalse IL_037e
+IL_0174 ldarg.0 
+IL_0175 ldfld PathAgent :: NavPath currentPath
+IL_017a ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_017f callvirt System.Collections.Generic.List`1[PathPoint] :: Int32 get_Count()
+IL_0184 ldc.i4.1 
+IL_0185 ble IL_037e
+IL_018a ldarg.0 
+IL_018b ldfld PathAgent :: NavPath currentPath
+IL_0190 ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_0195 ldc.i4.0 
+IL_0196 callvirt System.Collections.Generic.List`1[PathPoint] :: PathPoint get_Item(Int32)
+IL_019b ldfld PathPoint :: PathMoveMode moveMode
+IL_01a0 brtrue IL_037e
+IL_01a5 ldarg.0 
+IL_01a6 ldfld PathAgent :: NavPath currentPath
+IL_01ab ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_01b0 ldc.i4.1 
+IL_01b1 callvirt System.Collections.Generic.List`1[PathPoint] :: PathPoint get_Item(Int32)
+IL_01b6 ldfld PathPoint :: PathMoveMode moveMode
+IL_01bb brtrue IL_037e
+IL_01c0 ldarg.0 
+IL_01c1 ldfld PathAgent :: NavPath currentPath
+IL_01c6 ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_01cb ldc.i4.0 
+IL_01cc callvirt System.Collections.Generic.List`1[PathPoint] :: PathPoint get_Item(Int32)
+IL_01d1 callvirt PathPoint :: Int32 get_row()
+IL_01d6 ldarg.0 
+IL_01d7 ldfld PathAgent :: NavPath currentPath
+IL_01dc ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_01e1 ldc.i4.1 
+IL_01e2 callvirt System.Collections.Generic.List`1[PathPoint] :: PathPoint get_Item(Int32)
+IL_01e7 callvirt PathPoint :: Int32 get_row()
+IL_01ec bne.un IL_037e
+IL_01f1 ldarg.0 
+IL_01f2 ldfld PathAgent :: NavPath currentPath
+IL_01f7 ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_01fc ldc.i4.0 
+IL_01fd callvirt System.Collections.Generic.List`1[PathPoint] :: PathPoint get_Item(Int32)
+IL_0202 callvirt PathPoint :: Int32 get_collumn()
+IL_0207 ldarg.0 
+IL_0208 ldfld PathAgent :: NavPath currentPath
+IL_020d ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_0212 ldc.i4.0 
+IL_0213 callvirt System.Collections.Generic.List`1[PathPoint] :: PathPoint get_Item(Int32)
+IL_0218 callvirt PathPoint :: Int32 get_row()
+IL_021d call Map :: UnityEngine.Vector2 GetBlockCenter(Int32, Int32)
+IL_0222 stloc.2 
+IL_0223 ldloca.s 2
+IL_0225 ldfld UnityEngine.Vector2 :: Single x
+IL_022a ldarg.0 
+IL_022b call UnityEngine.Component :: UnityEngine.Transform get_transform()
+IL_0230 callvirt UnityEngine.Transform :: UnityEngine.Vector3 get_position()
+IL_0235 stloc.3 
+IL_0236 ldloca.s 3
+IL_0238 ldfld UnityEngine.Vector3 :: Single x
+IL_023d bge.un IL_02b9
+IL_0242 ldarg.0 
+IL_0243 ldfld PathAgent :: NavPath currentPath
+IL_0248 ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_024d ldc.i4.1 
+IL_024e callvirt System.Collections.Generic.List`1[PathPoint] :: PathPoint get_Item(Int32)
+IL_0253 callvirt PathPoint :: Int32 get_collumn()
+IL_0258 ldarg.0 
+IL_0259 ldfld PathAgent :: NavPath currentPath
+IL_025e ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_0263 ldc.i4.1 
+IL_0264 callvirt System.Collections.Generic.List`1[PathPoint] :: PathPoint get_Item(Int32)
+IL_0269 callvirt PathPoint :: Int32 get_row()
+IL_026e call Map :: UnityEngine.Vector2 GetBlockCenter(Int32, Int32)
+IL_0273 stloc.s 4
+IL_0275 ldloca.s 4
+IL_0277 ldfld UnityEngine.Vector2 :: Single x
+IL_027c ldarg.0 
+IL_027d call UnityEngine.Component :: UnityEngine.Transform get_transform()
+IL_0282 callvirt UnityEngine.Transform :: UnityEngine.Vector3 get_position()
+IL_0287 stloc.s 5
+IL_0289 ldloca.s 5
+IL_028b ldfld UnityEngine.Vector3 :: Single x
+IL_0290 ble.un IL_02b9
+IL_0295 ldarg.0 
+IL_0296 dup 
+IL_0297 ldfld PathAgent :: Int32 currentNodeIndex
+IL_029c ldc.i4.1 
+IL_029d add 
+IL_029e stfld PathAgent :: Int32 currentNodeIndex
+IL_02a3 ldarg.0 
+IL_02a4 ldc.r4 0
+IL_02a9 stfld PathAgent :: Single timeStuckOnThisNode
+IL_02ae ldarg.0 
+IL_02af call PathAgent :: Void InitCurrentNavPoint()
+IL_02b4 br IL_037e
+IL_02b9 ldarg.0 
+IL_02ba ldfld PathAgent :: NavPath currentPath
+IL_02bf ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_02c4 ldc.i4.0 
+IL_02c5 callvirt System.Collections.Generic.List`1[PathPoint] :: PathPoint get_Item(Int32)
+IL_02ca callvirt PathPoint :: Int32 get_collumn()
+IL_02cf ldarg.0 
+IL_02d0 ldfld PathAgent :: NavPath currentPath
+IL_02d5 ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_02da ldc.i4.0 
+IL_02db callvirt System.Collections.Generic.List`1[PathPoint] :: PathPoint get_Item(Int32)
+IL_02e0 callvirt PathPoint :: Int32 get_row()
+IL_02e5 call Map :: UnityEngine.Vector2 GetBlockCenter(Int32, Int32)
+IL_02ea stloc.s 6
+IL_02ec ldloca.s 6
+IL_02ee ldfld UnityEngine.Vector2 :: Single x
+IL_02f3 ldarg.0 
+IL_02f4 call UnityEngine.Component :: UnityEngine.Transform get_transform()
+IL_02f9 callvirt UnityEngine.Transform :: UnityEngine.Vector3 get_position()
+IL_02fe stloc.s 7
+IL_0300 ldloca.s 7
+IL_0302 ldfld UnityEngine.Vector3 :: Single x
+IL_0307 ble.un IL_037e
+IL_030c ldarg.0 
+IL_030d ldfld PathAgent :: NavPath currentPath
+IL_0312 ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_0317 ldc.i4.1 
+IL_0318 callvirt System.Collections.Generic.List`1[PathPoint] :: PathPoint get_Item(Int32)
+IL_031d callvirt PathPoint :: Int32 get_collumn()
+IL_0322 ldarg.0 
+IL_0323 ldfld PathAgent :: NavPath currentPath
+IL_0328 ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_032d ldc.i4.1 
+IL_032e callvirt System.Collections.Generic.List`1[PathPoint] :: PathPoint get_Item(Int32)
+IL_0333 callvirt PathPoint :: Int32 get_row()
+IL_0338 call Map :: UnityEngine.Vector2 GetBlockCenter(Int32, Int32)
+IL_033d stloc.s 8
+IL_033f ldloca.s 8
+IL_0341 ldfld UnityEngine.Vector2 :: Single x
+IL_0346 ldarg.0 
+IL_0347 call UnityEngine.Component :: UnityEngine.Transform get_transform()
+IL_034c callvirt UnityEngine.Transform :: UnityEngine.Vector3 get_position()
+IL_0351 stloc.s 9
+IL_0353 ldloca.s 9
+IL_0355 ldfld UnityEngine.Vector3 :: Single x
+IL_035a bge.un IL_037e
+IL_035f ldarg.0 
+IL_0360 dup 
+IL_0361 ldfld PathAgent :: Int32 currentNodeIndex
+IL_0366 ldc.i4.1 
+IL_0367 add 
+IL_0368 stfld PathAgent :: Int32 currentNodeIndex
+IL_036d ldarg.0 
+IL_036e ldc.r4 0
+IL_0373 stfld PathAgent :: Single timeStuckOnThisNode
+IL_0378 ldarg.0 
+IL_0379 call PathAgent :: Void InitCurrentNavPoint()
+IL_037e ldarg.0 
+IL_037f call PathAgent :: NavPath get_CurrentPath()
+IL_0384 brfalse IL_03ab
+IL_0389 ldarg.0 
+IL_038a ldfld PathAgent :: Int32 currentNodeIndex
+IL_038f ldarg.0 
+IL_0390 call PathAgent :: NavPath get_CurrentPath()
+IL_0395 ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_039a callvirt System.Collections.Generic.List`1[PathPoint] :: Int32 get_Count()
+IL_039f blt IL_03ab
+IL_03a4 ldarg.0 
+IL_03a5 ldnull 
+IL_03a6 call PathAgent :: Void set_CurrentPath(NavPath)
+IL_03ab ldarg.0 
+IL_03ac call PathAgent :: NavPath get_CurrentPath()
+IL_03b1 brtrue IL_03b8
+IL_03b6 ldc.i4.1 
+IL_03b7 ret 
+IL_03b8 ldarg.0 
+IL_03b9 ldarg.0 
+IL_03ba call PathAgent :: NavPath get_CurrentPath()
+IL_03bf ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_03c4 ldarg.0 
+IL_03c5 ldfld PathAgent :: Int32 currentNodeIndex
+IL_03ca callvirt System.Collections.Generic.List`1[PathPoint] :: PathPoint get_Item(Int32)
+IL_03cf callvirt PathPoint :: Int32 get_collumn()
+IL_03d4 ldarg.0 
+IL_03d5 call PathAgent :: NavPath get_CurrentPath()
+IL_03da ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_03df ldarg.0 
+IL_03e0 ldfld PathAgent :: Int32 currentNodeIndex
+IL_03e5 callvirt System.Collections.Generic.List`1[PathPoint] :: PathPoint get_Item(Int32)
+IL_03ea callvirt PathPoint :: Int32 get_row()
+IL_03ef call Map :: UnityEngine.Vector2 GetBlockCenter(Int32, Int32)
+IL_03f4 stfld PathAgent :: UnityEngine.Vector2 currentTargetWorldPoint
+IL_03f9 ldarg.0 
+IL_03fa ldarg.0 
+IL_03fb ldfld PathAgent :: NavPath currentPath
+IL_0400 ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_0405 ldarg.0 
+IL_0406 ldfld PathAgent :: Int32 currentNodeIndex
+IL_040b callvirt System.Collections.Generic.List`1[PathPoint] :: PathPoint get_Item(Int32)
+IL_0410 callvirt PathPoint :: Int32 get_collumn()
+IL_0415 ldarg.0 
+IL_0416 ldfld PathAgent :: GridPoint currentAgentGridPoint
+IL_041b ldfld GridPoint :: Int32 collumn
+IL_0420 sub 
+IL_0421 stfld PathAgent :: Int32 direction
+IL_0426 ldarg.0 
+IL_0427 ldfld PathAgent :: Int32 direction
+IL_042c brfalse IL_0449
+IL_0431 ldarg.0 
+IL_0432 ldarg.0 
+IL_0433 ldfld PathAgent :: Int32 direction
+IL_0438 ldarg.0 
+IL_0439 ldfld PathAgent :: Int32 direction
+IL_043e call UnityEngine.Mathf :: Int32 Abs(Int32)
+IL_0443 div 
+IL_0444 stfld PathAgent :: Int32 direction
+IL_0449 ldarg.0 
+IL_044a ldarg.0 
+IL_044b call UnityEngine.Component :: UnityEngine.Transform get_transform()
+IL_0450 callvirt UnityEngine.Transform :: UnityEngine.Vector3 get_position()
+IL_0455 call UnityEngine.Vector2 :: UnityEngine.Vector2 op_Implicit(UnityEngine.Vector3)
+IL_045a stfld PathAgent :: UnityEngine.Vector2 currentAgentPos
+IL_045f ldarg.0 
+IL_0460 ldfld PathAgent :: Int32 currentNodeIndex
+IL_0465 ldarg.0 
+IL_0466 call PathAgent :: NavPath get_CurrentPath()
+IL_046b ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_0470 callvirt System.Collections.Generic.List`1[PathPoint] :: Int32 get_Count()
+IL_0475 bne.un IL_0483
+IL_047a ldarg.0 
+IL_047b ldnull 
+IL_047c call PathAgent :: Void set_CurrentPath(NavPath)
+IL_0481 ldc.i4.1 
+IL_0482 ret 
+IL_0483 ldarg.0 
+IL_0484 ldfld PathAgent :: Int32 currentNodeIndex
+IL_0489 ldc.i4.0 
+IL_048a ble IL_04ac
+IL_048f ldarg.0 
+IL_0490 call PathAgent :: NavPath get_CurrentPath()
+IL_0495 ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_049a ldarg.0 
+IL_049b ldfld PathAgent :: Int32 currentNodeIndex
+IL_04a0 ldc.i4.1 
+IL_04a1 sub 
+IL_04a2 callvirt System.Collections.Generic.List`1[PathPoint] :: PathPoint get_Item(Int32)
+IL_04a7 br IL_04ad
+IL_04ac ldnull 
+IL_04ad stloc.s 10
+IL_04af ldarg.0 
+IL_04b0 call PathAgent :: NavPath get_CurrentPath()
+IL_04b5 ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_04ba ldarg.0 
+IL_04bb ldfld PathAgent :: Int32 currentNodeIndex
+IL_04c0 callvirt System.Collections.Generic.List`1[PathPoint] :: PathPoint get_Item(Int32)
+IL_04c5 stloc.s 11
+IL_04c7 ldarg.0 
+IL_04c8 ldarg.0 
+IL_04c9 call PathAgent :: NavPath get_CurrentPath()
+IL_04ce ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_04d3 ldarg.0 
+IL_04d4 ldfld PathAgent :: Int32 currentNodeIndex
+IL_04d9 callvirt System.Collections.Generic.List`1[PathPoint] :: PathPoint get_Item(Int32)
+IL_04de callvirt PathPoint :: Int32 get_collumn()
+IL_04e3 ldarg.0 
+IL_04e4 call PathAgent :: NavPath get_CurrentPath()
+IL_04e9 ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_04ee ldarg.0 
+IL_04ef ldfld PathAgent :: Int32 currentNodeIndex
+IL_04f4 callvirt System.Collections.Generic.List`1[PathPoint] :: PathPoint get_Item(Int32)
+IL_04f9 callvirt PathPoint :: Int32 get_row()
+IL_04fe call Map :: UnityEngine.Vector2 GetBlockCenter(Int32, Int32)
+IL_0503 stfld PathAgent :: UnityEngine.Vector2 currentTargetWorldPoint
+IL_0508 ldarg.0 
+IL_0509 ldfld PathAgent :: PathAgentCapabilities capabilities
+IL_050e ldfld PathAgentCapabilities :: Boolean flying
+IL_0513 brfalse IL_05ae
+IL_0518 ldarg.0 
+IL_0519 ldflda PathAgent :: UnityEngine.Vector2 currentAgentPos
+IL_051e ldfld UnityEngine.Vector2 :: Single x
+IL_0523 ldarg.0 
+IL_0524 ldflda PathAgent :: UnityEngine.Vector2 currentTargetWorldPoint
+IL_0529 ldfld UnityEngine.Vector2 :: Single x
+IL_052e sub 
+IL_052f ldc.r4 -3
+IL_0534 bge.un IL_053c
+IL_0539 ldarg.2 
+IL_053a ldc.i4.1 
+IL_053b stind.i1 
+IL_053c ldarg.0 
+IL_053d ldflda PathAgent :: UnityEngine.Vector2 currentAgentPos
+IL_0542 ldfld UnityEngine.Vector2 :: Single x
+IL_0547 ldarg.0 
+IL_0548 ldflda PathAgent :: UnityEngine.Vector2 currentTargetWorldPoint
+IL_054d ldfld UnityEngine.Vector2 :: Single x
+IL_0552 sub 
+IL_0553 ldc.r4 3
+IL_0558 ble.un IL_0560
+IL_055d ldarg.1 
+IL_055e ldc.i4.1 
+IL_055f stind.i1 
+IL_0560 ldarg.0 
+IL_0561 ldflda PathAgent :: UnityEngine.Vector2 currentAgentPos
+IL_0566 ldfld UnityEngine.Vector2 :: Single y
+IL_056b ldarg.0 
+IL_056c ldflda PathAgent :: UnityEngine.Vector2 currentTargetWorldPoint
+IL_0571 ldfld UnityEngine.Vector2 :: Single y
+IL_0576 sub 
+IL_0577 ldc.r4 -3
+IL_057c bge.un IL_0584
+IL_0581 ldarg.3 
+IL_0582 ldc.i4.1 
+IL_0583 stind.i1 
+IL_0584 ldarg.0 
+IL_0585 ldflda PathAgent :: UnityEngine.Vector2 currentAgentPos
+IL_058a ldfld UnityEngine.Vector2 :: Single y
+IL_058f ldarg.0 
+IL_0590 ldflda PathAgent :: UnityEngine.Vector2 currentTargetWorldPoint
+IL_0595 ldfld UnityEngine.Vector2 :: Single y
+IL_059a sub 
+IL_059b ldc.r4 3
+IL_05a0 ble.un IL_05a9
+IL_05a5 ldarg.s 4
+IL_05a7 ldc.i4.1 
+IL_05a8 stind.i1 
+IL_05a9 br IL_0a91
+IL_05ae ldarg.0 
+IL_05af ldflda PathAgent :: UnityEngine.Vector2 currentAgentPos
+IL_05b4 dup 
+IL_05b5 ldfld UnityEngine.Vector2 :: Single y
+IL_05ba ldc.r4 8
+IL_05bf add 
+IL_05c0 stfld UnityEngine.Vector2 :: Single y
+IL_05c5 ldloc.s 11
+IL_05c7 ldfld PathPoint :: PathMoveMode moveMode
+IL_05cc ldc.i4.3 
+IL_05cd bne.un IL_0795
+IL_05d2 ldarg.0 
+IL_05d3 ldfld PathAgent :: Boolean haveReachedCenter
+IL_05d8 brtrue IL_06cd
+IL_05dd ldarg.0 
+IL_05de ldfld PathAgent :: Int32 direction
+IL_05e3 ldc.i4.0 
+IL_05e4 ble IL_060c
+IL_05e9 ldarg.0 
+IL_05ea ldflda PathAgent :: UnityEngine.Vector2 currentAgentPos
+IL_05ef ldfld UnityEngine.Vector2 :: Single x
+IL_05f4 ldarg.0 
+IL_05f5 ldflda PathAgent :: UnityEngine.Vector3 tileStartPos
+IL_05fa ldfld UnityEngine.Vector3 :: Single x
+IL_05ff ble.un IL_060c
+IL_0604 ldarg.1 
+IL_0605 ldc.i4.1 
+IL_0606 stind.i1 
+IL_0607 br IL_0660
+IL_060c ldarg.0 
+IL_060d ldfld PathAgent :: Int32 direction
+IL_0612 ldc.i4.0 
+IL_0613 bge IL_063b
+IL_0618 ldarg.0 
+IL_0619 ldflda PathAgent :: UnityEngine.Vector2 currentAgentPos
+IL_061e ldfld UnityEngine.Vector2 :: Single x
+IL_0623 ldarg.0 
+IL_0624 ldflda PathAgent :: UnityEngine.Vector3 tileStartPos
+IL_0629 ldfld UnityEngine.Vector3 :: Single x
+IL_062e bge.un IL_063b
+IL_0633 ldarg.2 
+IL_0634 ldc.i4.1 
+IL_0635 stind.i1 
+IL_0636 br IL_0660
+IL_063b ldarg.0 
+IL_063c ldc.i4.1 
+IL_063d stfld PathAgent :: Boolean haveReachedCenter
+IL_0642 ldarg.0 
+IL_0643 ldfld PathAgent :: Int32 direction
+IL_0648 ldc.i4.0 
+IL_0649 bge IL_0651
+IL_064e ldarg.1 
+IL_064f ldc.i4.1 
+IL_0650 stind.i1 
+IL_0651 ldarg.0 
+IL_0652 ldfld PathAgent :: Int32 direction
+IL_0657 ldc.i4.0 
+IL_0658 ble IL_0660
+IL_065d ldarg.2 
+IL_065e ldc.i4.1 
+IL_065f stind.i1 
+IL_0660 ldarg.0 
+IL_0661 ldflda PathAgent :: UnityEngine.Vector2 currentAgentPos
+IL_0666 ldfld UnityEngine.Vector2 :: Single x
+IL_066b ldarg.0 
+IL_066c ldflda PathAgent :: UnityEngine.Vector3 tileStartPos
+IL_0671 ldfld UnityEngine.Vector3 :: Single x
+IL_0676 sub 
+IL_0677 call UnityEngine.Mathf :: Single Abs(Single)
+IL_067c ldc.r4 5
+IL_0681 blt IL_06b1
+IL_0686 ldarg.0 
+IL_0687 call PathAgent :: NavPath get_CurrentPath()
+IL_068c ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_0691 ldarg.0 
+IL_0692 ldfld PathAgent :: Int32 currentNodeIndex
+IL_0697 callvirt System.Collections.Generic.List`1[PathPoint] :: PathPoint get_Item(Int32)
+IL_069c callvirt PathPoint :: Int32 get_collumn()
+IL_06a1 ldarg.0 
+IL_06a2 ldfld PathAgent :: GridPoint currentAgentGridPoint
+IL_06a7 ldfld GridPoint :: Int32 collumn
+IL_06ac bne.un IL_06c8
+IL_06b1 ldarg.0 
+IL_06b2 ldfld PathAgent :: TestVanDammeAnim unit
+IL_06b7 callvirt Unit :: Boolean IsOnGround()
+IL_06bc brfalse IL_06c8
+IL_06c1 ldarg.0 
+IL_06c2 ldc.i4.1 
+IL_06c3 stfld PathAgent :: Boolean haveReachedCenter
+IL_06c8 br IL_0790
+IL_06cd ldarg.0 
+IL_06ce ldarg.3 
+IL_06cf ldarg.s 4
+IL_06d1 ldarg.1 
+IL_06d2 ldarg.2 
+IL_06d3 call PathAgent :: Void ApplyNaiveDirectionalMovement(Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef)
+IL_06d8 ldarg.0 
+IL_06d9 ldfld PathAgent :: TestVanDammeAnim unit
+IL_06de callvirt Unit :: ActionState get_actionState()
+IL_06e3 ldc.i4.3 
+IL_06e4 beq IL_0771
+IL_06e9 ldarg.0 
+IL_06ea ldfld PathAgent :: GridPoint currentAgentGridPoint
+IL_06ef ldfld GridPoint :: Int32 collumn
+IL_06f4 ldarg.0 
+IL_06f5 ldfld PathAgent :: Int32 direction
+IL_06fa add 
+IL_06fb ldarg.0 
+IL_06fc ldfld PathAgent :: GridPoint currentAgentGridPoint
+IL_0701 ldfld GridPoint :: Int32 row
+IL_0706 call Map :: Boolean IsBlockSolid(Int32, Int32)
+IL_070b brtrue IL_0768
+IL_0710 ldarg.0 
+IL_0711 ldflda PathAgent :: UnityEngine.Vector2 currentAgentPos
+IL_0716 ldfld UnityEngine.Vector2 :: Single x
+IL_071b ldarg.0 
+IL_071c ldflda PathAgent :: UnityEngine.Vector3 tileStartPos
+IL_0721 ldfld UnityEngine.Vector3 :: Single x
+IL_0726 sub 
+IL_0727 call UnityEngine.Mathf :: Single Abs(Single)
+IL_072c ldarg.0 
+IL_072d ldfld PathAgent :: Single agentSize
+IL_0732 ldc.r4 0.75
+IL_0737 mul 
+IL_0738 bgt IL_0768
+IL_073d ldarg.0 
+IL_073e call PathAgent :: NavPath get_CurrentPath()
+IL_0743 ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_0748 ldarg.0 
+IL_0749 ldfld PathAgent :: Int32 currentNodeIndex
+IL_074e callvirt System.Collections.Generic.List`1[PathPoint] :: PathPoint get_Item(Int32)
+IL_0753 callvirt PathPoint :: Int32 get_collumn()
+IL_0758 ldarg.0 
+IL_0759 ldfld PathAgent :: GridPoint currentAgentGridPoint
+IL_075e ldfld GridPoint :: Int32 collumn
+IL_0763 bne.un IL_076c
+IL_0768 ldarg.s 5
+IL_076a ldc.i4.1 
+IL_076b stind.i1 
+IL_076c br IL_0790
+IL_0771 ldarg.0 
+IL_0772 ldflda PathAgent :: UnityEngine.Vector2 currentAgentPos
+IL_0777 ldfld UnityEngine.Vector2 :: Single y
+IL_077c ldarg.0 
+IL_077d ldflda PathAgent :: UnityEngine.Vector2 currentTargetWorldPoint
+IL_0782 ldfld UnityEngine.Vector2 :: Single y
+IL_0787 bge.un IL_0790
+IL_078c ldarg.s 5
+IL_078e ldc.i4.1 
+IL_078f stind.i1 
+IL_0790 br IL_094b
+IL_0795 ldarg.0 
+IL_0796 ldarg.3 
+IL_0797 ldarg.s 4
+IL_0799 ldarg.1 
+IL_079a ldarg.2 
+IL_079b call PathAgent :: Void ApplyNaiveDirectionalMovement(Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef)
+IL_07a0 ldarg.0 
+IL_07a1 ldflda PathAgent :: UnityEngine.Vector2 currentAgentPos
+IL_07a6 ldfld UnityEngine.Vector2 :: Single y
+IL_07ab ldarg.0 
+IL_07ac ldflda PathAgent :: UnityEngine.Vector2 currentTargetWorldPoint
+IL_07b1 ldfld UnityEngine.Vector2 :: Single y
+IL_07b6 sub 
+IL_07b7 ldc.r4 0
+IL_07bc ble.un IL_081e
+IL_07c1 ldarg.0 
+IL_07c2 ldfld PathAgent :: GridPoint currentAgentGridPoint
+IL_07c7 ldfld GridPoint :: Int32 collumn
+IL_07cc ldarg.0 
+IL_07cd ldfld PathAgent :: GridPoint currentAgentGridPoint
+IL_07d2 ldfld GridPoint :: Int32 row
+IL_07d7 call Map :: Boolean IsBlockLadder(Int32, Int32)
+IL_07dc brtrue IL_0811
+IL_07e1 ldarg.0 
+IL_07e2 ldflda PathAgent :: UnityEngine.Vector2 currentTargetWorldPoint
+IL_07e7 ldfld UnityEngine.Vector2 :: Single x
+IL_07ec ldarg.0 
+IL_07ed ldflda PathAgent :: UnityEngine.Vector2 currentTargetWorldPoint
+IL_07f2 ldfld UnityEngine.Vector2 :: Single y
+IL_07f7 call Map :: Boolean IsBlockLadder(Single, Single)
+IL_07fc brtrue IL_0811
+IL_0801 ldarg.0 
+IL_0802 ldfld PathAgent :: TestVanDammeAnim unit
+IL_0807 callvirt TestVanDammeAnim :: Boolean get_WallClimbing()
+IL_080c brfalse IL_081a
+IL_0811 ldarg.s 4
+IL_0813 ldc.i4.1 
+IL_0814 stind.i1 
+IL_0815 br IL_081e
+IL_081a ldarg.s 4
+IL_081c ldc.i4.0 
+IL_081d stind.i1 
+IL_081e ldloc.s 11
+IL_0820 ldfld PathPoint :: PathMoveMode moveMode
+IL_0825 ldc.i4.4 
+IL_0826 bne.un IL_0927
+IL_082b ldloc.s 10
+IL_082d brfalse IL_086c
+IL_0832 ldloc.s 10
+IL_0834 ldfld PathPoint :: PathMoveMode moveMode
+IL_0839 ldc.i4.4 
+IL_083a beq IL_0859
+IL_083f ldloc.s 10
+IL_0841 ldfld PathPoint :: PathMoveMode moveMode
+IL_0846 ldc.i4.1 
+IL_0847 beq IL_0859
+IL_084c ldloc.s 10
+IL_084e ldfld PathPoint :: PathMoveMode moveMode
+IL_0853 ldc.i4.2 
+IL_0854 bne.un IL_086c
+IL_0859 ldloc.s 10
+IL_085b callvirt PathPoint :: Int32 get_row()
+IL_0860 ldloc.s 11
+IL_0862 callvirt PathPoint :: Int32 get_row()
+IL_0867 bge IL_087a
+IL_086c ldarg.s 5
+IL_086e ldarg.3 
+IL_086f ldc.i4.1 
+IL_0870 dup 
+IL_0871 stloc.0 
+IL_0872 stind.i1 
+IL_0873 ldloc.0 
+IL_0874 stind.i1 
+IL_0875 br IL_08ac
+IL_087a ldloc.s 10
+IL_087c callvirt PathPoint :: Int32 get_collumn()
+IL_0881 ldloc.s 11
+IL_0883 callvirt PathPoint :: Int32 get_collumn()
+IL_0888 bge IL_0895
+IL_088d ldarg.3 
+IL_088e ldc.i4.1 
+IL_088f stind.i1 
+IL_0890 br IL_08ac
+IL_0895 ldloc.s 10
+IL_0897 callvirt PathPoint :: Int32 get_collumn()
+IL_089c ldloc.s 11
+IL_089e callvirt PathPoint :: Int32 get_collumn()
+IL_08a3 ble IL_08ac
+IL_08a8 ldarg.s 4
+IL_08aa ldc.i4.1 
+IL_08ab stind.i1 
+IL_08ac ldloc.s 10
+IL_08ae brfalse IL_08f0
+IL_08b3 ldarg.0 
+IL_08b4 ldfld PathAgent :: TestVanDammeAnim unit
+IL_08b9 callvirt Unit :: ActionState get_actionState()
+IL_08be ldc.i4.s 11
+IL_08c0 beq IL_08f0
+IL_08c5 ldloc.s 10
+IL_08c7 ldfld PathPoint :: PathMoveMode moveMode
+IL_08cc ldc.i4.2 
+IL_08cd bne.un IL_08d8
+IL_08d2 ldarg.2 
+IL_08d3 ldc.i4.1 
+IL_08d4 stind.i1 
+IL_08d5 ldarg.1 
+IL_08d6 ldc.i4.0 
+IL_08d7 stind.i1 
+IL_08d8 ldloc.s 10
+IL_08da ldfld PathPoint :: PathMoveMode moveMode
+IL_08df ldc.i4.1 
+IL_08e0 bne.un IL_08eb
+IL_08e5 ldarg.1 
+IL_08e6 ldc.i4.1 
+IL_08e7 stind.i1 
+IL_08e8 ldarg.2 
+IL_08e9 ldc.i4.0 
+IL_08ea stind.i1 
+IL_08eb br IL_0927
+IL_08f0 ldarg.1 
+IL_08f1 ldind.i1 
+IL_08f2 brtrue IL_0927
+IL_08f7 ldarg.2 
+IL_08f8 ldind.i1 
+IL_08f9 brtrue IL_0927
+IL_08fe ldarg.0 
+IL_08ff ldfld PathAgent :: Int32 direction
+IL_0904 ldc.i4.0 
+IL_0905 bge IL_0915
+IL_090a ldarg.1 
+IL_090b ldc.i4.1 
+IL_090c stind.i1 
+IL_090d ldarg.2 
+IL_090e ldc.i4.0 
+IL_090f stind.i1 
+IL_0910 br IL_0927
+IL_0915 ldarg.0 
+IL_0916 ldfld PathAgent :: Int32 direction
+IL_091b ldc.i4.0 
+IL_091c ble IL_0927
+IL_0921 ldarg.2 
+IL_0922 ldc.i4.1 
+IL_0923 stind.i1 
+IL_0924 ldarg.1 
+IL_0925 ldc.i4.0 
+IL_0926 stind.i1 
+IL_0927 ldloc.s 10
+IL_0929 brfalse IL_094b
+IL_092e ldloc.s 10
+IL_0930 ldfld PathPoint :: PathMoveMode moveMode
+IL_0935 ldc.i4.4 
+IL_0936 bne.un IL_094b
+IL_093b ldloc.s 11
+IL_093d ldfld PathPoint :: PathMoveMode moveMode
+IL_0942 brtrue IL_094b
+IL_0947 ldarg.s 4
+IL_0949 ldc.i4.1 
+IL_094a stind.i1 
+IL_094b ldarg.0 
+IL_094c ldfld PathAgent :: TestVanDammeAnim unit
+IL_0951 callvirt Unit :: ActionState get_actionState()
+IL_0956 ldc.i4.3 
+IL_0957 bne.un IL_0a91
+IL_095c ldarg.0 
+IL_095d ldflda PathAgent :: UnityEngine.Vector2 currentAgentPos
+IL_0962 ldfld UnityEngine.Vector2 :: Single y
+IL_0967 ldarg.0 
+IL_0968 ldflda PathAgent :: UnityEngine.Vector2 currentTargetWorldPoint
+IL_096d ldfld UnityEngine.Vector2 :: Single y
+IL_0972 blt.un IL_0a91
+IL_0977 ldarg.0 
+IL_0978 ldflda PathAgent :: UnityEngine.Vector3 tileStartPos
+IL_097d ldfld UnityEngine.Vector3 :: Single x
+IL_0982 ldarg.0 
+IL_0983 ldflda PathAgent :: UnityEngine.Vector2 currentTargetWorldPoint
+IL_0988 ldfld UnityEngine.Vector2 :: Single x
+IL_098d bge.un IL_09ad
+IL_0992 ldarg.0 
+IL_0993 ldflda PathAgent :: UnityEngine.Vector2 currentAgentPos
+IL_0998 ldfld UnityEngine.Vector2 :: Single x
+IL_099d ldarg.0 
+IL_099e ldflda PathAgent :: UnityEngine.Vector2 currentTargetWorldPoint
+IL_09a3 ldfld UnityEngine.Vector2 :: Single x
+IL_09a8 bge IL_09e3
+IL_09ad ldarg.0 
+IL_09ae ldflda PathAgent :: UnityEngine.Vector3 tileStartPos
+IL_09b3 ldfld UnityEngine.Vector3 :: Single x
+IL_09b8 ldarg.0 
+IL_09b9 ldflda PathAgent :: UnityEngine.Vector2 currentTargetWorldPoint
+IL_09be ldfld UnityEngine.Vector2 :: Single x
+IL_09c3 ble.un IL_0a91
+IL_09c8 ldarg.0 
+IL_09c9 ldflda PathAgent :: UnityEngine.Vector2 currentAgentPos
+IL_09ce ldfld UnityEngine.Vector2 :: Single x
+IL_09d3 ldarg.0 
+IL_09d4 ldflda PathAgent :: UnityEngine.Vector2 currentTargetWorldPoint
+IL_09d9 ldfld UnityEngine.Vector2 :: Single x
+IL_09de bgt.un IL_0a91
+IL_09e3 ldarg.0 
+IL_09e4 dup 
+IL_09e5 ldfld PathAgent :: Int32 currentNodeIndex
+IL_09ea ldc.i4.1 
+IL_09eb add 
+IL_09ec stfld PathAgent :: Int32 currentNodeIndex
+IL_09f1 ldarg.0 
+IL_09f2 ldc.r4 0
+IL_09f7 stfld PathAgent :: Single timeStuckOnThisNode
+IL_09fc ldarg.0 
+IL_09fd call PathAgent :: Void InitCurrentNavPoint()
+IL_0a02 ldarg.0 
+IL_0a03 ldfld PathAgent :: Int32 currentNodeIndex
+IL_0a08 ldarg.0 
+IL_0a09 call PathAgent :: NavPath get_CurrentPath()
+IL_0a0e ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_0a13 callvirt System.Collections.Generic.List`1[PathPoint] :: Int32 get_Count()
+IL_0a18 bge IL_0a91
+IL_0a1d ldarg.0 
+IL_0a1e ldarg.0 
+IL_0a1f ldfld PathAgent :: NavPath currentPath
+IL_0a24 ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_0a29 ldarg.0 
+IL_0a2a ldfld PathAgent :: Int32 currentNodeIndex
+IL_0a2f callvirt System.Collections.Generic.List`1[PathPoint] :: PathPoint get_Item(Int32)
+IL_0a34 callvirt PathPoint :: Int32 get_collumn()
+IL_0a39 ldarg.0 
+IL_0a3a ldfld PathAgent :: GridPoint currentAgentGridPoint
+IL_0a3f ldfld GridPoint :: Int32 collumn
+IL_0a44 sub 
+IL_0a45 stfld PathAgent :: Int32 direction
+IL_0a4a ldarg.0 
+IL_0a4b ldfld PathAgent :: Int32 direction
+IL_0a50 brfalse IL_0a6d
+IL_0a55 ldarg.0 
+IL_0a56 ldarg.0 
+IL_0a57 ldfld PathAgent :: Int32 direction
+IL_0a5c ldarg.0 
+IL_0a5d ldfld PathAgent :: Int32 direction
+IL_0a62 call UnityEngine.Mathf :: Int32 Abs(Int32)
+IL_0a67 div 
+IL_0a68 stfld PathAgent :: Int32 direction
+IL_0a6d ldarg.0 
+IL_0a6e ldfld PathAgent :: Int32 direction
+IL_0a73 ldc.i4.0 
+IL_0a74 ble IL_0a7f
+IL_0a79 ldarg.2 
+IL_0a7a ldc.i4.1 
+IL_0a7b stind.i1 
+IL_0a7c ldarg.1 
+IL_0a7d ldc.i4.0 
+IL_0a7e stind.i1 
+IL_0a7f ldarg.0 
+IL_0a80 ldfld PathAgent :: Int32 direction
+IL_0a85 ldc.i4.0 
+IL_0a86 bge IL_0a91
+IL_0a8b ldarg.1 
+IL_0a8c ldc.i4.1 
+IL_0a8d stind.i1 
+IL_0a8e ldarg.2 
+IL_0a8f ldc.i4.0 
+IL_0a90 stind.i1 
+IL_0a91 ldloc.s 11
+IL_0a93 ldfld PathPoint :: PathMoveMode moveMode
+IL_0a98 ldc.i4.1 
+IL_0a99 bne.un IL_0b28
+IL_0a9e ldarg.1 
+IL_0a9f ldc.i4.1 
+IL_0aa0 stind.i1 
+IL_0aa1 ldarg.2 
+IL_0aa2 ldc.i4.0 
+IL_0aa3 stind.i1 
+IL_0aa4 ldarg.0 
+IL_0aa5 ldflda PathAgent :: UnityEngine.Vector3 tileStartPos
+IL_0aaa ldfld UnityEngine.Vector3 :: Single y
+IL_0aaf ldarg.0 
+IL_0ab0 ldflda PathAgent :: UnityEngine.Vector2 currentTargetWorldPoint
+IL_0ab5 ldfld UnityEngine.Vector2 :: Single y
+IL_0aba bge.un IL_0af6
+IL_0abf ldarg.s 5
+IL_0ac1 ldc.i4.1 
+IL_0ac2 stind.i1 
+IL_0ac3 ldarg.3 
+IL_0ac4 ldc.i4.1 
+IL_0ac5 stind.i1 
+IL_0ac6 ldarg.s 4
+IL_0ac8 ldc.i4.0 
+IL_0ac9 stind.i1 
+IL_0aca ldarg.0 
+IL_0acb ldflda PathAgent :: UnityEngine.Vector2 currentAgentPos
+IL_0ad0 ldfld UnityEngine.Vector2 :: Single y
+IL_0ad5 ldarg.0 
+IL_0ad6 ldflda PathAgent :: UnityEngine.Vector2 currentTargetWorldPoint
+IL_0adb ldfld UnityEngine.Vector2 :: Single y
+IL_0ae0 ldc.r4 12
+IL_0ae5 add 
+IL_0ae6 ble.un IL_0af1
+IL_0aeb ldarg.0 
+IL_0aec call PathAgent :: Void GoNextPoint()
+IL_0af1 br IL_0b28
+IL_0af6 ldarg.s 5
+IL_0af8 ldc.i4.0 
+IL_0af9 stind.i1 
+IL_0afa ldarg.s 4
+IL_0afc ldc.i4.1 
+IL_0afd stind.i1 
+IL_0afe ldarg.3 
+IL_0aff ldc.i4.0 
+IL_0b00 stind.i1 
+IL_0b01 ldarg.0 
+IL_0b02 ldflda PathAgent :: UnityEngine.Vector2 currentAgentPos
+IL_0b07 ldfld UnityEngine.Vector2 :: Single y
+IL_0b0c ldarg.0 
+IL_0b0d ldflda PathAgent :: UnityEngine.Vector2 currentTargetWorldPoint
+IL_0b12 ldfld UnityEngine.Vector2 :: Single y
+IL_0b17 ldc.r4 10
+IL_0b1c sub 
+IL_0b1d bge.un IL_0b28
+IL_0b22 ldarg.0 
+IL_0b23 call PathAgent :: Void GoNextPoint()
+IL_0b28 ldloc.s 11
+IL_0b2a ldfld PathPoint :: PathMoveMode moveMode
+IL_0b2f ldc.i4.2 
+IL_0b30 bne.un IL_0bbf
+IL_0b35 ldarg.2 
+IL_0b36 ldc.i4.1 
+IL_0b37 stind.i1 
+IL_0b38 ldarg.1 
+IL_0b39 ldc.i4.0 
+IL_0b3a stind.i1 
+IL_0b3b ldarg.0 
+IL_0b3c ldflda PathAgent :: UnityEngine.Vector3 tileStartPos
+IL_0b41 ldfld UnityEngine.Vector3 :: Single y
+IL_0b46 ldarg.0 
+IL_0b47 ldflda PathAgent :: UnityEngine.Vector2 currentTargetWorldPoint
+IL_0b4c ldfld UnityEngine.Vector2 :: Single y
+IL_0b51 bge.un IL_0b8d
+IL_0b56 ldarg.s 5
+IL_0b58 ldc.i4.1 
+IL_0b59 stind.i1 
+IL_0b5a ldarg.3 
+IL_0b5b ldc.i4.1 
+IL_0b5c stind.i1 
+IL_0b5d ldarg.s 4
+IL_0b5f ldc.i4.0 
+IL_0b60 stind.i1 
+IL_0b61 ldarg.0 
+IL_0b62 ldflda PathAgent :: UnityEngine.Vector2 currentAgentPos
+IL_0b67 ldfld UnityEngine.Vector2 :: Single y
+IL_0b6c ldarg.0 
+IL_0b6d ldflda PathAgent :: UnityEngine.Vector2 currentTargetWorldPoint
+IL_0b72 ldfld UnityEngine.Vector2 :: Single y
+IL_0b77 ldc.r4 12
+IL_0b7c add 
+IL_0b7d ble.un IL_0b88
+IL_0b82 ldarg.0 
+IL_0b83 call PathAgent :: Void GoNextPoint()
+IL_0b88 br IL_0bbf
+IL_0b8d ldarg.s 5
+IL_0b8f ldc.i4.0 
+IL_0b90 stind.i1 
+IL_0b91 ldarg.s 4
+IL_0b93 ldc.i4.1 
+IL_0b94 stind.i1 
+IL_0b95 ldarg.3 
+IL_0b96 ldc.i4.0 
+IL_0b97 stind.i1 
+IL_0b98 ldarg.0 
+IL_0b99 ldflda PathAgent :: UnityEngine.Vector2 currentAgentPos
+IL_0b9e ldfld UnityEngine.Vector2 :: Single y
+IL_0ba3 ldarg.0 
+IL_0ba4 ldflda PathAgent :: UnityEngine.Vector2 currentTargetWorldPoint
+IL_0ba9 ldfld UnityEngine.Vector2 :: Single y
+IL_0bae ldc.r4 10
+IL_0bb3 sub 
+IL_0bb4 bge.un IL_0bbf
+IL_0bb9 ldarg.0 
+IL_0bba call PathAgent :: Void GoNextPoint()
+IL_0bbf ldarg.0 
+IL_0bc0 call PathAgent :: NavPath get_CurrentPath()
+IL_0bc5 ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_0bca ldarg.0 
+IL_0bcb ldftn PathAgent :: Boolean <GetMove>m__0(PathPoint)
+IL_0bd1 newobj System.Func`2[PathPoint,System.Boolean] :: Void .ctor(System.Object, IntPtr)
+IL_0bd6 call System.Linq.Enumerable :: PathPoint FirstOrDefault[PathPoint](System.Collections.Generic.IEnumerable`1[PathPoint], System.Func`2[PathPoint,System.Boolean])
+IL_0bdb stloc.s 12
+IL_0bdd ldloc.s 12
+IL_0bdf brfalse IL_0c24
+IL_0be4 ldarg.0 
+IL_0be5 call PathAgent :: NavPath get_CurrentPath()
+IL_0bea ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_0bef ldloc.s 12
+IL_0bf1 callvirt System.Collections.Generic.List`1[PathPoint] :: Int32 IndexOf(PathPoint)
+IL_0bf6 ldarg.0 
+IL_0bf7 ldfld PathAgent :: Int32 currentNodeIndex
+IL_0bfc ble IL_0c24
+IL_0c01 ldarg.0 
+IL_0c02 ldarg.0 
+IL_0c03 call PathAgent :: NavPath get_CurrentPath()
+IL_0c08 ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_0c0d ldloc.s 12
+IL_0c0f callvirt System.Collections.Generic.List`1[PathPoint] :: Int32 IndexOf(PathPoint)
+IL_0c14 stfld PathAgent :: Int32 currentNodeIndex
+IL_0c19 ldarg.0 
+IL_0c1a ldc.r4 0
+IL_0c1f stfld PathAgent :: Single timeStuckOnThisNode
+IL_0c24 ldarg.0 
+IL_0c25 dup 
+IL_0c26 ldfld PathAgent :: Single timeStuckOnThisNode
+IL_0c2b call UnityEngine.Time :: Single get_deltaTime()
+IL_0c30 add 
+IL_0c31 stfld PathAgent :: Single timeStuckOnThisNode
+IL_0c36 ldarg.0 
+IL_0c37 ldfld PathAgent :: Single timeStuckOnThisNode
+IL_0c3c ldc.r4 0.6
+IL_0c41 ble.un IL_0c90
+IL_0c46 ldarg.0 
+IL_0c47 ldfld PathAgent :: Single timeStuckOnThisNode
+IL_0c4c ldc.r4 0.7
+IL_0c51 bge.un IL_0c90
+IL_0c56 ldarg.0 
+IL_0c57 call PathAgent :: PathPoint get_CurrentNode()
+IL_0c5c brfalse IL_0c8b
+IL_0c61 ldarg.0 
+IL_0c62 call PathAgent :: PathPoint get_CurrentNode()
+IL_0c67 ldfld PathPoint :: PathMoveMode moveMode
+IL_0c6c ldc.i4.4 
+IL_0c6d beq IL_0c8b
+IL_0c72 ldarg.3 
+IL_0c73 ldarg.1 
+IL_0c74 ldarg.2 
+IL_0c75 ldarg.s 4
+IL_0c77 ldarg.s 5
+IL_0c79 ldc.i4.0 
+IL_0c7a dup 
+IL_0c7b stloc.0 
+IL_0c7c stind.i1 
+IL_0c7d ldloc.0 
+IL_0c7e dup 
+IL_0c7f stloc.0 
+IL_0c80 stind.i1 
+IL_0c81 ldloc.0 
+IL_0c82 dup 
+IL_0c83 stloc.0 
+IL_0c84 stind.i1 
+IL_0c85 ldloc.0 
+IL_0c86 dup 
+IL_0c87 stloc.0 
+IL_0c88 stind.i1 
+IL_0c89 ldloc.0 
+IL_0c8a stind.i1 
+IL_0c8b br IL_0ca7
+IL_0c90 ldarg.0 
+IL_0c91 ldfld PathAgent :: Single timeStuckOnThisNode
+IL_0c96 ldc.r4 1
+IL_0c9b ble.un IL_0ca7
+IL_0ca0 ldarg.0 
+IL_0ca1 ldnull 
+IL_0ca2 call PathAgent :: Void set_CurrentPath(NavPath)
+IL_0ca7 ldarg.0 
+IL_0ca8 ldarg.1 
+IL_0ca9 ldarg.2 
+IL_0caa call PathAgent :: Void PerformJitterPrevention(Boolean ByRef, Boolean ByRef)
+IL_0caf ldc.i4.0 
+IL_0cb0 ret 
+
+METHOD PathAgent :: Boolean CheckWhetherToAdvanceNode() public=False static=False
+IL_0000 ldarg.0 
+IL_0001 call PathAgent :: PathPoint get_CurrentNode()
+IL_0006 brtrue IL_000d
+IL_000b ldc.i4.0 
+IL_000c ret 
+IL_000d ldarg.0 
+IL_000e ldfld PathAgent :: PathAgentCapabilities capabilities
+IL_0013 ldfld PathAgentCapabilities :: Boolean flying
+IL_0018 brfalse IL_007b
+IL_001d ldarg.0 
+IL_001e ldflda PathAgent :: UnityEngine.Vector2 currentAgentPos
+IL_0023 ldfld UnityEngine.Vector2 :: Single x
+IL_0028 ldarg.0 
+IL_0029 ldflda PathAgent :: UnityEngine.Vector2 currentTargetWorldPoint
+IL_002e ldfld UnityEngine.Vector2 :: Single x
+IL_0033 sub 
+IL_0034 call UnityEngine.Mathf :: Single Abs(Single)
+IL_0039 ldarg.0 
+IL_003a ldfld PathAgent :: Single agentSize
+IL_003f ldc.r4 2
+IL_0044 div 
+IL_0045 bge.un IL_0079
+IL_004a ldarg.0 
+IL_004b ldflda PathAgent :: UnityEngine.Vector2 currentAgentPos
+IL_0050 ldfld UnityEngine.Vector2 :: Single y
+IL_0055 ldarg.0 
+IL_0056 ldflda PathAgent :: UnityEngine.Vector2 currentTargetWorldPoint
+IL_005b ldfld UnityEngine.Vector2 :: Single y
+IL_0060 sub 
+IL_0061 call UnityEngine.Mathf :: Single Abs(Single)
+IL_0066 ldarg.0 
+IL_0067 ldfld PathAgent :: Single agentSize
+IL_006c ldc.r4 2
+IL_0071 div 
+IL_0072 bge.un IL_0079
+IL_0077 ldc.i4.1 
+IL_0078 ret 
+IL_0079 ldc.i4.0 
+IL_007a ret 
+IL_007b ldarg.0 
+IL_007c ldfld PathAgent :: Int32 direction
+IL_0081 ldc.i4.0 
+IL_0082 ble IL_00d0
+IL_0087 ldarg.0 
+IL_0088 ldflda PathAgent :: UnityEngine.Vector2 currentAgentPos
+IL_008d ldfld UnityEngine.Vector2 :: Single x
+IL_0092 ldarg.0 
+IL_0093 ldflda PathAgent :: UnityEngine.Vector2 currentTargetWorldPoint
+IL_0098 ldfld UnityEngine.Vector2 :: Single x
+IL_009d ble.un IL_00d0
+IL_00a2 ldarg.0 
+IL_00a3 ldfld PathAgent :: TestVanDammeAnim unit
+IL_00a8 ldnull 
+IL_00a9 call UnityEngine.Object :: Boolean op_Equality(UnityEngine.Object, UnityEngine.Object)
+IL_00ae brtrue IL_00ce
+IL_00b3 ldarg.0 
+IL_00b4 ldfld PathAgent :: TestVanDammeAnim unit
+IL_00b9 ldfld Unit :: Int32 row
+IL_00be ldarg.0 
+IL_00bf call PathAgent :: PathPoint get_CurrentNode()
+IL_00c4 callvirt PathPoint :: Int32 get_row()
+IL_00c9 bne.un IL_00d0
+IL_00ce ldc.i4.1 
+IL_00cf ret 
+IL_00d0 ldarg.0 
+IL_00d1 ldfld PathAgent :: Int32 direction
+IL_00d6 ldc.i4.0 
+IL_00d7 bge IL_0125
+IL_00dc ldarg.0 
+IL_00dd ldflda PathAgent :: UnityEngine.Vector2 currentAgentPos
+IL_00e2 ldfld UnityEngine.Vector2 :: Single x
+IL_00e7 ldarg.0 
+IL_00e8 ldflda PathAgent :: UnityEngine.Vector2 currentTargetWorldPoint
+IL_00ed ldfld UnityEngine.Vector2 :: Single x
+IL_00f2 bge.un IL_0125
+IL_00f7 ldarg.0 
+IL_00f8 ldfld PathAgent :: TestVanDammeAnim unit
+IL_00fd ldnull 
+IL_00fe call UnityEngine.Object :: Boolean op_Equality(UnityEngine.Object, UnityEngine.Object)
+IL_0103 brtrue IL_0123
+IL_0108 ldarg.0 
+IL_0109 ldfld PathAgent :: TestVanDammeAnim unit
+IL_010e ldfld Unit :: Int32 row
+IL_0113 ldarg.0 
+IL_0114 call PathAgent :: PathPoint get_CurrentNode()
+IL_0119 callvirt PathPoint :: Int32 get_row()
+IL_011e bne.un IL_0125
+IL_0123 ldc.i4.1 
+IL_0124 ret 
+IL_0125 ldarg.0 
+IL_0126 ldfld PathAgent :: TestVanDammeAnim unit
+IL_012b ldnull 
+IL_012c call UnityEngine.Object :: Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_0131 brfalse IL_02f1
+IL_0136 ldarg.0 
+IL_0137 call PathAgent :: PathPoint get_CurrentNode()
+IL_013c ldfld PathPoint :: PathPoint previous
+IL_0141 brfalse IL_0176
+IL_0146 ldarg.0 
+IL_0147 call PathAgent :: PathPoint get_CurrentNode()
+IL_014c ldfld PathPoint :: PathPoint previous
+IL_0151 brfalse IL_01f1
+IL_0156 ldarg.0 
+IL_0157 call PathAgent :: PathPoint get_CurrentNode()
+IL_015c ldfld PathPoint :: PathPoint previous
+IL_0161 callvirt PathPoint :: Int32 get_collumn()
+IL_0166 ldarg.0 
+IL_0167 call PathAgent :: PathPoint get_CurrentNode()
+IL_016c callvirt PathPoint :: Int32 get_collumn()
+IL_0171 beq IL_01f1
+IL_0176 ldarg.0 
+IL_0177 call PathAgent :: PathPoint get_CurrentNode()
+IL_017c ldfld PathPoint :: PathMoveMode moveMode
+IL_0181 ldc.i4.4 
+IL_0182 bne.un IL_01f1
+IL_0187 ldarg.0 
+IL_0188 ldfld PathAgent :: Int32 direction
+IL_018d brtrue IL_01f1
+IL_0192 ldarg.0 
+IL_0193 ldfld PathAgent :: TestVanDammeAnim unit
+IL_0198 ldfld Unit :: Int32 row
+IL_019d ldarg.0 
+IL_019e call PathAgent :: PathPoint get_CurrentNode()
+IL_01a3 callvirt PathPoint :: Int32 get_row()
+IL_01a8 bne.un IL_01f1
+IL_01ad ldarg.0 
+IL_01ae ldfld PathAgent :: TestVanDammeAnim unit
+IL_01b3 ldfld Unit :: Int32 collumn
+IL_01b8 ldarg.0 
+IL_01b9 call PathAgent :: PathPoint get_CurrentNode()
+IL_01be callvirt PathPoint :: Int32 get_collumn()
+IL_01c3 bne.un IL_01f1
+IL_01c8 ldarg.0 
+IL_01c9 ldflda PathAgent :: UnityEngine.Vector2 currentAgentPos
+IL_01ce ldfld UnityEngine.Vector2 :: Single x
+IL_01d3 ldarg.0 
+IL_01d4 ldflda PathAgent :: UnityEngine.Vector2 currentTargetWorldPoint
+IL_01d9 ldfld UnityEngine.Vector2 :: Single x
+IL_01de sub 
+IL_01df call UnityEngine.Mathf :: Single Abs(Single)
+IL_01e4 ldarg.0 
+IL_01e5 ldfld PathAgent :: Single agentSize
+IL_01ea bge.un IL_01f1
+IL_01ef ldc.i4.1 
+IL_01f0 ret 
+IL_01f1 ldarg.0 
+IL_01f2 call PathAgent :: PathPoint get_CurrentNode()
+IL_01f7 ldfld PathPoint :: PathPoint previous
+IL_01fc brfalse IL_02ac
+IL_0201 ldarg.0 
+IL_0202 call PathAgent :: PathPoint get_CurrentNode()
+IL_0207 ldfld PathPoint :: PathPoint previous
+IL_020c callvirt PathPoint :: Int32 get_collumn()
+IL_0211 ldarg.0 
+IL_0212 call PathAgent :: PathPoint get_CurrentNode()
+IL_0217 callvirt PathPoint :: Int32 get_collumn()
+IL_021c bne.un IL_02ac
+IL_0221 ldarg.0 
+IL_0222 call PathAgent :: PathPoint get_CurrentNode()
+IL_0227 ldfld PathPoint :: PathMoveMode moveMode
+IL_022c ldc.i4.4 
+IL_022d bne.un IL_02ac
+IL_0232 ldarg.0 
+IL_0233 call PathAgent :: PathPoint get_CurrentNode()
+IL_0238 ldfld PathPoint :: PathPoint previous
+IL_023d ldfld PathPoint :: PathMoveMode moveMode
+IL_0242 ldc.i4.1 
+IL_0243 beq IL_025e
+IL_0248 ldarg.0 
+IL_0249 call PathAgent :: PathPoint get_CurrentNode()
+IL_024e ldfld PathPoint :: PathPoint previous
+IL_0253 ldfld PathPoint :: PathMoveMode moveMode
+IL_0258 ldc.i4.2 
+IL_0259 bne.un IL_02ac
+IL_025e ldarg.0 
+IL_025f ldfld PathAgent :: TestVanDammeAnim unit
+IL_0264 ldfld Unit :: Int32 collumn
+IL_0269 ldarg.0 
+IL_026a call PathAgent :: PathPoint get_CurrentNode()
+IL_026f callvirt PathPoint :: Int32 get_collumn()
+IL_0274 bne.un IL_02ac
+IL_0279 ldarg.0 
+IL_027a ldfld PathAgent :: TestVanDammeAnim unit
+IL_027f ldfld Unit :: Int32 row
+IL_0284 ldarg.0 
+IL_0285 call PathAgent :: PathPoint get_CurrentNode()
+IL_028a callvirt PathPoint :: Int32 get_row()
+IL_028f bne.un IL_02ac
+IL_0294 ldarg.0 
+IL_0295 ldfld PathAgent :: TestVanDammeAnim unit
+IL_029a callvirt UnityEngine.Component :: AlienClimber GetComponent[AlienClimber]()
+IL_029f ldfld Unit :: DirectionEnum wallAttachDirection
+IL_02a4 ldc.i4.2 
+IL_02a5 bne.un IL_02ac
+IL_02aa ldc.i4.1 
+IL_02ab ret 
+IL_02ac ldarg.0 
+IL_02ad call PathAgent :: PathPoint get_CurrentNode()
+IL_02b2 ldfld PathPoint :: PathMoveMode moveMode
+IL_02b7 ldc.i4.4 
+IL_02b8 beq IL_02ec
+IL_02bd ldarg.0 
+IL_02be ldfld PathAgent :: UnityEngine.Vector2 currentAgentPos
+IL_02c3 ldarg.0 
+IL_02c4 ldfld PathAgent :: UnityEngine.Vector2 currentTargetWorldPoint
+IL_02c9 call UnityEngine.Vector2 :: UnityEngine.Vector2 op_Subtraction(UnityEngine.Vector2, UnityEngine.Vector2)
+IL_02ce call UnityEngine.Vector2 :: UnityEngine.Vector3 op_Implicit(UnityEngine.Vector2)
+IL_02d3 call UnityEngine.Vector3 :: Single SqrMagnitude(UnityEngine.Vector3)
+IL_02d8 ldarg.0 
+IL_02d9 ldfld PathAgent :: Single agentSize
+IL_02de ldarg.0 
+IL_02df ldfld PathAgent :: Single agentSize
+IL_02e4 mul 
+IL_02e5 bge.un IL_02ec
+IL_02ea ldc.i4.1 
+IL_02eb ret 
+IL_02ec br IL_0320
+IL_02f1 ldarg.0 
+IL_02f2 ldfld PathAgent :: UnityEngine.Vector2 currentAgentPos
+IL_02f7 ldarg.0 
+IL_02f8 ldfld PathAgent :: UnityEngine.Vector2 currentTargetWorldPoint
+IL_02fd call UnityEngine.Vector2 :: UnityEngine.Vector2 op_Subtraction(UnityEngine.Vector2, UnityEngine.Vector2)
+IL_0302 call UnityEngine.Vector2 :: UnityEngine.Vector3 op_Implicit(UnityEngine.Vector2)
+IL_0307 call UnityEngine.Vector3 :: Single SqrMagnitude(UnityEngine.Vector3)
+IL_030c ldarg.0 
+IL_030d ldfld PathAgent :: Single agentSize
+IL_0312 ldarg.0 
+IL_0313 ldfld PathAgent :: Single agentSize
+IL_0318 mul 
+IL_0319 bge.un IL_0320
+IL_031e ldc.i4.1 
+IL_031f ret 
+IL_0320 ldc.i4.0 
+IL_0321 ret 
+
+METHOD PathAgent :: Void PerformJitterPrevention(Boolean ByRef, Boolean ByRef) public=False static=False
+PARAM 0 System.Boolean& left
+PARAM 1 System.Boolean& right
+IL_0000 ldarg.0 
+IL_0001 ldfld PathAgent :: TestVanDammeAnim unit
+IL_0006 ldnull 
+IL_0007 call UnityEngine.Object :: Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_000c brfalse IL_006b
+IL_0011 ldarg.0 
+IL_0012 ldfld PathAgent :: TestVanDammeAnim unit
+IL_0017 callvirt Unit :: ActionState get_actionState()
+IL_001c ldc.i4.3 
+IL_001d bne.un IL_006b
+IL_0022 ldarg.1 
+IL_0023 ldind.i1 
+IL_0024 brfalse IL_0044
+IL_0029 ldarg.0 
+IL_002a ldfld PathAgent :: Int32 jitterPreventionLastMoveDirection
+IL_002f ldc.i4.0 
+IL_0030 ble IL_003d
+IL_0035 ldarg.1 
+IL_0036 ldc.i4.0 
+IL_0037 stind.i1 
+IL_0038 br IL_0044
+IL_003d ldarg.0 
+IL_003e ldc.i4.m1 
+IL_003f stfld PathAgent :: Int32 jitterPreventionLastMoveDirection
+IL_0044 ldarg.2 
+IL_0045 ldind.i1 
+IL_0046 brfalse IL_0066
+IL_004b ldarg.0 
+IL_004c ldfld PathAgent :: Int32 jitterPreventionLastMoveDirection
+IL_0051 ldc.i4.0 
+IL_0052 bge IL_005f
+IL_0057 ldarg.2 
+IL_0058 ldc.i4.0 
+IL_0059 stind.i1 
+IL_005a br IL_0066
+IL_005f ldarg.0 
+IL_0060 ldc.i4.1 
+IL_0061 stfld PathAgent :: Int32 jitterPreventionLastMoveDirection
+IL_0066 br IL_0072
+IL_006b ldarg.0 
+IL_006c ldc.i4.0 
+IL_006d stfld PathAgent :: Int32 jitterPreventionLastMoveDirection
+IL_0072 ret 
+
+METHOD PathAgent :: Void GoNextPoint() public=False static=False
+IL_0000 ldarg.0 
+IL_0001 dup 
+IL_0002 ldfld PathAgent :: Int32 currentNodeIndex
+IL_0007 ldc.i4.1 
+IL_0008 add 
+IL_0009 stfld PathAgent :: Int32 currentNodeIndex
+IL_000e ldarg.0 
+IL_000f ldc.r4 0
+IL_0014 stfld PathAgent :: Single timeStuckOnThisNode
+IL_0019 ldarg.0 
+IL_001a call PathAgent :: Void InitCurrentNavPoint()
+IL_001f ret 
+
+METHOD PathAgent :: Void ApplyNaiveDirectionalMovement(Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef) public=False static=False
+PARAM 0 System.Boolean& up
+PARAM 1 System.Boolean& down
+PARAM 2 System.Boolean& left
+PARAM 3 System.Boolean& right
+IL_0000 ldarg.0 
+IL_0001 ldflda PathAgent :: UnityEngine.Vector2 currentAgentPos
+IL_0006 ldfld UnityEngine.Vector2 :: Single x
+IL_000b ldarg.0 
+IL_000c ldflda PathAgent :: UnityEngine.Vector2 currentTargetWorldPoint
+IL_0011 ldfld UnityEngine.Vector2 :: Single x
+IL_0016 sub 
+IL_0017 conv.r8 
+IL_0018 ldc.r8 -0.9
+IL_0021 bge.un IL_002a
+IL_0026 ldarg.s 4
+IL_0028 ldc.i4.1 
+IL_0029 stind.i1 
+IL_002a ldarg.0 
+IL_002b ldflda PathAgent :: UnityEngine.Vector2 currentAgentPos
+IL_0030 ldfld UnityEngine.Vector2 :: Single x
+IL_0035 ldarg.0 
+IL_0036 ldflda PathAgent :: UnityEngine.Vector2 currentTargetWorldPoint
+IL_003b ldfld UnityEngine.Vector2 :: Single x
+IL_0040 sub 
+IL_0041 conv.r8 
+IL_0042 ldc.r8 0.9
+IL_004b ble.un IL_0053
+IL_0050 ldarg.3 
+IL_0051 ldc.i4.1 
+IL_0052 stind.i1 
+IL_0053 ldarg.0 
+IL_0054 ldfld PathAgent :: TestVanDammeAnim unit
+IL_0059 ldnull 
+IL_005a call UnityEngine.Object :: Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_005f brfalse IL_00bc
+IL_0064 ldarg.0 
+IL_0065 ldfld PathAgent :: Int32 direction
+IL_006a brtrue IL_00bc
+IL_006f ldarg.0 
+IL_0070 ldflda PathAgent :: UnityEngine.Vector2 currentAgentPos
+IL_0075 ldfld UnityEngine.Vector2 :: Single x
+IL_007a ldarg.0 
+IL_007b ldflda PathAgent :: UnityEngine.Vector2 currentTargetWorldPoint
+IL_0080 ldfld UnityEngine.Vector2 :: Single x
+IL_0085 sub 
+IL_0086 call UnityEngine.Mathf :: Single Abs(Single)
+IL_008b ldc.r4 2
+IL_0090 bge.un IL_00bc
+IL_0095 ldarg.0 
+IL_0096 ldfld PathAgent :: TestVanDammeAnim unit
+IL_009b callvirt Unit :: Boolean IsOnGround()
+IL_00a0 brfalse IL_00bc
+IL_00a5 ldarg.0 
+IL_00a6 ldfld PathAgent :: TestVanDammeAnim unit
+IL_00ab dup 
+IL_00ac ldfld BroforceObject :: Single xI
+IL_00b1 ldc.r4 0.5
+IL_00b6 mul 
+IL_00b7 stfld BroforceObject :: Single xI
+IL_00bc ldarg.0 
+IL_00bd ldflda PathAgent :: UnityEngine.Vector2 currentAgentPos
+IL_00c2 ldfld UnityEngine.Vector2 :: Single y
+IL_00c7 ldarg.0 
+IL_00c8 ldflda PathAgent :: UnityEngine.Vector2 currentTargetWorldPoint
+IL_00cd ldfld UnityEngine.Vector2 :: Single y
+IL_00d2 sub 
+IL_00d3 ldc.r4 0
+IL_00d8 bge.un IL_00e0
+IL_00dd ldarg.1 
+IL_00de ldc.i4.1 
+IL_00df stind.i1 
+IL_00e0 ldarg.0 
+IL_00e1 ldflda PathAgent :: UnityEngine.Vector2 currentAgentPos
+IL_00e6 ldfld UnityEngine.Vector2 :: Single y
+IL_00eb ldarg.0 
+IL_00ec ldflda PathAgent :: UnityEngine.Vector2 currentTargetWorldPoint
+IL_00f1 ldfld UnityEngine.Vector2 :: Single y
+IL_00f6 sub 
+IL_00f7 ldc.r4 0
+IL_00fc ble.un IL_0104
+IL_0101 ldarg.2 
+IL_0102 ldc.i4.1 
+IL_0103 stind.i1 
+IL_0104 ret 
+
+METHOD PathAgent :: Void InitCurrentNavPoint() public=False static=False
+IL_0000 ldarg.0 
+IL_0001 ldc.i4.0 
+IL_0002 stfld PathAgent :: Boolean haveReachedCenter
+IL_0007 ldarg.0 
+IL_0008 ldfld PathAgent :: Int32 currentNodeIndex
+IL_000d ldc.i4.0 
+IL_000e ble IL_00a0
+IL_0013 ldarg.0 
+IL_0014 ldfld PathAgent :: Int32 currentNodeIndex
+IL_0019 ldarg.0 
+IL_001a call PathAgent :: NavPath get_CurrentPath()
+IL_001f ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_0024 callvirt System.Collections.Generic.List`1[PathPoint] :: Int32 get_Count()
+IL_0029 bge IL_00a0
+IL_002e ldarg.0 
+IL_002f ldarg.0 
+IL_0030 call PathAgent :: NavPath get_CurrentPath()
+IL_0035 ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_003a ldarg.0 
+IL_003b ldfld PathAgent :: Int32 currentNodeIndex
+IL_0040 ldc.i4.1 
+IL_0041 sub 
+IL_0042 callvirt System.Collections.Generic.List`1[PathPoint] :: PathPoint get_Item(Int32)
+IL_0047 callvirt PathPoint :: Int32 get_collumn()
+IL_004c ldarg.0 
+IL_004d call PathAgent :: NavPath get_CurrentPath()
+IL_0052 ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_0057 ldarg.0 
+IL_0058 ldfld PathAgent :: Int32 currentNodeIndex
+IL_005d ldc.i4.1 
+IL_005e sub 
+IL_005f callvirt System.Collections.Generic.List`1[PathPoint] :: PathPoint get_Item(Int32)
+IL_0064 callvirt PathPoint :: Int32 get_row()
+IL_0069 call Map :: UnityEngine.Vector2 GetBlockCenter(Int32, Int32)
+IL_006e call UnityEngine.Vector2 :: UnityEngine.Vector3 op_Implicit(UnityEngine.Vector2)
+IL_0073 stfld PathAgent :: UnityEngine.Vector3 tileStartPos
+IL_0078 ldarg.0 
+IL_0079 ldarg.0 
+IL_007a call PathAgent :: NavPath get_CurrentPath()
+IL_007f ldfld NavPath :: System.Collections.Generic.List`1[PathPoint] points
+IL_0084 ldarg.0 
+IL_0085 ldfld PathAgent :: Int32 currentNodeIndex
+IL_008a ldc.i4.1 
+IL_008b sub 
+IL_008c callvirt System.Collections.Generic.List`1[PathPoint] :: PathPoint get_Item(Int32)
+IL_0091 ldfld PathPoint :: PathMoveMode moveMode
+IL_0096 stfld PathAgent :: PathMoveMode previousMoveMode
+IL_009b br IL_0105
+IL_00a0 newobj GridPoint :: Void .ctor()
+IL_00a5 stloc.0 
+IL_00a6 ldarg.0 
+IL_00a7 ldc.i4.0 
+IL_00a8 stfld PathAgent :: PathMoveMode previousMoveMode
+IL_00ad ldloc.0 
+IL_00ae ldarg.0 
+IL_00af call UnityEngine.Component :: UnityEngine.Transform get_transform()
+IL_00b4 callvirt UnityEngine.Transform :: UnityEngine.Vector3 get_position()
+IL_00b9 stloc.1 
+IL_00ba ldloca.s 1
+IL_00bc ldfld UnityEngine.Vector3 :: Single x
+IL_00c1 call Map :: Int32 GetCollumn(Single)
+IL_00c6 stfld GridPoint :: Int32 collumn
+IL_00cb ldloc.0 
+IL_00cc ldarg.0 
+IL_00cd call UnityEngine.Component :: UnityEngine.Transform get_transform()
+IL_00d2 callvirt UnityEngine.Transform :: UnityEngine.Vector3 get_position()
+IL_00d7 stloc.2 
+IL_00d8 ldloca.s 2
+IL_00da ldfld UnityEngine.Vector3 :: Single y
+IL_00df call Map :: Int32 GetRow(Single)
+IL_00e4 stfld GridPoint :: Int32 row
+IL_00e9 ldarg.0 
+IL_00ea ldloc.0 
+IL_00eb ldfld GridPoint :: Int32 collumn
+IL_00f0 ldloc.0 
+IL_00f1 ldfld GridPoint :: Int32 row
+IL_00f6 call Map :: UnityEngine.Vector2 GetBlockCenter(Int32, Int32)
+IL_00fb call UnityEngine.Vector2 :: UnityEngine.Vector3 op_Implicit(UnityEngine.Vector2)
+IL_0100 stfld PathAgent :: UnityEngine.Vector3 tileStartPos
+IL_0105 ret 
+
+METHOD PathAgent :: Void GetMove(InputState) public=False static=False
+PARAM 0 InputState input
+IL_0000 ldarg.0 
+IL_0001 ldarg.1 
+IL_0002 ldflda InputState :: Boolean left
+IL_0007 ldarg.1 
+IL_0008 ldflda InputState :: Boolean right
+IL_000d ldarg.1 
+IL_000e ldflda InputState :: Boolean up
+IL_0013 ldarg.1 
+IL_0014 ldflda InputState :: Boolean down
+IL_0019 ldarg.1 
+IL_001a ldflda InputState :: Boolean jump
+IL_001f call PathAgent :: Boolean GetMove(Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef)
+IL_0024 pop 
+IL_0025 ret 
+
+METHOD PathAgent :: Boolean <GetMove>m__0(PathPoint) public=False static=False
+PARAM 0 PathPoint p
+IL_0000 ldarg.1 
+IL_0001 ldfld PathPoint :: GridPoint point
+IL_0006 ldarg.0 
+IL_0007 ldfld PathAgent :: GridPoint currentAgentGridPoint
+IL_000c call GridPoint :: Boolean op_Equality(GridPoint, GridPoint)
+IL_0011 ret 

@@ -1,0 +1,2020 @@
+[
+  {
+    "path": "assets/bundleassets/networkobjects/villagers/villager1.prefab",
+    "components": [
+      {
+        "type": "Transform",
+        "tree": {
+          "m_GameObject": {
+            "m_FileID": 0,
+            "m_PathID": 5377216844738279833
+          },
+          "m_LocalRotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "m_LocalPosition": {
+            "x": -375.82366943359375,
+            "y": 558.560791015625,
+            "z": -683.15625
+          },
+          "m_LocalScale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "m_Children": [
+            {
+              "m_FileID": 0,
+              "m_PathID": 7382497659648185744
+            },
+            {
+              "m_FileID": 0,
+              "m_PathID": -8416939603425287748
+            },
+            {
+              "m_FileID": 0,
+              "m_PathID": 3918246315039324025
+            },
+            {
+              "m_FileID": 0,
+              "m_PathID": 4257441236790198745
+            },
+            {
+              "m_FileID": 0,
+              "m_PathID": 5595504071825006761
+            },
+            {
+              "m_FileID": 0,
+              "m_PathID": 1960047298323757136
+            },
+            {
+              "m_FileID": 0,
+              "m_PathID": 4911412793322759329
+            },
+            {
+              "m_FileID": 0,
+              "m_PathID": 6180783417526907418
+            }
+          ],
+          "m_Father": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          }
+        },
+        "refs": {
+          "m_GameObject": {
+            "type": "GameObject",
+            "name": "Villager1",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": 5377216844738279833
+          }
+        }
+      },
+      {
+        "type": "MeshFilter",
+        "tree": {
+          "m_GameObject": {
+            "m_FileID": 0,
+            "m_PathID": 5377216844738279833
+          },
+          "m_Mesh": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          }
+        },
+        "refs": {
+          "m_GameObject": {
+            "type": "GameObject",
+            "name": "Villager1",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": 5377216844738279833
+          }
+        }
+      },
+      {
+        "type": "MeshRenderer",
+        "tree": {
+          "m_GameObject": {
+            "m_FileID": 0,
+            "m_PathID": 5377216844738279833
+          },
+          "m_Enabled": true,
+          "m_CastShadows": 1,
+          "m_ReceiveShadows": 1,
+          "m_DynamicOccludee": 1,
+          "m_MotionVectors": 1,
+          "m_LightProbeUsage": 0,
+          "m_ReflectionProbeUsage": 1,
+          "m_LightmapIndex": 65535,
+          "m_LightmapIndexDynamic": 65535,
+          "m_LightmapTilingOffset": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 0.0,
+            "w": 0.0
+          },
+          "m_LightmapTilingOffsetDynamic": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 0.0,
+            "w": 0.0
+          },
+          "m_Materials": [
+            {
+              "m_FileID": 1,
+              "m_PathID": -864692023275413075
+            }
+          ],
+          "m_StaticBatchInfo": {
+            "firstSubMesh": 0,
+            "subMeshCount": 0
+          },
+          "m_StaticBatchRoot": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "m_ProbeAnchor": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "m_LightProbeVolumeOverride": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "m_SortingLayerID": 0,
+          "m_SortingLayer": 0,
+          "m_SortingOrder": 0,
+          "m_AdditionalVertexStreams": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          }
+        },
+        "refs": {
+          "m_GameObject": {
+            "type": "GameObject",
+            "name": "Villager1",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": 5377216844738279833
+          }
+        }
+      },
+      {
+        "type": "SpriteSM",
+        "tree": {
+          "m_GameObject": {
+            "m_FileID": 0,
+            "m_PathID": 5377216844738279833
+          },
+          "m_Enabled": 1,
+          "m_Script": {
+            "m_FileID": 0,
+            "m_PathID": 7453248234762369838
+          },
+          "m_Name": "",
+          "plane": 0,
+          "winding": 1,
+          "width": 32.0,
+          "height": 32.0,
+          "bleedCompensation": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "anchor": 4,
+          "shearAmount": 0.0,
+          "skewAmount": 0.0,
+          "pixelPerfect": 0,
+          "autoResize": 0,
+          "billboarded": 0,
+          "offset": {
+            "x": 0.0,
+            "y": 15.0,
+            "z": 1.0
+          },
+          "color": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "createNormals": 1,
+          "playAnimOnStart": 0,
+          "defaultAnim": 0,
+          "lowerLeftPixel": {
+            "x": 0.0,
+            "y": 32.0
+          },
+          "pixelDimensions": {
+            "x": 32.0,
+            "y": 32.0
+          },
+          "animations": [],
+          "refreshMeshNow": 0,
+          "lockWidthAndHeight": 0,
+          "round": 0,
+          "roundInterval": 1,
+          "meshRender": {
+            "m_FileID": 0,
+            "m_PathID": -6405845816402353094
+          },
+          "trim": 0
+        },
+        "refs": {
+          "m_GameObject": {
+            "type": "GameObject",
+            "name": "Villager1",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": 5377216844738279833
+          },
+          "m_Script": {
+            "type": "MonoScript",
+            "name": "SpriteSM",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": 7453248234762369838
+          },
+          "meshRender": {
+            "type": "MeshRenderer",
+            "name": "",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": -6405845816402353094
+          }
+        }
+      },
+      {
+        "type": "Villager",
+        "tree": {
+          "m_GameObject": {
+            "m_FileID": 0,
+            "m_PathID": 5377216844738279833
+          },
+          "m_Enabled": 1,
+          "m_Script": {
+            "m_FileID": 0,
+            "m_PathID": -2622936065910346456
+          },
+          "m_Name": "",
+          "SyncDestroy": 0,
+          "OnlyDestroyScriptOnSync": 0,
+          "instantiationDataBytes": [],
+          "lastPosHasBeenSet": 0,
+          "_lastPos": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "UpdateHasRunAtleastOnce": 0,
+          "predabroTarget": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "otherAttachments": [],
+          "collapsed": 0,
+          "health": 1,
+          "maxHealth": -1,
+          "x": 0.0,
+          "y": 0.0,
+          "xI": 0.0,
+          "yI": 0.0,
+          "chainAnchor": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "destroyed": 0,
+          "protectedFromDestruction": 0,
+          "enemyAI": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "enemyAIOnChildOrParent": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "_playerNum": -1,
+          "showDebugInfoForThisEnemy": 0,
+          "width": 8.0,
+          "height": 6.0,
+          "headHeight": 15.0,
+          "row": 0,
+          "collumn": 0,
+          "burnTime": 0.0,
+          "hearingRangeX": 300.0,
+          "hearingRangeY": 200.0,
+          "canHear": 1,
+          "bloodColor": 0,
+          "deathNotificationSent": 0,
+          "_actionState": 0,
+          "beingControlledByTriggerAction": 0,
+          "useImpaledFrames": 0,
+          "wallAttachDirection": 0,
+          "flash": 0,
+          "projectile": {
+            "m_FileID": 0,
+            "m_PathID": -5305743629306004843
+          },
+          "attachedToZipline": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "slidingOnZipline": 0,
+          "zOffset": 0.0,
+          "strungUpBy": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "strungUpX": 0.0,
+          "strungUpY": 0.0,
+          "canDisembowel": 0,
+          "timesKickedByVanDammeSinceLanding": 0,
+          "suspendFromRope": 0,
+          "skinnedPrefab": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "isHellEnemy": 0,
+          "submergedOffset": 8.0,
+          "blockCurrentlyStandingOn": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "useNewFrames": 1,
+          "useNewDuckingFrames": 0,
+          "useNewThrowingFrames": 0,
+          "useNewKnifingFrames": 0,
+          "useNewKnifeClimbingFrames": 1,
+          "useNewHighFivingFrames": 0,
+          "useNewLadderClimbingFrames": 0,
+          "useLadderClimbingTransition": 0,
+          "doRollOnLand": 0,
+          "useNewLedgeGrappleFrames": 0,
+          "canLedgeGrapple": 0,
+          "canChimneyFlip": 0,
+          "useDashFrames": 0,
+          "useDuckingFrames": 1,
+          "canGib": 1,
+          "remoteProjectile": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "remoteCar": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "JUMP_TIME": 0.12300000339746475,
+          "isOnHelicopter": 0,
+          "dancingFrames": 12,
+          "dancingFramesSheetPosition": {
+            "x": 15,
+            "y": 14
+          },
+          "heroType": 0,
+          "disarmedGunMaterial": {
+            "m_FileID": 1,
+            "m_PathID": 5101113242263574245
+          },
+          "faderSpritePrefab": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "usePrimaryAvatar": 1,
+          "pilottedUnit": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "player": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "impalementCollider": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "zombieOffset": 0.0,
+          "zombieTimerOffset": 0,
+          "inseminatorUnit": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "alienBursterPrefab": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "canBeStrungUp": 0,
+          "canBeCoveredInAcid": 1,
+          "parachute": {
+            "m_FileID": 0,
+            "m_PathID": -7533093246355848631
+          },
+          "spawnPositionHasBeenSet": 0,
+          "skinnedMookOnMyBack": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "canUnFreeze": 0,
+          "willComeBackToLife": 0,
+          "_counter": 0.0,
+          "speed": 80.0,
+          "maxFallSpeed": -400.0,
+          "gibs": {
+            "m_FileID": 3,
+            "m_PathID": 8624615315599342238
+          },
+          "player1Bubble": {
+            "m_FileID": 0,
+            "m_PathID": 5452046005947755632
+          },
+          "player2Bubble": {
+            "m_FileID": 0,
+            "m_PathID": -1402994934762026220
+          },
+          "player3Bubble": {
+            "m_FileID": 0,
+            "m_PathID": -7097127239454416710
+          },
+          "player4Bubble": {
+            "m_FileID": 0,
+            "m_PathID": 566124552488084154
+          },
+          "high5Bubble": {
+            "m_FileID": 0,
+            "m_PathID": -2930989204023476864
+          },
+          "halo": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "buttonJump": 0,
+          "buttonHighFive": 0,
+          "buttonTaunt": 0,
+          "up": 0,
+          "down": 0,
+          "left": 0,
+          "right": 0,
+          "sprint": 0,
+          "wasButtonJump": 0,
+          "wasButtonHighFive": 0,
+          "wasButtonTaunt": 0,
+          "wasUp": 0,
+          "wasDown": 0,
+          "wasLeft": 0,
+          "wasRight": 0,
+          "wasSprint": 0,
+          "dashButton": 0,
+          "wasdashButton": 0,
+          "dashing": 0,
+          "special": 0,
+          "wasSpecial": 0,
+          "fire": 0,
+          "wasFire": 0,
+          "turnAroundWhhileUsingSpecials": 1,
+          "fireRate": 0.3330000042915344,
+          "fireDelay": 0.15000000596046448,
+          "originalSpecialAmmo": 3,
+          "soundHolder": {
+            "m_FileID": 2,
+            "m_PathID": 5548891895130361544
+          },
+          "soundHolderFootSteps": {
+            "m_FileID": 2,
+            "m_PathID": 3583078603356936059
+          },
+          "specialGrenade": {
+            "m_FileID": 0,
+            "m_PathID": -2401697124892634421
+          },
+          "gunSprite": {
+            "m_FileID": 0,
+            "m_PathID": 8385394302049761897
+          },
+          "gunSpriteHangingFrame": 6,
+          "impaledBy": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "blood": [
+            {
+              "m_FileID": 3,
+              "m_PathID": -7870596137682094443
+            },
+            {
+              "m_FileID": 3,
+              "m_PathID": 6395077964869511567
+            }
+          ],
+          "canWallClimb": 1,
+          "canPushBlocks": 0,
+          "useNewPushingFrames": 0,
+          "canDash": 0,
+          "_jumpForce": 180.0,
+          "attackJumpForce": 0.0,
+          "useAttackJumpForceForAttack": 0,
+          "canCeilingHang": 0,
+          "doodadCurrentlyHangingFrom": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "canAirdash": 0,
+          "canDoIndependentMeleeAnimation": 0,
+          "airdashMaxTime": 0.5,
+          "hasBeenCoverInAcid": 0,
+          "runningFrameRate": 0.02500000037252903,
+          "onBackOf": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "canTouchLeftWalls": 0,
+          "canTouchRightWalls": 0,
+          "breakDoorsOpen": 0,
+          "currentLadderBlock": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "groundHeight": 0.0,
+          "rumbleAmountPerShot": 0.30000001192092896,
+          "xIBlast": 0.0,
+          "xIAttackExtra": 0.0,
+          "yIBlast": 0.0,
+          "specialAttackXIBoost": 0.0,
+          "specialAttackYIBoost": 0.0,
+          "maxWallClimbYI": 100.0,
+          "bossBlockPieceCurrentlyStandingOn": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "isSkinnedMook": 0,
+          "canDuck": 1,
+          "heldGrenade": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "heldMook": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "bloodCountAmount": 80,
+          "deathSoundVolume": 0.699999988079071,
+          "pitchShiftAmount": 0.0,
+          "heroTrailPrefab": {
+            "m_FileID": 3,
+            "m_PathID": 3389285514966516625
+          },
+          "HidingPlayer": 0,
+          "canTumble": 0,
+          "armVillagerSwitch": {
+            "m_FileID": 0,
+            "m_PathID": -6011062606876824264
+          },
+          "hasGun": 0,
+          "firingPlayerNum": -1,
+          "flames": [],
+          "upgradedProjectile": {
+            "m_FileID": 0,
+            "m_PathID": 7913802522018657861
+          },
+          "superProjectile": {
+            "m_FileID": 0,
+            "m_PathID": 7823503875092552144
+          },
+          "superUpgradedProjectile": {
+            "m_FileID": 0,
+            "m_PathID": -5889002766546704612
+          },
+          "upgradedGunMaterial": {
+            "m_FileID": 1,
+            "m_PathID": -6681350665337441888
+          }
+        },
+        "refs": {
+          "m_GameObject": {
+            "type": "GameObject",
+            "name": "Villager1",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": 5377216844738279833
+          },
+          "m_Script": {
+            "type": "MonoScript",
+            "name": "Villager",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": -2622936065910346456
+          },
+          "projectile": {
+            "type": "MonoBehaviour",
+            "name": "",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": -5305743629306004843
+          },
+          "disarmedGunMaterial": {
+            "type": "Material",
+            "name": "Villager1_Disarmed",
+            "file": "CAB-7a9fc548b210674cdb329286295bba38",
+            "id": 5101113242263574245,
+            "material": {
+              "m_Name": "Villager1_Disarmed",
+              "m_Shader": {
+                "m_FileID": 1,
+                "m_PathID": 7219890952606555506
+              },
+              "m_ShaderKeywords": "",
+              "m_LightmapFlags": 4,
+              "m_EnableInstancingVariants": false,
+              "m_DoubleSidedGI": false,
+              "m_CustomRenderQueue": -1,
+              "stringTagMap": [],
+              "disabledShaderPasses": [],
+              "m_SavedProperties": {
+                "m_TexEnvs": [
+                  [
+                    "_MainTex",
+                    {
+                      "m_Texture": {
+                        "m_FileID": 0,
+                        "m_PathID": -8181912920953506783
+                      },
+                      "m_Scale": {
+                        "x": 1.0,
+                        "y": 1.0
+                      },
+                      "m_Offset": {
+                        "x": 0.0,
+                        "y": 0.0
+                      }
+                    }
+                  ]
+                ],
+                "m_Floats": [
+                  [
+                    "_InvFade",
+                    1.0
+                  ]
+                ],
+                "m_Colors": [
+                  [
+                    "_Color",
+                    {
+                      "r": 0.7215686440467834,
+                      "g": 0.7098039388656616,
+                      "b": 0.7019608020782471,
+                      "a": 1.0
+                    }
+                  ],
+                  [
+                    "_TintColor",
+                    {
+                      "r": 0.5,
+                      "g": 0.5,
+                      "b": 0.5,
+                      "a": 0.5
+                    }
+                  ]
+                ]
+              }
+            }
+          },
+          "parachute": {
+            "type": "MonoBehaviour",
+            "name": "",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": -7533093246355848631
+          },
+          "gibs": {
+            "type": "MonoBehaviour",
+            "name": "",
+            "file": "CAB-591d2d4b5f5d82c3fd778285a01aa858",
+            "id": 8624615315599342238
+          },
+          "player1Bubble": {
+            "type": "MonoBehaviour",
+            "name": "",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": 5452046005947755632
+          },
+          "player2Bubble": {
+            "type": "MonoBehaviour",
+            "name": "",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": -1402994934762026220
+          },
+          "player3Bubble": {
+            "type": "MonoBehaviour",
+            "name": "",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": -7097127239454416710
+          },
+          "player4Bubble": {
+            "type": "MonoBehaviour",
+            "name": "",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": 566124552488084154
+          },
+          "high5Bubble": {
+            "type": "MonoBehaviour",
+            "name": "",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": -2930989204023476864
+          },
+          "soundHolder": {
+            "type": "MonoBehaviour",
+            "name": "",
+            "file": "CAB-ea3b7343d118fcf6a86bf44ffd650f5f",
+            "id": 5548891895130361544
+          },
+          "soundHolderFootSteps": {
+            "type": "MonoBehaviour",
+            "name": "",
+            "file": "CAB-ea3b7343d118fcf6a86bf44ffd650f5f",
+            "id": 3583078603356936059
+          },
+          "specialGrenade": {
+            "type": "MonoBehaviour",
+            "name": "",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": -2401697124892634421
+          },
+          "gunSprite": {
+            "type": "MonoBehaviour",
+            "name": "",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": 8385394302049761897
+          },
+          "heroTrailPrefab": {
+            "type": "MonoBehaviour",
+            "name": "",
+            "file": "CAB-591d2d4b5f5d82c3fd778285a01aa858",
+            "id": 3389285514966516625
+          },
+          "armVillagerSwitch": {
+            "type": "MonoBehaviour",
+            "name": "",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": -6011062606876824264
+          },
+          "upgradedProjectile": {
+            "type": "MonoBehaviour",
+            "name": "",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": 7913802522018657861
+          },
+          "superProjectile": {
+            "type": "MonoBehaviour",
+            "name": "",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": 7823503875092552144
+          },
+          "superUpgradedProjectile": {
+            "type": "MonoBehaviour",
+            "name": "",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": -5889002766546704612
+          },
+          "upgradedGunMaterial": {
+            "type": "Material",
+            "name": "Villager1_GunUpgrade",
+            "file": "CAB-7a9fc548b210674cdb329286295bba38",
+            "id": -6681350665337441888,
+            "material": {
+              "m_Name": "Villager1_GunUpgrade",
+              "m_Shader": {
+                "m_FileID": 1,
+                "m_PathID": 7219890952606555506
+              },
+              "m_ShaderKeywords": "",
+              "m_LightmapFlags": 4,
+              "m_EnableInstancingVariants": false,
+              "m_DoubleSidedGI": false,
+              "m_CustomRenderQueue": -1,
+              "stringTagMap": [],
+              "disabledShaderPasses": [],
+              "m_SavedProperties": {
+                "m_TexEnvs": [
+                  [
+                    "_MainTex",
+                    {
+                      "m_Texture": {
+                        "m_FileID": 0,
+                        "m_PathID": -5231911852240546079
+                      },
+                      "m_Scale": {
+                        "x": 1.0,
+                        "y": 1.0
+                      },
+                      "m_Offset": {
+                        "x": 0.0,
+                        "y": 0.0
+                      }
+                    }
+                  ]
+                ],
+                "m_Floats": [
+                  [
+                    "_InvFade",
+                    1.0
+                  ]
+                ],
+                "m_Colors": [
+                  [
+                    "_Color",
+                    {
+                      "r": 0.7215686440467834,
+                      "g": 0.7098039388656616,
+                      "b": 0.7019608020782471,
+                      "a": 1.0
+                    }
+                  ],
+                  [
+                    "_TintColor",
+                    {
+                      "r": 0.5,
+                      "g": 0.5,
+                      "b": 0.5,
+                      "a": 0.5
+                    }
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "InvulnerabilityFlash",
+        "tree": {
+          "m_GameObject": {
+            "m_FileID": 0,
+            "m_PathID": 5377216844738279833
+          },
+          "m_Enabled": 1,
+          "m_Script": {
+            "m_FileID": 0,
+            "m_PathID": 3406186890196204517
+          },
+          "m_Name": "",
+          "halfAlphaGun": 0
+        },
+        "refs": {
+          "m_GameObject": {
+            "type": "GameObject",
+            "name": "Villager1",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": 5377216844738279833
+          },
+          "m_Script": {
+            "type": "MonoScript",
+            "name": "InvulnerabilityFlash",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": 3406186890196204517
+          }
+        }
+      },
+      {
+        "type": "VillagerAI",
+        "tree": {
+          "m_GameObject": {
+            "m_FileID": 0,
+            "m_PathID": 5377216844738279833
+          },
+          "m_Enabled": 1,
+          "m_Script": {
+            "m_FileID": 0,
+            "m_PathID": 3581395248990777227
+          },
+          "m_Name": "",
+          "SyncDestroy": 0,
+          "OnlyDestroyScriptOnSync": 0,
+          "instantiationDataBytes": [],
+          "lastPosHasBeenSet": 0,
+          "_lastPos": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "UpdateHasRunAtleastOnce": 0,
+          "mentalState": 0,
+          "blockOffset": 0.0,
+          "actionQueue": [],
+          "exclamationMark": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "questionMark": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "sightRangeX": 300,
+          "sightRangeY": 20,
+          "attackTime": 0.05999999865889549,
+          "sightDelay": 0.550000011920929,
+          "delayBetweenFiring": 0.550000011920929,
+          "willClimbThroughVents": 0,
+          "patrolBlocksRadius": 2,
+          "hidingLookXRange": 64,
+          "walkDirection": 1,
+          "minIdleWaitDuration": 0.30000001192092896,
+          "maxIdleWaitDuration": 1.0,
+          "alwaysLookAround": 0
+        },
+        "refs": {
+          "m_GameObject": {
+            "type": "GameObject",
+            "name": "Villager1",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": 5377216844738279833
+          },
+          "m_Script": {
+            "type": "MonoScript",
+            "name": "VillagerAI",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": 3581395248990777227
+          }
+        }
+      },
+      {
+        "type": "FollowerMinion",
+        "tree": {
+          "m_GameObject": {
+            "m_FileID": 0,
+            "m_PathID": 5377216844738279833
+          },
+          "m_Enabled": 1,
+          "m_Script": {
+            "m_FileID": 0,
+            "m_PathID": -7936625889393096046
+          },
+          "m_Name": "",
+          "leader": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          }
+        },
+        "refs": {
+          "m_GameObject": {
+            "type": "GameObject",
+            "name": "Villager1",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": 5377216844738279833
+          },
+          "m_Script": {
+            "type": "MonoScript",
+            "name": "FollowerMinion",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": -7936625889393096046
+          }
+        }
+      },
+      {
+        "type": "PathAgent",
+        "tree": {
+          "m_GameObject": {
+            "m_FileID": 0,
+            "m_PathID": 5377216844738279833
+          },
+          "m_Enabled": 1,
+          "m_Script": {
+            "m_FileID": 0,
+            "m_PathID": -6876978193756389816
+          },
+          "m_Name": "",
+          "capabilities": {
+            "canUseLadders": 1,
+            "maxDropDistance": 3,
+            "canJump": 1,
+            "canWallClimb": 1,
+            "jumpHeight": 3,
+            "flying": 0,
+            "canRoofClimb": 0,
+            "fudge": 0,
+            "preferRoofWalking": 0,
+            "canPathThroughWalls": 0,
+            "preferNotToJumpRandomly": 0
+          },
+          "agentSize": 9.0,
+          "currentNodeIndex": 0,
+          "rowOffsetY": 0.0
+        },
+        "refs": {
+          "m_GameObject": {
+            "type": "GameObject",
+            "name": "Villager1",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": 5377216844738279833
+          },
+          "m_Script": {
+            "type": "MonoScript",
+            "name": "PathAgent",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": -6876978193756389816
+          }
+        }
+      }
+    ]
+  },
+  {
+    "path": "assets/bundleassets/networkobjects/villagers/villager2.prefab",
+    "components": [
+      {
+        "type": "Transform",
+        "tree": {
+          "m_GameObject": {
+            "m_FileID": 0,
+            "m_PathID": -7976076855495729456
+          },
+          "m_LocalRotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "m_LocalPosition": {
+            "x": -72.72366333007812,
+            "y": 523.560791015625,
+            "z": -683.15625
+          },
+          "m_LocalScale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "m_Children": [
+            {
+              "m_FileID": 0,
+              "m_PathID": 734634591364159807
+            },
+            {
+              "m_FileID": 0,
+              "m_PathID": -8391106597135599136
+            },
+            {
+              "m_FileID": 0,
+              "m_PathID": 2477899649074323642
+            },
+            {
+              "m_FileID": 0,
+              "m_PathID": 6316200465332095911
+            },
+            {
+              "m_FileID": 0,
+              "m_PathID": 8379505014914796703
+            },
+            {
+              "m_FileID": 0,
+              "m_PathID": 5708069283697865325
+            },
+            {
+              "m_FileID": 0,
+              "m_PathID": 8776242369890366409
+            },
+            {
+              "m_FileID": 0,
+              "m_PathID": 4115713339104540370
+            }
+          ],
+          "m_Father": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          }
+        },
+        "refs": {
+          "m_GameObject": {
+            "type": "GameObject",
+            "name": "Villager2",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": -7976076855495729456
+          }
+        }
+      },
+      {
+        "type": "MeshFilter",
+        "tree": {
+          "m_GameObject": {
+            "m_FileID": 0,
+            "m_PathID": -7976076855495729456
+          },
+          "m_Mesh": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          }
+        },
+        "refs": {
+          "m_GameObject": {
+            "type": "GameObject",
+            "name": "Villager2",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": -7976076855495729456
+          }
+        }
+      },
+      {
+        "type": "MeshRenderer",
+        "tree": {
+          "m_GameObject": {
+            "m_FileID": 0,
+            "m_PathID": -7976076855495729456
+          },
+          "m_Enabled": true,
+          "m_CastShadows": 1,
+          "m_ReceiveShadows": 1,
+          "m_DynamicOccludee": 1,
+          "m_MotionVectors": 1,
+          "m_LightProbeUsage": 0,
+          "m_ReflectionProbeUsage": 1,
+          "m_LightmapIndex": 65535,
+          "m_LightmapIndexDynamic": 65535,
+          "m_LightmapTilingOffset": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 0.0,
+            "w": 0.0
+          },
+          "m_LightmapTilingOffsetDynamic": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 0.0,
+            "w": 0.0
+          },
+          "m_Materials": [
+            {
+              "m_FileID": 1,
+              "m_PathID": 7688289866543655476
+            }
+          ],
+          "m_StaticBatchInfo": {
+            "firstSubMesh": 0,
+            "subMeshCount": 0
+          },
+          "m_StaticBatchRoot": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "m_ProbeAnchor": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "m_LightProbeVolumeOverride": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "m_SortingLayerID": 0,
+          "m_SortingLayer": 0,
+          "m_SortingOrder": 0,
+          "m_AdditionalVertexStreams": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          }
+        },
+        "refs": {
+          "m_GameObject": {
+            "type": "GameObject",
+            "name": "Villager2",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": -7976076855495729456
+          }
+        }
+      },
+      {
+        "type": "SpriteSM",
+        "tree": {
+          "m_GameObject": {
+            "m_FileID": 0,
+            "m_PathID": -7976076855495729456
+          },
+          "m_Enabled": 1,
+          "m_Script": {
+            "m_FileID": 0,
+            "m_PathID": 7453248234762369838
+          },
+          "m_Name": "",
+          "plane": 0,
+          "winding": 1,
+          "width": 32.0,
+          "height": 32.0,
+          "bleedCompensation": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "anchor": 4,
+          "shearAmount": 0.0,
+          "skewAmount": 0.0,
+          "pixelPerfect": 0,
+          "autoResize": 0,
+          "billboarded": 0,
+          "offset": {
+            "x": 0.0,
+            "y": 15.0,
+            "z": 1.0
+          },
+          "color": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "createNormals": 1,
+          "playAnimOnStart": 0,
+          "defaultAnim": 0,
+          "lowerLeftPixel": {
+            "x": 0.0,
+            "y": 32.0
+          },
+          "pixelDimensions": {
+            "x": 32.0,
+            "y": 32.0
+          },
+          "animations": [],
+          "refreshMeshNow": 0,
+          "lockWidthAndHeight": 0,
+          "round": 0,
+          "roundInterval": 1,
+          "meshRender": {
+            "m_FileID": 0,
+            "m_PathID": -5925061359965721475
+          },
+          "trim": 0
+        },
+        "refs": {
+          "m_GameObject": {
+            "type": "GameObject",
+            "name": "Villager2",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": -7976076855495729456
+          },
+          "m_Script": {
+            "type": "MonoScript",
+            "name": "SpriteSM",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": 7453248234762369838
+          },
+          "meshRender": {
+            "type": "MeshRenderer",
+            "name": "",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": -5925061359965721475
+          }
+        }
+      },
+      {
+        "type": "Villager",
+        "tree": {
+          "m_GameObject": {
+            "m_FileID": 0,
+            "m_PathID": -7976076855495729456
+          },
+          "m_Enabled": 1,
+          "m_Script": {
+            "m_FileID": 0,
+            "m_PathID": -2622936065910346456
+          },
+          "m_Name": "",
+          "SyncDestroy": 0,
+          "OnlyDestroyScriptOnSync": 0,
+          "instantiationDataBytes": [],
+          "lastPosHasBeenSet": 0,
+          "_lastPos": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "UpdateHasRunAtleastOnce": 0,
+          "predabroTarget": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "otherAttachments": [],
+          "collapsed": 0,
+          "health": 1,
+          "maxHealth": -1,
+          "x": 0.0,
+          "y": 0.0,
+          "xI": 0.0,
+          "yI": 0.0,
+          "chainAnchor": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "destroyed": 0,
+          "protectedFromDestruction": 0,
+          "enemyAI": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "enemyAIOnChildOrParent": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "_playerNum": -1,
+          "showDebugInfoForThisEnemy": 0,
+          "width": 8.0,
+          "height": 6.0,
+          "headHeight": 15.0,
+          "row": 0,
+          "collumn": 0,
+          "burnTime": 0.0,
+          "hearingRangeX": 300.0,
+          "hearingRangeY": 200.0,
+          "canHear": 1,
+          "bloodColor": 0,
+          "deathNotificationSent": 0,
+          "_actionState": 0,
+          "beingControlledByTriggerAction": 0,
+          "useImpaledFrames": 0,
+          "wallAttachDirection": 0,
+          "flash": 0,
+          "projectile": {
+            "m_FileID": 0,
+            "m_PathID": -5305743629306004843
+          },
+          "attachedToZipline": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "slidingOnZipline": 0,
+          "zOffset": 0.0,
+          "strungUpBy": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "strungUpX": 0.0,
+          "strungUpY": 0.0,
+          "canDisembowel": 0,
+          "timesKickedByVanDammeSinceLanding": 0,
+          "suspendFromRope": 0,
+          "skinnedPrefab": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "isHellEnemy": 0,
+          "submergedOffset": 8.0,
+          "blockCurrentlyStandingOn": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "useNewFrames": 1,
+          "useNewDuckingFrames": 0,
+          "useNewThrowingFrames": 0,
+          "useNewKnifingFrames": 0,
+          "useNewKnifeClimbingFrames": 1,
+          "useNewHighFivingFrames": 0,
+          "useNewLadderClimbingFrames": 0,
+          "useLadderClimbingTransition": 0,
+          "doRollOnLand": 0,
+          "useNewLedgeGrappleFrames": 0,
+          "canLedgeGrapple": 0,
+          "canChimneyFlip": 0,
+          "useDashFrames": 0,
+          "useDuckingFrames": 1,
+          "canGib": 1,
+          "remoteProjectile": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "remoteCar": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "JUMP_TIME": 0.12300000339746475,
+          "isOnHelicopter": 0,
+          "dancingFrames": 12,
+          "dancingFramesSheetPosition": {
+            "x": 15,
+            "y": 14
+          },
+          "heroType": 0,
+          "disarmedGunMaterial": {
+            "m_FileID": 1,
+            "m_PathID": 7801943197795161030
+          },
+          "faderSpritePrefab": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "usePrimaryAvatar": 1,
+          "pilottedUnit": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "player": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "impalementCollider": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "zombieOffset": 0.0,
+          "zombieTimerOffset": 0,
+          "inseminatorUnit": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "alienBursterPrefab": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "canBeStrungUp": 0,
+          "canBeCoveredInAcid": 1,
+          "parachute": {
+            "m_FileID": 0,
+            "m_PathID": 974448644763751188
+          },
+          "spawnPositionHasBeenSet": 0,
+          "skinnedMookOnMyBack": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "canUnFreeze": 0,
+          "willComeBackToLife": 0,
+          "_counter": 0.0,
+          "speed": 80.0,
+          "maxFallSpeed": -400.0,
+          "gibs": {
+            "m_FileID": 3,
+            "m_PathID": 8624615315599342238
+          },
+          "player1Bubble": {
+            "m_FileID": 0,
+            "m_PathID": 2762022659389437524
+          },
+          "player2Bubble": {
+            "m_FileID": 0,
+            "m_PathID": -6254751345708489533
+          },
+          "player3Bubble": {
+            "m_FileID": 0,
+            "m_PathID": -8635020597278512669
+          },
+          "player4Bubble": {
+            "m_FileID": 0,
+            "m_PathID": 4064864448175672392
+          },
+          "high5Bubble": {
+            "m_FileID": 0,
+            "m_PathID": 7156087672380825321
+          },
+          "halo": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "buttonJump": 0,
+          "buttonHighFive": 0,
+          "buttonTaunt": 0,
+          "up": 0,
+          "down": 0,
+          "left": 0,
+          "right": 0,
+          "sprint": 0,
+          "wasButtonJump": 0,
+          "wasButtonHighFive": 0,
+          "wasButtonTaunt": 0,
+          "wasUp": 0,
+          "wasDown": 0,
+          "wasLeft": 0,
+          "wasRight": 0,
+          "wasSprint": 0,
+          "dashButton": 0,
+          "wasdashButton": 0,
+          "dashing": 0,
+          "special": 0,
+          "wasSpecial": 0,
+          "fire": 0,
+          "wasFire": 0,
+          "turnAroundWhhileUsingSpecials": 1,
+          "fireRate": 0.3330000042915344,
+          "fireDelay": 0.15000000596046448,
+          "originalSpecialAmmo": 3,
+          "soundHolder": {
+            "m_FileID": 2,
+            "m_PathID": 5548891895130361544
+          },
+          "soundHolderFootSteps": {
+            "m_FileID": 2,
+            "m_PathID": 3583078603356936059
+          },
+          "specialGrenade": {
+            "m_FileID": 0,
+            "m_PathID": -2401697124892634421
+          },
+          "gunSprite": {
+            "m_FileID": 0,
+            "m_PathID": 3879489654862695017
+          },
+          "gunSpriteHangingFrame": 6,
+          "impaledBy": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "blood": [
+            {
+              "m_FileID": 3,
+              "m_PathID": -7870596137682094443
+            },
+            {
+              "m_FileID": 3,
+              "m_PathID": 6395077964869511567
+            }
+          ],
+          "canWallClimb": 1,
+          "canPushBlocks": 0,
+          "useNewPushingFrames": 0,
+          "canDash": 0,
+          "_jumpForce": 180.0,
+          "attackJumpForce": 0.0,
+          "useAttackJumpForceForAttack": 0,
+          "canCeilingHang": 0,
+          "doodadCurrentlyHangingFrom": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "canAirdash": 0,
+          "canDoIndependentMeleeAnimation": 0,
+          "airdashMaxTime": 0.5,
+          "hasBeenCoverInAcid": 0,
+          "runningFrameRate": 0.02500000037252903,
+          "onBackOf": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "canTouchLeftWalls": 0,
+          "canTouchRightWalls": 0,
+          "breakDoorsOpen": 0,
+          "currentLadderBlock": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "groundHeight": 0.0,
+          "rumbleAmountPerShot": 0.30000001192092896,
+          "xIBlast": 0.0,
+          "xIAttackExtra": 0.0,
+          "yIBlast": 0.0,
+          "specialAttackXIBoost": 0.0,
+          "specialAttackYIBoost": 0.0,
+          "maxWallClimbYI": 100.0,
+          "bossBlockPieceCurrentlyStandingOn": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "isSkinnedMook": 0,
+          "canDuck": 1,
+          "heldGrenade": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "heldMook": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "bloodCountAmount": 80,
+          "deathSoundVolume": 0.699999988079071,
+          "pitchShiftAmount": 0.0,
+          "heroTrailPrefab": {
+            "m_FileID": 3,
+            "m_PathID": 3389285514966516625
+          },
+          "HidingPlayer": 0,
+          "canTumble": 0,
+          "armVillagerSwitch": {
+            "m_FileID": 0,
+            "m_PathID": 1755098998676308404
+          },
+          "hasGun": 0,
+          "firingPlayerNum": -1,
+          "flames": [],
+          "upgradedProjectile": {
+            "m_FileID": 0,
+            "m_PathID": 7913802522018657861
+          },
+          "superProjectile": {
+            "m_FileID": 0,
+            "m_PathID": -5889002766546704612
+          },
+          "superUpgradedProjectile": {
+            "m_FileID": 0,
+            "m_PathID": 7823503875092552144
+          },
+          "upgradedGunMaterial": {
+            "m_FileID": 1,
+            "m_PathID": -6681350665337441888
+          }
+        },
+        "refs": {
+          "m_GameObject": {
+            "type": "GameObject",
+            "name": "Villager2",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": -7976076855495729456
+          },
+          "m_Script": {
+            "type": "MonoScript",
+            "name": "Villager",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": -2622936065910346456
+          },
+          "projectile": {
+            "type": "MonoBehaviour",
+            "name": "",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": -5305743629306004843
+          },
+          "disarmedGunMaterial": {
+            "type": "Material",
+            "name": "girlvillager_Disarmed",
+            "file": "CAB-7a9fc548b210674cdb329286295bba38",
+            "id": 7801943197795161030,
+            "material": {
+              "m_Name": "girlvillager_Disarmed",
+              "m_Shader": {
+                "m_FileID": 1,
+                "m_PathID": 7219890952606555506
+              },
+              "m_ShaderKeywords": "",
+              "m_LightmapFlags": 4,
+              "m_EnableInstancingVariants": false,
+              "m_DoubleSidedGI": false,
+              "m_CustomRenderQueue": -1,
+              "stringTagMap": [],
+              "disabledShaderPasses": [],
+              "m_SavedProperties": {
+                "m_TexEnvs": [
+                  [
+                    "_MainTex",
+                    {
+                      "m_Texture": {
+                        "m_FileID": 0,
+                        "m_PathID": 3591385665459403475
+                      },
+                      "m_Scale": {
+                        "x": 1.0,
+                        "y": 1.0
+                      },
+                      "m_Offset": {
+                        "x": 0.0,
+                        "y": 0.0
+                      }
+                    }
+                  ]
+                ],
+                "m_Floats": [
+                  [
+                    "_InvFade",
+                    1.0
+                  ]
+                ],
+                "m_Colors": [
+                  [
+                    "_Color",
+                    {
+                      "r": 0.7215686440467834,
+                      "g": 0.7098039388656616,
+                      "b": 0.7019608020782471,
+                      "a": 1.0
+                    }
+                  ],
+                  [
+                    "_TintColor",
+                    {
+                      "r": 0.5,
+                      "g": 0.5,
+                      "b": 0.5,
+                      "a": 0.5
+                    }
+                  ]
+                ]
+              }
+            }
+          },
+          "parachute": {
+            "type": "MonoBehaviour",
+            "name": "",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": 974448644763751188
+          },
+          "gibs": {
+            "type": "MonoBehaviour",
+            "name": "",
+            "file": "CAB-591d2d4b5f5d82c3fd778285a01aa858",
+            "id": 8624615315599342238
+          },
+          "player1Bubble": {
+            "type": "MonoBehaviour",
+            "name": "",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": 2762022659389437524
+          },
+          "player2Bubble": {
+            "type": "MonoBehaviour",
+            "name": "",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": -6254751345708489533
+          },
+          "player3Bubble": {
+            "type": "MonoBehaviour",
+            "name": "",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": -8635020597278512669
+          },
+          "player4Bubble": {
+            "type": "MonoBehaviour",
+            "name": "",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": 4064864448175672392
+          },
+          "high5Bubble": {
+            "type": "MonoBehaviour",
+            "name": "",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": 7156087672380825321
+          },
+          "soundHolder": {
+            "type": "MonoBehaviour",
+            "name": "",
+            "file": "CAB-ea3b7343d118fcf6a86bf44ffd650f5f",
+            "id": 5548891895130361544
+          },
+          "soundHolderFootSteps": {
+            "type": "MonoBehaviour",
+            "name": "",
+            "file": "CAB-ea3b7343d118fcf6a86bf44ffd650f5f",
+            "id": 3583078603356936059
+          },
+          "specialGrenade": {
+            "type": "MonoBehaviour",
+            "name": "",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": -2401697124892634421
+          },
+          "gunSprite": {
+            "type": "MonoBehaviour",
+            "name": "",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": 3879489654862695017
+          },
+          "heroTrailPrefab": {
+            "type": "MonoBehaviour",
+            "name": "",
+            "file": "CAB-591d2d4b5f5d82c3fd778285a01aa858",
+            "id": 3389285514966516625
+          },
+          "armVillagerSwitch": {
+            "type": "MonoBehaviour",
+            "name": "",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": 1755098998676308404
+          },
+          "upgradedProjectile": {
+            "type": "MonoBehaviour",
+            "name": "",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": 7913802522018657861
+          },
+          "superProjectile": {
+            "type": "MonoBehaviour",
+            "name": "",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": -5889002766546704612
+          },
+          "superUpgradedProjectile": {
+            "type": "MonoBehaviour",
+            "name": "",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": 7823503875092552144
+          },
+          "upgradedGunMaterial": {
+            "type": "Material",
+            "name": "Villager1_GunUpgrade",
+            "file": "CAB-7a9fc548b210674cdb329286295bba38",
+            "id": -6681350665337441888,
+            "material": {
+              "m_Name": "Villager1_GunUpgrade",
+              "m_Shader": {
+                "m_FileID": 1,
+                "m_PathID": 7219890952606555506
+              },
+              "m_ShaderKeywords": "",
+              "m_LightmapFlags": 4,
+              "m_EnableInstancingVariants": false,
+              "m_DoubleSidedGI": false,
+              "m_CustomRenderQueue": -1,
+              "stringTagMap": [],
+              "disabledShaderPasses": [],
+              "m_SavedProperties": {
+                "m_TexEnvs": [
+                  [
+                    "_MainTex",
+                    {
+                      "m_Texture": {
+                        "m_FileID": 0,
+                        "m_PathID": -5231911852240546079
+                      },
+                      "m_Scale": {
+                        "x": 1.0,
+                        "y": 1.0
+                      },
+                      "m_Offset": {
+                        "x": 0.0,
+                        "y": 0.0
+                      }
+                    }
+                  ]
+                ],
+                "m_Floats": [
+                  [
+                    "_InvFade",
+                    1.0
+                  ]
+                ],
+                "m_Colors": [
+                  [
+                    "_Color",
+                    {
+                      "r": 0.7215686440467834,
+                      "g": 0.7098039388656616,
+                      "b": 0.7019608020782471,
+                      "a": 1.0
+                    }
+                  ],
+                  [
+                    "_TintColor",
+                    {
+                      "r": 0.5,
+                      "g": 0.5,
+                      "b": 0.5,
+                      "a": 0.5
+                    }
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "InvulnerabilityFlash",
+        "tree": {
+          "m_GameObject": {
+            "m_FileID": 0,
+            "m_PathID": -7976076855495729456
+          },
+          "m_Enabled": 1,
+          "m_Script": {
+            "m_FileID": 0,
+            "m_PathID": 3406186890196204517
+          },
+          "m_Name": "",
+          "halfAlphaGun": 0
+        },
+        "refs": {
+          "m_GameObject": {
+            "type": "GameObject",
+            "name": "Villager2",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": -7976076855495729456
+          },
+          "m_Script": {
+            "type": "MonoScript",
+            "name": "InvulnerabilityFlash",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": 3406186890196204517
+          }
+        }
+      },
+      {
+        "type": "VillagerAI",
+        "tree": {
+          "m_GameObject": {
+            "m_FileID": 0,
+            "m_PathID": -7976076855495729456
+          },
+          "m_Enabled": 1,
+          "m_Script": {
+            "m_FileID": 0,
+            "m_PathID": 3581395248990777227
+          },
+          "m_Name": "",
+          "SyncDestroy": 0,
+          "OnlyDestroyScriptOnSync": 0,
+          "instantiationDataBytes": [],
+          "lastPosHasBeenSet": 0,
+          "_lastPos": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "UpdateHasRunAtleastOnce": 0,
+          "mentalState": 0,
+          "blockOffset": 0.0,
+          "actionQueue": [],
+          "exclamationMark": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "questionMark": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          },
+          "sightRangeX": 300,
+          "sightRangeY": 20,
+          "attackTime": 0.05999999865889549,
+          "sightDelay": 0.550000011920929,
+          "delayBetweenFiring": 0.550000011920929,
+          "willClimbThroughVents": 0,
+          "patrolBlocksRadius": 2,
+          "hidingLookXRange": 64,
+          "walkDirection": 1,
+          "minIdleWaitDuration": 0.30000001192092896,
+          "maxIdleWaitDuration": 1.0,
+          "alwaysLookAround": 0
+        },
+        "refs": {
+          "m_GameObject": {
+            "type": "GameObject",
+            "name": "Villager2",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": -7976076855495729456
+          },
+          "m_Script": {
+            "type": "MonoScript",
+            "name": "VillagerAI",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": 3581395248990777227
+          }
+        }
+      },
+      {
+        "type": "FollowerMinion",
+        "tree": {
+          "m_GameObject": {
+            "m_FileID": 0,
+            "m_PathID": -7976076855495729456
+          },
+          "m_Enabled": 1,
+          "m_Script": {
+            "m_FileID": 0,
+            "m_PathID": -7936625889393096046
+          },
+          "m_Name": "",
+          "leader": {
+            "m_FileID": 0,
+            "m_PathID": 0
+          }
+        },
+        "refs": {
+          "m_GameObject": {
+            "type": "GameObject",
+            "name": "Villager2",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": -7976076855495729456
+          },
+          "m_Script": {
+            "type": "MonoScript",
+            "name": "FollowerMinion",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": -7936625889393096046
+          }
+        }
+      },
+      {
+        "type": "PathAgent",
+        "tree": {
+          "m_GameObject": {
+            "m_FileID": 0,
+            "m_PathID": -7976076855495729456
+          },
+          "m_Enabled": 1,
+          "m_Script": {
+            "m_FileID": 0,
+            "m_PathID": -6876978193756389816
+          },
+          "m_Name": "",
+          "capabilities": {
+            "canUseLadders": 1,
+            "maxDropDistance": 3,
+            "canJump": 1,
+            "canWallClimb": 1,
+            "jumpHeight": 3,
+            "flying": 0,
+            "canRoofClimb": 0,
+            "fudge": 0,
+            "preferRoofWalking": 0,
+            "canPathThroughWalls": 0,
+            "preferNotToJumpRandomly": 0
+          },
+          "agentSize": 9.0,
+          "currentNodeIndex": 0,
+          "rowOffsetY": 0.0
+        },
+        "refs": {
+          "m_GameObject": {
+            "type": "GameObject",
+            "name": "Villager2",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": -7976076855495729456
+          },
+          "m_Script": {
+            "type": "MonoScript",
+            "name": "PathAgent",
+            "file": "CAB-c3d5d78442a82254be8981bb8322613d",
+            "id": -6876978193756389816
+          }
+        }
+      }
+    ]
+  }
+]

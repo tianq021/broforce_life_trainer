@@ -1,0 +1,923 @@
+
+METHOD TestVanDammeAnim :: Void CheckInput() public=False static=False
+IL_0000 ldarg.0 
+IL_0001 ldarg.0 
+IL_0002 ldfld TestVanDammeAnim :: Boolean up
+IL_0007 stfld TestVanDammeAnim :: Boolean wasUp
+IL_000c ldarg.0 
+IL_000d ldarg.0 
+IL_000e ldfld TestVanDammeAnim :: Boolean buttonJump
+IL_0013 stfld TestVanDammeAnim :: Boolean wasButtonJump
+IL_0018 ldarg.0 
+IL_0019 ldarg.0 
+IL_001a ldfld TestVanDammeAnim :: Boolean down
+IL_001f stfld TestVanDammeAnim :: Boolean wasDown
+IL_0024 ldarg.0 
+IL_0025 ldarg.0 
+IL_0026 ldfld TestVanDammeAnim :: Boolean left
+IL_002b stfld TestVanDammeAnim :: Boolean wasLeft
+IL_0030 ldarg.0 
+IL_0031 ldarg.0 
+IL_0032 ldfld TestVanDammeAnim :: Boolean right
+IL_0037 stfld TestVanDammeAnim :: Boolean wasRight
+IL_003c ldarg.0 
+IL_003d ldarg.0 
+IL_003e ldfld TestVanDammeAnim :: Boolean fire
+IL_0043 stfld TestVanDammeAnim :: Boolean wasFire
+IL_0048 ldarg.0 
+IL_0049 ldarg.0 
+IL_004a ldfld TestVanDammeAnim :: Boolean special
+IL_004f stfld TestVanDammeAnim :: Boolean wasSpecial
+IL_0054 ldarg.0 
+IL_0055 ldarg.0 
+IL_0056 ldfld TestVanDammeAnim :: Boolean highFive
+IL_005b stfld TestVanDammeAnim :: Boolean wasHighFive
+IL_0060 ldarg.0 
+IL_0061 ldarg.0 
+IL_0062 ldfld TestVanDammeAnim :: Boolean buttonTaunt
+IL_0067 stfld TestVanDammeAnim :: Boolean wasButtonTaunt
+IL_006c ldarg.0 
+IL_006d ldarg.0 
+IL_006e ldfld TestVanDammeAnim :: Boolean buttonGesture
+IL_0073 stfld TestVanDammeAnim :: Boolean wasButtonGesture
+IL_0078 ldarg.0 
+IL_0079 ldarg.0 
+IL_007a ldfld TestVanDammeAnim :: Boolean usingSpecial
+IL_007f stfld TestVanDammeAnim :: Boolean wasUsingSpecial
+IL_0084 ldarg.0 
+IL_0085 ldarg.0 
+IL_0086 ldfld TestVanDammeAnim :: Boolean usingSpecial2
+IL_008b stfld TestVanDammeAnim :: Boolean wasUsingSpecial2
+IL_0090 ldarg.0 
+IL_0091 ldarg.0 
+IL_0092 ldfld TestVanDammeAnim :: Boolean usingSpecial3
+IL_0097 stfld TestVanDammeAnim :: Boolean wasUsingSpecial3
+IL_009c ldarg.0 
+IL_009d ldarg.0 
+IL_009e ldfld TestVanDammeAnim :: Boolean usingSpecial4
+IL_00a3 stfld TestVanDammeAnim :: Boolean wasUsingSpecial4
+IL_00a8 ldarg.0 
+IL_00a9 ldarg.0 
+IL_00aa ldfld TestVanDammeAnim :: Boolean climbButton
+IL_00af stfld TestVanDammeAnim :: Boolean wasClimbButton
+IL_00b4 ldarg.0 
+IL_00b5 ldfld Unit :: Boolean isZombie
+IL_00ba brfalse IL_00db
+IL_00bf ldarg.0 
+IL_00c0 ldfld TestVanDammeAnim :: TestVanDammeAnim reviveSource
+IL_00c5 ldnull 
+IL_00c6 call UnityEngine.Object :: Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_00cb brfalse IL_00db
+IL_00d0 ldarg.0 
+IL_00d1 callvirt TestVanDammeAnim :: Void CalculateZombieInput()
+IL_00d6 br IL_04c0
+IL_00db ldarg.0 
+IL_00dc call NetworkedUnit :: Boolean get_IsHero()
+IL_00e1 brfalse IL_04c0
+IL_00e6 ldarg.0 
+IL_00e7 call NetworkedUnit :: Int32 get_playerNum()
+IL_00ec ldc.i4.0 
+IL_00ed blt IL_04c0
+IL_00f2 ldarg.0 
+IL_00f3 call NetworkedUnit :: Int32 get_playerNum()
+IL_00f8 ldc.i4.4 
+IL_00f9 bge IL_04c0
+IL_00fe ldarg.0 
+IL_00ff call NetworkObject :: Boolean get_IsMine()
+IL_0104 brtrue IL_0114
+IL_0109 ldarg.0 
+IL_010a callvirt NetworkObject :: Void RunSync()
+IL_010f br IL_0204
+IL_0114 ldsfld LevelEditorGUI :: Boolean levelEditorActive
+IL_0119 brtrue IL_0128
+IL_011e ldsfld GameModeController :: Boolean publishRun
+IL_0123 brfalse IL_016b
+IL_0128 ldarg.0 
+IL_0129 ldflda TestVanDammeAnim :: Boolean up
+IL_012e ldarg.0 
+IL_012f ldflda TestVanDammeAnim :: Boolean down
+IL_0134 ldarg.0 
+IL_0135 ldflda TestVanDammeAnim :: Boolean left
+IL_013a ldarg.0 
+IL_013b ldflda TestVanDammeAnim :: Boolean right
+IL_0140 ldarg.0 
+IL_0141 ldflda TestVanDammeAnim :: Boolean fire
+IL_0146 ldarg.0 
+IL_0147 ldflda TestVanDammeAnim :: Boolean buttonJump
+IL_014c ldarg.0 
+IL_014d ldflda TestVanDammeAnim :: Boolean special
+IL_0152 ldarg.0 
+IL_0153 ldflda TestVanDammeAnim :: Boolean highFive
+IL_0158 ldarg.0 
+IL_0159 ldflda TestVanDammeAnim :: Boolean buttonGesture
+IL_015e ldc.i4.0 
+IL_015f ldc.i4.0 
+IL_0160 ldc.i4.0 
+IL_0161 call InputReader :: Void GetCombinedInput(Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Int32, Boolean, Boolean)
+IL_0166 br IL_01cf
+IL_016b ldsfld HeroController :: Player[] players
+IL_0170 ldarg.0 
+IL_0171 call NetworkedUnit :: Int32 get_playerNum()
+IL_0176 ldelem.ref 
+IL_0177 ldnull 
+IL_0178 call UnityEngine.Object :: Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_017d brfalse IL_01cf
+IL_0182 ldsfld HeroController :: Player[] players
+IL_0187 ldarg.0 
+IL_0188 call NetworkedUnit :: Int32 get_playerNum()
+IL_018d ldelem.ref 
+IL_018e ldarg.0 
+IL_018f ldflda TestVanDammeAnim :: Boolean up
+IL_0194 ldarg.0 
+IL_0195 ldflda TestVanDammeAnim :: Boolean down
+IL_019a ldarg.0 
+IL_019b ldflda TestVanDammeAnim :: Boolean left
+IL_01a0 ldarg.0 
+IL_01a1 ldflda TestVanDammeAnim :: Boolean right
+IL_01a6 ldarg.0 
+IL_01a7 ldflda TestVanDammeAnim :: Boolean fire
+IL_01ac ldarg.0 
+IL_01ad ldflda TestVanDammeAnim :: Boolean buttonJump
+IL_01b2 ldarg.0 
+IL_01b3 ldflda TestVanDammeAnim :: Boolean special
+IL_01b8 ldarg.0 
+IL_01b9 ldflda TestVanDammeAnim :: Boolean highFive
+IL_01be ldarg.0 
+IL_01bf ldflda TestVanDammeAnim :: Boolean buttonGesture
+IL_01c4 ldarg.0 
+IL_01c5 ldflda TestVanDammeAnim :: Boolean sprint
+IL_01ca callvirt Player :: Void GetInput(Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef, Boolean ByRef)
+IL_01cf ldarg.0 
+IL_01d0 dup 
+IL_01d1 ldfld TestVanDammeAnim :: Single canFireDelay
+IL_01d6 call UnityEngine.Time :: Single get_deltaTime()
+IL_01db sub 
+IL_01dc dup 
+IL_01dd stloc.0 
+IL_01de stfld TestVanDammeAnim :: Single canFireDelay
+IL_01e3 ldloc.0 
+IL_01e4 ldc.r4 0
+IL_01e9 ble.un IL_01fe
+IL_01ee ldarg.0 
+IL_01ef ldarg.0 
+IL_01f0 ldc.i4.0 
+IL_01f1 dup 
+IL_01f2 stloc.1 
+IL_01f3 stfld TestVanDammeAnim :: Boolean special
+IL_01f8 ldloc.1 
+IL_01f9 stfld TestVanDammeAnim :: Boolean fire
+IL_01fe ldarg.0 
+IL_01ff callvirt TestVanDammeAnim :: Void CheckWhetherShouldClearInput()
+IL_0204 call GameModeController :: Boolean get_IsDeathMatchMode()
+IL_0209 brfalse IL_0236
+IL_020e call GameModeController :: Boolean InRewardPhase()
+IL_0213 brfalse IL_0236
+IL_0218 ldarg.0 
+IL_0219 call NetworkedUnit :: Int32 get_playerNum()
+IL_021e call GameModeController :: Int32 GetWinnerNum()
+IL_0223 beq IL_0236
+IL_0228 ldarg.0 
+IL_0229 ldc.i4.0 
+IL_022a stfld TestVanDammeAnim :: Boolean fire
+IL_022f ldarg.0 
+IL_0230 ldc.i4.0 
+IL_0231 stfld TestVanDammeAnim :: Boolean special
+IL_0236 ldc.r4 10
+IL_023b stloc.2 
+IL_023c ldc.r4 15
+IL_0241 stloc.3 
+IL_0242 call HeroController :: Int32 GetPlayersPlayingCount()
+IL_0247 ldc.i4.2 
+IL_0248 bgt IL_025c
+IL_024d call PlayerOptions :: PlayerOptions get_Instance()
+IL_0252 ldfld PlayerOptions :: Boolean alwaysShowBubbles
+IL_0257 brfalse IL_0262
+IL_025c ldc.r4 1
+IL_0261 stloc.2 
+IL_0262 ldarg.0 
+IL_0263 ldfld TestVanDammeAnim :: Boolean up
+IL_0268 brtrue IL_02c6
+IL_026d ldarg.0 
+IL_026e ldfld TestVanDammeAnim :: Boolean down
+IL_0273 brtrue IL_02c6
+IL_0278 ldarg.0 
+IL_0279 ldfld TestVanDammeAnim :: Boolean left
+IL_027e brtrue IL_02c6
+IL_0283 ldarg.0 
+IL_0284 ldfld TestVanDammeAnim :: Boolean right
+IL_0289 brtrue IL_02c6
+IL_028e ldarg.0 
+IL_028f ldfld TestVanDammeAnim :: Boolean fire
+IL_0294 brtrue IL_02c6
+IL_0299 ldarg.0 
+IL_029a ldfld TestVanDammeAnim :: Boolean buttonJump
+IL_029f brtrue IL_02c6
+IL_02a4 ldarg.0 
+IL_02a5 ldfld TestVanDammeAnim :: Boolean special
+IL_02aa brtrue IL_02c6
+IL_02af ldarg.0 
+IL_02b0 ldfld TestVanDammeAnim :: Boolean highFive
+IL_02b5 brtrue IL_02c6
+IL_02ba ldarg.0 
+IL_02bb ldfld BroforceObject :: Int32 health
+IL_02c0 ldc.i4.0 
+IL_02c1 bgt IL_02e3
+IL_02c6 ldarg.0 
+IL_02c7 ldc.r4 0
+IL_02cc stfld TestVanDammeAnim :: Single idleTime
+IL_02d1 ldarg.0 
+IL_02d2 ldc.i4.0 
+IL_02d3 stfld TestVanDammeAnim :: Boolean ElgilbleToBeKicked
+IL_02d8 ldarg.0 
+IL_02d9 call TestVanDammeAnim :: Void StopKickBubble()
+IL_02de br IL_037b
+IL_02e3 ldarg.0 
+IL_02e4 dup 
+IL_02e5 ldfld TestVanDammeAnim :: Single idleTime
+IL_02ea call UnityEngine.Time :: Single get_deltaTime()
+IL_02ef add 
+IL_02f0 stfld TestVanDammeAnim :: Single idleTime
+IL_02f5 call HeroController :: Int32 GetPlayersAliveCount()
+IL_02fa ldc.i4.1 
+IL_02fb ble IL_0333
+IL_0300 ldarg.0 
+IL_0301 ldfld TestVanDammeAnim :: Single idleTime
+IL_0306 ldloc.3 
+IL_0307 blt.un IL_0333
+IL_030c call Connect :: Boolean get_IsOffline()
+IL_0311 brtrue IL_0333
+IL_0316 ldarg.0 
+IL_0317 call TestVanDammeAnim :: ReactionBubble get_playerBubble()
+IL_031c callvirt ReactionBubble :: Boolean get_IsHidden()
+IL_0321 brtrue IL_032c
+IL_0326 ldarg.0 
+IL_0327 callvirt TestVanDammeAnim :: Void StopBubble()
+IL_032c ldarg.0 
+IL_032d ldc.i4.1 
+IL_032e stfld TestVanDammeAnim :: Boolean ElgilbleToBeKicked
+IL_0333 ldarg.0 
+IL_0334 ldfld TestVanDammeAnim :: Single idleTime
+IL_0339 ldloc.2 
+IL_033a blt.un IL_037b
+IL_033f ldsfld Map :: Boolean isEditing
+IL_0344 brtrue IL_037b
+IL_0349 ldarg.0 
+IL_034a call TestVanDammeAnim :: ReactionBubble get_playerBubble()
+IL_034f ldnull 
+IL_0350 call UnityEngine.Object :: Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_0355 brfalse IL_037b
+IL_035a ldarg.0 
+IL_035b call TestVanDammeAnim :: ReactionBubble get_playerBubble()
+IL_0360 callvirt ReactionBubble :: Boolean get_IsHidden()
+IL_0365 brfalse IL_037b
+IL_036a ldarg.0 
+IL_036b ldfld TestVanDammeAnim :: Boolean ElgilbleToBeKicked
+IL_0370 brtrue IL_037b
+IL_0375 ldarg.0 
+IL_0376 call TestVanDammeAnim :: Void ShowStartBubble()
+IL_037b ldarg.0 
+IL_037c ldfld TestVanDammeAnim :: Boolean left
+IL_0381 brfalse IL_039f
+IL_0386 ldarg.0 
+IL_0387 ldfld TestVanDammeAnim :: Boolean right
+IL_038c brfalse IL_039f
+IL_0391 ldarg.0 
+IL_0392 ldc.i4.0 
+IL_0393 stfld TestVanDammeAnim :: Boolean left
+IL_0398 ldarg.0 
+IL_0399 ldc.i4.0 
+IL_039a stfld TestVanDammeAnim :: Boolean right
+IL_039f call UnityEngine.Application :: Boolean get_isEditor()
+IL_03a4 brtrue IL_03b3
+IL_03a9 call PlaytomicController :: Boolean get_isExhibitionBuild()
+IL_03ae brfalse IL_042b
+IL_03b3 ldc.i4 285
+IL_03b8 call UnityEngine.Input :: Boolean GetKeyDown(UnityEngine.KeyCode)
+IL_03bd brfalse IL_041c
+IL_03c2 ldtoken  :: Satan
+IL_03c7 call System.Type :: System.Type GetTypeFromHandle(System.RuntimeTypeHandle)
+IL_03cc call UnityEngine.Object :: UnityEngine.Object FindObjectOfType(System.Type)
+IL_03d1 isinst  :: Satan
+IL_03d6 stloc.s 4
+IL_03d8 ldloc.s 4
+IL_03da ldnull 
+IL_03db call UnityEngine.Object :: Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_03e0 brfalse IL_041c
+IL_03e5 ldloc.s 4
+IL_03e7 ldfld BroforceObject :: Int32 health
+IL_03ec ldc.i4.0 
+IL_03ed ble IL_041c
+IL_03f2 ldarg.0 
+IL_03f3 ldloc.s 4
+IL_03f5 callvirt BroforceObject :: Single get_X()
+IL_03fa ldc.r4 8
+IL_03ff add 
+IL_0400 ldarg.0 
+IL_0401 call NetworkedUnit :: Int32 get_playerNum()
+IL_0406 ldc.i4.8 
+IL_0407 mul 
+IL_0408 conv.r4 
+IL_0409 add 
+IL_040a ldloc.s 4
+IL_040c callvirt BroforceObject :: Single get_Y()
+IL_0411 ldc.r4 12
+IL_0416 add 
+IL_0417 callvirt BroforceObject :: Void SetXY(Single, Single)
+IL_041c ldc.i4 283
+IL_0421 call UnityEngine.Input :: Boolean GetKeyDown(UnityEngine.KeyCode)
+IL_0426 brfalse IL_042b
+IL_042b ldc.i4 285
+IL_0430 call UnityEngine.Input :: Boolean GetKeyDown(UnityEngine.KeyCode)
+IL_0435 brfalse IL_04c0
+IL_043a call GameModeController :: GameMode get_GameMode()
+IL_043f ldc.i4.1 
+IL_0440 bne.un IL_04c0
+IL_0445 ldc.i4 285
+IL_044a call UnityEngine.Input :: Boolean GetKeyDown(UnityEngine.KeyCode)
+IL_044f brfalse IL_04ae
+IL_0454 ldtoken  :: Satan
+IL_0459 call System.Type :: System.Type GetTypeFromHandle(System.RuntimeTypeHandle)
+IL_045e call UnityEngine.Object :: UnityEngine.Object FindObjectOfType(System.Type)
+IL_0463 isinst  :: Satan
+IL_0468 stloc.s 5
+IL_046a ldloc.s 5
+IL_046c ldnull 
+IL_046d call UnityEngine.Object :: Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_0472 brfalse IL_04ae
+IL_0477 ldloc.s 5
+IL_0479 ldfld BroforceObject :: Int32 health
+IL_047e ldc.i4.0 
+IL_047f ble IL_04ae
+IL_0484 ldarg.0 
+IL_0485 ldloc.s 5
+IL_0487 callvirt BroforceObject :: Single get_X()
+IL_048c ldc.r4 8
+IL_0491 add 
+IL_0492 ldarg.0 
+IL_0493 call NetworkedUnit :: Int32 get_playerNum()
+IL_0498 ldc.i4.8 
+IL_0499 mul 
+IL_049a conv.r4 
+IL_049b add 
+IL_049c ldloc.s 5
+IL_049e callvirt BroforceObject :: Single get_Y()
+IL_04a3 ldc.r4 12
+IL_04a8 add 
+IL_04a9 callvirt BroforceObject :: Void SetXY(Single, Single)
+IL_04ae call GameState :: GameState get_Instance()
+IL_04b3 dup 
+IL_04b4 ldfld GameState :: Int32 levelNumber
+IL_04b9 ldc.i4.1 
+IL_04ba add 
+IL_04bb stfld GameState :: Int32 levelNumber
+IL_04c0 ldarg.0 
+IL_04c1 ldfld TestVanDammeAnim :: RemoteControlExplosiveCar remoteCar
+IL_04c6 ldnull 
+IL_04c7 call UnityEngine.Object :: Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_04cc brfalse IL_060e
+IL_04d1 ldarg.0 
+IL_04d2 ldfld TestVanDammeAnim :: RemoteControlExplosiveCar remoteCar
+IL_04d7 ldarg.0 
+IL_04d8 ldfld TestVanDammeAnim :: RemoteControlExplosiveCar remoteCar
+IL_04dd ldfld TestVanDammeAnim :: Boolean up
+IL_04e2 stfld TestVanDammeAnim :: Boolean wasUp
+IL_04e7 ldarg.0 
+IL_04e8 ldfld TestVanDammeAnim :: RemoteControlExplosiveCar remoteCar
+IL_04ed ldarg.0 
+IL_04ee ldfld TestVanDammeAnim :: RemoteControlExplosiveCar remoteCar
+IL_04f3 ldfld TestVanDammeAnim :: Boolean down
+IL_04f8 stfld TestVanDammeAnim :: Boolean wasDown
+IL_04fd ldarg.0 
+IL_04fe ldfld TestVanDammeAnim :: RemoteControlExplosiveCar remoteCar
+IL_0503 ldarg.0 
+IL_0504 ldfld TestVanDammeAnim :: RemoteControlExplosiveCar remoteCar
+IL_0509 ldfld TestVanDammeAnim :: Boolean left
+IL_050e stfld TestVanDammeAnim :: Boolean wasLeft
+IL_0513 ldarg.0 
+IL_0514 ldfld TestVanDammeAnim :: RemoteControlExplosiveCar remoteCar
+IL_0519 ldarg.0 
+IL_051a ldfld TestVanDammeAnim :: RemoteControlExplosiveCar remoteCar
+IL_051f ldfld TestVanDammeAnim :: Boolean right
+IL_0524 stfld TestVanDammeAnim :: Boolean wasRight
+IL_0529 ldarg.0 
+IL_052a ldfld TestVanDammeAnim :: RemoteControlExplosiveCar remoteCar
+IL_052f ldarg.0 
+IL_0530 ldfld TestVanDammeAnim :: RemoteControlExplosiveCar remoteCar
+IL_0535 ldfld TestVanDammeAnim :: Boolean buttonJump
+IL_053a stfld TestVanDammeAnim :: Boolean wasButtonJump
+IL_053f ldarg.0 
+IL_0540 ldfld TestVanDammeAnim :: RemoteControlExplosiveCar remoteCar
+IL_0545 ldarg.0 
+IL_0546 ldfld TestVanDammeAnim :: Boolean up
+IL_054b stfld TestVanDammeAnim :: Boolean up
+IL_0550 ldarg.0 
+IL_0551 ldfld TestVanDammeAnim :: RemoteControlExplosiveCar remoteCar
+IL_0556 ldarg.0 
+IL_0557 ldfld TestVanDammeAnim :: Boolean down
+IL_055c stfld TestVanDammeAnim :: Boolean down
+IL_0561 ldarg.0 
+IL_0562 ldfld TestVanDammeAnim :: RemoteControlExplosiveCar remoteCar
+IL_0567 ldarg.0 
+IL_0568 ldfld TestVanDammeAnim :: Boolean left
+IL_056d stfld TestVanDammeAnim :: Boolean left
+IL_0572 ldarg.0 
+IL_0573 ldfld TestVanDammeAnim :: RemoteControlExplosiveCar remoteCar
+IL_0578 ldarg.0 
+IL_0579 ldfld TestVanDammeAnim :: Boolean right
+IL_057e stfld TestVanDammeAnim :: Boolean right
+IL_0583 ldarg.0 
+IL_0584 ldfld TestVanDammeAnim :: RemoteControlExplosiveCar remoteCar
+IL_0589 ldarg.0 
+IL_058a ldfld TestVanDammeAnim :: Boolean buttonJump
+IL_058f stfld TestVanDammeAnim :: Boolean buttonJump
+IL_0594 ldarg.0 
+IL_0595 ldc.i4.0 
+IL_0596 stfld TestVanDammeAnim :: Boolean up
+IL_059b ldarg.0 
+IL_059c ldc.i4.0 
+IL_059d stfld TestVanDammeAnim :: Boolean left
+IL_05a2 ldarg.0 
+IL_05a3 ldc.i4.0 
+IL_05a4 stfld TestVanDammeAnim :: Boolean right
+IL_05a9 ldarg.0 
+IL_05aa ldc.i4.0 
+IL_05ab stfld TestVanDammeAnim :: Boolean down
+IL_05b0 ldarg.0 
+IL_05b1 ldc.i4.0 
+IL_05b2 stfld TestVanDammeAnim :: Boolean buttonJump
+IL_05b7 ldarg.0 
+IL_05b8 ldfld TestVanDammeAnim :: Boolean special
+IL_05bd brfalse IL_05cd
+IL_05c2 ldarg.0 
+IL_05c3 ldfld TestVanDammeAnim :: Boolean wasSpecial
+IL_05c8 brfalse IL_05e3
+IL_05cd ldarg.0 
+IL_05ce ldfld TestVanDammeAnim :: Boolean fire
+IL_05d3 brfalse IL_0600
+IL_05d8 ldarg.0 
+IL_05d9 ldfld TestVanDammeAnim :: Boolean wasFire
+IL_05de brtrue IL_0600
+IL_05e3 ldarg.0 
+IL_05e4 ldc.r4 0.3
+IL_05e9 stfld TestVanDammeAnim :: Single canFireDelay
+IL_05ee ldarg.0 
+IL_05ef ldfld TestVanDammeAnim :: RemoteControlExplosiveCar remoteCar
+IL_05f4 callvirt RemoteControlExplosiveCar :: Void Explode()
+IL_05f9 ldarg.0 
+IL_05fa ldnull 
+IL_05fb stfld TestVanDammeAnim :: RemoteControlExplosiveCar remoteCar
+IL_0600 ldarg.0 
+IL_0601 ldc.i4.0 
+IL_0602 stfld TestVanDammeAnim :: Boolean fire
+IL_0607 ldarg.0 
+IL_0608 ldc.i4.0 
+IL_0609 stfld TestVanDammeAnim :: Boolean special
+IL_060e ldarg.0 
+IL_060f ldfld TestVanDammeAnim :: Projectile remoteProjectile
+IL_0614 ldnull 
+IL_0615 call UnityEngine.Object :: Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_061a brfalse IL_083c
+IL_061f ldarg.0 
+IL_0620 ldfld TestVanDammeAnim :: Projectile remoteProjectile
+IL_0625 callvirt UnityEngine.Component :: UnityEngine.GameObject get_gameObject()
+IL_062a callvirt UnityEngine.GameObject :: Boolean get_activeInHierarchy()
+IL_062f brfalse IL_083c
+IL_0634 ldarg.0 
+IL_0635 ldfld TestVanDammeAnim :: Projectile remoteProjectile
+IL_063a ldfld Projectile :: Boolean doubleSpeed
+IL_063f brtrue IL_06de
+IL_0644 ldarg.0 
+IL_0645 ldfld TestVanDammeAnim :: Boolean up
+IL_064a brfalse IL_066a
+IL_064f ldarg.0 
+IL_0650 ldfld TestVanDammeAnim :: Projectile remoteProjectile
+IL_0655 ldc.r4 0
+IL_065a ldarg.0 
+IL_065b ldfld TestVanDammeAnim :: Projectile remoteProjectile
+IL_0660 callvirt Projectile :: Single GetSuggestedSpeed()
+IL_0665 callvirt BroforceObject :: Void SetSpeed(Single, Single)
+IL_066a ldarg.0 
+IL_066b ldfld TestVanDammeAnim :: Boolean down
+IL_0670 brfalse IL_0691
+IL_0675 ldarg.0 
+IL_0676 ldfld TestVanDammeAnim :: Projectile remoteProjectile
+IL_067b ldc.r4 0
+IL_0680 ldarg.0 
+IL_0681 ldfld TestVanDammeAnim :: Projectile remoteProjectile
+IL_0686 callvirt Projectile :: Single GetSuggestedSpeed()
+IL_068b neg 
+IL_068c callvirt BroforceObject :: Void SetSpeed(Single, Single)
+IL_0691 ldarg.0 
+IL_0692 ldfld TestVanDammeAnim :: Boolean left
+IL_0697 brfalse IL_06b8
+IL_069c ldarg.0 
+IL_069d ldfld TestVanDammeAnim :: Projectile remoteProjectile
+IL_06a2 ldarg.0 
+IL_06a3 ldfld TestVanDammeAnim :: Projectile remoteProjectile
+IL_06a8 callvirt Projectile :: Single GetSuggestedSpeed()
+IL_06ad neg 
+IL_06ae ldc.r4 0
+IL_06b3 callvirt BroforceObject :: Void SetSpeed(Single, Single)
+IL_06b8 ldarg.0 
+IL_06b9 ldfld TestVanDammeAnim :: Boolean right
+IL_06be brfalse IL_06de
+IL_06c3 ldarg.0 
+IL_06c4 ldfld TestVanDammeAnim :: Projectile remoteProjectile
+IL_06c9 ldarg.0 
+IL_06ca ldfld TestVanDammeAnim :: Projectile remoteProjectile
+IL_06cf callvirt Projectile :: Single GetSuggestedSpeed()
+IL_06d4 ldc.r4 0
+IL_06d9 callvirt BroforceObject :: Void SetSpeed(Single, Single)
+IL_06de ldarg.0 
+IL_06df ldc.i4.0 
+IL_06e0 stfld TestVanDammeAnim :: Boolean up
+IL_06e5 ldarg.0 
+IL_06e6 ldc.i4.0 
+IL_06e7 stfld TestVanDammeAnim :: Boolean left
+IL_06ec ldarg.0 
+IL_06ed ldc.i4.0 
+IL_06ee stfld TestVanDammeAnim :: Boolean right
+IL_06f3 ldarg.0 
+IL_06f4 ldc.i4.0 
+IL_06f5 stfld TestVanDammeAnim :: Boolean down
+IL_06fa ldarg.0 
+IL_06fb ldc.i4.0 
+IL_06fc stfld TestVanDammeAnim :: Boolean buttonJump
+IL_0701 call UnityEngine.Time :: Single get_time()
+IL_0706 ldarg.0 
+IL_0707 ldfld TestVanDammeAnim :: Single projectileTime
+IL_070c sub 
+IL_070d ldc.r4 0.56
+IL_0712 ble.un IL_077f
+IL_0717 ldarg.0 
+IL_0718 ldfld TestVanDammeAnim :: Boolean usingSpecial
+IL_071d brfalse IL_073d
+IL_0722 ldarg.0 
+IL_0723 ldfld TestVanDammeAnim :: Boolean wasSpecial
+IL_0728 brtrue IL_073d
+IL_072d ldarg.0 
+IL_072e ldfld TestVanDammeAnim :: Projectile remoteProjectile
+IL_0733 ldfld Projectile :: Boolean doubleSpeed
+IL_0738 brfalse IL_0769
+IL_073d ldarg.0 
+IL_073e ldfld TestVanDammeAnim :: Boolean fire
+IL_0743 brfalse IL_0753
+IL_0748 ldarg.0 
+IL_0749 ldfld TestVanDammeAnim :: Boolean wasFire
+IL_074e brfalse IL_0769
+IL_0753 ldarg.0 
+IL_0754 ldfld TestVanDammeAnim :: Boolean buttonGesture
+IL_0759 brfalse IL_077f
+IL_075e ldarg.0 
+IL_075f ldfld TestVanDammeAnim :: Boolean buttonGesture
+IL_0764 brtrue IL_077f
+IL_0769 ldarg.0 
+IL_076a ldarg.0 
+IL_076b ldc.i4.0 
+IL_076c dup 
+IL_076d stloc.1 
+IL_076e stfld TestVanDammeAnim :: Boolean usingPockettedSpecial
+IL_0773 ldloc.1 
+IL_0774 stfld TestVanDammeAnim :: Boolean usingSpecial
+IL_0779 ldarg.0 
+IL_077a callvirt TestVanDammeAnim :: Void DestroyRemoteProjectile()
+IL_077f ldarg.0 
+IL_0780 ldarg.0 
+IL_0781 ldc.i4.0 
+IL_0782 dup 
+IL_0783 stloc.1 
+IL_0784 stfld TestVanDammeAnim :: Boolean usingPockettedSpecial
+IL_0789 ldloc.1 
+IL_078a stfld TestVanDammeAnim :: Boolean usingSpecial
+IL_078f ldarg.0 
+IL_0790 ldc.i4.0 
+IL_0791 stfld TestVanDammeAnim :: Boolean fire
+IL_0796 ldarg.0 
+IL_0797 ldc.r4 0.25
+IL_079c stfld TestVanDammeAnim :: Single controllingProjectileDelay
+IL_07a1 ldarg.0 
+IL_07a2 ldfld TestVanDammeAnim :: Boolean special
+IL_07a7 brfalse IL_07e3
+IL_07ac ldarg.0 
+IL_07ad ldfld TestVanDammeAnim :: Boolean wasSpecial
+IL_07b2 brtrue IL_07e3
+IL_07b7 ldarg.0 
+IL_07b8 ldfld TestVanDammeAnim :: Projectile remoteProjectile
+IL_07bd ldfld Projectile :: Boolean doubleSpeed
+IL_07c2 brtrue IL_07e3
+IL_07c7 ldsfld PID :: PID TargetAll
+IL_07cc ldarg.0 
+IL_07cd ldfld TestVanDammeAnim :: Projectile remoteProjectile
+IL_07d2 ldftn Projectile :: Void SetDoubleSpeed()
+IL_07d8 newobj RpcSignature :: Void .ctor(System.Object, IntPtr)
+IL_07dd ldc.i4.0 
+IL_07de call Networking.Networking :: Void RPC(PID, RpcSignature, Boolean)
+IL_07e3 ldarg.0 
+IL_07e4 ldfld TestVanDammeAnim :: Projectile remoteProjectile
+IL_07e9 callvirt Projectile :: Boolean get_StopBeingControlled()
+IL_07ee brfalse IL_0837
+IL_07f3 ldsfld PID :: PID TargetAll
+IL_07f8 ldsfld TestVanDammeAnim :: RpcSignature`1[System.Int32] <>f__mg$cache1
+IL_07fd brtrue.s IL_0810
+IL_07ff ldnull 
+IL_0800 ldftn HeroController :: Void RemoveTemporaryPlayerTarget(Int32)
+IL_0806 newobj RpcSignature`1[System.Int32] :: Void .ctor(System.Object, IntPtr)
+IL_080b stsfld TestVanDammeAnim :: RpcSignature`1[System.Int32] <>f__mg$cache1
+IL_0810 ldsfld TestVanDammeAnim :: RpcSignature`1[System.Int32] <>f__mg$cache1
+IL_0815 ldarg.0 
+IL_0816 call NetworkedUnit :: Int32 get_playerNum()
+IL_081b ldarg.0 
+IL_081c ldfld TestVanDammeAnim :: Projectile remoteProjectile
+IL_0821 callvirt UnityEngine.Component :: UnityEngine.Transform get_transform()
+IL_0826 call UnityEngine.Object :: Boolean op_Implicit(UnityEngine.Object)
+IL_082b call Networking.Networking :: Void RPC[Int32](PID, RpcSignature`1[System.Int32], Int32, Boolean)
+IL_0830 ldarg.0 
+IL_0831 ldnull 
+IL_0832 stfld TestVanDammeAnim :: Projectile remoteProjectile
+IL_0837 br IL_0899
+IL_083c ldarg.0 
+IL_083d ldfld TestVanDammeAnim :: Single controllingProjectileDelay
+IL_0842 ldc.r4 0
+IL_0847 ble.un IL_0892
+IL_084c ldarg.0 
+IL_084d dup 
+IL_084e ldfld TestVanDammeAnim :: Single controllingProjectileDelay
+IL_0853 ldarg.0 
+IL_0854 ldfld Unit :: Single t
+IL_0859 sub 
+IL_085a stfld TestVanDammeAnim :: Single controllingProjectileDelay
+IL_085f ldarg.0 
+IL_0860 ldc.i4.0 
+IL_0861 stfld TestVanDammeAnim :: Boolean up
+IL_0866 ldarg.0 
+IL_0867 ldc.i4.0 
+IL_0868 stfld TestVanDammeAnim :: Boolean left
+IL_086d ldarg.0 
+IL_086e ldc.i4.0 
+IL_086f stfld TestVanDammeAnim :: Boolean right
+IL_0874 ldarg.0 
+IL_0875 ldc.i4.0 
+IL_0876 stfld TestVanDammeAnim :: Boolean down
+IL_087b ldarg.0 
+IL_087c ldarg.0 
+IL_087d ldc.i4.0 
+IL_087e dup 
+IL_087f stloc.1 
+IL_0880 stfld TestVanDammeAnim :: Boolean usingPockettedSpecial
+IL_0885 ldloc.1 
+IL_0886 stfld TestVanDammeAnim :: Boolean usingSpecial
+IL_088b ldarg.0 
+IL_088c ldc.i4.0 
+IL_088d stfld TestVanDammeAnim :: Boolean fire
+IL_0892 ldarg.0 
+IL_0893 ldc.i4.0 
+IL_0894 stfld TestVanDammeAnim :: Boolean controllingProjectile
+IL_0899 ldsfld Map :: Boolean isEditing
+IL_089e brfalse IL_08e9
+IL_08a3 ldarg.0 
+IL_08a4 ldarg.0 
+IL_08a5 ldarg.0 
+IL_08a6 ldarg.0 
+IL_08a7 ldarg.0 
+IL_08a8 ldarg.0 
+IL_08a9 ldarg.0 
+IL_08aa ldarg.0 
+IL_08ab ldc.i4.0 
+IL_08ac dup 
+IL_08ad stloc.1 
+IL_08ae stfld TestVanDammeAnim :: Boolean wasHighFive
+IL_08b3 ldloc.1 
+IL_08b4 dup 
+IL_08b5 stloc.1 
+IL_08b6 stfld TestVanDammeAnim :: Boolean highFive
+IL_08bb ldloc.1 
+IL_08bc dup 
+IL_08bd stloc.1 
+IL_08be stfld TestVanDammeAnim :: Boolean wasSpecialDown
+IL_08c3 ldloc.1 
+IL_08c4 dup 
+IL_08c5 stloc.1 
+IL_08c6 stfld TestVanDammeAnim :: Boolean specialDown
+IL_08cb ldloc.1 
+IL_08cc dup 
+IL_08cd stloc.1 
+IL_08ce stfld TestVanDammeAnim :: Boolean wasSpecial
+IL_08d3 ldloc.1 
+IL_08d4 dup 
+IL_08d5 stloc.1 
+IL_08d6 stfld TestVanDammeAnim :: Boolean wasFire
+IL_08db ldloc.1 
+IL_08dc dup 
+IL_08dd stloc.1 
+IL_08de stfld TestVanDammeAnim :: Boolean special
+IL_08e3 ldloc.1 
+IL_08e4 stfld TestVanDammeAnim :: Boolean fire
+IL_08e9 ldarg.0 
+IL_08ea call Unit :: ActionState get_actionState()
+IL_08ef ldc.i4.s 11
+IL_08f1 bne.un IL_0907
+IL_08f6 ldarg.0 
+IL_08f7 ldfld TestVanDammeAnim :: Boolean fire
+IL_08fc brfalse IL_0907
+IL_0901 ldarg.0 
+IL_0902 callvirt TestVanDammeAnim :: Void StopLeftRightInputFromHanging()
+IL_0907 ldarg.0 
+IL_0908 call NetworkedUnit :: Int32 get_playerNum()
+IL_090d ldc.i4.0 
+IL_090e blt IL_0940
+IL_0913 ldarg.0 
+IL_0914 call NetworkedUnit :: Int32 get_playerNum()
+IL_0919 ldc.i4.3 
+IL_091a bgt IL_0940
+IL_091f ldarg.0 
+IL_0920 callvirt Unit :: Boolean IsEvil()
+IL_0925 brtrue IL_0940
+IL_092a ldarg.0 
+IL_092b ldfld NetworkedUnit :: Boolean isHero
+IL_0930 brtrue IL_0952
+IL_0935 ldarg.0 
+IL_0936 ldfld Unit :: Boolean isZombie
+IL_093b brtrue IL_0952
+IL_0940 ldarg.0 
+IL_0941 ldfld BroforceObject :: Int32 health
+IL_0946 ldc.i4.0 
+IL_0947 ble IL_0952
+IL_094c ldarg.0 
+IL_094d callvirt TestVanDammeAnim :: Void GetEnemyMovement()
+IL_0952 ldarg.0 
+IL_0953 ldfld TestVanDammeAnim :: Boolean buttonTaunt
+IL_0958 brfalse IL_096f
+IL_095d ldarg.0 
+IL_095e ldfld TestVanDammeAnim :: Boolean wasButtonTaunt
+IL_0963 brtrue IL_096f
+IL_0968 ldarg.0 
+IL_0969 ldc.i4.0 
+IL_096a stfld TestVanDammeAnim :: Boolean wasButtonTaunt
+IL_096f ldarg.0 
+IL_0970 ldfld TestVanDammeAnim :: Boolean special
+IL_0975 brfalse IL_09b8
+IL_097a ldarg.0 
+IL_097b ldfld TestVanDammeAnim :: Boolean wasSpecial
+IL_0980 brtrue IL_09b8
+IL_0985 ldarg.0 
+IL_0986 ldfld TestVanDammeAnim :: Single ignoreHighFivePressTime
+IL_098b ldc.r4 0
+IL_0990 bgt.un IL_09b8
+IL_0995 ldarg.0 
+IL_0996 ldc.i4.0 
+IL_0997 callvirt TestVanDammeAnim :: Void SetGestureAnimation(Gestures)
+IL_099c ldarg.0 
+IL_099d callvirt TestVanDammeAnim :: Boolean MustUsePockettedSpecialAmmo()
+IL_09a2 brfalse IL_09b2
+IL_09a7 ldarg.0 
+IL_09a8 callvirt TestVanDammeAnim :: Void StartPockettedSpecial()
+IL_09ad br IL_09b8
+IL_09b2 ldarg.0 
+IL_09b3 callvirt TestVanDammeAnim :: Void PressSpecial()
+IL_09b8 ldarg.0 
+IL_09b9 ldfld TestVanDammeAnim :: Boolean special
+IL_09be brtrue IL_09d4
+IL_09c3 ldarg.0 
+IL_09c4 ldfld TestVanDammeAnim :: Boolean wasSpecial
+IL_09c9 brfalse IL_09d4
+IL_09ce ldarg.0 
+IL_09cf callvirt TestVanDammeAnim :: Void ReleaseSpecial()
+IL_09d4 ldarg.0 
+IL_09d5 ldfld TestVanDammeAnim :: Boolean highFive
+IL_09da brfalse IL_0a08
+IL_09df ldarg.0 
+IL_09e0 ldfld TestVanDammeAnim :: Boolean wasHighFive
+IL_09e5 brtrue IL_0a08
+IL_09ea ldarg.0 
+IL_09eb ldfld TestVanDammeAnim :: Single ignoreHighFivePressTime
+IL_09f0 ldc.r4 0
+IL_09f5 bgt.un IL_0a08
+IL_09fa ldarg.0 
+IL_09fb ldc.i4.0 
+IL_09fc callvirt TestVanDammeAnim :: Void PressHighFiveMelee(Boolean)
+IL_0a01 ldarg.0 
+IL_0a02 ldc.i4.0 
+IL_0a03 callvirt TestVanDammeAnim :: Void SetGestureAnimation(Gestures)
+IL_0a08 ldarg.0 
+IL_0a09 ldfld TestVanDammeAnim :: Boolean highFive
+IL_0a0e brtrue IL_0a24
+IL_0a13 ldarg.0 
+IL_0a14 ldfld TestVanDammeAnim :: Boolean wasHighFive
+IL_0a19 brfalse IL_0a24
+IL_0a1e ldarg.0 
+IL_0a1f callvirt TestVanDammeAnim :: Void ReleaseHighFive()
+IL_0a24 ldarg.0 
+IL_0a25 ldfld TestVanDammeAnim :: Boolean fire
+IL_0a2a brtrue IL_0a40
+IL_0a2f ldarg.0 
+IL_0a30 ldfld TestVanDammeAnim :: Boolean wasFire
+IL_0a35 brfalse IL_0a40
+IL_0a3a ldarg.0 
+IL_0a3b callvirt TestVanDammeAnim :: Void ReleaseFire()
+IL_0a40 ldarg.0 
+IL_0a41 callvirt TestVanDammeAnim :: Boolean IsLockedInMelee()
+IL_0a46 brfalse IL_0aa0
+IL_0a4b ldarg.0 
+IL_0a4c ldarg.0 
+IL_0a4d ldc.i4.0 
+IL_0a4e dup 
+IL_0a4f stloc.1 
+IL_0a50 stfld TestVanDammeAnim :: Boolean special
+IL_0a55 ldloc.1 
+IL_0a56 stfld TestVanDammeAnim :: Boolean fire
+IL_0a5b ldarg.0 
+IL_0a5c ldfld TestVanDammeAnim :: Boolean cancelMeleeOnChangeDirection
+IL_0a61 brfalse IL_0aa0
+IL_0a66 ldarg.0 
+IL_0a67 call NetworkedUnit :: Int32 get_Direction()
+IL_0a6c ldc.i4.0 
+IL_0a6d ble IL_0a83
+IL_0a72 ldarg.0 
+IL_0a73 ldfld TestVanDammeAnim :: Boolean left
+IL_0a78 brfalse IL_0a83
+IL_0a7d ldarg.0 
+IL_0a7e callvirt TestVanDammeAnim :: Void CancelMelee()
+IL_0a83 ldarg.0 
+IL_0a84 call NetworkedUnit :: Int32 get_Direction()
+IL_0a89 ldc.i4.0 
+IL_0a8a bge IL_0aa0
+IL_0a8f ldarg.0 
+IL_0a90 ldfld TestVanDammeAnim :: Boolean right
+IL_0a95 brfalse IL_0aa0
+IL_0a9a ldarg.0 
+IL_0a9b callvirt TestVanDammeAnim :: Void CancelMelee()
+IL_0aa0 ldarg.0 
+IL_0aa1 callvirt BroforceObject :: Boolean IsAlive()
+IL_0aa6 brtrue IL_0ab1
+IL_0aab ldarg.0 
+IL_0aac callvirt TestVanDammeAnim :: Void ClearFireInput()
+IL_0ab1 ldarg.0 
+IL_0ab2 ldfld TestVanDammeAnim :: Boolean dashingMelee
+IL_0ab7 brfalse IL_0ad3
+IL_0abc ldarg.0 
+IL_0abd call Unit :: Int32 get_frame()
+IL_0ac2 ldc.i4.4 
+IL_0ac3 bge IL_0ad3
+IL_0ac8 ldarg.0 
+IL_0ac9 ldfld TestVanDammeAnim :: Boolean meleeFollowUp
+IL_0ace brtrue IL_0ad3
+IL_0ad3 ldarg.0 
+IL_0ad4 callvirt TestVanDammeAnim :: Void RunForcedInput()
+IL_0ad9 ldarg.0 
+IL_0ada ldfld TestVanDammeAnim :: Boolean hasBeenCoverInAcid
+IL_0adf brfalse IL_0b30
+IL_0ae4 ldarg.0 
+IL_0ae5 ldc.i4.0 
+IL_0ae6 stfld TestVanDammeAnim :: Boolean special
+IL_0aeb ldarg.0 
+IL_0aec ldc.i4.0 
+IL_0aed stfld TestVanDammeAnim :: Boolean fire
+IL_0af2 ldarg.0 
+IL_0af3 ldc.i4.0 
+IL_0af4 stfld TestVanDammeAnim :: Boolean highFive
+IL_0af9 ldarg.0 
+IL_0afa ldfld TestVanDammeAnim :: Single acidMeltTimer
+IL_0aff ldc.r4 0
+IL_0b04 bge.un IL_0b10
+IL_0b09 ldarg.0 
+IL_0b0a ldc.i4.0 
+IL_0b0b stfld TestVanDammeAnim :: Boolean buttonJump
+IL_0b10 ldarg.0 
+IL_0b11 ldfld TestVanDammeAnim :: Single acidMeltTimer
+IL_0b16 ldc.r4 -0.5
+IL_0b1b bge.un IL_0b30
+IL_0b20 ldarg.0 
+IL_0b21 ldarg.0 
+IL_0b22 ldc.i4.0 
+IL_0b23 dup 
+IL_0b24 stloc.1 
+IL_0b25 stfld TestVanDammeAnim :: Boolean right
+IL_0b2a ldloc.1 
+IL_0b2b stfld TestVanDammeAnim :: Boolean left
+IL_0b30 ldarg.0 
+IL_0b31 ldfld TestVanDammeAnim :: Boolean usingSpecial2
+IL_0b36 brfalse IL_0b4c
+IL_0b3b ldarg.0 
+IL_0b3c ldfld TestVanDammeAnim :: Boolean wasUsingSpecial2
+IL_0b41 brtrue IL_0b4c
+IL_0b46 ldarg.0 
+IL_0b47 callvirt TestVanDammeAnim :: Void PressSpecial2()
+IL_0b4c ldarg.0 
+IL_0b4d ldfld TestVanDammeAnim :: Boolean usingSpecial3
+IL_0b52 brfalse IL_0b69
+IL_0b57 ldarg.0 
+IL_0b58 ldfld TestVanDammeAnim :: Boolean wasUsingSpecial3
+IL_0b5d brtrue IL_0b69
+IL_0b62 ldarg.0 
+IL_0b63 ldc.i4.0 
+IL_0b64 call Unit :: Void set_frame(Int32)
+IL_0b69 ldarg.0 
+IL_0b6a ldfld TestVanDammeAnim :: Boolean usingSpecial4
+IL_0b6f brfalse IL_0b86
+IL_0b74 ldarg.0 
+IL_0b75 ldfld TestVanDammeAnim :: Boolean wasUsingSpecial4
+IL_0b7a brtrue IL_0b86
+IL_0b7f ldarg.0 
+IL_0b80 ldc.i4.0 
+IL_0b81 call Unit :: Void set_frame(Int32)
+IL_0b86 ret 

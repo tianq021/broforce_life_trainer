@@ -1,0 +1,44 @@
+
+METHOD FollowerMinion :: Void FindLeader() public=False static=False
+IL_0000 ldc.i4.m1 
+IL_0001 stloc.0 
+IL_0002 ldarg.0 
+IL_0003 ldfld FollowerMinion :: TestVanDammeAnim unit
+IL_0008 callvirt BroforceObject :: Single get_X()
+IL_000d ldarg.0 
+IL_000e ldfld FollowerMinion :: TestVanDammeAnim unit
+IL_0013 callvirt BroforceObject :: Single get_Y()
+IL_0018 ldc.r4 128
+IL_001d ldc.r4 128
+IL_0022 ldloca.s 0
+IL_0024 call HeroController :: Boolean GetNearestPlayer(Single, Single, Single, Single, Int32 ByRef)
+IL_0029 pop 
+IL_002a ldloc.0 
+IL_002b ldc.i4.0 
+IL_002c blt IL_0076
+IL_0031 ldsfld HeroController :: Player[] players
+IL_0036 ldloc.0 
+IL_0037 ldelem.ref 
+IL_0038 stloc.1 
+IL_0039 ldloc.1 
+IL_003a ldnull 
+IL_003b call UnityEngine.Object :: Boolean op_Equality(UnityEngine.Object, UnityEngine.Object)
+IL_0040 brfalse IL_0046
+IL_0045 ret 
+IL_0046 ldarg.0 
+IL_0047 ldloc.1 
+IL_0048 callvirt Player :: TestVanDammeAnim get_character()
+IL_004d stfld FollowerMinion :: Unit leader
+IL_0052 ldarg.0 
+IL_0053 call UnityEngine.Component :: UnityEngine.GameObject get_gameObject()
+IL_0058 ldloc.1 
+IL_0059 callvirt NetworkObject :: PID get_Owner()
+IL_005e call Extensions :: Void SetOwnerNetworked(UnityEngine.GameObject, PID)
+IL_0063 ldarg.0 
+IL_0064 ldloc.0 
+IL_0065 stfld FollowerMinion :: Int32 leaderPlayerNo
+IL_006a ldloc.1 
+IL_006b ldarg.0 
+IL_006c ldfld FollowerMinion :: TestVanDammeAnim unit
+IL_0071 callvirt Player :: Void RegisterMinion(Unit)
+IL_0076 ret 

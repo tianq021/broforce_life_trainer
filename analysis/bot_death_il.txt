@@ -1,0 +1,326 @@
+
+METHOD TestVanDammeAnim :: Void Death(Single, Single, DamageObject) public=True static=False
+PARAM 0 System.Single xI
+PARAM 1 System.Single yI
+PARAM 2 DamageObject damage
+IL_0000 ldarg.0 
+IL_0001 ldnull 
+IL_0002 call UnityEngine.Object :: Boolean op_Equality(UnityEngine.Object, UnityEngine.Object)
+IL_0007 brfalse IL_000d
+IL_000c ret 
+IL_000d ldarg.0 
+IL_000e callvirt TestVanDammeAnim :: Void CancelMelee()
+IL_0013 ldarg.0 
+IL_0014 ldfld TestVanDammeAnim :: Boolean isParachuteActive
+IL_0019 stloc.0 
+IL_001a ldarg.0 
+IL_001b callvirt Unit :: Boolean get_IsParachuteActive()
+IL_0020 brfalse IL_0032
+IL_0025 ldarg.0 
+IL_0026 ldc.i4.0 
+IL_0027 callvirt Unit :: Void set_IsParachuteActive(Boolean)
+IL_002c ldarg.0 
+IL_002d callvirt TestVanDammeAnim :: Void Tumble()
+IL_0032 ldarg.0 
+IL_0033 ldc.i4.0 
+IL_0034 call NetworkObject :: Void SetSyncingInternal(Boolean)
+IL_0039 ldarg.0 
+IL_003a ldfld BroforceObject :: Int32 health
+IL_003f ldc.i4.0 
+IL_0040 ble IL_004c
+IL_0045 ldarg.0 
+IL_0046 ldc.i4.0 
+IL_0047 stfld BroforceObject :: Int32 health
+IL_004c ldarg.0 
+IL_004d ldnull 
+IL_004e stfld TestVanDammeAnim :: TestVanDammeAnim reviveSource
+IL_0053 ldarg.0 
+IL_0054 call TestVanDammeAnim :: Void StopPlayerBubbles()
+IL_0059 ldarg.0 
+IL_005a ldfld Unit :: Boolean hasReportedKill
+IL_005f brtrue IL_0171
+IL_0064 ldarg.0 
+IL_0065 ldc.i4.1 
+IL_0066 stfld Unit :: Boolean hasReportedKill
+IL_006b ldarg.0 
+IL_006c call NetworkedUnit :: Int32 get_playerNum()
+IL_0071 ldc.i4.0 
+IL_0072 blt IL_0082
+IL_0077 ldarg.0 
+IL_0078 isinst  :: Mook
+IL_007d brfalse IL_015f
+IL_0082 ldnull 
+IL_0083 stloc.1 
+IL_0084 ldarg.3 
+IL_0085 ldfld DamageObject :: UnityEngine.MonoBehaviour damageSender
+IL_008a call UnityEngine.Object :: Boolean op_Implicit(UnityEngine.Object)
+IL_008f brfalse IL_00a0
+IL_0094 ldarg.3 
+IL_0095 ldfld DamageObject :: UnityEngine.MonoBehaviour damageSender
+IL_009a callvirt UnityEngine.Component :: TestVanDammeAnim GetComponent[TestVanDammeAnim]()
+IL_009f stloc.1 
+IL_00a0 ldc.i4.m1 
+IL_00a1 stloc.2 
+IL_00a2 ldloc.1 
+IL_00a3 ldnull 
+IL_00a4 call UnityEngine.Object :: Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_00a9 brfalse IL_00dd
+IL_00ae ldloc.1 
+IL_00af callvirt NetworkedUnit :: Boolean get_IsHero()
+IL_00b4 brfalse IL_00dd
+IL_00b9 ldloc.1 
+IL_00ba callvirt NetworkedUnit :: Int32 get_playerNum()
+IL_00bf ldc.i4.0 
+IL_00c0 blt IL_00dd
+IL_00c5 ldloc.1 
+IL_00c6 callvirt NetworkedUnit :: Int32 get_playerNum()
+IL_00cb ldc.i4.3 
+IL_00cc bgt IL_00dd
+IL_00d1 ldloc.1 
+IL_00d2 callvirt NetworkedUnit :: Int32 get_playerNum()
+IL_00d7 stloc.2 
+IL_00d8 br IL_00f0
+IL_00dd ldarg.0 
+IL_00de ldfld TestVanDammeAnim :: Int32 heroThatKilledMeIndex
+IL_00e3 ldc.i4.0 
+IL_00e4 blt IL_00f0
+IL_00e9 ldarg.0 
+IL_00ea ldfld TestVanDammeAnim :: Int32 heroThatKilledMeIndex
+IL_00ef stloc.2 
+IL_00f0 ldloc.2 
+IL_00f1 ldc.i4.0 
+IL_00f2 blt IL_015f
+IL_00f7 ldloc.2 
+IL_00f8 ldc.i4.4 
+IL_00f9 bge IL_015f
+IL_00fe ldarg.0 
+IL_00ff ldfld NetworkedUnit :: PolymorphicAI enemyAI
+IL_0104 ldnull 
+IL_0105 call UnityEngine.Object :: Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_010a brfalse IL_013c
+IL_010f ldarg.0 
+IL_0110 ldfld NetworkedUnit :: PolymorphicAI enemyAI
+IL_0115 callvirt PolymorphicAI :: Boolean IsAlerted()
+IL_011a brfalse IL_0139
+IL_011f call UnityEngine.Time :: Single get_time()
+IL_0124 ldarg.0 
+IL_0125 ldfld NetworkedUnit :: PolymorphicAI enemyAI
+IL_012a callvirt PolymorphicAI :: Single get_LastAlertedTime()
+IL_012f sub 
+IL_0130 ldc.r4 0.24
+IL_0135 cgt 
+IL_0137 br.s IL_013a
+IL_0139 ldc.i4.0 
+IL_013a br.s IL_013d
+IL_013c ldc.i4.0 
+IL_013d stloc.3 
+IL_013e ldsfld HeroController :: Player[] players
+IL_0143 ldloc.2 
+IL_0144 ldelem.ref 
+IL_0145 ldarg.0 
+IL_0146 ldarg.0 
+IL_0147 ldfld BroforceObject :: Boolean destroyed
+IL_014c ldloc.3 
+IL_014d ldarg.3 
+IL_014e ldfld DamageObject :: DamageType damageType
+IL_0153 ldc.i4.0 
+IL_0154 newobj KillData :: Void .ctor(Unit, Boolean, Boolean, DamageType, Boolean)
+IL_0159 ldarg.3 
+IL_015a callvirt Player :: Void ReportKill(KillData, DamageObject)
+IL_015f ldarg.0 
+IL_0160 callvirt TestVanDammeAnim :: Boolean CanReduceLives()
+IL_0165 brfalse IL_0171
+IL_016a ldarg.0 
+IL_016b ldc.i4.0 
+IL_016c callvirt TestVanDammeAnim :: Void ReduceLives(Boolean)
+IL_0171 ldarg.3 
+IL_0172 brtrue IL_017c
+IL_0177 br IL_0207
+IL_017c ldarg.3 
+IL_017d ldfld DamageObject :: DamageType damageType
+IL_0182 ldc.i4.s 12
+IL_0184 beq IL_0207
+IL_0189 ldarg.3 
+IL_018a ldfld DamageObject :: DamageType damageType
+IL_018f ldc.i4.s 28
+IL_0191 beq IL_0207
+IL_0196 ldarg.3 
+IL_0197 ldfld DamageObject :: DamageType damageType
+IL_019c ldc.i4.s 20
+IL_019e beq IL_0207
+IL_01a3 ldarg.3 
+IL_01a4 ldfld DamageObject :: DamageType damageType
+IL_01a9 ldc.i4.s 29
+IL_01ab beq IL_0207
+IL_01b0 ldarg.3 
+IL_01b1 ldfld DamageObject :: DamageType damageType
+IL_01b6 ldc.i4.s 22
+IL_01b8 beq IL_0207
+IL_01bd ldarg.0 
+IL_01be ldarg.1 
+IL_01bf ldc.r4 0.3
+IL_01c4 mul 
+IL_01c5 stfld BroforceObject :: Single xI
+IL_01ca ldarg.2 
+IL_01cb ldc.r4 0
+IL_01d0 bge.un IL_01dc
+IL_01d5 ldc.r4 0
+IL_01da starg.s 2
+IL_01dc ldarg.3 
+IL_01dd ldfld DamageObject :: DamageType damageType
+IL_01e2 ldc.i4.7 
+IL_01e3 beq IL_01fa
+IL_01e8 ldarg.0 
+IL_01e9 ldarg.2 
+IL_01ea ldc.r4 0.3
+IL_01ef mul 
+IL_01f0 stfld BroforceObject :: Single yI
+IL_01f5 br IL_0207
+IL_01fa ldarg.0 
+IL_01fb ldarg.2 
+IL_01fc ldc.r4 0.5
+IL_0201 mul 
+IL_0202 stfld BroforceObject :: Single yI
+IL_0207 ldarg.0 
+IL_0208 callvirt TestVanDammeAnim :: Void DeactivateGun()
+IL_020d ldarg.0 
+IL_020e call TestVanDammeAnim :: UnityEngine.Transform get_impaledByTransform()
+IL_0213 ldnull 
+IL_0214 call UnityEngine.Object :: Boolean op_Equality(UnityEngine.Object, UnityEngine.Object)
+IL_0219 brfalse IL_02d9
+IL_021e ldarg.0 
+IL_021f ldfld TestVanDammeAnim :: Boolean isInQuicksand
+IL_0224 brtrue IL_02d9
+IL_0229 ldarg.3 
+IL_022a brfalse IL_02d9
+IL_022f ldarg.3 
+IL_0230 ldfld DamageObject :: DamageType damageType
+IL_0235 ldc.i4.s 22
+IL_0237 beq IL_02d9
+IL_023c ldarg.3 
+IL_023d ldfld DamageObject :: DamageType damageType
+IL_0242 ldc.i4.s 20
+IL_0244 beq IL_02d9
+IL_0249 ldarg.3 
+IL_024a ldfld DamageObject :: DamageType damageType
+IL_024f ldc.i4.s 29
+IL_0251 beq IL_02d9
+IL_0256 ldarg.3 
+IL_0257 ldfld DamageObject :: DamageType damageType
+IL_025c ldc.i4.s 28
+IL_025e beq IL_02d9
+IL_0263 ldarg.0 
+IL_0264 dup 
+IL_0265 ldfld BroforceObject :: Single yI
+IL_026a ldc.r4 25
+IL_026f add 
+IL_0270 stfld BroforceObject :: Single yI
+IL_0275 ldarg.0 
+IL_0276 callvirt TestVanDammeAnim :: Single CalculateCeilingHeight()
+IL_027b stloc.s 4
+IL_027d ldarg.0 
+IL_027e call BroforceObject :: Single get_Y()
+IL_0283 ldarg.0 
+IL_0284 ldfld Unit :: Single headHeight
+IL_0289 add 
+IL_028a ldloc.s 4
+IL_028c ldc.r4 5
+IL_0291 sub 
+IL_0292 bge.un IL_02d9
+IL_0297 ldarg.3 
+IL_0298 brfalse IL_02d9
+IL_029d ldarg.3 
+IL_029e ldfld DamageObject :: DamageType damageType
+IL_02a3 ldc.i4.8 
+IL_02a4 beq IL_02d9
+IL_02a9 ldarg.3 
+IL_02aa ldfld DamageObject :: DamageType damageType
+IL_02af ldc.i4.s 27
+IL_02b1 beq IL_02d9
+IL_02b6 ldarg.0 
+IL_02b7 ldfld TestVanDammeAnim :: Boolean isInQuicksand
+IL_02bc brtrue IL_02d9
+IL_02c1 ldloc.0 
+IL_02c2 brtrue IL_02d9
+IL_02c7 ldarg.0 
+IL_02c8 dup 
+IL_02c9 call BroforceObject :: Single get_Y()
+IL_02ce ldc.r4 5
+IL_02d3 add 
+IL_02d4 call BroforceObject :: Void set_Y(Single)
+IL_02d9 ldarg.3 
+IL_02da brfalse IL_0376
+IL_02df ldarg.3 
+IL_02e0 ldfld DamageObject :: DamageType damageType
+IL_02e5 ldc.i4.s 18
+IL_02e7 beq IL_0376
+IL_02ec ldarg.3 
+IL_02ed ldfld DamageObject :: DamageType damageType
+IL_02f2 ldc.i4.s 20
+IL_02f4 beq IL_0376
+IL_02f9 ldarg.3 
+IL_02fa ldfld DamageObject :: DamageType damageType
+IL_02ff ldc.i4.s 29
+IL_0301 beq IL_0376
+IL_0306 ldarg.3 
+IL_0307 ldfld DamageObject :: DamageType damageType
+IL_030c ldc.i4.s 22
+IL_030e beq IL_0376
+IL_0313 ldarg.3 
+IL_0314 ldfld DamageObject :: DamageType damageType
+IL_0319 ldc.i4.s 27
+IL_031b beq IL_0376
+IL_0320 ldarg.0 
+IL_0321 ldfld TestVanDammeAnim :: Single frozenTime
+IL_0326 ldc.r4 0
+IL_032b bgt.un IL_0376
+IL_0330 ldarg.0 
+IL_0331 ldfld Unit :: BloodColor bloodColor
+IL_0336 ldarg.0 
+IL_0337 call BroforceObject :: Single get_X()
+IL_033c ldarg.0 
+IL_033d call BroforceObject :: Single get_Y()
+IL_0342 ldc.r4 6
+IL_0347 add 
+IL_0348 ldc.i4.s 10
+IL_034a ldc.r4 4
+IL_034f ldc.r4 5
+IL_0354 ldc.r4 60
+IL_0359 ldarg.0 
+IL_035a ldfld BroforceObject :: Single xI
+IL_035f ldc.r4 0.5
+IL_0364 mul 
+IL_0365 ldarg.0 
+IL_0366 ldfld BroforceObject :: Single yI
+IL_036b ldc.r4 0.5
+IL_0370 mul 
+IL_0371 call EffectsController :: Void CreateBloodParticles(BloodColor, Single, Single, Int32, Single, Single, Single, Single, Single)
+IL_0376 ldarg.0 
+IL_0377 ldc.i4.0 
+IL_0378 call TestVanDammeAnim :: Void ReleaseHeldObject(Boolean)
+IL_037d ldarg.0 
+IL_037e ldarg.1 
+IL_037f ldarg.2 
+IL_0380 ldarg.3 
+IL_0381 call Unit :: Void Death(Single, Single, DamageObject)
+IL_0386 ldarg.0 
+IL_0387 callvirt TestVanDammeAnim :: Void ChangeFrame()
+IL_038c ldarg.0 
+IL_038d call UnityEngine.Component :: UnityEngine.Collider GetComponent[Collider]()
+IL_0392 ldnull 
+IL_0393 call UnityEngine.Object :: Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_0398 brfalse IL_03a9
+IL_039d ldarg.0 
+IL_039e call UnityEngine.Component :: UnityEngine.Collider GetComponent[Collider]()
+IL_03a3 ldc.i4.0 
+IL_03a4 callvirt UnityEngine.Collider :: Void set_enabled(Boolean)
+IL_03a9 ldarg.0 
+IL_03aa call NetworkedUnit :: Boolean get_IsHero()
+IL_03af brfalse IL_03bf
+IL_03b4 ldarg.0 
+IL_03b5 ldc.r4 1.5
+IL_03ba call GifController :: Void SaveGIF(TestVanDammeAnim, Single)
+IL_03bf ldarg.0 
+IL_03c0 ldc.r4 0
+IL_03c5 stfld TestVanDammeAnim :: Single deadTimeCounter
+IL_03ca ret 

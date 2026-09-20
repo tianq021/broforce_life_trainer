@@ -1,0 +1,327 @@
+
+METHOD Villager :: Void ArmVillager(Unit) public=True static=False
+PARAM 0 Unit activatingUnit
+IL_0000 ldarg.0 
+IL_0001 ldfld Villager :: Boolean hasGun
+IL_0006 brtrue IL_0028
+IL_000b ldsfld PID :: PID TargetAll
+IL_0010 ldarg.0 
+IL_0011 ldftn Villager :: Void ArmVillagerRPC(Int32)
+IL_0017 newobj RpcSignature`1[System.Int32] :: Void .ctor(System.Object, IntPtr)
+IL_001c ldarg.1 
+IL_001d callvirt NetworkedUnit :: Int32 get_playerNum()
+IL_0022 ldc.i4.0 
+IL_0023 call Networking.Networking :: Void RPC[Int32](PID, RpcSignature`1[System.Int32], Int32, Boolean)
+IL_0028 ret 
+
+METHOD Villager :: Void ArmVillagerRPC(Int32) public=False static=False
+PARAM 0 System.Int32 playerNum
+IL_0000 ldarg.0 
+IL_0001 ldfld Villager :: Boolean hasGun
+IL_0006 brtrue IL_006b
+IL_000b ldarg.0 
+IL_000c ldfld BroforceObject :: Int32 health
+IL_0011 ldc.i4.0 
+IL_0012 bgt IL_001e
+IL_0017 ldarg.0 
+IL_0018 ldc.i4.1 
+IL_0019 stfld BroforceObject :: Int32 health
+IL_001e ldarg.0 
+IL_001f ldarg.1 
+IL_0020 call NetworkedUnit :: Void set_playerNum(Int32)
+IL_0025 ldarg.0 
+IL_0026 call UnityEngine.Component :: UnityEngine.Renderer GetComponent[Renderer]()
+IL_002b ldarg.0 
+IL_002c ldfld Villager :: UnityEngine.Material armedMaterial
+IL_0031 callvirt UnityEngine.Renderer :: Void set_sharedMaterial(UnityEngine.Material)
+IL_0036 ldarg.0 
+IL_0037 ldc.i4.1 
+IL_0038 stfld Villager :: Boolean hasGun
+IL_003d ldarg.0 
+IL_003e callvirt TestVanDammeAnim :: Void ActivateGun()
+IL_0043 ldarg.0 
+IL_0044 ldfld Villager :: Switch armVillagerSwitch
+IL_0049 call UnityEngine.Object :: Void Destroy(UnityEngine.Object)
+IL_004e ldarg.0 
+IL_004f dup 
+IL_0050 ldfld BroforceObject :: Single yI
+IL_0055 ldc.r4 150
+IL_005a add 
+IL_005b stfld BroforceObject :: Single yI
+IL_0060 ldarg.0 
+IL_0061 call UnityEngine.Component :: VillagerAI GetComponent[VillagerAI]()
+IL_0066 callvirt VillagerAI :: Void EnterMinionMode()
+IL_006b ret 
+
+METHOD Rogueforce.PerkSystem.Perks.SpawnVillagerAfterKills :: Void SpawnVillager(Player) public=False static=False
+PARAM 0 Player player
+IL_0000 call Map :: Map get_Instance()
+IL_0005 callvirt Map :: ThemeHolder get_activeTheme()
+IL_000a ldfld ThemeHolder :: TestVanDammeAnim[] villager1
+IL_000f stloc.0 
+IL_0010 newobj System.Collections.Generic.List`1[TestVanDammeAnim] :: Void .ctor()
+IL_0015 stloc.1 
+IL_0016 ldloc.0 
+IL_0017 stloc.3 
+IL_0018 ldc.i4.0 
+IL_0019 stloc.s 4
+IL_001b br IL_0052
+IL_0020 ldloc.3 
+IL_0021 ldloc.s 4
+IL_0023 ldelem.ref 
+IL_0024 stloc.2 
+IL_0025 ldloc.2 
+IL_0026 callvirt UnityEngine.Component :: Villager GetComponent[Villager]()
+IL_002b call UnityEngine.Object :: Boolean op_Implicit(UnityEngine.Object)
+IL_0030 brfalse IL_004c
+IL_0035 ldloc.2 
+IL_0036 callvirt UnityEngine.Component :: Citizen GetComponent[Citizen]()
+IL_003b call UnityEngine.Object :: Boolean op_Implicit(UnityEngine.Object)
+IL_0040 brtrue IL_004c
+IL_0045 ldloc.1 
+IL_0046 ldloc.2 
+IL_0047 callvirt System.Collections.Generic.List`1[TestVanDammeAnim] :: Void Add(TestVanDammeAnim)
+IL_004c ldloc.s 4
+IL_004e ldc.i4.1 
+IL_004f add 
+IL_0050 stloc.s 4
+IL_0052 ldloc.s 4
+IL_0054 ldloc.3 
+IL_0055 ldlen 
+IL_0056 conv.i4 
+IL_0057 blt IL_0020
+IL_005c ldloc.1 
+IL_005d callvirt System.Collections.Generic.List`1[TestVanDammeAnim] :: Int32 get_Count()
+IL_0062 stloc.s 5
+IL_0064 ldloc.1 
+IL_0065 ldc.i4.0 
+IL_0066 ldloc.s 5
+IL_0068 call UnityEngine.Random :: Int32 Range(Int32, Int32)
+IL_006d callvirt System.Collections.Generic.List`1[TestVanDammeAnim] :: TestVanDammeAnim get_Item(Int32)
+IL_0072 isinst  :: Villager
+IL_0077 stloc.s 6
+IL_0079 ldarg.1 
+IL_007a callvirt Player :: UnityEngine.Vector3 GetCharacterPosition()
+IL_007f call UnityEngine.Vector3 :: UnityEngine.Vector3 get_up()
+IL_0084 call UnityEngine.Vector3 :: UnityEngine.Vector3 op_Addition(UnityEngine.Vector3, UnityEngine.Vector3)
+IL_0089 stloc.s 7
+IL_008b ldloc.s 7
+IL_008d ldarg.1 
+IL_008e ldfld Player :: TestVanDammeAnim _character
+IL_0093 callvirt UnityEngine.Component :: UnityEngine.Transform get_transform()
+IL_0098 callvirt UnityEngine.Transform :: UnityEngine.Vector3 get_localScale()
+IL_009d stloc.s 8
+IL_009f ldloca.s 8
+IL_00a1 ldfld UnityEngine.Vector3 :: Single x
+IL_00a6 ldc.r4 16
+IL_00ab mul 
+IL_00ac call UnityEngine.Vector3 :: UnityEngine.Vector3 get_right()
+IL_00b1 call UnityEngine.Vector3 :: UnityEngine.Vector3 op_Multiply(Single, UnityEngine.Vector3)
+IL_00b6 call UnityEngine.Vector3 :: UnityEngine.Vector3 op_Subtraction(UnityEngine.Vector3, UnityEngine.Vector3)
+IL_00bb call UnityEngine.Vector3 :: UnityEngine.Vector3 get_up()
+IL_00c0 ldc.r4 128
+IL_00c5 ldsfld Map :: UnityEngine.LayerMask groundLayer
+IL_00ca call UnityEngine.LayerMask :: Int32 op_Implicit(UnityEngine.LayerMask)
+IL_00cf call UnityEngine.Physics :: Boolean Raycast(UnityEngine.Vector3, UnityEngine.Vector3, Single, Int32)
+IL_00d4 brtrue IL_011f
+IL_00d9 ldloc.s 7
+IL_00db ldarg.1 
+IL_00dc ldfld Player :: TestVanDammeAnim _character
+IL_00e1 callvirt UnityEngine.Component :: UnityEngine.Transform get_transform()
+IL_00e6 callvirt UnityEngine.Transform :: UnityEngine.Vector3 get_localScale()
+IL_00eb stloc.s 9
+IL_00ed ldloca.s 9
+IL_00ef ldfld UnityEngine.Vector3 :: Single x
+IL_00f4 ldc.r4 16
+IL_00f9 mul 
+IL_00fa call UnityEngine.Vector3 :: UnityEngine.Vector3 get_right()
+IL_00ff call UnityEngine.Vector3 :: UnityEngine.Vector3 op_Multiply(Single, UnityEngine.Vector3)
+IL_0104 call UnityEngine.Vector3 :: UnityEngine.Vector3 op_Subtraction(UnityEngine.Vector3, UnityEngine.Vector3)
+IL_0109 call UnityEngine.Vector3 :: UnityEngine.Vector3 get_up()
+IL_010e ldc.r4 96
+IL_0113 call UnityEngine.Vector3 :: UnityEngine.Vector3 op_Multiply(UnityEngine.Vector3, Single)
+IL_0118 call UnityEngine.Vector3 :: UnityEngine.Vector3 op_Addition(UnityEngine.Vector3, UnityEngine.Vector3)
+IL_011d stloc.s 7
+IL_011f ldloc.s 6
+IL_0121 ldnull 
+IL_0122 call UnityEngine.Object :: Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_0127 brfalse IL_01a5
+IL_012c ldloca.s 7
+IL_012e ldfld UnityEngine.Vector3 :: Single x
+IL_0133 ldc.r4 0
+IL_0138 ble.un IL_01a5
+IL_013d ldloca.s 7
+IL_013f ldfld UnityEngine.Vector3 :: Single x
+IL_0144 ldloca.s 7
+IL_0146 ldfld UnityEngine.Vector3 :: Single y
+IL_014b ldc.r4 2
+IL_0150 add 
+IL_0151 call Map :: Single GetGroundHeight(Single, Single)
+IL_0156 stloc.s 10
+IL_0158 ldloc.s 6
+IL_015a ldloca.s 7
+IL_015c ldfld UnityEngine.Vector3 :: Single x
+IL_0161 ldloca.s 7
+IL_0163 ldfld UnityEngine.Vector3 :: Single y
+IL_0168 ldc.i4.m1 
+IL_0169 ldc.i4.2 
+IL_016a call UnityEngine.Random :: Int32 Range(Int32, Int32)
+IL_016f conv.r4 
+IL_0170 ldc.r4 0
+IL_0175 ldc.i4.0 
+IL_0176 ldc.i4.0 
+IL_0177 ldloc.s 10
+IL_0179 ldc.r4 0
+IL_017e blt IL_0196
+IL_0183 ldloca.s 7
+IL_0185 ldfld UnityEngine.Vector3 :: Single y
+IL_018a ldloc.s 10
+IL_018c ldc.r4 20
+IL_0191 add 
+IL_0192 cgt 
+IL_0194 br.s IL_0197
+IL_0196 ldc.i4.1 
+IL_0197 ldc.i4.0 
+IL_0198 ldc.i4.0 
+IL_0199 ldarg.1 
+IL_019a ldfld Player :: Int32 playerNum
+IL_019f call MapController :: Villager SpawnVillager_Networked(Villager, Single, Single, Single, Single, Boolean, Boolean, Boolean, Boolean, Boolean, Int32)
+IL_01a4 pop 
+IL_01a5 ret 
+
+METHOD MapController :: Villager SpawnVillager_Networked(Villager, Single, Single, Single, Single, Boolean, Boolean, Boolean, Boolean, Boolean, Int32) public=True static=True
+PARAM 0 Villager villagerPrefab
+PARAM 1 System.Single x
+PARAM 2 System.Single y
+PARAM 3 System.Single xI
+PARAM 4 System.Single yI
+PARAM 5 System.Boolean tumble
+PARAM 6 System.Boolean useParachuteDelay
+PARAM 7 System.Boolean useParachute
+PARAM 8 System.Boolean onFire
+PARAM 9 System.Boolean isAlert
+PARAM 10 System.Int32 armedPlayerNum
+IL_0000 ldarg.0 
+IL_0001 callvirt UnityEngine.Component :: UnityEngine.GameObject get_gameObject()
+IL_0006 ldarg.1 
+IL_0007 ldarg.2 
+IL_0008 ldc.r4 0
+IL_000d newobj UnityEngine.Vector3 :: Void .ctor(Single, Single, Single)
+IL_0012 call UnityEngine.Quaternion :: UnityEngine.Quaternion get_identity()
+IL_0017 ldnull 
+IL_0018 ldc.i4.1 
+IL_0019 call Networking.Networking :: UnityEngine.GameObject InstantiateSceneOwned[GameObject](UnityEngine.GameObject, UnityEngine.Vector3, UnityEngine.Quaternion, System.Object[], Boolean)
+IL_001e callvirt UnityEngine.GameObject :: Villager GetComponent[Villager]()
+IL_0023 stloc.0 
+IL_0024 ldsfld PID :: PID TargetAll
+IL_0029 ldloc.0 
+IL_002a ldftn Villager :: Void SetSpawnState(Single, Single, Boolean, Boolean, Boolean, Boolean, Boolean, Int32)
+IL_0030 newobj RpcSignature`8[System.Single,System.Single,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Int32] :: Void .ctor(System.Object, IntPtr)
+IL_0035 ldarg.3 
+IL_0036 ldarg.s 4
+IL_0038 ldarg.s 5
+IL_003a ldarg.s 6
+IL_003c ldarg.s 7
+IL_003e ldarg.s 8
+IL_0040 ldarg.s 9
+IL_0042 ldarg.s 10
+IL_0044 ldc.i4.1 
+IL_0045 call Networking.Networking :: Void RPC[Single,Single,Boolean,Boolean,Boolean,Boolean,Boolean,Int32](PID, RpcSignature`8[System.Single,System.Single,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Int32], Single, Single, Boolean, Boolean, Boolean, Boolean, Boolean, Int32, Boolean)
+IL_004a ldloc.0 
+IL_004b ret 
+
+METHOD TorturedVillager :: Void FreeVillagerRPC(Unit) public=False static=False
+PARAM 0 Unit activatingUnit
+IL_0000 ldarg.0 
+IL_0001 ldfld TorturedVillager :: Boolean VillagerFreed
+IL_0006 brtrue IL_00e7
+IL_000b ldarg.0 
+IL_000c ldc.i4.1 
+IL_000d stfld TorturedVillager :: Boolean VillagerFreed
+IL_0012 ldarg.0 
+IL_0013 ldfld TorturedVillager :: SpriteSM turturedSprite
+IL_0018 ldnull 
+IL_0019 call UnityEngine.Object :: Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_001e brfalse IL_0034
+IL_0023 ldarg.0 
+IL_0024 ldfld TorturedVillager :: SpriteSM turturedSprite
+IL_0029 callvirt UnityEngine.Component :: UnityEngine.GameObject get_gameObject()
+IL_002e ldc.i4.0 
+IL_002f callvirt UnityEngine.GameObject :: Void SetActive(Boolean)
+IL_0034 ldarg.0 
+IL_0035 ldfld TorturedVillager :: Villager villagerInstance
+IL_003a callvirt UnityEngine.Component :: UnityEngine.Transform get_transform()
+IL_003f call Map :: Map get_Instance()
+IL_0044 callvirt UnityEngine.Component :: UnityEngine.Transform get_transform()
+IL_0049 callvirt UnityEngine.Transform :: Void set_parent(UnityEngine.Transform)
+IL_004e ldarg.0 
+IL_004f ldfld TorturedVillager :: Villager villagerInstance
+IL_0054 ldarg.0 
+IL_0055 ldfld TorturedVillager :: Villager villagerInstance
+IL_005a callvirt UnityEngine.Component :: UnityEngine.Transform get_transform()
+IL_005f callvirt UnityEngine.Transform :: UnityEngine.Vector3 get_position()
+IL_0064 stloc.0 
+IL_0065 ldloca.s 0
+IL_0067 ldfld UnityEngine.Vector3 :: Single x
+IL_006c ldarg.0 
+IL_006d ldfld TorturedVillager :: Villager villagerInstance
+IL_0072 callvirt UnityEngine.Component :: UnityEngine.Transform get_transform()
+IL_0077 callvirt UnityEngine.Transform :: UnityEngine.Vector3 get_position()
+IL_007c stloc.1 
+IL_007d ldloca.s 1
+IL_007f ldfld UnityEngine.Vector3 :: Single y
+IL_0084 ldarg.0 
+IL_0085 ldfld TorturedVillager :: Single spawnOffsetY
+IL_008a add 
+IL_008b callvirt BroforceObject :: Void SetXY(Single, Single)
+IL_0090 ldarg.0 
+IL_0091 ldfld TorturedVillager :: Villager villagerInstance
+IL_0096 callvirt Unit :: Void SetPosition()
+IL_009b ldarg.0 
+IL_009c ldfld TorturedVillager :: Villager villagerInstance
+IL_00a1 callvirt UnityEngine.Component :: UnityEngine.GameObject get_gameObject()
+IL_00a6 ldc.i4.1 
+IL_00a7 callvirt UnityEngine.GameObject :: Void SetActive(Boolean)
+IL_00ac ldarg.1 
+IL_00ad ldnull 
+IL_00ae call UnityEngine.Object :: Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_00b3 brfalse IL_00cf
+IL_00b8 ldarg.0 
+IL_00b9 ldfld TorturedVillager :: Boolean freeVillagerAlreadyArmed
+IL_00be brfalse IL_00cf
+IL_00c3 ldarg.0 
+IL_00c4 ldfld TorturedVillager :: Villager villagerInstance
+IL_00c9 ldarg.1 
+IL_00ca callvirt Villager :: Void ArmVillager(Unit)
+IL_00cf ldarg.1 
+IL_00d0 ldnull 
+IL_00d1 call UnityEngine.Object :: Boolean op_Equality(UnityEngine.Object, UnityEngine.Object)
+IL_00d6 brfalse IL_00e7
+IL_00db ldarg.0 
+IL_00dc ldfld TorturedVillager :: Villager villagerInstance
+IL_00e1 ldc.i4.0 
+IL_00e2 callvirt Unit :: Void set_invulnerable(Boolean)
+IL_00e7 ret 
+
+METHOD TorturedVillager :: Void ArmVillager(Unit) public=True static=False
+PARAM 0 Unit activatingUnit
+IL_0000 ldarg.0 
+IL_0001 ldfld TorturedVillager :: Boolean VillagerFreed
+IL_0006 brtrue IL_003c
+IL_000b ldsfld PID :: PID TargetAll
+IL_0010 ldarg.0 
+IL_0011 ldftn TorturedVillager :: Void FreeVillagerRPC(Unit)
+IL_0017 newobj RpcSignature`1[Unit] :: Void .ctor(System.Object, IntPtr)
+IL_001c ldarg.1 
+IL_001d ldc.i4.0 
+IL_001e call Networking.Networking :: Void RPC[Unit](PID, RpcSignature`1[Unit], Unit, Boolean)
+IL_0023 ldarg.0 
+IL_0024 call UnityEngine.Component :: MobileSwitch GetComponentInChildren[MobileSwitch]()
+IL_0029 stloc.0 
+IL_002a ldloc.0 
+IL_002b ldnull 
+IL_002c call UnityEngine.Object :: Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_0031 brfalse IL_003c
+IL_0036 ldloc.0 
+IL_0037 callvirt Doodad :: Void Collapse()
+IL_003c ret 
