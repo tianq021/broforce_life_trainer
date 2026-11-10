@@ -10,6 +10,7 @@ dist/
 *.dll
 *.pyd
 *.pkg
+# 例外：当前成品 dist/Broforce_加一命修改器_V14.exe 已用 git add -f 纳入版本控制，换版时同样强制添加
 
 # Locally installed analysis dependencies
 analysis/python_deps/
