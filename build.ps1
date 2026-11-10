@@ -20,7 +20,7 @@ if (-not (Test-Path -LiteralPath (Join-Path $GameManaged 'Assembly-CSharp.dll'))
     "/reference:$GameManaged\UnityEngine.CoreModule.dll" `
     "/reference:$GameManaged\UnityEngine.PhysicsModule.dll" `
     "/reference:$GameManaged\UnityEngine.TextRenderingModule.dll" `
-    "$Managed\BroforceLifeBridge.cs" "$Managed\EnhancedVillagerAI.cs" "$Managed\VillagerTactics.cs" "$Managed\CompanionAI.cs" "$Managed\CompanionSpawner.cs"
+    "$Managed\BroforceLifeBridge.cs" "$Managed\EnhancedVillagerAI.cs" "$Managed\VillagerTactics.cs" "$Managed\CompanionAI.cs" "$Managed\CompanionSpawner.cs" "$Managed\CombatAssist.cs"
 if ($LASTEXITCODE -ne 0) {
     throw "Bridge compilation failed with exit code $LASTEXITCODE"
 }
@@ -49,6 +49,13 @@ if ($LASTEXITCODE -ne 0) { throw 'Companion AI test compilation failed' }
 & $CompanionSmokeExe
 if ($LASTEXITCODE -ne 0) { throw 'Companion AI behavior tests failed' }
 
+$CombatSmokeExe = Join-Path $Project 'build\CombatAssistSmoke.exe'
+& $Compiler /nologo "/out:$CombatSmokeExe" `
+    (Join-Path $Project 'tests\CombatAssistSmoke.cs') (Join-Path $Managed 'CombatAssist.cs')
+if ($LASTEXITCODE -ne 0) { throw 'Combat assist test compilation failed' }
+& $CombatSmokeExe
+if ($LASTEXITCODE -ne 0) { throw 'Combat assist behavior tests failed' }
+
 & $Python -m unittest discover -s (Join-Path $Project 'tests') -v
 if ($LASTEXITCODE -ne 0) {
     throw "Tests failed with exit code $LASTEXITCODE"
@@ -59,4 +66,4 @@ if ($LASTEXITCODE -ne 0) {
     throw "EXE packaging failed with exit code $LASTEXITCODE"
 }
 
-Write-Host "Build complete: $Project\dist\Broforce_加一命修改器_V13.exe"
+Write-Host "Build complete: $Project\dist\Broforce_加一命修改器_V14.exe"

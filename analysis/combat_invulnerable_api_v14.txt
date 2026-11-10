@@ -1,0 +1,35 @@
+
+METHOD TestVanDammeAnim :: Void SetInvulnerable(Single, Boolean, Boolean) public=True static=False
+PARAM 0 System.Single time
+PARAM 1 System.Boolean restartBubble
+PARAM 2 System.Boolean showHalo
+IL_0000 ldarg.0 
+IL_0001 ldc.i4.0 
+IL_0002 stfld TestVanDammeAnim :: Boolean firedWhileInvulnerable
+IL_0007 ldarg.0 
+IL_0008 ldarg.0 
+IL_0009 call TestVanDammeAnim :: Single get_invulnerableTime()
+IL_000e ldarg.1 
+IL_000f call UnityEngine.Mathf :: Single Max(Single, Single)
+IL_0014 call TestVanDammeAnim :: Void set_invulnerableTime(Single)
+IL_0019 ldarg.0 
+IL_001a ldc.i4.1 
+IL_001b callvirt Unit :: Void set_invulnerable(Boolean)
+IL_0020 ldarg.2 
+IL_0021 brfalse IL_0037
+IL_0026 ldsfld HeroController :: Boolean mustShowHUDS
+IL_002b brfalse IL_0037
+IL_0030 ldarg.0 
+IL_0031 ldarg.1 
+IL_0032 callvirt TestVanDammeAnim :: Void RestartBubble(Single)
+IL_0037 ldarg.3 
+IL_0038 brfalse IL_0059
+IL_003d ldarg.0 
+IL_003e ldfld TestVanDammeAnim :: BroHalo halo
+IL_0043 ldnull 
+IL_0044 call UnityEngine.Object :: Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_0049 brfalse IL_0059
+IL_004e ldarg.0 
+IL_004f ldfld TestVanDammeAnim :: BroHalo halo
+IL_0054 callvirt BroHalo :: Void Show()
+IL_0059 ret 

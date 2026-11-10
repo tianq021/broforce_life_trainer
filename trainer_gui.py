@@ -23,6 +23,7 @@ VK_F6 = 0x75
 VK_F7 = 0x76
 VK_F8 = 0x77
 VK_F9 = 0x78
+VK_F10 = 0x79
 SPAWN_COMPANION_SEQUENCE_OFFSET = 80
 SPAWN_VILLAGER_SEQUENCE_OFFSET = 56
 WAIT_OBJECT_0 = 0
@@ -31,8 +32,14 @@ SYNCHRONIZE = 0x00100000
 SMTO_ABORTIFHUNG = 0x0002
 FILE_MAP_WRITE = 0x0002
 FILE_MAP_READ = 0x0004
-SHARED_MEMORY_SIZE = 352
-PLAYER_STRIDE = 88
+SHARED_MEMORY_SIZE = 512
+PLAYER_STRIDE = 128
+INVINCIBLE_ENABLED_OFFSET = 88
+REFILL_AMMO_SEQUENCE_OFFSET = 96
+INVINCIBLE_STATUS_OFFSET = 104
+REFILL_AMMO_RESULT_OFFSET = 112
+CLIENT_HEARTBEAT_OFFSET = 120
+REFILL_SEQUENCE_MASK = (1 << 56) - 1
 HERO_SWITCH_COMMAND_OFFSET = 64
 VILLAGER_AI_DISABLED_OFFSET = 72
 LIVES_SNAPSHOT_OFFSET = 0
@@ -50,7 +57,7 @@ ULONG_PTR_MAX = (1 << (ctypes.sizeof(ctypes.c_size_t) * 8)) - 1
 STATUS_PATH = (
     Path(os.environ.get("LOCALAPPDATA", Path.home()))
     / "BroforceLifeTrainer"
-    / "bridge_status_v12.txt"
+    / "bridge_status_v14.txt"
 )
 
 HERO_NAMES = (
@@ -220,7 +227,7 @@ def create_ready_event(pid: int) -> int:
         None,
         True,
         False,
-        f"Local\\BroforceLifeTrainer_ReadyV13_{pid}",
+        f"Local\\BroforceLifeTrainer_ReadyV14_{pid}",
     )
     if not handle:
         code = ctypes.get_last_error()
@@ -265,7 +272,7 @@ def open_shared_state(pid: int) -> tuple[int, int]:
     handle = kernel32.OpenFileMappingW(
         FILE_MAP_READ | FILE_MAP_WRITE,
         False,
-        f"Local\\BroforceLifeTrainer_SharedV13_{pid}",
+        f"Local\\BroforceLifeTrainer_SharedV14_{pid}",
     )
     if not handle:
         code = ctypes.get_last_error()
@@ -381,6 +388,30 @@ def set_villager_ai(shared_view: int, enabled: bool, player_index: int = 0) -> N
     ctypes.c_uint64.from_address(address).value = int(not enabled)
 
 
+def set_invincible(shared_view: int, enabled: bool, player_index: int = 0) -> None:
+    address = player_view(shared_view, player_index) + INVINCIBLE_ENABLED_OFFSET
+    ctypes.c_uint64.from_address(address).value = int(enabled)
+
+
+def request_refill_ammo(shared_view: int, player_index: int = 0) -> int:
+    address = player_view(shared_view, player_index) + REFILL_AMMO_SEQUENCE_OFFSET
+    sequence = (ctypes.c_uint64.from_address(address).value + 1) & REFILL_SEQUENCE_MASK
+    ctypes.c_uint64.from_address(address).value = sequence
+    return sequence
+
+
+def pulse_combat_client(shared_view: int) -> None:
+    address = shared_view + CLIENT_HEARTBEAT_OFFSET
+    sequence = (ctypes.c_uint64.from_address(address).value + 1) & ULONG_PTR_MAX
+    ctypes.c_uint64.from_address(address).value = sequence or 1
+
+
+def stop_combat_assists(shared_view: int) -> None:
+    for player in range(4):
+        set_invincible(shared_view, False, player)
+    ctypes.c_uint64.from_address(shared_view + CLIENT_HEARTBEAT_OFFSET).value = 0
+
+
 def request_hero_switch(shared_view: int, hero_type: int, player_index: int = 0) -> None:
     shared_view = player_view(shared_view, player_index)
     # Publish sequence and target in one aligned 64-bit write.
@@ -415,9 +446,9 @@ def hero_options_from_mask(mask: int) -> list[tuple[int, str]]:
 class TrainerApp:
     def __init__(self, root: tk.Tk) -> None:
         self.root = root
-        self.root.title("Broforce 命数 / 人物修改器")
-        self.root.geometry("620x530")
-        self.root.minsize(620, 460)
+        self.root.title("Broforce 修改器 V14")
+        self.root.geometry("620x580")
+        self.root.minsize(620, 570)
 
         self.pid: int | None = None
         self.game_window = 0
@@ -429,6 +460,8 @@ class TrainerApp:
         self.was_f7_down = False
         self.was_f8_down = False
         self.was_f9_down = False
+        self.was_f10_down = False
+        self.pending_refills: list[int | None] = [None] * 4
         self.last_status_mtime = 0
         self.last_monitor_heartbeat = 0
         self.last_monitor_heartbeat_time = time.monotonic()
@@ -447,6 +480,8 @@ class TrainerApp:
         self.monitor_var = tk.StringVar(value="实时监视：未连接")
         self.player_choice_var = tk.StringVar(value="玩家 1")
         self.villager_ai_var = tk.BooleanVar(value=True)
+        self.invincible_var = tk.BooleanVar(value=False)
+        self.invincible_status_var = tk.StringVar(value="无敌：未连接")
         self.hero_choice_var = tk.StringVar(value="等待连接并读取已解锁人物")
         self.hero_lock_var = tk.StringVar(value="人物锁定：未连接")
 
@@ -456,6 +491,7 @@ class TrainerApp:
         self.root.after(30, self._hotkey_tick)
         self.root.after(300, self._status_tick)
         self.root.after(MONITOR_INTERVAL_MS, self._lives_tick)
+        self.root.after(250, self._combat_tick)
 
     def _build_ui(self) -> None:
         style = ttk.Style()
@@ -505,6 +541,17 @@ class TrainerApp:
             command=self.spawn_companion, state="disabled")
         self.spawn_companion_button.pack(fill="x", pady=(0, 7))
 
+        combat = ttk.Frame(outer)
+        combat.pack(fill="x", pady=(0, 7))
+        self.invincible_check = ttk.Checkbutton(combat, text="无敌（当前玩家）",
+            variable=self.invincible_var, command=self.toggle_invincible, state="disabled")
+        self.invincible_check.pack(side="left")
+        self.refill_button = ttk.Button(combat, text="补满手雷 / 特殊弹药 [F10]",
+            command=self.refill_ammo, state="disabled")
+        self.refill_button.pack(side="right")
+        ttk.Label(outer, textvariable=self.invincible_status_var, foreground="#555555").pack(
+            anchor="w", pady=(0, 5))
+
         ttk.Checkbutton(outer, text="村民强袭 AI（当前玩家：主动进攻 / 快速射击）",
                         variable=self.villager_ai_var, command=self._toggle_villager_ai).pack(
                             anchor="w", pady=(0, 7))
@@ -547,7 +594,7 @@ class TrainerApp:
 
     def _show_help(self) -> None:
         messagebox.showinfo("使用说明", (
-            "选择玩家 1–4 后，按钮和 F6 / F7 / F8 / F9 均操作该玩家。\n"
+            "选择玩家 1–4 后，按钮和 F6 / F7 / F8 / F9 / F10 均操作该玩家。\n"
             "快捷键仅在游戏前台生效，每名玩家可独立锁定人物。\n\n"
             "仅切换一次：成功后关闭该玩家原有锁定。\n"
             "启用 / 更换锁定：换人并在复活、救人和切关后保持。\n"
@@ -559,7 +606,12 @@ class TrainerApp:
             "开关按玩家独立设置，影响该玩家已生成及后续生成的村民；关闭恢复原生 AI。\n"
             "电脑队友 F9：使用下方人物列表或头像选人，生成所选已解锁人物，自动跟随所选玩家并追踪攻击敌人；全队本关上限 4 名。\n"
             "仅普通本地合作关卡；死亡后消失，切关后需重新生成；不占玩家席位。\n"
-            "首次使用 V13 请重启游戏及修改器。\n\n"
+            "无敌：按玩家独立开关，换人、复活后自动继续。关闭后短暂保护自然结束。\n"
+            "补满手雷 F10：一次恢复当前角色的手雷 / 特殊弹药至原生上限；已满不减少。\n"
+            "需角色已出场且游戏未暂停；不补充拾取的口袋道具或载具弹药。\n"
+            "无敌沿用游戏原生保护，不防坠出地图和脚本强制死亡。\n"
+            "退出修改器停止维持无敌；异常退出约 3 秒后停止，保护随后自然结束。\n"
+            "首次使用 V14 请重启游戏及修改器。\n\n"
             f"仅单机 / 本地游戏；适用 Steam 构建 {SUPPORTED_BUILD}。\n"
             "修改器不写入游戏安装目录，重启游戏后需重新连接。"
         ), parent=self.root)
@@ -681,6 +733,8 @@ class TrainerApp:
             self.ready_event = 0
 
     def _close_shared_state(self) -> None:
+        if self.shared_view:
+            stop_combat_assists(self.shared_view)
         close_shared_state(self.shared_handle, self.shared_view)
         self.shared_handle = 0
         self.shared_view = 0
@@ -697,6 +751,11 @@ class TrainerApp:
         self.ironbro_add_button.configure(state="disabled")
         self.spawn_villager_button.configure(state="disabled")
         self.spawn_companion_button.configure(state="disabled")
+        self.invincible_check.configure(state="disabled")
+        self.refill_button.configure(state="disabled")
+        self.invincible_var.set(False)
+        self.invincible_status_var.set("无敌：未连接")
+        self.pending_refills = [None] * 4
         self.hero_combo.configure(state="disabled")
         self.hero_switch_button.configure(state="disabled")
         self.hero_lock_button.configure(state="disabled")
@@ -779,6 +838,7 @@ class TrainerApp:
         self.monitor_var.set(f"实时监视：正在读取玩家 {self.selected_player + 1}")
         self.result_var.set(f"操作对象：玩家 {self.selected_player + 1}")
         if self.shared_view:
+            self._refresh_combat_controls()
             self.villager_ai_var.set(read_shared_uint64(
                 player_view(self.shared_view, self.selected_player), VILLAGER_AI_DISABLED_OFFSET) == 0)
             self._refresh_hero_controls(enabled=self.hero_controls_enabled)
@@ -886,6 +946,8 @@ class TrainerApp:
         self.game_window = game_window
         self.shared_handle = shared_handle
         self.shared_view = shared_view
+        self.pending_refills = [None] * 4
+        pulse_combat_client(shared_view)
         self.villager_ai_var.set(read_shared_uint64(
             player_view(shared_view, self.selected_player), VILLAGER_AI_DISABLED_OFFSET) == 0)
         self.progress.configure(mode="determinate", value=100)
@@ -899,6 +961,67 @@ class TrainerApp:
         self.spawn_villager_button.configure(state="normal")
         self.spawn_companion_button.configure(state="normal")
         self._refresh_hero_controls()
+
+    def toggle_invincible(self) -> None:
+        if not self.pid or not self.shared_view or not monitor_is_ready(self.shared_view):
+            self.invincible_var.set(False)
+            self.result_var.set("请先连接游戏，等待监视器就绪")
+            return
+        pulse_combat_client(self.shared_view)
+        set_invincible(self.shared_view, self.invincible_var.get(), self.selected_player)
+        self.result_var.set(f"玩家 {self.selected_player + 1}：已发送无敌"
+                            + ("开启指令" if self.invincible_var.get() else "关闭指令"))
+
+    def refill_ammo(self) -> None:
+        if not self.pid or not self.shared_view or not monitor_is_ready(self.shared_view):
+            self.result_var.set("请先连接游戏，等待监视器就绪")
+            return
+        player = self.selected_player
+        if self.pending_refills[player] is not None:
+            self.result_var.set("正在等待本次补给结果……")
+            return
+        pulse_combat_client(self.shared_view)
+        self.pending_refills[player] = request_refill_ammo(self.shared_view, player)
+        self.refill_button.configure(state="disabled")
+        self.result_var.set(f"玩家 {player + 1}：已发送补满手雷 / 特殊弹药指令……")
+
+    def _refresh_combat_controls(self) -> None:
+        if not self.shared_view:
+            return
+        slot = player_view(self.shared_view, self.selected_player)
+        enabled = read_shared_uint64(slot, INVINCIBLE_ENABLED_OFFSET) == 1
+        status = read_shared_uint64(slot, INVINCIBLE_STATUS_OFFSET)
+        self.invincible_var.set(enabled)
+        labels = {0: "已关闭（残余保护会自然结束）", 1: "已生效", 2: "等待角色出场 / 恢复游戏",
+                  3: "在线房间不可用", 4: "异常，已停止"}
+        label = labels.get(status, "状态未知")
+        if enabled and status == 0:
+            label = "正在开启……"
+        elif not enabled and status == 1:
+            label = "正在关闭……"
+        self.invincible_status_var.set(f"玩家 {self.selected_player + 1} 无敌：{label}")
+        ready = monitor_is_ready(self.shared_view) and not self.connecting
+        self.invincible_check.configure(state="normal" if ready else "disabled")
+        self.refill_button.configure(state="normal" if ready and
+            self.pending_refills[self.selected_player] is None else "disabled")
+
+    def _combat_tick(self) -> None:
+        if self.pid and self.shared_view:
+            pulse_combat_client(self.shared_view)
+            for player, sequence in enumerate(self.pending_refills):
+                if sequence is None:
+                    continue
+                result = read_shared_uint64(player_view(self.shared_view, player), REFILL_AMMO_RESULT_OFFSET)
+                if result >> 8 != sequence or not result & 255:
+                    continue
+                self.pending_refills[player] = None
+                if player == self.selected_player:
+                    messages = {1: "手雷 / 特殊弹药已补满", 2: "补给未执行：请在角色出场后恢复游戏再试",
+                                3: "在线房间不可用", 4: "弹药已经满了", 5: "当前角色没有可补充的特殊弹药",
+                                6: "补给失败，请重试或更换角色", 7: "连接已中断，本次补给未执行"}
+                    self.result_var.set(f"玩家 {player + 1}：{messages.get(result & 255, '补给结果未知')}")
+            self._refresh_combat_controls()
+        self.root.after(250, self._combat_tick)
 
     def add_life(self) -> None:
         if not self.pid or not self.shared_view:
@@ -999,6 +1122,7 @@ class TrainerApp:
         f7_down = bool(user32.GetAsyncKeyState(VK_F7) & 0x8000)
         f8_down = bool(user32.GetAsyncKeyState(VK_F8) & 0x8000)
         f9_down = bool(user32.GetAsyncKeyState(VK_F9) & 0x8000)
+        f10_down = bool(user32.GetAsyncKeyState(VK_F10) & 0x8000)
         if self.pid and self.game_window:
             foreground = int(user32.GetForegroundWindow() or 0)
             if foreground == self.game_window:
@@ -1010,6 +1134,9 @@ class TrainerApp:
                     self.spawn_villager()
                 if f9_down and not self.was_f9_down:
                     self.spawn_companion()
+                if f10_down and not self.was_f10_down:
+                    self.refill_ammo()
+        self.was_f10_down = f10_down
         self.was_f9_down = f9_down
         self.was_f8_down = f8_down
         self.was_f6_down = f6_down
@@ -1142,7 +1269,7 @@ class TrainerApp:
             self.result_var.set(details[0])
             self._refresh_hero_controls()
             messagebox.showwarning("人物锁定已关闭", details[0])
-        elif state in ("VILLAGER_OK", "VILLAGER_WAIT", "VILLAGER_DENIED", "COMPANION_OK", "COMPANION_DENIED") and details:
+        elif state in ("VILLAGER_OK", "VILLAGER_WAIT", "VILLAGER_DENIED", "COMPANION_OK", "COMPANION_DENIED", "COMBAT_ERROR") and details:
             self.result_var.set(details[0])
         elif state == "WAITING" and details:
             self.result_var.set(details[0])

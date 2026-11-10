@@ -32,8 +32,8 @@ class CompanionTests(unittest.TestCase):
 
     def test_f9_held_outside_game_does_not_spawn_on_focus(self):
         app = SimpleNamespace(pid=1, game_window=123, was_f6_down=False, was_f7_down=False,
-            was_f8_down=False, was_f9_down=False, root=Mock(), _hotkey_tick=Mock(),
-            add_life=Mock(), add_ironbro_life=Mock(), spawn_villager=Mock(), spawn_companion=Mock())
+            was_f8_down=False, was_f9_down=False, was_f10_down=False, root=Mock(), _hotkey_tick=Mock(),
+            add_life=Mock(), add_ironbro_life=Mock(), spawn_villager=Mock(), spawn_companion=Mock(), refill_ammo=Mock())
         with patch.object(gui.user32, 'GetAsyncKeyState', side_effect=lambda key: 0x8000 if key == gui.VK_F9 else 0), patch.object(gui.user32, 'GetForegroundWindow', return_value=456) as foreground:
             gui.TrainerApp._hotkey_tick(app)
             foreground.return_value = 123

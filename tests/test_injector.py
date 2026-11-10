@@ -62,7 +62,7 @@ class InjectorTests(unittest.TestCase):
         )
 
     def test_shared_state_reads_and_command_increment(self):
-        shared = (ctypes.c_uint64 * 44)()
+        shared = (ctypes.c_uint64 * (trainer_gui.SHARED_MEMORY_SIZE // 8))()
         shared[0] = (1 << 32) | 4
         shared[2] = 1
         shared[3] = 9

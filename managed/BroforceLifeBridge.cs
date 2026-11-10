@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading;
 
-[assembly: AssemblyVersion("12.0.0.0")]
+[assembly: AssemblyVersion("14.0.0.0")]
 
 namespace BroforceLifeTrainer
 {
@@ -25,9 +25,9 @@ namespace BroforceLifeTrainer
         private const uint PageReadWrite = 0x04;
         private const uint FileMapWrite = 0x0002;
         private const int ErrorAlreadyExists = 183;
-        private const int SharedMemorySize = 352;
+        private const int SharedMemorySize = 512;
         private const int LocalPlayerCount = 4;
-        private const int PlayerStride = 88;
+        private const int PlayerStride = 128;
         private static int currentPlayer;
         private sealed class PlayerState
         {
@@ -35,6 +35,7 @@ namespace BroforceLifeTrainer
             public float nextHeroSwitchTime;
             public long lastSpawnVillagerSequence;
             public long lastSpawnCompanionSequence;
+            public long lastRefillAmmoSequence;
             public float nextVillagerSpawnTime;
             public long lastAddLifeSequence;
             public long lastIronbroAddLifeSequence;
@@ -62,6 +63,12 @@ namespace BroforceLifeTrainer
         private const int HeroSwitchCommandOffset = 64;
         private const int VillagerAiDisabledOffset = 72;
         private const int SpawnCompanionSequenceOffset = 80;
+        private const int InvincibleEnabledOffset = 88;
+        private const int RefillAmmoSequenceOffset = 96;
+        private const int InvincibleStatusOffset = 104;
+        private const int RefillAmmoResultOffset = 112;
+        private const int ClientHeartbeatOffset = 120; // Global, only in slot zero.
+        private static readonly CombatClientLease combatLease = new CombatClientLease();
         private static long lastHeroSwitchCommand { get { return playerStates[currentPlayer].lastHeroSwitchCommand; } set { playerStates[currentPlayer].lastHeroSwitchCommand = value; } }
         private static float nextHeroSwitchTime { get { return playerStates[currentPlayer].nextHeroSwitchTime; } set { playerStates[currentPlayer].nextHeroSwitchTime = value; } }
         private static long lastSpawnVillagerSequence { get { return playerStates[currentPlayer].lastSpawnVillagerSequence; } set { playerStates[currentPlayer].lastSpawnVillagerSequence = value; } }
@@ -77,7 +84,7 @@ namespace BroforceLifeTrainer
             Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
             "BroforceLifeTrainer"
         );
-        private static readonly string StatusPath = Path.Combine(AppDataDirectory, "bridge_status_v12.txt");
+        private static readonly string StatusPath = Path.Combine(AppDataDirectory, "bridge_status_v14.txt");
 
         private static WndProcDelegate windowProcedure;
         private static IntPtr originalWindowProcedure = IntPtr.Zero;
@@ -239,7 +246,7 @@ namespace BroforceLifeTrainer
                 PageReadWrite,
                 0,
                 SharedMemorySize,
-                "Local\\BroforceLifeTrainer_SharedV13_" + CurrentPid
+                "Local\\BroforceLifeTrainer_SharedV14_" + CurrentPid
             );
             if (sharedMemoryHandle == IntPtr.Zero)
             {
@@ -270,6 +277,10 @@ namespace BroforceLifeTrainer
                     WriteSharedInt64(SpawnCompanionSequenceOffset, 0);
                     WriteSharedInt64(HeroSwitchCommandOffset, 0);
                     WriteSharedInt64(HeroLockTargetOffset, -1);
+                    WriteSharedInt64(InvincibleEnabledOffset, 0);
+                    WriteSharedInt64(RefillAmmoSequenceOffset, 0);
+                    WriteSharedInt64(InvincibleStatusOffset, 0);
+                    WriteSharedInt64(RefillAmmoResultOffset, 0);
                 }
             }
             currentPlayer = 0;
@@ -284,6 +295,7 @@ namespace BroforceLifeTrainer
                 lastIronbroAddLifeSequence = ReadSharedInt64(IronbroAddLifeSequenceOffset);
                 lastSpawnVillagerSequence = ReadSharedInt64(SpawnVillagerSequenceOffset);
                 playerStates[currentPlayer].lastSpawnCompanionSequence = ReadSharedInt64(SpawnCompanionSequenceOffset);
+                playerStates[currentPlayer].lastRefillAmmoSequence = ReadSharedInt64(RefillAmmoSequenceOffset);
                 lastHeroSwitchCommand = ReadSharedInt64(HeroSwitchCommandOffset);
                 lastHeroLockTarget = Int64.MinValue;
             }
@@ -797,6 +809,8 @@ namespace BroforceLifeTrainer
 
         internal static void ProcessAllPlayers()
         {
+            bool clientAlive = combatLease.IsAlive(ReadSharedInt64(ClientHeartbeatOffset),
+                UnityEngine.Time.realtimeSinceStartup);
             for (currentPlayer = 0; currentPlayer < LocalPlayerCount; currentPlayer++)
             {
                 ProcessPendingAddLife();
@@ -805,8 +819,46 @@ namespace BroforceLifeTrainer
                 ProcessPendingCompanion();
                 ProcessPendingHeroSwitch();
                 ProcessHeroLock();
+                ProcessCombatAssist(clientAlive);
             }
             currentPlayer = 0;
+        }
+
+        private static void ProcessCombatAssist(bool clientAlive)
+        {
+            long sequence = ReadSharedInt64(RefillAmmoSequenceOffset);
+            bool refill = sequence != playerStates[currentPlayer].lastRefillAmmoSequence;
+            // Consume even rejected commands; never refill a later life by surprise.
+            playerStates[currentPlayer].lastRefillAmmoSequence = sequence;
+            try
+            {
+                bool offline = Connect.IsOffline;
+                bool requested = ReadSharedInt64(InvincibleEnabledOffset) == 1;
+                if (!clientAlive || !offline) WriteSharedInt64(InvincibleEnabledOffset, 0);
+                Player player; int index;
+                bool ready = offline && clientAlive && TryFindCurrentLocalPlayer(out player, out index);
+                TestVanDammeAnim hero = null;
+                // Resolve again after hero lock/switch, never cache a replaced character.
+                if (ready && TryFindCurrentLocalPlayer(out player, out index))
+                {
+                    ready = CanChangeHeroNow(player);
+                    if (ready) hero = player.character;
+                }
+                int protection = CombatAssist.MaintainInvincibility(requested && clientAlive, offline, ready, hero);
+                WriteSharedInt64(InvincibleStatusOffset, protection);
+                if (refill)
+                {
+                    int result = clientAlive ? CombatAssist.Refill(offline, ready, hero) : 7;
+                    WriteSharedInt64(RefillAmmoResultOffset, unchecked((sequence << 8) | (long)(uint)result));
+                }
+            }
+            catch (Exception exception)
+            {
+                WriteSharedInt64(InvincibleEnabledOffset, 0);
+                WriteSharedInt64(InvincibleStatusOffset, 4);
+                if (refill) WriteSharedInt64(RefillAmmoResultOffset, unchecked((sequence << 8) | 6L));
+                WriteStatus("COMBAT_ERROR", "战斗辅助暂不可用：" + exception.Message);
+            }
         }
 
         internal static void RefreshAllPlayers()
@@ -1119,7 +1171,9 @@ namespace BroforceLifeTrainer
             if (offset == LivesSnapshotOffset || offset == AddLifeSequenceOffset ||
                 offset == IronbroAddLifeSequenceOffset || offset == HeroLockTargetOffset ||
                 offset == SpawnVillagerSequenceOffset || offset == HeroSwitchCommandOffset ||
-                offset == VillagerAiDisabledOffset || offset == SpawnCompanionSequenceOffset)
+                offset == VillagerAiDisabledOffset || offset == SpawnCompanionSequenceOffset ||
+                offset == InvincibleEnabledOffset || offset == RefillAmmoSequenceOffset ||
+                offset == InvincibleStatusOffset || offset == RefillAmmoResultOffset)
                 return offset + currentPlayer * PlayerStride;
             return offset;
         }
@@ -1142,7 +1196,7 @@ namespace BroforceLifeTrainer
                     IntPtr.Zero,
                     true,
                     false,
-                    "Local\\BroforceLifeTrainer_ReadyV13_" + CurrentPid
+                    "Local\\BroforceLifeTrainer_ReadyV14_" + CurrentPid
                 );
             }
             if (readyEvent != IntPtr.Zero)

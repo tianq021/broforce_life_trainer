@@ -26,7 +26,7 @@ exe = EXE(
     a.binaries,
     a.datas,
     [],
-    name="Broforce_加一命修改器_V13",
+    name="Broforce_加一命修改器_V14",
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,

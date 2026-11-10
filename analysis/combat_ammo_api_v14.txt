@@ -1,0 +1,12 @@
+
+METHOD TestVanDammeAnim :: Void ResetSpecialAmmo() public=True static=False
+IL_0000 ldarg.0 
+IL_0001 ldarg.0 
+IL_0002 ldfld TestVanDammeAnim :: Int32 originalSpecialAmmo
+IL_0007 callvirt TestVanDammeAnim :: Void set_SpecialAmmo(Int32)
+IL_000c ldarg.0 
+IL_000d call NetworkedUnit :: Int32 get_playerNum()
+IL_0012 ldarg.0 
+IL_0013 callvirt TestVanDammeAnim :: Int32 get_SpecialAmmo()
+IL_0018 call HeroController :: Void SetSpecialAmmo(Int32, Int32)
+IL_001d ret 
