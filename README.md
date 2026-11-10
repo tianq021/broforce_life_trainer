@@ -16,6 +16,10 @@
 
 验证：30 项 Python 测试、4 组 C# 检查（含 23 项战斗辅助行为断言）、真实游戏程序集编译及 EXE 打包通过。成品启动/正常关闭、620×580 界面控件布局和内嵌 DLL 一致性检查通过。游戏当时未运行，**实际受伤、消耗手雷后补给、特殊英雄及本地多人效果仍待游戏内验收**。技术依据见 [analysis/战斗辅助V14实现说明.md](analysis/战斗辅助V14实现说明.md)。下方为历史记录。
 
+## 文件校验
+
+成品 EXE 的 SHA-256 记录在 [SHA256SUMS.txt](SHA256SUMS.txt)：`fcce9632a4a5cd343aebbc5c665a6eb39cee3131ff5f04330e6a75774abc9ccb`。PowerShell 校验：`Get-FileHash '.\dist\Broforce_加一命修改器_V14.exe' -Algorithm SHA256`。
+
 ## V13 人物锁定开场出生修复（历史版本）
 
 成品：`dist\Broforce_加一命修改器_V13.exe`。关闭旧修改器并完全退出游戏，再启动游戏并连接 V13；旧桥接会驻留到游戏退出，不能只重开修改器。

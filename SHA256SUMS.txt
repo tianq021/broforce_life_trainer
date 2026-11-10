@@ -1,0 +1,9 @@
+# Broforce 命数 / 人物 / 战斗辅助修改器 V14 文件校验
+# Steam App ID 274190，本机已核对构建 12964083；打包日期 2026-11-07
+# 仓库只收录当前成品 EXE，历史版本 EXE 不随仓库上传，其说明见 README 与 backups/ 记录。
+#
+# 校验方法（Windows PowerShell）：
+#   Get-FileHash '.\dist\Broforce_加一命修改器_V14.exe' -Algorithm SHA256
+# 或 Git Bash / Linux（在仓库根目录执行）：
+#   sha256sum -c SHA256SUMS.txt
+fcce9632a4a5cd343aebbc5c665a6eb39cee3131ff5f04330e6a75774abc9ccb  dist/Broforce_加一命修改器_V14.exe
